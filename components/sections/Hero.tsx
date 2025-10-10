@@ -1,13 +1,13 @@
 "use client";
 
-import dynamic from "next/dynamic";
+
 import Image from "next/image";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "@/components/ui/icons";
 
-const Galaxy = dynamic(() => import("@/components/ui/Galaxy"), { ssr: false });
+
 
 export interface HeroHighlight {
   title: string;
