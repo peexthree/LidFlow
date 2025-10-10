@@ -26,17 +26,18 @@ export interface ButtonProps
 }
 
 export function Button({ className, variant, asChild, ...props }: ButtonProps) {
-  // Если asChild — клонируем дочерний элемент (например, <Link href="...">)
-  // и добавляем ему стили кнопки.
   if (asChild) {
-    const child = (props as any).children as React.ReactElement;
+    const child = (props as any).children as React.ReactElement<any> | undefined;
     if (!child || !React.isValidElement(child)) return null;
-    return React.cloneElement(child, {
-      className: clsx(button({ variant }), child.props.className, className),
-    });
+
+    const merged = clsx(button({ variant }), (child.props as any)?.className, className);
+
+    // ВАЖНО: ослабляем тип через `as any`, чтобы не конфликтовать с типами child
+    return React.cloneElement(child as React.ReactElement<any>, {
+      className: merged,
+    } as any);
   }
 
-  // Обычная кнопка
   return (
     <button className={clsx(button({ variant }), className)} {...props} />
   );
