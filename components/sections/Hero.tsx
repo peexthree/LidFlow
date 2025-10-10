@@ -20,19 +20,13 @@ interface HeroProps {
 
 export function Hero({ highlights }: HeroProps) {
   return (
-    <section className="container relative overflow-hidden rounded-2xl border border-white/20 bg-neutral-950 px-6 py-20 shadow-[0_35px_120px_rgba(8,47,73,0.45)] sm:px-12">
-      <Galaxy
-        className="absolute inset-0 -z-10"
-        transparent
-        mouseInteraction
-        starSpeed={0.6}
-        density={1.1}
-        hueShift={180}
-        glowIntensity={0.45}
-        twinkleIntensity={0.35}
-        speed={1}
-      />
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.25),_transparent_65%)]" />
+    <section className="container relative overflow-hidden rounded-2xl border border-purple-500/20 px-6 py-20 shadow-[0_35px_120px_rgba(168,85,247,0.4)] sm:px-12" style={{
+      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #667eea 100%)',
+      backgroundSize: '400% 400%',
+      animation: 'gradientShift 15s ease infinite'
+    }}>
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_30%_20%,_rgba(255,255,255,0.15),_transparent_50%)]" />
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_70%_80%,_rgba(255,255,255,0.1),_transparent_60%)]" />
       <div className="grid gap-12 md:grid-cols-[minmax(0,1fr)_360px] md:items-center">
         <div className="space-y-10 text-neutral-200">
           <div className="space-y-6">
@@ -64,7 +58,7 @@ export function Hero({ highlights }: HeroProps) {
           <div className="flex flex-wrap items-center gap-4">
             <Button
               asChild
-              className="group relative overflow-hidden rounded-xl2 border-transparent bg-brand-500 px-6 py-3 text-base font-semibold text-white shadow-[0_20px_60px_rgba(14,165,233,0.45)] transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-400 hover:shadow-[0_24px_70px_rgba(14,165,233,0.55)]"
+              className="group relative overflow-hidden rounded-xl border-transparent bg-brand-500 px-6 py-3 text-base font-semibold text-white shadow-[0_20px_60px_rgba(14,165,233,0.45)] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-400 hover:shadow-[0_24px_70px_rgba(14,165,233,0.55)] glow-effect"
             >
               <Link href="/designer">
                 <span className="relative z-10 inline-flex items-center gap-2">
