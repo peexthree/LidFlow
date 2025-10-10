@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --radius: 0.8rem;
+}
+
+body {
+  @apply bg-white text-neutral-900 antialiased;
+}
+
+.container {
+  @apply max-w-6xl mx-auto px-4;
+}
