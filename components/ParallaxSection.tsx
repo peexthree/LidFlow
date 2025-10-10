@@ -1,57 +1,104 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
+import { useReducedMotion } from "framer-motion";
+import { clsx } from "clsx";
 
-export function ScrollProgress() {
-  const [progress, setProgress] = useState(0);
+export interface ParallaxLayer {
+  speed: number;
+  className?: string;
+  content?: ReactNode;
+}
+
+export interface ParallaxSectionProps {
+  layers?: ParallaxLayer[];
+  children: ReactNode;
+  className?: string;
+}
+
+export function ParallaxSection({ layers = [], children, className }: ParallaxSectionProps) {
+  const containerRef = useRef<HTMLElement | null>(null);
+  const layerRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const prefersReducedMotion = useReducedMotion();
+
+  layerRefs.current = layerRefs.current.slice(0, layers.length);
 
   useEffect(() => {
-    if (typeof window === "undefined") {
-      return undefined;
+    if (prefersReducedMotion) {
+      layerRefs.current.forEach((layer) => {
+        if (layer) {
+          layer.style.transform = "translate3d(0, 0, 0)";
+        }
+      });
+      return;
     }
 
-    let frame = 0;
+    let animationFrame: number | null = null;
 
-    const updateProgress = () => {
-      const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
-      const maxScroll = scrollHeight - clientHeight;
-      const value = maxScroll <= 0 ? 0 : scrollTop / maxScroll;
-      setProgress(Math.min(Math.max(value, 0), 1));
-    };
+    const updateLayers = () => {
+      animationFrame = null;
+      const container = containerRef.current;
 
-    const handleScroll = () => {
-      if (frame) {
-        cancelAnimationFrame(frame);
+      if (!container) {
+        return;
       }
-      frame = requestAnimationFrame(updateProgress);
+
+      const rect = container.getBoundingClientRect();
+      const viewportHeight = window.innerHeight || 1;
+      const progress = (viewportHeight - rect.top) / (viewportHeight + rect.height || 1);
+      const clamped = Math.min(Math.max(progress, 0), 1);
+
+      layerRefs.current.forEach((layer, index) => {
+        const definition = layers[index];
+
+        if (!layer || !definition) {
+          return;
+        }
+
+        const offset = (clamped - 0.5) * 2 * definition.speed;
+        layer.style.transform = `translate3d(0, ${offset}px, 0)`;
+      });
     };
 
-    handleScroll();
+    const scheduleUpdate = () => {
+      if (animationFrame !== null) {
+        cancelAnimationFrame(animationFrame);
+      }
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", handleScroll);
+      animationFrame = requestAnimationFrame(updateLayers);
+    };
+
+    scheduleUpdate();
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
 
     return () => {
-      if (frame) {
-        cancelAnimationFrame(frame);
+      if (animationFrame !== null) {
+        cancelAnimationFrame(animationFrame);
       }
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
+
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
     };
-  }, []);
+  }, [layers, prefersReducedMotion]);
 
   return (
-    <div
-      className="pointer-events-none fixed inset-x-0 top-0 z-50 h-1.5 bg-black/5 backdrop-blur"
-      role="progressbar"
-      aria-valuemin={0}
-      aria-valuemax={100}
-      aria-valuenow={Math.round(progress * 100)}
-    >
-      <div
-        className="h-full origin-left bg-gradient-to-r from-brand-400 via-brand-500 to-brand-600 transition-transform"
-        style={{ transform: `scaleX(${progress})` }}
-      />
-    </div>
+    <section ref={containerRef} className={clsx("relative overflow-hidden", className)}>
+      <div aria-hidden className="absolute inset-0 -z-10">
+        {layers.map((layer, index) => (
+          <div
+            key={index}
+            ref={(node) => {
+              layerRefs.current[index] = node;
+            }}
+            className={clsx("absolute inset-0 will-change-transform", layer.className)}
+            style={{ transform: "translate3d(0, 0, 0)" }}
+          >
+            {layer.content}
+          </div>
+        ))}
+      </div>
+      <div className="relative z-10">{children}</div>
+    </section>
   );
 }
