@@ -5,7 +5,7 @@ import { Analytics } from "@vercel/analytics/react";
 
 import "./globals.css";
 import { FloatingOrbs, CursorTrail } from "@/components/ui/VisualEffects";
-
+import { VideoIntro } from "@/components/VideoIntro";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://lidflow.vercel.app";
 
 export const metadata: Metadata = {
@@ -64,67 +64,73 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ru" className="h-full">
       <body className="flex min-h-screen flex-col bg-background text-foreground">
-        <header className="sticky top-0 z-40 border-b border-white/10 glass-effect animate-fade-in-up">
-          <div className="container flex h-16 items-center justify-between">
-            <Link
-              href="/"
-              className="inline-flex items-center gap-3 rounded-full px-2 py-1 text-neutral-900 transition-colors hover:text-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-              aria-label="LidFlow — на главную"
-            >
-              <Image
-                src="/logo.webp"
-                alt="Логотип LidFlow"
-                width={36}
-                height={36}
-                className="h-9 w-9 rounded-2xl border border-white/60 bg-white/90 p-1 shadow-sm"
-                sizes="36px"
-                priority
-              />
-              <span className="text-lg font-semibold tracking-tight">LidFlow</span>
-            </Link>
-            <nav className="flex items-center gap-6 text-sm font-medium text-neutral-700">
-              <a
-                className="rounded-full px-2 py-1 text-neutral-700 transition hover:text-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                href="#portfolio"
-              >
-                Портфолио
-              </a>
-              <a
-                className="rounded-full px-2 py-1 text-neutral-700 transition hover:text-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                href="#pricing"
-              >
-                Цены
-              </a>
-              <a
-                className="rounded-full px-2 py-1 text-neutral-700 transition hover:text-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                href="#contact"
-              >
-                Контакты
-              </a>
-            </nav>
-          </div>
-        </header>
-        <FloatingOrbs />
-        <CursorTrail />
-        <main className="flex-1">{children}</main>
-        <footer className="border-t border-neutral-200 glass-effect">
-          <div className="container flex flex-col gap-3 py-10 text-sm text-neutral-500">
-            <div className="h-px bg-gradient-to-r from-transparent via-neutral-300/70 to-transparent" />
-            <p>© {currentYear} LidFlow. Создаём лендинги, которые продают.</p>
-            <p className="text-xs text-neutral-400">
-              Telegram:{" "}
-              <a
-                href="https://t.me/your_username"
-                target="_blank"
-                rel="noreferrer"
-                className="underline decoration-dotted underline-offset-4 hover:text-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-              >
-                @your_username
-              </a>
-            </p>
-          </div>
-        </footer>
-        <Analytics />
+
+        <VideoIntro>
+          <>
+            <header className="sticky top-0 z-40 border-b border-white/10 glass-effect animate-fade-in-up">
+              <div className="container flex h-16 items-center justify-between">
+                <Link
+                  href="/"
+                  className="inline-flex items-center gap-3 rounded-full px-2 py-1 text-neutral-900 transition-colors hover:text-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                  aria-label="LidFlow — на главную"
+                >
+                  <Image
+                    src="/logo.webp"
+                    alt="Логотип LidFlow"
+                    width={36}
+                    height={36}
+                    className="h-9 w-9 rounded-2xl border border-white/60 bg-white/90 p-1 shadow-sm"
+                    sizes="36px"
+                    priority
+                  />
+                  <span className="text-lg font-semibold tracking-tight">LidFlow</span>
+                </Link>
+                <nav className="flex items-center gap-6 text-sm font-medium text-neutral-700">
+                  <a
+                    className="rounded-full px-2 py-1 text-neutral-700 transition hover:text-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                    href="#portfolio"
+                  >
+                    Портфолио
+                  </a>
+                  <a
+                    className="rounded-full px-2 py-1 text-neutral-700 transition hover:text-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                    href="#pricing"
+                  >
+                    Цены
+                  </a>
+                  <a
+                    className="rounded-full px-2 py-1 text-neutral-700 transition hover:text-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                    href="#contact"
+                  >
+                    Контакты
+                  </a>
+                </nav>
+              </div>
+            </header>
+            <FloatingOrbs />
+            <CursorTrail />
+            <main className="flex-1">{children}</main>
+            <footer className="border-t border-neutral-200 glass-effect">
+              <div className="container flex flex-col gap-3 py-10 text-sm text-neutral-500">
+                <div className="h-px bg-gradient-to-r from-transparent via-neutral-300/70 to-transparent" />
+                <p>© {currentYear} LidFlow. Создаём лендинги, которые продают.</p>
+                <p className="text-xs text-neutral-400">
+                  Telegram:{" "}
+                  <a
+                    href="https://t.me/your_username"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="underline decoration-dotted underline-offset-4 hover:text-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                  >
+                    @your_username
+                  </a>
+                </p>
+              </div>
+            </footer>
+            <Analytics />
+          </>
+        </VideoIntro>
+
       </body>
     </html>
   );
