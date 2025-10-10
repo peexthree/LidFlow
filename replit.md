@@ -20,6 +20,7 @@ The application is optimized for deployment on Vercel with edge functions, stric
   - Multi-color gradient with subtle animation (15s loop)
   - Radial gradient overlays for depth and visual interest
   - Pastel color palette (blues, purples, pinks)
+  - Hero section with vibrant purple→pink→blue gradient
 - **Figma-Style Animations**: Added smooth, professional animations throughout the site
   - Fade-in-up animations for section reveals
   - Scale-in animations for hero content
@@ -32,6 +33,13 @@ The application is optimized for deployment on Vercel with edge functions, stric
   - Enhanced shadow effects on hover
   - Radial gradient overlays
   - Shimmer animation on hover
+  - 3D tilt effect on hover (perspective transform)
+- **Advanced Visual Effects**: New interactive elements
+  - Floating orbs: Animated decorative gradient orbs (purple, pink, blue) that float across the page
+  - Cursor trail: Dynamic particle trail following mouse movement with fade-out animation
+  - Glow effect: Pulsing glow animation on primary CTA button
+  - Gradient borders: Animated multi-color borders with rotating gradients
+  - Scroll reveal: Intersection Observer-based animations for content appearing on scroll
 
 ## User Preferences
 
