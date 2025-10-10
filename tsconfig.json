@@ -36,8 +36,14 @@
         "name": "next"
       }
     ]
-    // <--- СТРОКА 36: ЗАКРЫВАЕТСЯ МАССИВ PLUGINS
-  }, // <--- СТРОКА 37: ЗАКРЫВАЕТСЯ КОМПИЛЯТОРНЫЕ ОПЦИИ
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
-} // <--- СТРОКА 40: ЗАКРЫВАЕТСЯ КОРНЕВОЙ ОБЪЕКТ
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
