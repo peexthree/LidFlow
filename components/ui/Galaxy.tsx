@@ -233,7 +233,7 @@ function createShader(gl: WebGLContext, type: number, source: string) {
   gl.compileShader(shader);
 
   if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-    console.error('Galaxy shader compile error:', gl.getShaderInfoLog(shader));
+    console.error("Galaxy shader compile error:", gl.getShaderInfoLog(shader));
     gl.deleteShader(shader);
     return null;
   }
@@ -259,7 +259,7 @@ function createProgram(gl: WebGLContext, vertex: string, fragment: string) {
   gl.linkProgram(program);
 
   if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-    console.error('Galaxy program link error:', gl.getProgramInfoLog(program));
+    console.error("Galaxy program link error:", gl.getProgramInfoLog(program));
     gl.deleteProgram(program);
     gl.deleteShader(vertexShader);
     gl.deleteShader(fragmentShader);
@@ -295,6 +295,7 @@ export default function Galaxy({
   const [focalX, focalY] = focal;
   const [rotationX, rotationY] = rotation;
   const containerRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
   const targetMousePos = useRef({ x: 0.5, y: 0.5 });
   const smoothMousePos = useRef({ x: 0.5, y: 0.5 });
   const targetMouseActive = useRef(0);
@@ -319,7 +320,8 @@ export default function Galaxy({
 
   useEffect(() => {
     const container = containerRef.current;
-    if (!container) {
+    const canvas = canvasRef.current;
+    if (!container || !canvas) {
       return;
     }
 
@@ -328,10 +330,6 @@ export default function Galaxy({
     targetMouseActive.current = 0;
     smoothMouseActive.current = 0;
 
-    const canvas = document.createElement('canvas');
-    canvas.className = 'h-full w-full';
-    container.appendChild(canvas);
-
     const contextOptions: WebGLContextAttributes = {
       alpha: transparent,
       premultipliedAlpha: false,
@@ -339,15 +337,13 @@ export default function Galaxy({
     };
 
     const gl =
-      (canvas.getContext('webgl2', contextOptions) as WebGLContext | null) ??
-      (canvas.getContext('webgl', contextOptions) as WebGLContext | null) ??
-      (canvas.getContext('experimental-webgl', contextOptions) as WebGLContext | null);
+      (canvas.getContext("webgl2", contextOptions) as WebGLContext | null) ??
+      (canvas.getContext("webgl", contextOptions) as WebGLContext | null) ??
+      (canvas.getContext("experimental-webgl", contextOptions) as WebGLContext | null);
 
     if (!gl) {
-      console.error('Galaxy: WebGL context is not available in this environment.');
-      return () => {
-        container.removeChild(canvas);
-      };
+      console.error("Galaxy: WebGL context is not available in this environment.");
+      return;
     }
 
     if (transparent) {
@@ -361,10 +357,7 @@ export default function Galaxy({
 
     const program = createProgram(gl, vertexShaderSource, fragmentShaderSource);
     if (!program) {
-      container.removeChild(canvas);
-      return () => {
-        container.removeChild(canvas);
-      };
+      return;
     }
 
     gl.useProgram(program);
@@ -377,10 +370,8 @@ export default function Galaxy({
 
     const buffer = gl.createBuffer();
     if (!buffer) {
-      container.removeChild(canvas);
-      return () => {
-        container.removeChild(canvas);
-      };
+      gl.deleteProgram(program);
+      return;
     }
 
     gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -388,33 +379,40 @@ export default function Galaxy({
 
     const stride = 4 * Float32Array.BYTES_PER_ELEMENT;
 
-    const positionLocation = gl.getAttribLocation(program, 'position');
+    const positionLocation = gl.getAttribLocation(program, "position");
     gl.enableVertexAttribArray(positionLocation);
     gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, stride, 0);
 
-    const uvLocation = gl.getAttribLocation(program, 'uv');
+    const uvLocation = gl.getAttribLocation(program, "uv");
     gl.enableVertexAttribArray(uvLocation);
-    gl.vertexAttribPointer(uvLocation, 2, gl.FLOAT, false, stride, 2 * Float32Array.BYTES_PER_ELEMENT);
+    gl.vertexAttribPointer(
+      uvLocation,
+      2,
+      gl.FLOAT,
+      false,
+      stride,
+      2 * Float32Array.BYTES_PER_ELEMENT,
+    );
 
     const uniforms: ProgramUniformLocations = {
-      uTime: gl.getUniformLocation(program, 'uTime'),
-      uResolution: gl.getUniformLocation(program, 'uResolution'),
-      uFocal: gl.getUniformLocation(program, 'uFocal'),
-      uRotation: gl.getUniformLocation(program, 'uRotation'),
-      uStarSpeed: gl.getUniformLocation(program, 'uStarSpeed'),
-      uDensity: gl.getUniformLocation(program, 'uDensity'),
-      uHueShift: gl.getUniformLocation(program, 'uHueShift'),
-      uSpeed: gl.getUniformLocation(program, 'uSpeed'),
-      uMouse: gl.getUniformLocation(program, 'uMouse'),
-      uGlowIntensity: gl.getUniformLocation(program, 'uGlowIntensity'),
-      uSaturation: gl.getUniformLocation(program, 'uSaturation'),
-      uMouseRepulsion: gl.getUniformLocation(program, 'uMouseRepulsion'),
-      uTwinkleIntensity: gl.getUniformLocation(program, 'uTwinkleIntensity'),
-      uRotationSpeed: gl.getUniformLocation(program, 'uRotationSpeed'),
-      uRepulsionStrength: gl.getUniformLocation(program, 'uRepulsionStrength'),
-      uMouseActiveFactor: gl.getUniformLocation(program, 'uMouseActiveFactor'),
-      uAutoCenterRepulsion: gl.getUniformLocation(program, 'uAutoCenterRepulsion'),
-      uTransparent: gl.getUniformLocation(program, 'uTransparent'),
+      uTime: gl.getUniformLocation(program, "uTime"),
+      uResolution: gl.getUniformLocation(program, "uResolution"),
+      uFocal: gl.getUniformLocation(program, "uFocal"),
+      uRotation: gl.getUniformLocation(program, "uRotation"),
+      uStarSpeed: gl.getUniformLocation(program, "uStarSpeed"),
+      uDensity: gl.getUniformLocation(program, "uDensity"),
+      uHueShift: gl.getUniformLocation(program, "uHueShift"),
+      uSpeed: gl.getUniformLocation(program, "uSpeed"),
+      uMouse: gl.getUniformLocation(program, "uMouse"),
+      uGlowIntensity: gl.getUniformLocation(program, "uGlowIntensity"),
+      uSaturation: gl.getUniformLocation(program, "uSaturation"),
+      uMouseRepulsion: gl.getUniformLocation(program, "uMouseRepulsion"),
+      uTwinkleIntensity: gl.getUniformLocation(program, "uTwinkleIntensity"),
+      uRotationSpeed: gl.getUniformLocation(program, "uRotationSpeed"),
+      uRepulsionStrength: gl.getUniformLocation(program, "uRepulsionStrength"),
+      uMouseActiveFactor: gl.getUniformLocation(program, "uMouseActiveFactor"),
+      uAutoCenterRepulsion: gl.getUniformLocation(program, "uAutoCenterRepulsion"),
+      uTransparent: gl.getUniformLocation(program, "uTransparent"),
     };
 
     const setStaticUniforms = () => {
@@ -464,33 +462,41 @@ export default function Galaxy({
     const resize = () => {
       const width = container.clientWidth;
       const height = container.clientHeight;
-
-
       const dpr = window.devicePixelRatio || 1;
       const displayWidth = Math.max(Math.floor(width * dpr), 1);
       const displayHeight = Math.max(Math.floor(height * dpr), 1);
+
       if (canvas.width !== displayWidth || canvas.height !== displayHeight) {
         canvas.width = displayWidth;
         canvas.height = displayHeight;
         canvas.style.width = `${width}px`;
         canvas.style.height = `${height}px`;
       }
+
       gl.viewport(0, 0, canvas.width, canvas.height);
       if (uniforms.uResolution) {
         gl.uniform3f(
           uniforms.uResolution,
           canvas.width,
           canvas.height,
-          canvas.width / canvas.height,
+          canvas.width / Math.max(canvas.height, 1),
         );
       }
     };
 
     resize();
-    window.addEventListener('resize', resize);
+
+    let resizeCleanup: (() => void) | undefined;
+    if (typeof ResizeObserver !== "undefined") {
+      const resizeObserver = new ResizeObserver(resize);
+      resizeObserver.observe(container);
+      resizeCleanup = () => resizeObserver.disconnect();
+    } else {
+      window.addEventListener("resize", resize);
+      resizeCleanup = () => window.removeEventListener("resize", resize);
+    }
 
     let animationFrame = 0;
-
     const shouldDisableAnimation = disableAnimation || prefersReducedMotion;
 
     const render = (time: number) => {
@@ -525,8 +531,6 @@ export default function Galaxy({
       gl.drawArrays(gl.TRIANGLES, 0, 3);
     };
 
-
-
     animationFrame = requestAnimationFrame(render);
 
     const handleMouseMove = (event: MouseEvent) => {
@@ -542,25 +546,25 @@ export default function Galaxy({
     };
 
     if (mouseInteraction) {
-      canvas.addEventListener('mousemove', handleMouseMove);
-      canvas.addEventListener('mouseleave', handleMouseLeave);
+      canvas.addEventListener("mousemove", handleMouseMove);
+      canvas.addEventListener("mouseleave", handleMouseLeave);
     }
 
     return () => {
       cancelAnimationFrame(animationFrame);
-      window.removeEventListener('resize', resize);
+      resizeCleanup?.();
       if (mouseInteraction) {
-        canvas.removeEventListener('mousemove', handleMouseMove);
-        canvas.removeEventListener('mouseleave', handleMouseLeave);
+        canvas.removeEventListener("mousemove", handleMouseMove);
+        canvas.removeEventListener("mouseleave", handleMouseLeave);
       }
-      const loseContext = (gl.getExtension('WEBGL_lose_context') as
+      const loseContext = gl.getExtension("WEBGL_lose_context") as
         | { loseContext: () => void }
-
-        | null);
+        | null;
       loseContext?.loseContext();
-      if (canvas.parentNode === container) {
-        container.removeChild(canvas);
-      }
+      gl.bindBuffer(gl.ARRAY_BUFFER, null);
+      gl.deleteBuffer(buffer);
+      gl.useProgram(null);
+      gl.deleteProgram(program);
     };
   }, [
     autoCenterRepulsion,
@@ -572,6 +576,7 @@ export default function Galaxy({
     hueShift,
     mouseInteraction,
     mouseRepulsion,
+    prefersReducedMotion,
     repulsionStrength,
     rotationX,
     rotationY,
@@ -581,7 +586,6 @@ export default function Galaxy({
     starSpeed,
     transparent,
     twinkleIntensity,
-    prefersReducedMotion,
   ]);
 
   return (
@@ -589,6 +593,8 @@ export default function Galaxy({
       ref={containerRef}
       className={clsx("galaxy-container", "relative h-full w-full", className)}
       {...rest}
-    />
+    >
+      <canvas ref={canvasRef} className="h-full w-full" />
+    </div>
   );
 }
