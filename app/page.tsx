@@ -4,7 +4,7 @@ import Link from "next/link"; // Требуется для компонента 
 // Предполагаемые импорты, которые вам нужно будет создать или найти:
 import { Button } from "@/components/ui/button"; // Или другой путь к вашему UI-компоненту Button
 import { ContactForm } from "@/components/ContactForm"; // Или другой путь к вашему компоненту формы
-import { Hero } from "@/components/sections/Hero"; // Или другой путь к вашей секции Hero
+import { Hero, type HeroHighlight } from "@/components/sections/Hero"; // Или другой путь к вашей секции Hero
 
 // --- Заглушки для недостающих данных и типов (нужно найти оригинальные в проекте) ---
 // Внимание: эти данные, вероятно, должны быть импортированы из отдельного файла.
@@ -19,11 +19,20 @@ type ProjectCard = {
   linkLabel: string;
 };
 
-const heroHighlights = [
-  "Современные технологии",
-  "Высокая конверсия",
-  "Быстрый запуск",
-] as const;
+const heroHighlights: ReadonlyArray<HeroHighlight> = [
+  {
+    title: "Современные технологии",
+    description: "Адаптивный Next.js 15, оптимизация Core Web Vitals и мгновенные обновления.",
+  },
+  {
+    title: "Высокая конверсия",
+    description: "Структура блоков проверена на реальных кейсах и усилена A/B-паттернами.",
+  },
+  {
+    title: "Быстрый запуск",
+    description: "Настраиваем домен, деплой на Vercel и подключаем аналитику без лишней бюрократии.",
+  },
+];
 
 const benefits = [
   {
