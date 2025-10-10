@@ -170,7 +170,7 @@ export default function Home() {
           {benefits.map((benefit) => (
             <article
               key={benefit.title}
-              className="group relative flex h-full flex-col gap-3 overflow-hidden rounded-2xl border border-neutral-200 glass-effect p-6 shadow-soft transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_60px_rgba(14,165,233,0.2)]"
+              className="group relative flex h-full flex-col gap-3 overflow-hidden rounded-2xl border border-neutral-200 glass-effect p-6 shadow-soft transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_60px_rgba(14,165,233,0.2)] tilt-effect"
             >
               <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style={{ background: "radial-gradient(circle at top, rgba(14,165,233,0.15), transparent 70%)" }} />
               <div className="absolute inset-0 shimmer-effect opacity-0 group-hover:opacity-100" />
@@ -196,7 +196,7 @@ export default function Home() {
           {projects.map((project) => (
             <article
               key={project.title}
-              className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-neutral-200 glass-effect shadow-soft transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_35px_70px_rgba(14,165,233,0.25)]"
+              className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-neutral-200 glass-effect shadow-soft transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_35px_70px_rgba(14,165,233,0.25)] tilt-effect"
             >
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image

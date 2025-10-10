@@ -58,7 +58,7 @@ export function Hero({ highlights }: HeroProps) {
           <div className="flex flex-wrap items-center gap-4">
             <Button
               asChild
-              className="group relative overflow-hidden rounded-xl2 border-transparent bg-brand-500 px-6 py-3 text-base font-semibold text-white shadow-[0_20px_60px_rgba(14,165,233,0.45)] transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-400 hover:shadow-[0_24px_70px_rgba(14,165,233,0.55)]"
+              className="group relative overflow-hidden rounded-xl border-transparent bg-brand-500 px-6 py-3 text-base font-semibold text-white shadow-[0_20px_60px_rgba(14,165,233,0.45)] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-400 hover:shadow-[0_24px_70px_rgba(14,165,233,0.55)] glow-effect"
             >
               <Link href="/designer">
                 <span className="relative z-10 inline-flex items-center gap-2">
