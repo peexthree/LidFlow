@@ -63,7 +63,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ru" className="h-full">
       <body className="flex min-h-screen flex-col bg-background text-foreground">
-        <header className="sticky top-0 z-40 border-b border-white/10 bg-white/80 backdrop-blur">
+        <header className="sticky top-0 z-40 border-b border-white/10 glass-effect animate-fade-in-up">
           <div className="container flex h-16 items-center justify-between">
             <Link
               href="/"
@@ -104,7 +104,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
         </header>
         <main className="flex-1">{children}</main>
-        <footer className="border-t border-neutral-200 bg-white/80">
+        <footer className="border-t border-neutral-200 glass-effect">
           <div className="container flex flex-col gap-3 py-10 text-sm text-neutral-500">
             <div className="h-px bg-gradient-to-r from-transparent via-neutral-300/70 to-transparent" />
             <p>© {currentYear} LidFlow. Создаём лендинги, которые продают.</p>

@@ -153,9 +153,11 @@ const testimonials = [
 export default function Home() {
   return (
     <div className="space-y-24 py-16 md:py-24">
-      <Hero highlights={heroHighlights} />
+      <div className="animate-scale-in">
+        <Hero highlights={heroHighlights} />
+      </div>
 
-      <section id="benefits" className="container space-y-10">
+      <section id="benefits" className="container space-y-10 animate-fade-in-up">
         <div className="space-y-4">
           <h2 className="text-3xl font-semibold text-neutral-900 md:text-[32px] md:leading-[1.2]">
             Почему это работает
@@ -168,9 +170,10 @@ export default function Home() {
           {benefits.map((benefit) => (
             <article
               key={benefit.title}
-              className="group relative flex h-full flex-col gap-3 overflow-hidden rounded-2xl border border-neutral-200 bg-white p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-[0_30px_60px_rgba(15,23,42,0.12)]"
+              className="group relative flex h-full flex-col gap-3 overflow-hidden rounded-2xl border border-neutral-200 glass-effect p-6 shadow-soft transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_60px_rgba(14,165,233,0.2)]"
             >
               <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style={{ background: "radial-gradient(circle at top, rgba(14,165,233,0.15), transparent 70%)" }} />
+              <div className="absolute inset-0 shimmer-effect opacity-0 group-hover:opacity-100" />
               <div className="relative z-10 text-sm font-semibold text-brand-600">{benefit.index}</div>
               <h3 className="relative z-10 text-xl font-semibold text-neutral-900">{benefit.title}</h3>
               <p className="relative z-10 text-neutral-600">{benefit.description}</p>
@@ -179,7 +182,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="portfolio" className="container space-y-10">
+      <section id="portfolio" className="container space-y-10 animate-fade-in-up">
         <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
             <h2 className="text-3xl font-semibold text-neutral-900 md:text-[32px] md:leading-[1.2]">
@@ -193,7 +196,7 @@ export default function Home() {
           {projects.map((project) => (
             <article
               key={project.title}
-              className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-[0_35px_70px_rgba(15,23,42,0.14)]"
+              className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-neutral-200 glass-effect shadow-soft transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_35px_70px_rgba(14,165,233,0.25)]"
             >
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
@@ -232,7 +235,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="process" className="container space-y-10">
+      <section id="process" className="container space-y-10 animate-fade-in-up">
         <div className="space-y-4">
           <h2 className="text-3xl font-semibold text-neutral-900 md:text-[32px] md:leading-[1.2]">
             Как идёт работа
@@ -245,9 +248,10 @@ export default function Home() {
           {processSteps.map((step, index) => (
             <li
               key={step.title}
-              className="group relative flex h-full flex-col gap-3 overflow-hidden rounded-2xl border border-neutral-200 bg-white p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-[0_30px_60px_rgba(15,23,42,0.12)]"
+              className="group relative flex h-full flex-col gap-3 overflow-hidden rounded-2xl border border-neutral-200 glass-effect p-6 shadow-soft transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_60px_rgba(14,165,233,0.2)]"
             >
               <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style={{ background: "radial-gradient(circle at top, rgba(14,165,233,0.18), transparent 75%)" }} />
+              <div className="absolute inset-0 shimmer-effect opacity-0 group-hover:opacity-100" />
               <div className="relative z-10 text-sm font-semibold text-brand-600">Шаг {index + 1}</div>
               <h3 className="relative z-10 text-lg font-semibold text-neutral-900">{step.title}</h3>
               <p className="relative z-10 text-sm text-neutral-600">{step.description}</p>
@@ -256,7 +260,7 @@ export default function Home() {
         </ol>
       </section>
 
-      <section id="pricing" className="container space-y-10">
+      <section id="pricing" className="container space-y-10 animate-fade-in-up">
         <div className="space-y-4">
           <h2 className="text-3xl font-semibold text-neutral-900 md:text-[32px] md:leading-[1.2]">
             Стоимость и пакеты
@@ -269,9 +273,10 @@ export default function Home() {
           {pricingPlans.map((plan) => (
             <article
               key={plan.name}
-              className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border bg-white p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-[0_30px_70px_rgba(15,23,42,0.14)] ${plan.popular ? "border-brand-200 ring-1 ring-brand-200" : "border-neutral-200"}`}
+              className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border glass-effect p-6 shadow-soft transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_70px_rgba(14,165,233,0.25)] ${plan.popular ? "border-brand-300 ring-2 ring-brand-300" : "border-neutral-200"}`}
             >
               <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style={{ background: "radial-gradient(circle at top, rgba(14,165,233,0.15), transparent 75%)" }} />
+              <div className="absolute inset-0 shimmer-effect opacity-0 group-hover:opacity-100" />
               <div className="relative z-10 flex flex-col gap-4">
                 <div>
                   <span className="text-sm font-semibold uppercase tracking-[0.25em] text-neutral-400">
@@ -297,7 +302,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="reviews" className="container space-y-10">
+      <section id="reviews" className="container space-y-10 animate-fade-in-up">
         <div className="space-y-4">
           <h2 className="text-3xl font-semibold text-neutral-900 md:text-[32px] md:leading-[1.2]">
             Что говорят клиенты
@@ -310,9 +315,10 @@ export default function Home() {
           {testimonials.map((testimonial) => (
             <figure
               key={testimonial.name}
-              className="group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-neutral-200 bg-white p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-[0_30px_60px_rgba(15,23,42,0.12)]"
+              className="group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-neutral-200 glass-effect p-6 shadow-soft transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_60px_rgba(14,165,233,0.2)]"
             >
               <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style={{ background: "radial-gradient(circle at top, rgba(14,165,233,0.12), transparent 70%)" }} />
+              <div className="absolute inset-0 shimmer-effect opacity-0 group-hover:opacity-100" />
               <blockquote className="relative z-10 text-neutral-600">“{testimonial.quote}”</blockquote>
               <figcaption className="relative z-10 mt-4">
                 <div className="text-sm font-semibold text-neutral-900">{testimonial.name}</div>
@@ -323,7 +329,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="contact" className="container grid gap-12 rounded-2xl border border-neutral-200 bg-neutral-50 px-6 py-16 shadow-soft md:grid-cols-[minmax(0,1fr)_400px] md:px-12">
+      <section id="contact" className="container grid gap-12 rounded-2xl border border-neutral-200 glass-effect px-6 py-16 shadow-soft md:grid-cols-[minmax(0,1fr)_400px] md:px-12 animate-fade-in-up">
         <div className="space-y-6">
           <h2 className="text-3xl font-semibold text-neutral-900 md:text-[32px] md:leading-[1.2]">
             Заполните заявку — и обсудим проект
