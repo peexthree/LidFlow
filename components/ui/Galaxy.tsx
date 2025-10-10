@@ -8,7 +8,7 @@ import {
   type HTMLAttributes,
 } from "react";
 
-import "./galaxy.css";
+import styles from "./galaxy.module.css";
 
 type WebGLContext = WebGLRenderingContext | WebGL2RenderingContext;
 
@@ -591,7 +591,7 @@ export default function Galaxy({
   return (
     <div
       ref={containerRef}
-      className={clsx("galaxy-container", "relative h-full w-full", className)}
+      className={clsx(styles.container, "relative h-full w-full", className)}
       {...rest}
     >
       <canvas ref={canvasRef} className="h-full w-full" />
