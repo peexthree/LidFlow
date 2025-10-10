@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
-
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { useLenis } from "@/components/useLenis";
 import { ParallaxSection } from "@/components/ParallaxSection";
@@ -63,6 +63,7 @@ export function HomePage() {
       </ParallaxSection>
       <Gallery />
       <CTA />
+      <SpeedInsights/>
     </div>
   );
 }
