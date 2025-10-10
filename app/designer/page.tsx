@@ -129,6 +129,21 @@ export default function DesignerPage() {
       <Section>
         <div className="grid items-center gap-12 md:grid-cols-[minmax(0,1fr)_minmax(320px,1fr)]">
           <div className="space-y-8">
+            <div className="inline-flex items-center gap-4 rounded-full border border-neutral-200 bg-white px-4 py-2 text-neutral-700 shadow-soft">
+              <Image
+                src="/logo.webp"
+                alt="Логотип LidFlow"
+                width={44}
+                height={44}
+                className="h-11 w-11 rounded-2xl border border-neutral-200 bg-neutral-50 p-1"
+                sizes="44px"
+                priority
+              />
+              <div className="flex flex-col">
+                <span className="text-xs uppercase tracking-[0.3em] text-neutral-400">LidFlow</span>
+                <span className="text-sm font-medium text-neutral-700">Digital Studio</span>
+              </div>
+            </div>
             <div className="space-y-6">
               <h1 className="text-4xl font-semibold leading-tight md:text-6xl">
                 Сайты-лендинги, которые {" "}

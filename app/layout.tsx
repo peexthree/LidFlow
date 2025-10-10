@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Analytics } from "@vercel/analytics/react";
 
@@ -21,12 +22,19 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ru_RU",
     url: siteUrl,
+    siteName: "LidFlow",
     images: [
       {
         url: "/placeholder/1.jpg",
         width: 1200,
         height: 630,
         alt: "LidFlow — современный лендинг",
+      },
+      {
+        url: "/logo.webp",
+        width: 512,
+        height: 512,
+        alt: "Логотип LidFlow",
       },
     ],
   },
@@ -35,7 +43,10 @@ export const metadata: Metadata = {
     title: "LidFlow — Лендинги, которые приводят клиентов",
     description:
       "Современные лендинги на Next.js и React с аналитикой, оптимизацией и быстрой загрузкой.",
-    images: ["/placeholder/1.jpg"],
+    images: ["/placeholder/1.jpg", "/logo.webp"],
+  },
+  icons: {
+    icon: [{ url: "/logo.webp", type: "image/webp", sizes: "32x32" }],
   },
   alternates: {
     canonical: "/",
@@ -56,9 +67,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="container flex h-16 items-center justify-between">
             <Link
               href="/"
-              className="text-lg font-semibold tracking-tight text-neutral-900 transition-colors hover:text-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              className="inline-flex items-center gap-3 rounded-full px-2 py-1 text-neutral-900 transition-colors hover:text-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              aria-label="LidFlow — на главную"
             >
-              LidFlow
+              <Image
+                src="/logo.webp"
+                alt="Логотип LidFlow"
+                width={36}
+                height={36}
+                className="h-9 w-9 rounded-2xl border border-white/60 bg-white/90 p-1 shadow-sm"
+                sizes="36px"
+                priority
+              />
+              <span className="text-lg font-semibold tracking-tight">LidFlow</span>
             </Link>
             <nav className="flex items-center gap-6 text-sm font-medium text-neutral-700">
               <a

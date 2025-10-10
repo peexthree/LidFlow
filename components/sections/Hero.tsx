@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
@@ -35,6 +36,21 @@ export function Hero({ highlights }: HeroProps) {
       <div className="grid gap-12 md:grid-cols-[minmax(0,1fr)_360px] md:items-center">
         <div className="space-y-10 text-neutral-200">
           <div className="space-y-6">
+            <div className="inline-flex items-center gap-4 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-white/80 backdrop-blur">
+              <Image
+                src="/logo.webp"
+                alt="Логотип LidFlow"
+                width={44}
+                height={44}
+                className="h-11 w-11 rounded-2xl border border-white/40 bg-white/20 p-1"
+                sizes="44px"
+                priority
+              />
+              <div className="flex flex-col text-left">
+                <span className="text-xs uppercase tracking-[0.32em] text-white/60">LidFlow</span>
+                <span className="text-sm font-medium text-white">Digital Studio</span>
+              </div>
+            </div>
             <span className="inline-flex items-center rounded-full border border-white/20 bg-white/5 px-4 py-1 text-xs uppercase tracking-[0.2em] text-white/70">
               Полный цикл создания лендинга
             </span>
@@ -60,6 +76,7 @@ export function Hero({ highlights }: HeroProps) {
             <Button
               asChild
               variant="ghost"
+
               className="border-white/30 bg-white/10 px-6 py-3 text-base text-neutral-100 transition hover:bg-white/20"
             >
               <Link href="#portfolio">Портфолио</Link>
