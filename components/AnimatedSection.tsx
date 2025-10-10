@@ -43,6 +43,7 @@ export function AnimatedSection({
   });
 
   const variants = useMemo(() => {
+    // Рассчитываем расстояние и поворот, адаптируя для мобильных устройств
     const distance = ANIMATION_CONFIG.distance * (isMobile ? ANIMATION_CONFIG.mobileDistanceFactor : 1);
     const rotation = 6 * (isMobile ? ANIMATION_CONFIG.mobileDistanceFactor : 1);
 
@@ -50,11 +51,13 @@ export function AnimatedSection({
   }, [direction, isMobile, motionType]);
 
   const animationDuration = useMemo(() => {
+    // Ограничиваем продолжительность и адаптируем для мобильных устройств
     const base = Math.min(Math.max(duration, ANIMATION_CONFIG.durations.min), ANIMATION_CONFIG.durations.max);
     return base * (isMobile ? ANIMATION_CONFIG.mobileDistanceFactor : 1);
   }, [duration, isMobile]);
 
   if (shouldReduceMotion) {
+    // Если включено снижение движения, рендерим компонент без motion.section
     return (
       <section ref={ref} className={clsx(className)}>
         {children}
@@ -67,11 +70,13 @@ export function AnimatedSection({
       ref={ref}
       className={clsx("will-change-transform", className)}
       initial="hidden"
+      // Анимируем в "visible", когда элемент виден
       animate={inView ? "visible" : "hidden"}
       variants={variants}
       transition={{
         duration: animationDuration,
         delay,
+        // Используем другую функцию сглаживания для эффекта mask-reveal
         ease: motionType === "mask-reveal" ? ANIMATION_CONFIG.maskEase : ANIMATION_CONFIG.ease,
       }}
     >
