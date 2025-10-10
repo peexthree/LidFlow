@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "@/components/ui/icons";
 import { ContactForm } from "@/components/ContactForm";
+import Galaxy from "@/components/ui/Galaxy";
 
 export default function Home() {
   return (

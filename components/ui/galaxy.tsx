@@ -3,6 +3,8 @@
 import { clsx } from 'clsx';
 import { useEffect, useRef, type HTMLAttributes } from 'react';
 
+import './galaxy.css';
+
 type WebGLContext = WebGLRenderingContext | WebGL2RenderingContext;
 
 const DEFAULT_FOCAL = [0.5, 0.5] as const;
@@ -552,7 +554,13 @@ export function Galaxy({
     twinkleIntensity,
   ]);
 
-  return <div ref={containerRef} className={clsx('relative h-full w-full', className)} {...rest} />;
+  return (
+    <div
+      ref={containerRef}
+      className={clsx('galaxy-container', 'relative h-full w-full', className)}
+      {...rest}
+    />
+  );
 }
 
 export default Galaxy;
