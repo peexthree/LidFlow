@@ -195,3 +195,119 @@
   background-size: 200% 100%;
   animation: shimmer 2s infinite;
 }
+
+/* Gradient Border Effect */
+@keyframes rotateBorder {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.gradient-border {
+  position: relative;
+  background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+  backdrop-filter: blur(10px);
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #4facfe, #667eea);
+  background-size: 300% 300%;
+  border-radius: inherit;
+  z-index: -1;
+  animation: gradientShift 4s ease infinite;
+}
+
+/* Glow Effect */
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.4), 0 0 40px rgba(102, 126, 234, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(240, 147, 251, 0.5), 0 0 60px rgba(240, 147, 251, 0.3);
+  }
+}
+
+.glow-effect {
+  animation: glow 3s ease-in-out infinite;
+}
+
+/* Floating Orbs */
+@keyframes floatOrb {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.6;
+  }
+  33% {
+    transform: translate(30px, -30px) scale(1.1);
+    opacity: 0.8;
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+    opacity: 0.7;
+  }
+}
+
+.floating-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  animation: floatOrb 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Cursor Trail */
+.cursor-trail {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(102, 126, 234, 0.6), transparent);
+  pointer-events: none;
+  z-index: 9999;
+  animation: fadeOut 0.8s ease-out forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: scale(2);
+  }
+}
+
+/* Tilt Effect */
+.tilt-effect {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.tilt-effect:hover {
+  transform: perspective(1000px) rotateX(5deg) rotateY(-5deg) scale(1.02);
+}
+
+/* Magnetic Effect */
+@keyframes magneticPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Scroll Reveal */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
