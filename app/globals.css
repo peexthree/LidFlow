@@ -2,20 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --radius: 0.8rem;
-}
-
-body {
-  @apply bg-white text-neutral-900 antialiased;
-}
-
-.container {
-  @apply max-w-6xl mx-auto px-4;
-}
-
-
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -42,8 +28,9 @@ body {
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-    --radius: 0.5rem;
+    --radius: 0.8rem;
   }
+
   .dark {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
@@ -70,15 +57,16 @@ body {
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
-}
 
-
-
-@layer base {
   * {
     @apply border-border;
   }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
   }
+}
+
+.container {
+  @apply mx-auto max-w-6xl px-4;
 }

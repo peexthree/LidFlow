@@ -1,261 +1,367 @@
 "use client";
+
 export const dynamic = "force-dynamic";
+
 import Image from "next/image";
-import { type FormEvent } from "react";
+import type { ReactNode } from "react";
 
+import { ContactForm } from "@/components/ContactForm";
 
-function Section({ id, className = "", children }: { id?: string; className?: string; children: React.ReactNode }) {
+interface SectionProps {
+  id?: string;
+  className?: string;
+  children: ReactNode;
+}
+
+function Section({ id, className = "", children }: SectionProps) {
   return (
-    <section id={id} className={`container py-20 ${className}`}>
+    <section id={id} className={`container space-y-10 py-20 ${className}`}>
       {children}
     </section>
   );
 }
 
-function Pill({ children }: { children: React.ReactNode }) {
-  return <span className="inline-flex items-center px-3 py-1 rounded-full border text-sm">{children}</span>;
+function Pill({ children }: { children: ReactNode }) {
+  return (
+    <span className="inline-flex items-center rounded-full border border-neutral-200 px-3 py-1 text-sm text-neutral-600">
+      {children}
+    </span>
+  );
 }
 
-export default function Home() {
+const heroPills = [
+  "Next.js · React · TypeScript · Tailwind",
+  "Запуск от 3–5 дней",
+  "Vercel · HTTPS · Аналитика",
+] as const;
+
+const benefits = [
+  {
+    title: "Лидогенерация",
+    description: "Структура под рекламу: оффер, доверие, UTM и цели в аналитике.",
+  },
+  {
+    title: "Скорость",
+    description: "Соберу и выведу в продакшн за 3–5 дней на Vercel с проверками.",
+  },
+  {
+    title: "Чистый код",
+    description: "React + TS + Tailwind, компоненты легко расширять и переиспользовать.",
+  },
+] as const;
+
+interface ProjectCard {
+  title: string;
+  description: string;
+  tag: string;
+  image: string;
+  linkLabel: string;
+  href?: string;
+}
+
+const projects = [
+  {
+    title: "Akulenok — сайт-визитка",
+    description: "Чистый минималистичный лендинг с акцентом на конверсию.",
+    tag: "Landing · Бренд",
+    image: "/placeholder/1.jpg",
+    href: "https://akulenok-tmz.ru/",
+    linkLabel: "Смотреть сайт",
+  },
+  {
+    title: "Лендинг услуги",
+    description: "Сильный оффер, секция кейсов и CTA на заявку.",
+    tag: "Leadgen · Промо",
+    image: "/placeholder/2.jpg",
+    linkLabel: "Ссылка по запросу",
+  },
+  {
+    title: "Лендинг под трафик",
+    description: "Структура под рекламные кампании и интеграцию аналитики.",
+    tag: "B2B · Услуги",
+    image: "/placeholder/3.jpg",
+    linkLabel: "Ссылка по запросу",
+  },
+] satisfies ReadonlyArray<ProjectCard>;
+
+const processSteps = [
+  { title: "Бриф", description: "Цели, аудитория, оффер и структура." },
+  { title: "Дизайн", description: "Современный UI «как в Figma», но сразу в коде." },
+  { title: "Запуск", description: "Домен, хостинг Vercel, SSL, аналитика и пиксели." },
+  { title: "Оптимизация", description: "A/B-гипотезы и рост конверсии." },
+] as const;
+
+interface PricingPlan {
+  name: string;
+  price: string;
+  perks: ReadonlyArray<string>;
+  featured?: boolean;
+}
+
+const pricingPlans = [
+  {
+    name: "Старт",
+    price: "от 25 000 ₽",
+    perks: ["1 экран + CTA", "Быстрый запуск", "Подходит для MVP"],
+  },
+  {
+    name: "Стандарт",
+    price: "от 45 000 ₽",
+    perks: ["5–7 блоков", "Под ключ: домен, SSL, аналитика", "Готов к рекламе"],
+    featured: true,
+  },
+  {
+    name: "Премиум",
+    price: "от 75 000 ₽",
+    perks: ["Индивидуальный UI", "Анимации и кейсы", "A/B-оптимизация"],
+  },
+] satisfies ReadonlyArray<PricingPlan>;
+
+const testimonials = [
+  { author: "Анастасия", quote: "Быстро запустили рекламный лендинг — лиды пошли на 2-й день." },
+  { author: "Алексей", quote: "Удобно: всё под ключ — домен, метрики, хостинг." },
+  { author: "Ирина", quote: "Структура страницы показывает опыт именно в лидогенерации." },
+] as const;
+
+export default function DesignerPage() {
   return (
     <>
-      {/* HERO */}
       <Section>
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h1 className="text-4xl md:text-6xl font-semibold leading-tight">
-              Сайты-лендинги, которые <span className="text-brand-600">приносят клиентов</span>
-            </h1>
-            <p className="mt-6 text-lg text-neutral-600">
-              Делаю одностраничники под лидогенерацию: чистый дизайн, сильная структура, быстрая загрузка, готовность к рекламе.
-            </p>
-            <div className="mt-8 flex gap-4">
-              <a href="#contact" className="inline-flex items-center justify-center rounded-xl2 px-5 py-3 bg-brand-500 text-white border border-brand-500 hover:bg-brand-600">
+        <div className="grid items-center gap-12 md:grid-cols-[minmax(0,1fr)_minmax(320px,1fr)]">
+          <div className="space-y-8">
+            <div className="space-y-6">
+              <h1 className="text-4xl font-semibold leading-tight md:text-6xl">
+                Сайты-лендинги, которые {" "}
+                <span className="text-brand-600">приносят клиентов</span>
+              </h1>
+              <p className="max-w-xl text-lg text-neutral-600">
+                Делаю одностраничники под лидогенерацию: чистый дизайн, сильную структуру,
+                быструю загрузку и готовность к рекламе.
+              </p>
+            </div>
+            <div className="flex flex-wrap items-center gap-4">
+              <a
+                href="#contact"
+                className="inline-flex items-center justify-center rounded-xl2 border border-brand-500 bg-brand-500 px-5 py-3 text-base font-semibold text-white shadow-[0_20px_55px_rgba(14,165,233,0.35)] transition hover:-translate-y-0.5 hover:bg-brand-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+              >
                 Обсудить проект
               </a>
-              <a href="#portfolio" className="inline-flex items-center justify-center rounded-xl2 px-5 py-3 border hover:bg-neutral-50">
+              <a
+                href="#portfolio"
+                className="inline-flex items-center justify-center rounded-xl2 border border-neutral-200 bg-white px-5 py-3 text-base font-semibold text-neutral-700 transition hover:-translate-y-0.5 hover:bg-neutral-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+              >
                 Портфолио
               </a>
             </div>
-            <div className="mt-8 flex flex-wrap gap-3 text-neutral-600">
-              <Pill>Next.js · React · TypeScript · Tailwind</Pill>
-              <Pill>Запуск от 3–5 дней</Pill>
-              <Pill>Vercel/Https/Аналитика</Pill>
+            <div className="flex flex-wrap gap-3 text-neutral-600">
+              {heroPills.map((pill) => (
+                <Pill key={pill}>{pill}</Pill>
+              ))}
             </div>
           </div>
-
-          <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-soft">
-            <div className="aspect-video overflow-hidden rounded-xl border border-neutral-200">
-              <video autoPlay muted loop playsInline preload="metadata" className="h-full w-full object-cover">
-                <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4" type="video/mp4" />
+          <div className="flex flex-col gap-4 rounded-2xl border border-neutral-200 bg-white p-6 shadow-soft">
+            <div className="relative aspect-video overflow-hidden rounded-xl border border-neutral-200">
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                className="h-full w-full object-cover"
+              >
+                <source
+                  src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
+                  type="video/mp4"
+                />
               </video>
             </div>
-            <p className="text-center text-sm text-neutral-500 mt-2">Демо-анимация интерфейса</p>
+            <p className="text-center text-sm text-neutral-500">Демо-анимация интерфейса</p>
           </div>
         </div>
       </Section>
 
-      {/* BENEFITS */}
-      <Section id="benefits" className="bg-neutral-50 rounded-2xl">
-        <h2 className="text-2xl md:text-3xl font-semibold">Почему со мной удобно</h2>
-        <div className="mt-8 grid md:grid-cols-3 gap-6">
-          {[
-            { t: "Лидогенерация", d: "Делаем структуру под рекламу: оффер, воронка, UTM, цели." },
-            { t: "Скорость", d: "Соберу и выведу в продакшн за 3–5 дней на Vercel." },
-            { t: "Чистый код", d: "React + TS, легко масштабировать, быстро загружается." },
-          ].map((b, i) => (
-            <div key={i} className="border rounded-2xl p-6 bg-white shadow-soft">
-              <div className="text-sm text-brand-600 font-medium">0{i + 1}</div>
-              <h3 className="mt-2 text-xl font-semibold">{b.t}</h3>
-              <p className="mt-2 text-neutral-600">{b.d}</p>
-            </div>
+      <Section
+        id="benefits"
+        className="rounded-[32px] border border-neutral-200 bg-neutral-50 px-6 md:px-10"
+      >
+        <div className="space-y-4">
+          <h2 className="text-2xl font-semibold md:text-3xl">Почему со мной удобно</h2>
+          <p className="max-w-3xl text-lg text-neutral-600">
+            Сочетаю стратегию, копирайтинг и разработку: блоки выстроены по логике воронки,
+            работают на доверие и конверсию.
+          </p>
+        </div>
+        <div className="grid gap-6 md:grid-cols-3">
+          {benefits.map((benefit, index) => (
+            <article
+              key={benefit.title}
+              className="flex h-full flex-col gap-3 rounded-2xl border border-neutral-200 bg-white p-6 shadow-soft"
+            >
+              <span className="text-sm font-semibold text-brand-600">0{index + 1}</span>
+              <h3 className="text-xl font-semibold text-neutral-900">{benefit.title}</h3>
+              <p className="text-neutral-600">{benefit.description}</p>
+            </article>
           ))}
         </div>
       </Section>
 
-      {/* PORTFOLIO */}
       <Section id="portfolio">
-        <div className="flex items-end justify-between">
-          <h2 className="text-2xl md:text-3xl font-semibold">Недавние проекты</h2>
+        <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+          <div className="space-y-2">
+            <h2 className="text-2xl font-semibold md:text-3xl">Недавние проекты</h2>
+            <p className="text-neutral-500">Больше кейсов покажу на созвоне.</p>
+          </div>
           <span className="text-sm text-neutral-500">Ещё работы — по запросу</span>
         </div>
-        <div className="mt-8 grid md:grid-cols-3 gap-6">
-          {/* Проект №1 — единственная публичная ссылка */}
-          <article className="group relative overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-[0_30px_60px_rgba(15,23,42,0.12)]">
-            <div className="relative h-44 w-full overflow-hidden border-b border-neutral-200">
-              <Image src="/placeholder/1.jpg" alt="Akulenok — сайт-визитка" fill className="object-cover transition duration-500 group-hover:scale-105" sizes="(min-width: 768px) 30vw, 90vw" />
-            </div>
-            <div className="p-5">
-              <div className="text-sm text-neutral-500">Landing · Бренд</div>
-              <h3 className="text-lg font-semibold mt-1">Akulenok — сайт-визитка</h3>
-              <p className="text-neutral-600 mt-2">Чистый минималистичный лендинг с акцентом на конверсию.</p>
-              <a className="inline-flex mt-4 text-brand-600 underline" href="https://akulenok-tmz.ru/" target="_blank" rel="noreferrer">Смотреть сайт</a>
-            </div>
-          </article>
-
-          {/* Проект №2 — карточка без ссылки */}
-          <article className="group relative overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-[0_30px_60px_rgba(15,23,42,0.12)]">
-            <div className="relative h-44 w-full overflow-hidden border-b border-neutral-200">
-              <Image src="/placeholder/2.jpg" alt="Лендинг услуги" fill className="object-cover transition duration-500 group-hover:scale-105" sizes="(min-width: 768px) 30vw, 90vw" />
-            </div>
-            <div className="p-5">
-              <div className="text-sm text-neutral-500">Leadgen · Промо</div>
-              <h3 className="text-lg font-semibold mt-1">Лендинг услуги</h3>
-              <p className="text-neutral-600 mt-2">Сильный оффер, секция кейсов, CTA на заявку.</p>
-              <span className="inline-flex mt-4 text-neutral-400">Ссылка по запросу</span>
-            </div>
-          </article>
-
-          {/* Проект №3 — карточка без ссылки */}
-          <article className="group relative overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-[0_30px_60px_rgba(15,23,42,0.12)]">
-            <div className="relative h-44 w-full overflow-hidden border-b border-neutral-200">
-              <Image src="/placeholder/3.jpg" alt="Лендинг под трафик" fill className="object-cover transition duration-500 group-hover:scale-105" sizes="(min-width: 768px) 30vw, 90vw" />
-            </div>
-            <div className="p-5">
-              <div className="text-sm text-neutral-500">B2B · Услуги</div>
-              <h3 className="text-lg font-semibold mt-1">Лендинг под трафик</h3>
-              <p className="text-neutral-600 mt-2">Структура под рекламные кампании и аналитика.</p>
-              <span className="inline-flex mt-4 text-neutral-400">Ссылка по запросу</span>
-            </div>
-          </article>
+        <div className="grid gap-6 md:grid-cols-3">
+          {projects.map((project) => (
+            <article
+              key={project.title}
+              className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-[0_30px_60px_rgba(15,23,42,0.12)]"
+            >
+              <div className="relative h-44 w-full overflow-hidden border-b border-neutral-200">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover transition duration-500 group-hover:scale-105"
+                  sizes="(min-width: 1024px) 320px, (min-width: 768px) 40vw, 90vw"
+                />
+              </div>
+              <div className="flex flex-1 flex-col gap-2 p-5">
+                <span className="text-sm font-medium uppercase tracking-[0.2em] text-neutral-400">
+                  {project.tag}
+                </span>
+                <h3 className="text-lg font-semibold text-neutral-900">{project.title}</h3>
+                <p className="flex-1 text-sm text-neutral-600">{project.description}</p>
+                {project.href ? (
+                  <a
+                    className="inline-flex items-center text-sm font-medium text-brand-600 underline decoration-dotted underline-offset-4 transition hover:text-brand-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                    href={project.href}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {project.linkLabel}
+                  </a>
+                ) : (
+                  <span className="text-sm text-neutral-400">{project.linkLabel}</span>
+                )}
+              </div>
+            </article>
+          ))}
         </div>
       </Section>
 
-      {/* PROCESS */}
-      <Section id="process" className="bg-neutral-50 rounded-2xl">
-        <h2 className="text-2xl md:text-3xl font-semibold">Как работаем</h2>
-        <ol className="mt-8 grid md:grid-cols-4 gap-6">
-          {[
-            { t: "Бриф", d: "Цели, аудитория, оффер, структура." },
-            { t: "Дизайн", d: "Современный UI «как в Figma», но сразу в коде." },
-            { t: "Запуск", d: "Домен, хостинг Vercel, SSL, аналитика." },
-            { t: "Оптимизация", d: "A/B-гипотезы, повышение конверсии." },
-          ].map((s, i) => (
-            <li key={i} className="border rounded-2xl p-5 bg-white shadow-soft">
-              <div className="text-sm text-brand-600 font-medium">Шаг {i + 1}</div>
-              <div className="text-lg font-semibold mt-1">{s.t}</div>
-              <p className="text-neutral-600 mt-2">{s.d}</p>
+      <Section
+        id="process"
+        className="rounded-[32px] border border-neutral-200 bg-neutral-50 px-6 md:px-10"
+      >
+        <div className="space-y-4">
+          <h2 className="text-2xl font-semibold md:text-3xl">Как работаем</h2>
+          <p className="max-w-3xl text-lg text-neutral-600">
+            Прозрачный пайплайн: фиксируем задачи, делимся промежуточными результатами,
+            быстро запускаем итерации.
+          </p>
+        </div>
+        <ol className="grid gap-6 md:grid-cols-4">
+          {processSteps.map((step, index) => (
+            <li
+              key={step.title}
+              className="flex h-full flex-col gap-3 rounded-2xl border border-neutral-200 bg-white p-6 shadow-soft"
+            >
+              <span className="text-sm font-semibold text-brand-600">Шаг {index + 1}</span>
+              <h3 className="text-lg font-semibold text-neutral-900">{step.title}</h3>
+              <p className="text-sm text-neutral-600">{step.description}</p>
             </li>
           ))}
         </ol>
       </Section>
 
-      {/* PRICING */}
       <Section id="pricing">
-        <h2 className="text-2xl md:text-3xl font-semibold">Стоимость</h2>
-        <div className="mt-8 grid md:grid-cols-3 gap-6">
-          {[
-            { name: "Старт", price: "от 25 000 ₽", pts: ["1 экран + CTA", "Быстрый запуск", "Подходит для MVP"] },
-            { name: "Стандарт", price: "от 45 000 ₽", pts: ["5–7 блоков", "Под ключ: домен, SSL, аналитика", "Готов к рекламе"], hit: true },
-            { name: "Премиум", price: "от 75 000 ₽", pts: ["Индивидуальный UI", "Анимации, кейсы", "A/B-оптимизация"] },
-          ].map((p, i) => (
-            <div key={i} className={`border rounded-2xl p-6 bg-white shadow-soft ${p.hit ? "ring-1 ring-brand-300" : ""}`}>
-              <div className="text-sm text-neutral-500">{p.name}</div>
-              <div className="text-3xl font-semibold mt-2">{p.price}</div>
-              <ul className="mt-4 space-y-2 text-neutral-600">
-                {p.pts.map((x, j) => <li key={j}>• {x}</li>)}
+        <div className="space-y-4">
+          <h2 className="text-2xl font-semibold md:text-3xl">Стоимость</h2>
+          <p className="max-w-3xl text-lg text-neutral-600">
+            Тарифы можно дополнить: подключим CRM, создадим блог или добавим доп.языки по запросу.
+          </p>
+        </div>
+        <div className="grid gap-6 md:grid-cols-3">
+          {pricingPlans.map((plan) => (
+            <article
+              key={plan.name}
+              className={`flex h-full flex-col gap-4 rounded-2xl border bg-white p-6 shadow-soft transition hover:-translate-y-0.5 hover:shadow-[0_24px_60px_rgba(15,23,42,0.14)] ${plan.featured ? "border-brand-200 ring-1 ring-brand-200" : "border-neutral-200"}`}
+            >
+              <div className="space-y-2">
+                <span className="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-400">
+                  {plan.name}
+                </span>
+                <p className="text-3xl font-semibold text-neutral-900">{plan.price}</p>
+              </div>
+              <ul className="space-y-2 text-sm text-neutral-600">
+                {plan.perks.map((perk) => (
+                  <li key={perk}>• {perk}</li>
+                ))}
               </ul>
-              <a href="#contact" className="inline-flex mt-6 rounded-xl2 px-4 py-2 bg-brand-500 text-white border border-brand-500 hover:bg-brand-600">Хочу такой</a>
-            </div>
+              <a
+                href="#contact"
+                className="mt-auto inline-flex items-center justify-center rounded-xl2 border border-brand-500 bg-brand-500 px-4 py-2 text-base font-semibold text-white shadow-[0_18px_45px_rgba(14,165,233,0.32)] transition hover:-translate-y-0.5 hover:bg-brand-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+              >
+                Хочу такой
+              </a>
+            </article>
           ))}
         </div>
       </Section>
 
-      {/* TESTIMONIALS — при желании подменишь на реальные */}
-      <Section id="reviews" className="bg-neutral-50 rounded-2xl">
-        <h2 className="text-2xl md:text-3xl font-semibold">Отзывы</h2>
-        <div className="mt-8 grid md:grid-cols-3 gap-6">
-          {[
-            { a: "Анастасия", t: "Быстро запустили рекламный лендинг, пошли лиды на 2-й день." },
-            { a: "Алексей", t: "Удобно, что всё сведено под ключ: домен, метрики, хостинг." },
-            { a: "Ирина", t: "Понравилась структура страницы — видно опыт именно в лидогенерации." },
-          ].map((r, i) => (
-            <blockquote key={i} className="border rounded-2xl p-6 bg-white shadow-soft">
-              <p>“{r.t}”</p>
-              <footer className="mt-3 text-sm text-neutral-500">— {r.a}</footer>
+      <Section
+        id="reviews"
+        className="rounded-[32px] border border-neutral-200 bg-neutral-50 px-6 md:px-10"
+      >
+        <div className="space-y-4">
+          <h2 className="text-2xl font-semibold md:text-3xl">Отзывы</h2>
+          <p className="max-w-3xl text-lg text-neutral-600">
+            Ведём проект прозрачно: регулярные созвоны, отчёты по аналитике и быстрые внедрения гипотез.
+          </p>
+        </div>
+        <div className="grid gap-6 md:grid-cols-3">
+          {testimonials.map((testimonial) => (
+            <blockquote
+              key={testimonial.author}
+              className="flex h-full flex-col justify-between gap-4 rounded-2xl border border-neutral-200 bg-white p-6 text-neutral-600 shadow-soft"
+            >
+              <p className="text-base leading-relaxed">“{testimonial.quote}”</p>
+              <footer className="text-sm font-semibold text-neutral-500">— {testimonial.author}</footer>
             </blockquote>
           ))}
         </div>
       </Section>
 
-      {/* CONTACT */}
       <Section id="contact">
-        <div className="grid md:grid-cols-2 gap-10">
-          <div>
-            <h2 className="text-2xl md:text-3xl font-semibold">Обсудим ваш лендинг?</h2>
-            <p className="mt-4 text-neutral-600">
-              Напишите задачу — предложу структуру и стоимость. Обычно отвечаю в течение часа.
-            </p>
-            <ul className="mt-6 space-y-2 text-neutral-600">
-              <li>• Telegram: <a className="underline" href="https://t.me/your_username" target="_blank">t.me/your_username</a></li>
-              <li>• Email: your@mail.com</li>
-            </ul>
+        <div className="rounded-[32px] border border-neutral-200 bg-neutral-50 px-6 py-12 shadow-soft md:px-10">
+          <div className="grid gap-12 md:grid-cols-[minmax(0,1fr)_minmax(320px,1fr)]">
+            <div className="space-y-6">
+              <h2 className="text-2xl font-semibold md:text-3xl">Обсудим ваш лендинг?</h2>
+              <p className="text-lg text-neutral-600">
+                Опишите задачу — подготовлю структуру, смету и таймлайн. Отвечаю в течение рабочего дня.
+              </p>
+              <ul className="space-y-2 text-neutral-600">
+                <li>
+                  • Telegram:
+                  <a
+                    className="ml-1 inline-flex items-center gap-1 text-brand-600 underline decoration-dotted underline-offset-4 transition hover:text-brand-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-50"
+                    href="https://t.me/peexthree"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    @peexthree
+                  </a>
+                </li>
+                <li>• Email: linedrop@yandex.ru</li>
+              </ul>
+            </div>
+            <ContactForm />
           </div>
-          <ContactForm />
         </div>
       </Section>
     </>
   );
 }
-
-/** --- простая форма: отправка в Telegram через /api/telegram --- */
-function ContactForm() {
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const payload = {
-      name: formData.get("name"),
-      contact: formData.get("contact"),
-      message: formData.get("message"),
-    };
-    try {
-      const res = await fetch("/api/telegram", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      alert(res.ok ? "Заявка отправлена! Я свяжусь с вами." : "Не удалось отправить. Напишите в Telegram.");
-      if (res.ok) {
-        event.currentTarget.reset();
-      }
-    } catch {
-      alert("Ошибка сети. Напишите в Telegram.");
-    }
-  };
-
-  return (
-    <form onSubmit={handleSubmit} className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-soft">
-      <label className="block text-sm text-neutral-700">
-        Имя
-        <input
-          name="name"
-          required
-          className="mt-1 w-full rounded-xl border border-neutral-200 px-3 py-2"
-          placeholder="Как к вам обращаться"
-        />
-      </label>
-      <label className="mt-4 block text-sm text-neutral-700">
-        Контакт
-        <input
-          name="contact"
-          required
-          className="mt-1 w-full rounded-xl border border-neutral-200 px-3 py-2"
-          placeholder="Telegram или email"
-        />
-      </label>
-      <label className="mt-4 block text-sm text-neutral-700">
-        Задача
-        <textarea
-          name="message"
-          rows={4}
-          className="mt-1 w-full rounded-xl border border-neutral-200 px-3 py-2"
-          placeholder="Кратко опишите проект"
-        ></textarea>
-      </label>
-      <button className="mt-5 inline-flex items-center justify-center rounded-xl2 border border-brand-500 bg-brand-500 px-5 py-3 text-white transition hover:bg-brand-600">
-        Отправить заявку
-      </button>
-    </form>
-  );
-}
-

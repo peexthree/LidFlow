@@ -142,6 +142,7 @@ const testimonials = [
       "Собрали лендинг за неделю, подключили аналитику и CRM. Команда довольна скоростью и прозрачностью.",
   },
   {
+
     name: "Анна Петрова",
     role: "Маркетолог",
     quote:
@@ -167,12 +168,12 @@ export default function Home() {
           {benefits.map((benefit) => (
             <article
               key={benefit.title}
-              className="group relative overflow-hidden rounded-2xl border border-neutral-200 bg-white p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-[0_30px_60px_rgba(15,23,42,0.12)]"
+              className="group relative flex h-full flex-col gap-3 overflow-hidden rounded-2xl border border-neutral-200 bg-white p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-[0_30px_60px_rgba(15,23,42,0.12)]"
             >
               <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style={{ background: "radial-gradient(circle at top, rgba(14,165,233,0.15), transparent 70%)" }} />
               <div className="relative z-10 text-sm font-semibold text-brand-600">{benefit.index}</div>
-              <h3 className="relative z-10 mt-3 text-xl font-semibold text-neutral-900">{benefit.title}</h3>
-              <p className="relative z-10 mt-2 text-neutral-600">{benefit.description}</p>
+              <h3 className="relative z-10 text-xl font-semibold text-neutral-900">{benefit.title}</h3>
+              <p className="relative z-10 text-neutral-600">{benefit.description}</p>
             </article>
           ))}
         </div>
@@ -198,6 +199,7 @@ export default function Home() {
                 <Image
                   src={project.image}
                   alt={project.title}
+
                   fill
                   className="object-cover transition duration-500 group-hover:scale-105"
                   sizes="(min-width: 1024px) 350px, (min-width: 768px) 45vw, 90vw"
@@ -216,6 +218,8 @@ export default function Home() {
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center gap-2 text-sm font-medium text-brand-600 underline decoration-dotted underline-offset-4 transition hover:text-brand-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+
+
                   >
                     {project.linkLabel}
                   </a>
@@ -241,12 +245,12 @@ export default function Home() {
           {processSteps.map((step, index) => (
             <li
               key={step.title}
-              className="group relative overflow-hidden rounded-2xl border border-neutral-200 bg-white p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-[0_30px_60px_rgba(15,23,42,0.12)]"
+              className="group relative flex h-full flex-col gap-3 overflow-hidden rounded-2xl border border-neutral-200 bg-white p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-[0_30px_60px_rgba(15,23,42,0.12)]"
             >
               <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style={{ background: "radial-gradient(circle at top, rgba(14,165,233,0.18), transparent 75%)" }} />
               <div className="relative z-10 text-sm font-semibold text-brand-600">Шаг {index + 1}</div>
-              <h3 className="relative z-10 mt-3 text-lg font-semibold text-neutral-900">{step.title}</h3>
-              <p className="relative z-10 mt-2 text-sm text-neutral-600">{step.description}</p>
+              <h3 className="relative z-10 text-lg font-semibold text-neutral-900">{step.title}</h3>
+              <p className="relative z-10 text-sm text-neutral-600">{step.description}</p>
             </li>
           ))}
         </ol>
@@ -272,6 +276,7 @@ export default function Home() {
                 <div>
                   <span className="text-sm font-semibold uppercase tracking-[0.25em] text-neutral-400">
                     {plan.name}
+
                   </span>
                   <p className="mt-3 text-3xl font-semibold text-neutral-900">{plan.price}</p>
                 </div>
@@ -331,14 +336,14 @@ export default function Home() {
               • Telegram:
               <a
                 className="ml-1 inline-flex items-center gap-1 text-brand-600 underline decoration-dotted underline-offset-4 transition hover:text-brand-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-50"
-                href="https://t.me/your_username"
+                href="https://t.me/peexthree"
                 target="_blank"
                 rel="noreferrer"
               >
-                @your_username
+                @peexthree
               </a>
             </li>
-            <li>• Email: hello@lidflow.site</li>
+            <li>• Email: linderop@yandex.ru</li>
             <li>• Время ответа: до 1 часа в рабочие дни</li>
           </ul>
         </div>
