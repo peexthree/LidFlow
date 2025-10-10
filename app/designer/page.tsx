@@ -1,4 +1,7 @@
+"use client";
+export const dynamic = "force-dynamic";
 import Link from "next/link";
+
 
 function Section({ id, className = "", children }: { id?: string; className?: string; children: React.ReactNode }) {
   return (
