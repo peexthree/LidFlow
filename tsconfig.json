@@ -25,10 +25,23 @@
     "baseUrl": ".",
     "paths": {
       "@/components/*": [
-        "components/*"
+    "components/*",
+        "src/components/*"
       ],
       "@/lib/*": [
         "lib/*"
+ ],
+      "@/*": [
+        "src/*"
+      ],
+      "@/sections/*": [
+        "src/sections/*"
+      ],
+      "@/utils/*": [
+        "src/utils/*"
+      ],
+      "@/styles/*": [
+        "src/styles/*"
       ]
     },
     "plugins": [
