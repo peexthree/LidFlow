@@ -1,6 +1,6 @@
 'use client';
 
-import { clsx } from 'clsx';
+ import { clsx } from 'clsx';
 import { useEffect, useRef, type HTMLAttributes } from 'react';
 
 import './galaxy.css';
