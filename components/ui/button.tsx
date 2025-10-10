@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { clsx } from "clsx";
 
 const button = cva(
-  "inline-flex items-center justify-center rounded-xl2 px-4 py-2 text-sm font-medium transition border",
+  "inline-flex items-center justify-center rounded-xl2 px-4 py-2 text-sm font-medium border transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
   {
     variants: {
       variant: {
@@ -25,20 +25,27 @@ export interface ButtonProps
   children?: React.ReactNode;
 }
 
-export function Button({ className, variant, asChild, ...props }: ButtonProps) {
+export function Button({ className, variant, asChild, children, ...buttonProps }: ButtonProps) {
   if (asChild) {
-    const child = (props as any).children as React.ReactElement<any> | undefined;
-    if (!child || !React.isValidElement(child)) return null;
+    if (!children || !React.isValidElement(children)) {
+      return null;
+    }
 
-    const merged = clsx(button({ variant }), (child.props as any)?.className, className);
+    const childClassName =
+      typeof children.props === "object" && children.props !== null && "className" in children.props
+        ? (children.props as { className?: string }).className
+        : undefined;
 
-    // ВАЖНО: ослабляем тип через `as any`, чтобы не конфликтовать с типами child
-    return React.cloneElement(child as React.ReactElement<any>, {
+    const merged = clsx(button({ variant }), childClassName, className);
+
+    return React.cloneElement(children, {
       className: merged,
-    } as any);
+    } as Record<string, unknown>);
   }
 
   return (
-    <button className={clsx(button({ variant }), className)} {...props} />
+    <button className={clsx(button({ variant }), className)} {...buttonProps}>
+      {children}
+    </button>
   );
 }

@@ -1,9 +1,35 @@
 export type BlockType = "hero" | "features" | "gallery" | "cta";
 
+export interface HeroBlockProps {
+  title: string;
+  subtitle: string;
+  cta: string;
+}
+
+export interface FeaturesBlockProps {
+  items: ReadonlyArray<{ title: string; text: string }>;
+}
+
+export interface GalleryBlockProps {
+  images?: ReadonlyArray<string>;
+}
+
+export interface CtaBlockProps {
+  text: string;
+  button: string;
+}
+
+type BlockPropsMap = {
+  hero: HeroBlockProps;
+  features: FeaturesBlockProps;
+  gallery: GalleryBlockProps;
+  cta: CtaBlockProps;
+};
+
 export type Block<T extends BlockType> = {
   id: string;
   type: T;
-  props: any;
+  props: BlockPropsMap[T];
 };
 
 export const defaultPage: Block<BlockType>[] = [

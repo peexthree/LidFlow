@@ -1,9 +1,14 @@
-'use client';
+"use client";
 
- import { clsx } from 'clsx';
-import { useEffect, useRef, type HTMLAttributes } from 'react';
+import { clsx } from "clsx";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type HTMLAttributes,
+} from "react";
 
-import './galaxy.css';
+import "./galaxy.css";
 
 type WebGLContext = WebGLRenderingContext | WebGL2RenderingContext;
 
@@ -267,7 +272,7 @@ function createProgram(gl: WebGLContext, vertex: string, fragment: string) {
   return program;
 }
 
-export function Galaxy({
+export default function Galaxy({
   focal = DEFAULT_FOCAL,
   rotation = DEFAULT_ROTATION,
   starSpeed = 0.5,
@@ -294,6 +299,23 @@ export function Galaxy({
   const smoothMousePos = useRef({ x: 0.5, y: 0.5 });
   const targetMouseActive = useRef(0);
   const smoothMouseActive = useRef(0);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return undefined;
+    }
+
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updatePreference = () => setPrefersReducedMotion(mediaQuery.matches);
+    updatePreference();
+
+    mediaQuery.addEventListener("change", updatePreference);
+
+    return () => {
+      mediaQuery.removeEventListener("change", updatePreference);
+    };
+  }, []);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -442,6 +464,8 @@ export function Galaxy({
     const resize = () => {
       const width = container.clientWidth;
       const height = container.clientHeight;
+
+
       const dpr = window.devicePixelRatio || 1;
       const displayWidth = Math.max(Math.floor(width * dpr), 1);
       const displayHeight = Math.max(Math.floor(height * dpr), 1);
@@ -467,12 +491,14 @@ export function Galaxy({
 
     let animationFrame = 0;
 
+    const shouldDisableAnimation = disableAnimation || prefersReducedMotion;
+
     const render = (time: number) => {
       animationFrame = requestAnimationFrame(render);
 
       const elapsed = time * 0.001;
-      const timeValue = disableAnimation ? 0 : elapsed;
-      const starSpeedValue = disableAnimation ? 0 : (elapsed * starSpeed) / 10;
+      const timeValue = shouldDisableAnimation ? 0 : elapsed;
+      const starSpeedValue = shouldDisableAnimation ? 0 : (elapsed * starSpeed) / 10;
 
       const lerpFactor = 0.05;
       smoothMousePos.current.x += (targetMousePos.current.x - smoothMousePos.current.x) * lerpFactor;
@@ -498,6 +524,8 @@ export function Galaxy({
       gl.clear(gl.COLOR_BUFFER_BIT);
       gl.drawArrays(gl.TRIANGLES, 0, 3);
     };
+
+
 
     animationFrame = requestAnimationFrame(render);
 
@@ -527,6 +555,7 @@ export function Galaxy({
       }
       const loseContext = (gl.getExtension('WEBGL_lose_context') as
         | { loseContext: () => void }
+
         | null);
       loseContext?.loseContext();
       if (canvas.parentNode === container) {
@@ -552,15 +581,14 @@ export function Galaxy({
     starSpeed,
     transparent,
     twinkleIntensity,
+    prefersReducedMotion,
   ]);
 
   return (
     <div
       ref={containerRef}
-      className={clsx('galaxy-container', 'relative h-full w-full', className)}
+      className={clsx("galaxy-container", "relative h-full w-full", className)}
       {...rest}
     />
   );
 }
-
-export default Galaxy;

@@ -1,6 +1,7 @@
 "use client";
 export const dynamic = "force-dynamic";
-import Link from "next/link";
+import Image from "next/image";
+import { type FormEvent } from "react";
 
 
 function Section({ id, className = "", children }: { id?: string; className?: string; children: React.ReactNode }) {
@@ -43,9 +44,9 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="rounded-2xl border shadow-soft p-6">
-            <div className="aspect-video rounded-xl overflow-hidden border">
-              <video autoPlay muted loop playsInline className="w-full h-full object-cover">
+          <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-soft">
+            <div className="aspect-video overflow-hidden rounded-xl border border-neutral-200">
+              <video autoPlay muted loop playsInline preload="metadata" className="h-full w-full object-cover">
                 <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4" type="video/mp4" />
               </video>
             </div>
@@ -80,8 +81,10 @@ export default function Home() {
         </div>
         <div className="mt-8 grid md:grid-cols-3 gap-6">
           {/* Проект №1 — единственная публичная ссылка */}
-          <article className="border rounded-2xl overflow-hidden bg-white shadow-soft">
-            <img src="/portfolio/akulenok-cover.jpg" alt="" className="w-full h-44 object-cover border-b" />
+          <article className="group relative overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-[0_30px_60px_rgba(15,23,42,0.12)]">
+            <div className="relative h-44 w-full overflow-hidden border-b border-neutral-200">
+              <Image src="/placeholder/1.jpg" alt="Akulenok — сайт-визитка" fill className="object-cover transition duration-500 group-hover:scale-105" sizes="(min-width: 768px) 30vw, 90vw" />
+            </div>
             <div className="p-5">
               <div className="text-sm text-neutral-500">Landing · Бренд</div>
               <h3 className="text-lg font-semibold mt-1">Akulenok — сайт-визитка</h3>
@@ -91,8 +94,10 @@ export default function Home() {
           </article>
 
           {/* Проект №2 — карточка без ссылки */}
-          <article className="border rounded-2xl overflow-hidden bg-white shadow-soft">
-            <img src="/portfolio/work-2.jpg" alt="" className="w-full h-44 object-cover border-b" />
+          <article className="group relative overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-[0_30px_60px_rgba(15,23,42,0.12)]">
+            <div className="relative h-44 w-full overflow-hidden border-b border-neutral-200">
+              <Image src="/placeholder/2.jpg" alt="Лендинг услуги" fill className="object-cover transition duration-500 group-hover:scale-105" sizes="(min-width: 768px) 30vw, 90vw" />
+            </div>
             <div className="p-5">
               <div className="text-sm text-neutral-500">Leadgen · Промо</div>
               <h3 className="text-lg font-semibold mt-1">Лендинг услуги</h3>
@@ -102,8 +107,10 @@ export default function Home() {
           </article>
 
           {/* Проект №3 — карточка без ссылки */}
-          <article className="border rounded-2xl overflow-hidden bg-white shadow-soft">
-            <img src="/portfolio/work-3.jpg" alt="" className="w-full h-44 object-cover border-b" />
+          <article className="group relative overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-[0_30px_60px_rgba(15,23,42,0.12)]">
+            <div className="relative h-44 w-full overflow-hidden border-b border-neutral-200">
+              <Image src="/placeholder/3.jpg" alt="Лендинг под трафик" fill className="object-cover transition duration-500 group-hover:scale-105" sizes="(min-width: 768px) 30vw, 90vw" />
+            </div>
             <div className="p-5">
               <div className="text-sm text-neutral-500">B2B · Услуги</div>
               <h3 className="text-lg font-semibold mt-1">Лендинг под трафик</h3>
@@ -193,7 +200,9 @@ export default function Home() {
 
 /** --- простая форма: отправка в Telegram через /api/telegram --- */
 function ContactForm() {
-  async function action(formData: FormData) {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
     const payload = {
       name: formData.get("name"),
       contact: formData.get("contact"),
@@ -206,25 +215,47 @@ function ContactForm() {
         body: JSON.stringify(payload),
       });
       alert(res.ok ? "Заявка отправлена! Я свяжусь с вами." : "Не удалось отправить. Напишите в Telegram.");
+      if (res.ok) {
+        event.currentTarget.reset();
+      }
     } catch {
       alert("Ошибка сети. Напишите в Telegram.");
     }
-  }
+  };
 
   return (
-    <form action={action as any} className="rounded-2xl border p-6 shadow-soft bg-white">
-      <label className="block text-sm">Имя
-        <input name="name" required className="mt-1 w-full border rounded-xl px-3 py-2" placeholder="Как к вам обращаться" />
+    <form onSubmit={handleSubmit} className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-soft">
+      <label className="block text-sm text-neutral-700">
+        Имя
+        <input
+          name="name"
+          required
+          className="mt-1 w-full rounded-xl border border-neutral-200 px-3 py-2"
+          placeholder="Как к вам обращаться"
+        />
       </label>
-      <label className="block text-sm mt-4">Контакт
-        <input name="contact" required className="mt-1 w-full border rounded-xl px-3 py-2" placeholder="Telegram или email" />
+      <label className="mt-4 block text-sm text-neutral-700">
+        Контакт
+        <input
+          name="contact"
+          required
+          className="mt-1 w-full rounded-xl border border-neutral-200 px-3 py-2"
+          placeholder="Telegram или email"
+        />
       </label>
-      <label className="block text-sm mt-4">Задача
-        <textarea name="message" rows={4} className="mt-1 w-full border rounded-xl px-3 py-2" placeholder="Кратко опишите проект"></textarea>
+      <label className="mt-4 block text-sm text-neutral-700">
+        Задача
+        <textarea
+          name="message"
+          rows={4}
+          className="mt-1 w-full rounded-xl border border-neutral-200 px-3 py-2"
+          placeholder="Кратко опишите проект"
+        ></textarea>
       </label>
-      <button className="mt-5 inline-flex items-center justify-center rounded-xl2 px-5 py-3 bg-brand-500 text-white border border-brand-500 hover:bg-brand-600">
+      <button className="mt-5 inline-flex items-center justify-center rounded-xl2 border border-brand-500 bg-brand-500 px-5 py-3 text-white transition hover:bg-brand-600">
         Отправить заявку
       </button>
     </form>
   );
 }
+
