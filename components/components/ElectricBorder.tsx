@@ -1,4 +1,12 @@
-import React, { CSSProperties, PropsWithChildren, useEffect, useId, useLayoutEffect, useRef } from 'react';
+import React, {
+  CSSProperties,
+  PropsWithChildren,
+  useCallback,
+  useEffect,
+  useId,
+  useLayoutEffect,
+  useRef
+} from 'react';
 
 import './ElectricBorder.css';
 
@@ -10,6 +18,12 @@ type ElectricBorderProps = PropsWithChildren<{
   className?: string;
   style?: CSSProperties;
 }>;
+
+type AnimateWithBegin = SVGAnimateElement & { beginElement?: () => void };
+type ElectricBorderCSSVars = CSSProperties & {
+  '--electric-border-color': string;
+  '--eb-border-width': string;
+};
 
 const ElectricBorder: React.FC<ElectricBorderProps> = ({
   children,
@@ -26,7 +40,7 @@ const ElectricBorder: React.FC<ElectricBorderProps> = ({
   const rootRef = useRef<HTMLDivElement | null>(null);
   const strokeRef = useRef<HTMLDivElement | null>(null);
 
-  const updateAnim = () => {
+  const updateAnim = useCallback(() => {
     const svg = svgRef.current;
     const host = rootRef.current;
     if (!svg || !host) return;
@@ -35,24 +49,36 @@ const ElectricBorder: React.FC<ElectricBorderProps> = ({
       strokeRef.current.style.filter = `url(#${filterId})`;
     }
 
-    const width = Math.max(1, Math.round(host.clientWidth || host.getBoundingClientRect().width || 0));
-    const height = Math.max(1, Math.round(host.clientHeight || host.getBoundingClientRect().height || 0));
+    const width = Math.max(
+      1,
+      Math.round(host.clientWidth || host.getBoundingClientRect().width || 0)
+    );
+    const height = Math.max(
+      1,
+      Math.round(host.clientHeight || host.getBoundingClientRect().height || 0)
+    );
 
-    const dyAnims = Array.from(svg.querySelectorAll<SVGAnimateElement>('feOffset > animate[attributeName="dy"]'));
-    if (dyAnims.length >= 2) {
-      dyAnims[0].setAttribute('values', `${height}; 0`);
-      dyAnims[1].setAttribute('values', `0; -${height}`);
+    const dyAnims = Array.from(
+      svg.querySelectorAll<SVGAnimateElement>('feOffset > animate[attributeName="dy"]')
+    );
+    const [firstDy, secondDy] = dyAnims;
+    if (firstDy && secondDy) {
+      firstDy.setAttribute('values', `${height}; 0`);
+      secondDy.setAttribute('values', `0; -${height}`);
     }
 
-    const dxAnims = Array.from(svg.querySelectorAll<SVGAnimateElement>('feOffset > animate[attributeName="dx"]'));
-    if (dxAnims.length >= 2) {
-      dxAnims[0].setAttribute('values', `${width}; 0`);
-      dxAnims[1].setAttribute('values', `0; -${width}`);
+    const dxAnims = Array.from(
+      svg.querySelectorAll<SVGAnimateElement>('feOffset > animate[attributeName="dx"]')
+    );
+    const [firstDx, secondDx] = dxAnims;
+    if (firstDx && secondDx) {
+      firstDx.setAttribute('values', `${width}; 0`);
+      secondDx.setAttribute('values', `0; -${width}`);
     }
 
     const baseDur = 6;
     const dur = Math.max(0.001, baseDur / (speed || 1));
-    [...dyAnims, ...dxAnims].forEach(a => a.setAttribute('dur', `${dur}s`));
+    [...dyAnims, ...dxAnims].forEach(animation => animation.setAttribute('dur', `${dur}s`));
 
     const disp = svg.querySelector('feDisplacementMap');
     if (disp) disp.setAttribute('scale', String(30 * (chaos || 1)));
@@ -65,32 +91,37 @@ const ElectricBorder: React.FC<ElectricBorderProps> = ({
       filterEl.setAttribute('height', '500%');
     }
 
+    const animElements: AnimateWithBegin[] = [...dyAnims, ...dxAnims];
     requestAnimationFrame(() => {
-      [...dyAnims, ...dxAnims].forEach((a: any) => {
-        if (typeof a.beginElement === 'function') {
+      animElements.forEach(animation => {
+        if (typeof animation.beginElement === 'function') {
           try {
-            a.beginElement();
-          } catch {}
+            animation.beginElement();
+          } catch {
+            // Some browsers may throw when restarting SMIL animations; ignore gracefully.
+          }
         }
       });
     });
-  };
+  }, [chaos, filterId, speed]);
 
   useEffect(() => {
     updateAnim();
-  }, [speed, chaos]);
+  }, [updateAnim]);
 
   useLayoutEffect(() => {
-    if (!rootRef.current) return;
+    const host = rootRef.current;
+    if (!host) return;
+
     const ro = new ResizeObserver(() => updateAnim());
-    ro.observe(rootRef.current);
+    ro.observe(host);
     updateAnim();
     return () => ro.disconnect();
-  }, []);
+  }, [updateAnim]);
 
-  const vars: CSSProperties = {
-    ['--electric-border-color' as any]: color,
-    ['--eb-border-width' as any]: `${thickness}px`
+  const vars: ElectricBorderCSSVars = {
+    '--electric-border-color': color,
+    '--eb-border-width': `${thickness}px`
   };
 
   return (
@@ -130,6 +161,8 @@ const ElectricBorder: React.FC<ElectricBorderProps> = ({
             />
           </filter>
         </defs>
+
+        <title>Electric border animation filter</title>
       </svg>
 
       <div className="eb-layers">
