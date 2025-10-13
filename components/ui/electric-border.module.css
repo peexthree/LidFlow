@@ -1,4 +1,4 @@
-.electric-border {
+.electricBorder {
   --electric-light-color: oklch(from var(--electric-border-color) l c h);
   --eb-border-width: 2px;
   position: relative;
@@ -7,7 +7,7 @@
   isolation: isolate;
 }
 
-.eb-svg {
+.ebSvg {
   position: fixed;
   left: -10000px;
   top: -10000px;
@@ -17,13 +17,13 @@
   pointer-events: none;
 }
 
-.eb-content {
+.ebContent {
   position: relative;
   border-radius: inherit;
   z-index: 1;
 }
 
-.eb-layers {
+.ebLayers {
   position: absolute;
   inset: 0;
   border-radius: inherit;
@@ -31,12 +31,12 @@
   z-index: 2;
 }
 
-.eb-stroke,
-.eb-glow-1,
-.eb-glow-2,
-.eb-overlay-1,
-.eb-overlay-2,
-.eb-background-glow {
+.ebStroke,
+.ebGlow1,
+.ebGlow2,
+.ebOverlay1,
+.ebOverlay2,
+.ebBackgroundGlow {
   position: absolute;
   inset: 0;
   border-radius: inherit;
@@ -44,23 +44,23 @@
   box-sizing: border-box;
 }
 
-.eb-stroke {
+.ebStroke {
   border: var(--eb-border-width) solid var(--electric-border-color);
 }
 
-.eb-glow-1 {
+.ebGlow1 {
   border: var(--eb-border-width) solid oklch(from var(--electric-border-color) l c h / 0.6);
   opacity: 0.5;
   filter: blur(calc(0.5px + (var(--eb-border-width) * 0.25)));
 }
 
-.eb-glow-2 {
+.ebGlow2 {
   border: var(--eb-border-width) solid var(--electric-light-color);
   opacity: 0.5;
   filter: blur(calc(2px + (var(--eb-border-width) * 0.5)));
 }
 
-.eb-background-glow {
+.ebBackgroundGlow {
   z-index: -1;
   transform: scale(1.08);
   filter: blur(32px);

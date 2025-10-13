@@ -106,15 +106,80 @@
 /* 🚀 СТИЛИ ДЛЯ ЛОГОТИПА-ПРЕЛОАДЕРА */
 /* ======================================= */
 
-.logo-spinner {
-    /* Применяем вращение и пульсацию */
-    animation: 
-        rotate 3s linear infinite,        /* 360deg вращение */
-        pulse 1.5s ease-in-out infinite;  /* Пульсация */
-        
-    /* Добавляем мягкое свечение (Glow Effect) */
-    /* Используем цвет --primary для свечения */
-    filter: drop-shadow(0 0 10px hsl(var(--primary) / 0.7)); 
+.logo-loader {
+    --loader-size: min(38vw, 220px);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--loader-size);
+    height: var(--loader-size);
+    filter: drop-shadow(0 0 32px hsla(var(--primary) / 0.35));
+}
+
+.logo-loader__orbit {
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    border-style: solid;
+    border-width: clamp(6px, calc(var(--loader-size) / 18), 12px);
+    border-color: hsla(var(--primary) / 0.12);
+    border-top-color: hsl(var(--primary));
+    border-right-color: hsla(var(--primary) / 0.6);
+    animation: logoOrbit 1.8s linear infinite;
+    box-shadow: 0 0 38px hsla(var(--primary) / 0.35);
+}
+
+.logo-loader__trail {
+    position: absolute;
+    inset: clamp(18px, calc(var(--loader-size) / 8), 28px);
+    border-radius: 9999px;
+    background: conic-gradient(
+        from 90deg,
+        hsla(var(--primary) / 0) 0deg,
+        hsla(var(--primary) / 0.75) 120deg,
+        hsla(var(--primary) / 0.05) 240deg,
+        hsla(var(--primary) / 0) 360deg
+    );
+    mask: radial-gradient(farthest-side, transparent calc(100% - 12px), #000 calc(100% - 4px));
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 12px), #000 calc(100% - 4px));
+    opacity: 0.85;
+    animation: logoTrail 1.8s ease-in-out infinite;
+}
+
+.logo-loader__dot {
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    animation: logoDot 1.8s linear infinite;
+}
+
+.logo-loader__dot::after {
+    content: "";
+    position: absolute;
+    top: clamp(-6px, calc(var(--loader-size) / -26), -2px);
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: clamp(12px, calc(var(--loader-size) / 12), 20px);
+    height: clamp(12px, calc(var(--loader-size) / 12), 20px);
+    border-radius: 9999px;
+    background: hsl(var(--primary));
+    box-shadow: 0 0 18px hsla(var(--primary) / 0.8);
+}
+
+.logo-loader__image {
+    position: relative;
+    z-index: 10;
+    display: block;
+    width: clamp(120px, calc(var(--loader-size) * 0.7), 180px);
+    height: clamp(120px, calc(var(--loader-size) * 0.7), 180px);
+    padding: clamp(16px, calc(var(--loader-size) / 10), 24px);
+    border-radius: 2rem;
+    background: hsl(0 0% 100% / 0.96);
+    box-shadow:
+        0 24px 48px hsla(222 47% 11% / 0.35),
+        0 0 32px hsla(var(--primary) / 0.25);
+    animation: logoFloat 3.4s ease-in-out infinite;
 }
 
 
@@ -122,13 +187,39 @@
 /* АНИМАЦИИ (KEYFRAMES) */
 /* ======================================= */
 
-/* 🆕 Анимация вращения для прелоадера */
-@keyframes rotate {
+@keyframes logoOrbit {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes logoTrail {
     0% {
         transform: rotate(0deg);
+        opacity: 0.65;
+    }
+    50% {
+        opacity: 1;
     }
     100% {
         transform: rotate(360deg);
+        opacity: 0.65;
+    }
+}
+
+@keyframes logoDot {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes logoFloat {
+    0%,
+    100% {
+        transform: scale(0.98) rotate(-4deg);
+    }
+    50% {
+        transform: scale(1.02) rotate(4deg);
     }
 }
 
@@ -154,7 +245,6 @@
         transform: translateY(0);
     }
 }
-
 @keyframes scaleIn {
     from {
         opacity: 0;

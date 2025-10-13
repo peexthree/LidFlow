@@ -1,5 +1,9 @@
+'use client';
+
+import { clsx } from 'clsx';
 import React, {
   CSSProperties,
+  HTMLAttributes,
   PropsWithChildren,
   useCallback,
   useEffect,
@@ -8,16 +12,20 @@ import React, {
   useRef
 } from 'react';
 
-import './ElectricBorder.css';
+import styles from './electric-border.module.css';
 
-type ElectricBorderProps = PropsWithChildren<{
-  color?: string;
-  speed?: number;
-  chaos?: number;
-  thickness?: number;
-  className?: string;
-  style?: CSSProperties;
-}>;
+type ElectricBorderElement = 'div' | 'section' | 'article' | 'li' | 'figure' | 'aside' | 'header' | 'footer';
+
+type ElectricBorderProps = PropsWithChildren<
+  Omit<HTMLAttributes<HTMLElement>, 'color'> & {
+    as?: ElectricBorderElement;
+    contentClassName?: string;
+    color?: string;
+    speed?: number;
+    chaos?: number;
+    thickness?: number;
+  }
+>;
 
 type AnimateWithBegin = SVGAnimateElement & { beginElement?: () => void };
 type ElectricBorderCSSVars = CSSProperties & {
@@ -26,20 +34,23 @@ type ElectricBorderCSSVars = CSSProperties & {
 };
 
 const ElectricBorder: React.FC<ElectricBorderProps> = ({
+  as: asProp,
   children,
   color = '#5227FF',
   speed = 1,
   chaos = 1,
   thickness = 2,
   className,
-  style
+  contentClassName,
+  style,
+  ...rest
 }: ElectricBorderProps) => {
+  const Element = (asProp ?? 'div') as ElectricBorderElement;
   const rawId = useId().replace(/[:]/g, '');
   const filterId = `turbulent-displace-${rawId}`;
   const svgRef = useRef<SVGSVGElement | null>(null);
-  const rootRef = useRef<HTMLDivElement | null>(null);
+  const rootRef = useRef<HTMLElement | null>(null);
   const strokeRef = useRef<HTMLDivElement | null>(null);
-
   const updateAnim = useCallback(() => {
     const svg = svgRef.current;
     const host = rootRef.current;
@@ -125,8 +136,15 @@ const ElectricBorder: React.FC<ElectricBorderProps> = ({
   };
 
   return (
-    <div ref={rootRef} className={`electric-border ${className ?? ''}`} style={{ ...vars, ...style }}>
-      <svg ref={svgRef} className="eb-svg" aria-hidden focusable="false">
+   <Element
+      ref={(node: HTMLElement | null) => {
+        rootRef.current = node;
+      }}
+      className={clsx(styles.electricBorder, className)}
+      style={{ ...vars, ...style }}
+      {...rest}
+    >
+      <svg ref={svgRef} className={styles.ebSvg} aria-hidden focusable="false">
         <defs>
           <filter id={filterId} colorInterpolationFilters="sRGB" x="-20%" y="-20%" width="140%" height="140%">
             <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise1" seed="1" />
@@ -165,16 +183,17 @@ const ElectricBorder: React.FC<ElectricBorderProps> = ({
         <title>Electric border animation filter</title>
       </svg>
 
-      <div className="eb-layers">
-        <div ref={strokeRef} className="eb-stroke" />
-        <div className="eb-glow-1" />
-        <div className="eb-glow-2" />
-        <div className="eb-background-glow" />
+ <div className={styles.ebLayers}>
+        <div ref={strokeRef} className={styles.ebStroke} />
+        <div className={styles.ebGlow1} />
+        <div className={styles.ebGlow2} />
+        <div className={styles.ebBackgroundGlow} />
       </div>
 
-      <div className="eb-content">{children}</div>
-    </div>
+      <div className={clsx(styles.ebContent, contentClassName)}>{children}</div>
+    </Element>
   );
 };
 
+export { ElectricBorder };
 export default ElectricBorder;

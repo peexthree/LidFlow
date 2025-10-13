@@ -9,7 +9,7 @@ interface LogoIntroProps {
 
 // ⏱️ Параметры анимации и задержки
 const FADE_OUT_DELAY = 800; // Длительность CSS-перехода для исчезновения
-const INTRO_DURATION = 3500; // Длительность показа анимации (например, 3.5 секунды)
+const INTRO_DURATION = 6500; // Длительность показа анимации (например, 3.5 секунды)
 
 /**
  * Показывает анимированный логотип (прелоадер) и плавно открывает основной контент.
@@ -58,9 +58,8 @@ export function LogoIntro({ children }: LogoIntroProps) {
     <div className="relative flex min-h-screen flex-1 flex-col">
       {/* 🏞️ Основной контент - фон размывается во время интро */}
       <div
-        className={`flex min-h-screen flex-1 flex-col transition-[filter] duration-700 ease-in-out ${
-          phase === "intro" ? "blur-sm" : "blur-0" // Сделаем размытие мягче
-        }`}
+        className={`flex min-h-screen flex-1 flex-col transition-[filter] duration-700 ease-in-out ${phase === "intro" ? "blur-sm" : "blur-0" // Сделаем размытие мягче
+          }`}
       >
         {children}
       </div>
@@ -69,21 +68,25 @@ export function LogoIntro({ children }: LogoIntroProps) {
       {shouldRenderOverlay ? (
         <div
           aria-hidden
-          className={`fixed inset-0 z-[9999] flex items-center justify-center transition-opacity duration-700 ease-out bg-background ${ // Используем bg-background из вашего globals.css
-            phase === "fading"
+          className={`fixed inset-0 z-[9999] flex items-center justify-center bg-background transition-opacity duration-700 ease-out ${phase === "fading"
               ? "pointer-events-none opacity-0"
               : "pointer-events-auto opacity-100"
-          }`}
+            }`}
         >
-          {/* 🖼️ Анимированный ЛОГОТИП */}
-          <Image
-            src="/public/logo.webp" // Путь к вашему логотипу
-            alt="Логотип компании"
-            width={200} // Ширина логотипа
-            height={200} // Высота логотипа
-            className="logo-spinner" // Класс для CSS-анимаций
-            priority // Дает браузеру команду загрузить его как можно раньше
-          />
+          <div className="logo-loader">
+            {/* Внешние элементы создают ощущение вращения и прогресса загрузки */}
+            <span aria-hidden className="logo-loader__orbit" />
+            <span aria-hidden className="logo-loader__trail" />
+            <span aria-hidden className="logo-loader__dot" />
+            <Image
+              src="/logo.webp" // Используем путь из публичной директории Next.js
+              alt="Логотип компании"
+              width={180}
+              height={180}
+              className="logo-loader__image"
+              priority // Загружаем логотип как можно раньше, чтобы анимация не задерживалась
+            />
+          </div>
         </div>
       ) : null}
     </div>
