@@ -147,12 +147,10 @@ const config = {
         "scale-in": "scale-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards",
         shimmer: "shimmer 2.2s linear infinite",
       },
-       borderColor: {
+      borderColor: {
         subtle: "hsl(var(--border-subtle))",
       },
-      transitionTimingFunction: {
-        "figma-smooth": "cubic-bezier(0.22, 1, 0.36, 1)",
-      },
+
     },
   },
   plugins: [animate],

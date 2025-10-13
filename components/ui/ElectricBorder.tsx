@@ -9,10 +9,9 @@ import React, {
   useEffect,
   useId,
   useLayoutEffect,
+  useMemo,
   useRef
 } from 'react';
-
-import styles from './electric-border.module.css';
 
 type ElectricBorderElement = 'div' | 'section' | 'article' | 'li' | 'figure' | 'aside' | 'header' | 'footer';
 
@@ -28,11 +27,6 @@ type ElectricBorderProps = PropsWithChildren<
 >;
 
 type AnimateWithBegin = SVGAnimateElement & { beginElement?: () => void };
-type ElectricBorderCSSVars = CSSProperties & {
-  '--electric-border-color': string;
-  '--eb-border-width': string;
-};
-
 const ElectricBorder: React.FC<ElectricBorderProps> = ({
   as: asProp,
   children,
@@ -51,6 +45,30 @@ const ElectricBorder: React.FC<ElectricBorderProps> = ({
   const svgRef = useRef<SVGSVGElement | null>(null);
   const rootRef = useRef<HTMLElement | null>(null);
   const strokeRef = useRef<HTMLDivElement | null>(null);
+  const normalizedThickness = Math.max(0, thickness);
+
+  const layerStyles = useMemo(() => {
+    const borderValue = `${normalizedThickness}px solid ${color}`;
+    return {
+      stroke: { border: borderValue },
+      glow1: {
+        border: borderValue,
+        opacity: 0.5,
+        filter: `blur(${0.5 + normalizedThickness * 0.25}px)`
+      },
+      glow2: {
+        border: borderValue,
+        opacity: 0.5,
+        filter: `blur(${2 + normalizedThickness * 0.5}px)`
+      },
+      backgroundGlow: {
+        transform: 'scale(1.08)',
+        filter: 'blur(32px)',
+        opacity: 0.3,
+        background: `linear-gradient(-30deg, ${color}, transparent, ${color})`
+      }
+    } satisfies Record<string, CSSProperties>;
+  }, [color, normalizedThickness]);
   const updateAnim = useCallback(() => {
     const svg = svgRef.current;
     const host = rootRef.current;
@@ -130,21 +148,22 @@ const ElectricBorder: React.FC<ElectricBorderProps> = ({
     return () => ro.disconnect();
   }, [updateAnim]);
 
-  const vars: ElectricBorderCSSVars = {
-    '--electric-border-color': color,
-    '--eb-border-width': `${thickness}px`
-  };
-
   return (
-   <Element
+    <Element
       ref={(node: HTMLElement | null) => {
         rootRef.current = node;
       }}
-      className={clsx(styles.electricBorder, className)}
-      style={{ ...vars, ...style }}
+      className={clsx('relative isolate overflow-visible rounded-[inherit]', className)}
+      style={style}
       {...rest}
     >
-      <svg ref={svgRef} className={styles.ebSvg} aria-hidden focusable="false">
+      <svg
+        ref={svgRef}
+        aria-hidden
+        focusable="false"
+        className="pointer-events-none fixed opacity-[0.001]"
+        style={{ left: -10000, top: -10000, width: 10, height: 10 }}
+      >
         <defs>
           <filter id={filterId} colorInterpolationFilters="sRGB" x="-20%" y="-20%" width="140%" height="140%">
             <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise1" seed="1" />
@@ -183,14 +202,27 @@ const ElectricBorder: React.FC<ElectricBorderProps> = ({
         <title>Electric border animation filter</title>
       </svg>
 
- <div className={styles.ebLayers}>
-        <div ref={strokeRef} className={styles.ebStroke} />
-        <div className={styles.ebGlow1} />
-        <div className={styles.ebGlow2} />
-        <div className={styles.ebBackgroundGlow} />
+      <div className="pointer-events-none absolute inset-0 z-[2] rounded-[inherit]">
+        <div
+          ref={strokeRef}
+          className="pointer-events-none absolute inset-0 rounded-[inherit] box-border"
+          style={layerStyles.stroke}
+        />
+        <div
+          className="pointer-events-none absolute inset-0 rounded-[inherit] box-border"
+          style={layerStyles.glow1}
+        />
+        <div
+          className="pointer-events-none absolute inset-0 rounded-[inherit] box-border"
+          style={layerStyles.glow2}
+        />
+        <div
+          className="pointer-events-none absolute inset-0 rounded-[inherit] box-border -z-[1]"
+          style={layerStyles.backgroundGlow}
+        />
       </div>
 
-      <div className={clsx(styles.ebContent, contentClassName)}>{children}</div>
+      <div className={clsx('relative z-[1] rounded-[inherit]', contentClassName)}>{children}</div>
     </Element>
   );
 };

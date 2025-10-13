@@ -12,6 +12,14 @@
         --popover: 0 0% 100%;
         --popover-foreground: 221 41% 12%;
         --primary: 213 100% 54%;
+        --primary-alpha-0: rgba(20, 126, 255, 0);
+        --primary-alpha-5: rgba(20, 126, 255, 0.05);
+        --primary-alpha-10: rgba(20, 126, 255, 0.1);
+        --primary-alpha-25: rgba(20, 126, 255, 0.25);
+        --primary-alpha-28: rgba(20, 126, 255, 0.28);
+        --primary-alpha-55: rgba(20, 126, 255, 0.55);
+        --primary-alpha-75: rgba(20, 126, 255, 0.75);
+        --primary-alpha-80: rgba(20, 126, 255, 0.8);
         --primary-foreground: 211 100% 98%;
         --secondary: 267 90% 64%;
         --secondary-foreground: 255 100% 98%;
@@ -41,6 +49,14 @@
         --popover: 223 47% 12%;
         --popover-foreground: 210 40% 96%;
         --primary: 213 100% 68%;
+        --primary-alpha-0: rgba(92, 165, 255, 0);
+        --primary-alpha-5: rgba(92, 165, 255, 0.05);
+        --primary-alpha-10: rgba(92, 165, 255, 0.1);
+        --primary-alpha-25: rgba(92, 165, 255, 0.25);
+        --primary-alpha-28: rgba(92, 165, 255, 0.28);
+        --primary-alpha-55: rgba(92, 165, 255, 0.55);
+        --primary-alpha-75: rgba(92, 165, 255, 0.75);
+        --primary-alpha-80: rgba(92, 165, 255, 0.8);
         --primary-foreground: 223 47% 12%;
         --secondary: 267 84% 72%;
         --secondary-foreground: 223 47% 12%;
@@ -135,11 +151,11 @@
     border-radius: 9999px;
     border-style: solid;
     border-width: clamp(6px, calc(var(--loader-size) / 18), 12px);
-    border-color: hsla(var(--primary) / 0.1);
+    border-color: var(--primary-alpha-10);
     border-top-color: hsl(var(--primary));
-    border-right-color: hsla(var(--primary) / 0.55);
+    border-right-color: var(--primary-alpha-55);
     animation: logoOrbit 1.8s linear infinite;
-    box-shadow: 0 0 32px hsla(var(--primary) / 0.28);
+    box-shadow: 0 0 32px var(--primary-alpha-28);
 }
 
 .logo-loader__trail {
@@ -147,10 +163,10 @@
     inset: clamp(18px, calc(var(--loader-size) / 8), 28px);
     border-radius: 9999px;
     background: conic-gradient(from 90deg,
-            hsla(var(--primary) / 0) 0deg,
-            hsla(var(--primary) / 0.75) 120deg,
-            hsla(var(--primary) / 0.05) 240deg,
-            hsla(var(--primary) / 0) 360deg);
+            var(--primary-alpha-0) 0deg,
+            var(--primary-alpha-75) 120deg,
+            var(--primary-alpha-5) 240deg,
+            var(--primary-alpha-0) 360deg);
     mask: radial-gradient(farthest-side, transparent calc(100% - 12px), #000 calc(100% - 4px));
     -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 12px), #000 calc(100% - 4px));
     opacity: 0.85;
@@ -174,7 +190,7 @@
     height: clamp(12px, calc(var(--loader-size) / 12), 20px);
     border-radius: 9999px;
     background: hsl(var(--primary));
-    box-shadow: 0 0 18px hsla(var(--primary) / 0.8);
+    box-shadow: 0 0 18px var(--primary-alpha-80);
 }
 
 .logo-loader__image {
@@ -188,7 +204,7 @@
     background: hsl(0 0% 100% / 0.96);
     box-shadow:
         0 24px 48px hsla(222 47% 11% / 0.18),
-        0 0 32px hsla(var(--primary) / 0.25);
+        0 0 32px var(--primary-alpha-25);
     animation: logoFloat 3.4s ease-in-out infinite;
 }
 
