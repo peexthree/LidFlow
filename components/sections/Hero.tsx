@@ -204,17 +204,17 @@ export function Hero({ highlights }: HeroProps) {
         <motion.div className="relative z-10 flex flex-col items-center gap-8" variants={itemVariants}>
           {/* Карточка героя с иллюстрацией талисмана, повторяющая композицию из референса. */}
           <motion.figure
-            className="group relative aspect-[4/5] w-full max-w-[26rem] overflow-hidden rounded-[3rem] border border-cyan-400/40 bg-[radial-gradient(circle_at_25%_20%,_rgba(34,211,238,0.32),_transparent_60%),radial-gradient(circle_at_75%_80%,_rgba(147,51,234,0.28),_transparent_65%)] p-6 shadow-[0_55px_140px_rgba(12,74,110,0.55)]"
+            className="group relative aspect-[4/5] w-full max-w-[26rem] overflow-visible rounded-[3rem] border border-cyan-400/40 bg-[radial-gradient(circle_at_25%_20%,_rgba(34,211,238,0.32),_transparent_60%),radial-gradient(circle_at_75%_80%,_rgba(147,51,234,0.28),_transparent_65%)] p-6 shadow-[0_55px_140px_rgba(12,74,110,0.55)]"
             variants={highlightVariants}
             whileHover={{ rotateX: shouldReduceMotion ? 0 : -3, rotateY: shouldReduceMotion ? 0 : 3 }}
             transition={{ type: "spring", stiffness: 120, damping: 18, mass: 0.5 }}
           >
             <motion.div
               aria-hidden
-              className="absolute inset-0"
+              className="absolute inset-0 rounded-[2.5rem]"
               style={{ opacity: easedGlowOpacity }}
             >
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.12),_transparent_60%)]" />
+              <div className="absolute inset-0 rounded-[2.5rem] bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.12),_transparent_60%)]" />
             </motion.div>
             <div className="absolute inset-2 rounded-[2.5rem] border border-white/10 bg-slate-950/40 backdrop-blur-xl" />
             <motion.div
@@ -225,14 +225,16 @@ export function Hero({ highlights }: HeroProps) {
               className="absolute -right-12 bottom-16 h-36 w-36 rounded-full bg-indigo-500/35 blur-[110px]"
               style={{ y: orbShift }}
             />
-            <div className="relative z-10 h-full w-full">
+            {/* Отдельный контейнер позволяет талисману выходить за пределы карточки. */}
+            <div className="relative z-20 h-full w-full overflow-visible">
               <Image
                 src="/tal.webp"
                 alt="Иллюстрация талисмана LidFlow"
-                fill
-                className="object-contain object-center"
-                sizes="(min-width: 1024px) 420px, (min-width: 768px) 50vw, 90vw"
+                width={520}
+                height={640}
                 priority
+                className="absolute -top-20 -right-14 z-20 h-auto w-[320px] max-w-none object-contain drop-shadow-[0_55px_150px_rgba(12,74,110,0.45)] sm:w-[400px] lg:w-[480px] xl:w-[520px]"
+                sizes="(min-width: 1280px) 520px, (min-width: 1024px) 480px, (min-width: 768px) 400px, 320px"
               />
             </div>
             <motion.figcaption
