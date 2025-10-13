@@ -1,8 +1,9 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useGLTF, OrbitControls, useScroll } from "@react-three/drei";
+import { useGLTF } from "@react-three/drei";
+import { clsx } from "clsx";
 import * as THREE from "three";
 
 // ------------------------------------------------------------------------
@@ -14,71 +15,64 @@ interface ModelProps {
 }
 
 const MascotModel: React.FC<ModelProps> = ({ scrollSpeed }) => {
-  // Загружаем модель из папки public. Путь должен быть относительно корня public/.
-  // 'model.glb' – это путь public/model.glb
-  const { scene } = useGLTF("/model.glb"); 
-  const modelRef = useRef<THREE.Group>(null!);
-  
-  // Хук для отслеживания скролла
-  const scroll = useScroll();
-  
-  // Состояние для отслеживания положения курсора (для вращения)
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const { scene } = useGLTF("/model.glb");
+  const modelRef = useRef<THREE.Group | null>(null);
 
-  // Эффект для обновления положения мыши
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [scrollProgress, setScrollProgress] = useState(0);
+
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
-      // Нормализуем координаты от -1 до 1
       const x = (event.clientX / window.innerWidth) * 2 - 1;
       const y = -(event.clientY / window.innerHeight) * 2 + 1;
       setMousePosition({ x, y });
     };
 
+    const handleScroll = () => {
+      const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+      const maxScroll = Math.max(scrollHeight - clientHeight, 1);
+      setScrollProgress(scrollTop / maxScroll);
+    };
+
+    handleScroll();
+
     window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
-  // Хук, вызываемый перед каждым кадром рендеринга
-  useFrame((state, delta) => {
-    // 1. Плавное Вертикальное Смещение (Параллакс Скролла)
-    
-    // scroll.offset - это значение от 0 до 1, показывающее, насколько прокручена страница
-    const offset = scroll.offset; 
-    
-    // Смещаем модель по оси Y. Умножение на большой коэффициент (20)
-    // создает контрастное движение относительно самой прокрутки.
-    const scrollYPosition = offset * scrollSpeed;
-    
-    // Используем LERP (Linear Interpolation) для плавного перехода
+  useFrame(() => {
+    if (!modelRef.current) {
+      return;
+    }
+
+    const targetY = scrollProgress * scrollSpeed;
     modelRef.current.position.y = THREE.MathUtils.lerp(
       modelRef.current.position.y,
-      scrollYPosition,
-      0.05 // Коэффициент плавности. Чем меньше, тем плавнее.
+      targetY,
+      0.075
     );
 
+    const targetRotationX = -mousePosition.y * 0.18;
+    const targetRotationY = -mousePosition.x * 0.18;
 
-    // 2. Вращение от Мыши (Объемный эффект)
-    
-    // Рассчитываем целевое вращение, слегка поворачивая модель
-    // в зависимости от положения мыши (mousePosition.y, mousePosition.x).
-    const targetRotationX = -mousePosition.y * 0.15; // Небольшой поворот по X
-    const targetRotationY = -mousePosition.x * 0.15; // Небольшой поворот по Y
-    
-    // Снова используем LERP для плавного вращения
     modelRef.current.rotation.x = THREE.MathUtils.lerp(
       modelRef.current.rotation.x,
       targetRotationX,
-      0.05
+      0.06
     );
     modelRef.current.rotation.y = THREE.MathUtils.lerp(
       modelRef.current.rotation.y,
       targetRotationY,
-      0.05
+      0.06
     );
   });
 
-  // Клонируем сцену, чтобы избежать проблем с рендерингом
-  return <primitive object={scene.clone()} ref={modelRef} scale={1} />;
+  return <primitive object={scene.clone()} ref={modelRef} scale={1.1} />;
 };
 
 // ------------------------------------------------------------------------
@@ -91,36 +85,49 @@ interface InteractiveModelSectionProps {
 
 // Контейнер, который будет использоваться в Hero-секции
 export const InteractiveModelSection: React.FC<InteractiveModelSectionProps> = ({ className }) => {
-  // Параметры для настройки
-  const CAMERA_FOV = 50; // Угол обзора камеры
-  const SCROLL_SPEED = 20; // Чем больше, тем сильнее смещается модель при скролле (Параллакс)
-  
+  const CAMERA_FOV = 48;
+  const SCROLL_SPEED = 18;
+
   return (
-    <div className={className} style={{ position: 'absolute', top: 0, right: 0, width: '40%', height: '100%', pointerEvents: 'auto' }}>
-      <Canvas 
-        camera={{ fov: CAMERA_FOV, position: [0, 0, 5] }} 
-        // Если фон Canvas должен быть прозрачным
-        // style={{ background: 'transparent' }} 
-      >
-        {/* Освещение */}
-        <ambientLight intensity={1.5} />
-        <spotLight 
-            position={[10, 10, 10]} 
-            angle={0.3} 
-            penumbra={1} 
-            intensity={100} 
-            castShadow 
-        />
-        
-        {/* Модель с логикой параллакса */}
-        <MascotModel scrollSpeed={SCROLL_SPEED} />
-        
-        {/* Вспомогательный элемент для отладки: позволяет вращать модель мышью (можно удалить) */}
-        {/* <OrbitControls enableDamping={true} dampingFactor={0.05} /> */}
-      </Canvas>
-    </div>
+    <section
+      id="technology"
+      className={clsx(
+        "container relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 px-6 py-12 shadow-[0_40px_120px_rgba(14,116,144,0.45)] backdrop-blur-2xl",
+        "before:pointer-events-none before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_top,_rgba(34,211,238,0.28),_transparent_60%)] before:opacity-90",
+        className
+      )}
+      aria-labelledby="interactive-model-heading"
+    >
+      <div className="relative z-10 mx-auto flex flex-col items-center gap-8">
+        <div className="space-y-3 text-center">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-1 text-xs uppercase tracking-[0.28em] text-white/70">
+            3D-предпросмотр
+          </span>
+          <h2 id="interactive-model-heading" className="text-3xl font-semibold text-white md:text-4xl">
+            Маскот реагирует на движение и скролл
+          </h2>
+          <p className="max-w-2xl text-balance text-base text-slate-300 md:text-lg">
+            Наведите курсор или прокрутите страницу — мы подключили лёгкую WebGL-сцену на <strong>React Three Fiber</strong>, чтобы показать живую динамику будущего интерфейса.
+          </p>
+        </div>
+        <div className="relative w-full max-w-4xl">
+          <div className="pointer-events-none absolute inset-0 rounded-[2.5rem] border border-cyan-400/40 bg-gradient-to-br from-cyan-400/30 via-transparent to-fuchsia-500/20 blur-[90px]" />
+          <div className="relative overflow-hidden rounded-[2.5rem] border border-white/15 bg-slate-950/60 p-2 backdrop-blur-xl">
+            <Canvas className="h-[420px] w-full" camera={{ fov: CAMERA_FOV, position: [0, 0, 5] }}>
+              <ambientLight intensity={1.2} />
+              <directionalLight position={[4, 6, 6]} intensity={1.6} castShadow />
+              <Suspense fallback={null}>
+                <MascotModel scrollSpeed={SCROLL_SPEED} />
+              </Suspense>
+            </Canvas>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
+
+useGLTF.preload("/model.glb");
 
 // ------------------------------------------------------------------------
 // 3. ПРИМЕЧАНИЕ ПО CSS
@@ -135,6 +142,6 @@ export const InteractiveModelSection: React.FC<InteractiveModelSectionProps> = (
 }
 
 // Для контейнера в InteractiveModelSection.tsx
-// Если вы используете Tailwind/CSS Modules, вы должны задать классы, 
-// обеспечивающие абсолютное позиционирование справа, как в инлайновых стилях выше.
+// При использовании Tailwind/CSS Modules достаточно повторить композицию классов
+// из контейнера <section>, чтобы обеспечить фон и скругления.
 */
