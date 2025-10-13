@@ -17,22 +17,47 @@
   z-index: 0;
   border-radius: inherit;
   padding: var(--electric-border-width);
+  /* Static gradient base keeps the frame fixed while the lightning effect animates separately. */
+  background: linear-gradient(
+      135deg,
+      var(--electric-color-1),
+      var(--electric-color-2) 55%,
+      var(--electric-color-3)
+    )
+    border-box;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  filter: saturate(1.1);
+  opacity: 0.8;
+  pointer-events: none;
+  transition: opacity 0.5s ease, filter 0.5s ease;
+}
+
+.border::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: var(--electric-border-width);
   background: conic-gradient(
-    from 90deg,
-    transparent 0deg,
-    var(--electric-color-1) 120deg,
-    var(--electric-color-2) 240deg,
-    var(--electric-color-3) 360deg
+    from 0deg,
+    transparent 0deg 40deg,
+    rgba(255, 255, 255, 0.4) 45deg,
+    rgba(255, 255, 255, 0.8) 55deg,
+    rgba(190, 242, 100, 0.9) 65deg,
+    rgba(255, 255, 255, 0.5) 75deg,
+    transparent 80deg 360deg
   );
   mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   mask-composite: exclude;
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
-  filter: saturate(1.2);
-  animation: electric-rotate 8s linear infinite;
-  opacity: 0.75;
+  filter: blur(1px) saturate(1.5) brightness(1.2);
+  mix-blend-mode: screen;
+  animation: electric-trace 3.5s linear infinite, electric-flicker 1.6s ease-in-out infinite;
   pointer-events: none;
-  transition: opacity 0.5s ease, filter 0.5s ease;
 }
 
 .glow {
@@ -65,14 +90,27 @@
   opacity: 0.75;
 }
 
-@keyframes electric-rotate {
+@keyframes electric-trace {
   to {
     transform: rotate(360deg);
   }
 }
 
+@keyframes electric-flicker {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  40% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.6;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .border {
-    animation-duration: 0s;
+  .border::after {
+    animation: none;
   }
 }
