@@ -529,23 +529,13 @@
     animation: intro-orbit 12s linear infinite;
 }
 
-.intro-spinner {
-    position: absolute;
-    inset: -2.5rem;
-    border-radius: 2.75rem;
-    border-width: 3px;
-    border-style: solid;
-    border-color: rgba(14, 165, 233, 0.75) rgba(236, 72, 153, 0.45) rgba(59, 130, 246, 0.2) transparent;
-    pointer-events: none;
-    filter: drop-shadow(0 8px 28px rgba(15, 118, 110, 0.12));
-    animation: intro-spinner 4.2s cubic-bezier(0.22, 0.61, 0.36, 1) infinite;
-}
+
 
 @media (prefers-reduced-motion: reduce) {
 
     .intro-glow,
-    .intro-orbit,
-    .intro-spinner {
+    .intro-orbit {
+
         animation: none !important;
     }
 }
