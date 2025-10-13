@@ -2,8 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { ThreeBackground } from "@/components/ThreeBackground";
@@ -27,38 +26,19 @@ const HIGHLIGHTS = [
 ];
 
 export function Hero() {
-  const sectionRef = useRef<HTMLElement | null>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"],
-  });
-
-  // 🧩 Motion Layer: создаём cinematic эффект blur-to-sharp при скролле
-  const blurBackdrop = useTransform(
-    scrollYProgress,
-    [0, 1],
-    ["blur(24px)", "blur(0px)"],
-  );
-  const heroLift = useTransform(scrollYProgress, [0, 1], [0, -64]);
-  const heroScale = useTransform(scrollYProgress, [0, 1], [1.02, 1]);
-  const showcaseFloat = useTransform(scrollYProgress, [0, 1], [-18, 28]);
-  const showcaseTilt = useTransform(scrollYProgress, [0, 1], [0, 4]);
-
   return (
     <section
-      ref={sectionRef}
       id="hero"
       className="relative overflow-hidden pb-30 pt-32 sm:pt-28"
     >
       <motion.div
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-20 bg-radial-fade"
-        style={{ filter: blurBackdrop, scale: heroScale }}
       />
       <motion.div
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-30 bg-radial-fade-strong"
-        style={{ y: heroLift, opacity: 0.85 }}
+        style={{ opacity: 0.85 }}
       />
       <ThreeBackground />
 
@@ -157,8 +137,7 @@ export function Hero() {
           >
             <motion.div
               className="relative isolate flex items-center justify-center"
-              style={{ y: showcaseFloat, rotate: showcaseTilt }}
-              transition={{ type: "spring", stiffness: 120, damping: 20 }}
+
             >
               <div className="absolute inset-0 -z-10 rounded-[44px] border border-white/30 bg-white/60 shadow-[0_40px_120px_rgba(15,23,42,0.18)] backdrop-blur-xl" />
               <div
@@ -176,7 +155,7 @@ export function Hero() {
                 <Image
                   src="/tal.webp"
                   alt="Футуристичный талисман LidFlow"
-                width={760}
+                  width={760}
                   height={760}
                   priority
                   sizes="(min-width: 1280px) 620px, (min-width: 1024px) 540px, (min-width: 768px) 460px, 340px"
