@@ -106,6 +106,7 @@ export function VideoIntro({ children }: VideoIntroProps) {
                 <span className="absolute inset-0 rounded-[32px] border border-white/60 bg-gradient-to-br from-brand-500/15 via-violet-500/10 to-rose-500/15 blur" />
                 <span className="intro-orbit absolute -inset-6 rounded-full border border-white/40" />
                 <span className="absolute -inset-14 rounded-full bg-gradient-to-br from-brand-500/10 via-sky-400/5 to-rose-500/10 blur-3xl" />
+                <span aria-hidden className="intro-spinner" />
                 <Image
                   src="/logo.webp"
                   alt="Логотип LidFlow"
