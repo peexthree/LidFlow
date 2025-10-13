@@ -9,6 +9,8 @@ export function useLenis() {
     }
 
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    // Отключаем кастомный скролл на мобильных, чтобы убрать микролаги и ускорить интерфейс.
+    const mobileViewportQuery = window.matchMedia("(max-width: 767px)");
 
     if (prefersReducedMotion.matches) {
       return undefined;
@@ -20,7 +22,7 @@ export function useLenis() {
     let stopped = false;
 
     const resolveOptions = () => {
-      const isMobileViewport = window.matchMedia("(max-width: 768px)").matches;
+      const isMobileViewport = mobileViewportQuery.matches;
       // 🧩 Motion Responsiveness: на мобильных уменьшаем инерцию
       return {
         duration: 1.1,
@@ -47,17 +49,9 @@ export function useLenis() {
       frameId = requestAnimationFrame(raf);
     };
 
-    void startLenis();
-
-    const handleResize = () => {
-      if (!lenis) {
-        return;
-      }
-      lenis.destroy();
-      lenis = undefined;
-      stopped = false;
+    if (!mobileViewportQuery.matches) {
       void startLenis();
-    };
+    }
 
     const handleMotionChange = (event: MediaQueryListEvent) => {
       if (event.matches) {
@@ -67,7 +61,24 @@ export function useLenis() {
         }
         lenis?.destroy();
         lenis = undefined;
-      } else if (!lenis) {
+      } else if (!lenis && !mobileViewportQuery.matches) {
+        stopped = false;
+        void startLenis();
+      }
+    };
+
+    const handleViewportChange = (event: MediaQueryListEvent) => {
+      if (event.matches) {
+        if (frameId) {
+          cancelAnimationFrame(frameId);
+        }
+        stopped = true;
+        lenis?.destroy();
+        lenis = undefined;
+        return;
+      }
+
+      if (!lenis) {
         stopped = false;
         void startLenis();
       }
@@ -79,7 +90,11 @@ export function useLenis() {
       prefersReducedMotion.addListener(handleMotionChange);
     }
 
-    window.addEventListener("resize", handleResize);
+    if (typeof mobileViewportQuery.addEventListener === "function") {
+      mobileViewportQuery.addEventListener("change", handleViewportChange);
+    } else {
+      mobileViewportQuery.addListener(handleViewportChange);
+    }
 
     return () => {
       stopped = true;
@@ -87,11 +102,15 @@ export function useLenis() {
         cancelAnimationFrame(frameId);
       }
       lenis?.destroy();
-      window.removeEventListener("resize", handleResize);
       if (typeof prefersReducedMotion.removeEventListener === "function") {
         prefersReducedMotion.removeEventListener("change", handleMotionChange);
       } else {
         prefersReducedMotion.removeListener(handleMotionChange);
+      }
+      if (typeof mobileViewportQuery.removeEventListener === "function") {
+        mobileViewportQuery.removeEventListener("change", handleViewportChange);
+      } else {
+        mobileViewportQuery.removeListener(handleViewportChange);
       }
     };
   }, []);

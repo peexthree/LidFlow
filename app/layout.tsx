@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
 import { Analytics } from "@vercel/analytics/react";
 
 import "./globals.css";
 import { FloatingOrbs } from "@/components/ui/VisualEffects";
 import { VideoIntro } from "@/components/VideoIntro";
+import { SiteHeader } from "@/components/layout/SiteHeader";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://lidflow.vercel.app";
 
 export const metadata: Metadata = {
@@ -67,46 +66,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         <VideoIntro>
           <>
-            <header className="sticky top-0 z-40 border-b border-subtle/70 glass-effect animate-fade-in-up">
-              <div className="container flex min-h-[4.5rem] items-center justify-between gap-6 py-4">
-                <Link
-                  href="/"
-                  className="inline-flex items-center gap-3 rounded-full px-3 py-1.5 text-neutral-900 transition-colors duration-300 ease-figma-smooth hover:text-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                  aria-label="LidFlow — на главную"
-                >
-                  <Image
-                    src="/logo.webp"
-                    alt="Логотип LidFlow"
-                    width={36}
-                    height={36}
-                    className="h-9 w-9 rounded-2xl border border-subtle bg-white/90 p-1 shadow-soft"
-                    sizes="36px"
-                    priority
-                  />
-                  <span className="text-lg font-semibold tracking-tight">LidFlow</span>
-                </Link>
-                <nav className="flex items-center gap-8 text-sm font-medium text-neutral-700">
-                  <a
-                    className="rounded-full px-3 py-1.5 text-neutral-700 transition-colors duration-300 ease-figma-smooth hover:text-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                    href="#portfolio"
-                  >
-                    Портфолио
-                  </a>
-                  <a
-                    className="rounded-full px-3 py-1.5 text-neutral-700 transition-colors duration-300 ease-figma-smooth hover:text-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                    href="#pricing"
-                  >
-                    Цены
-                  </a>
-                  <a
-                    className="rounded-full px-3 py-1.5 text-neutral-700 transition-colors duration-300 ease-figma-smooth hover:text-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                    href="#contact"
-                  >
-                    Контакты
-                  </a>
-                </nav>
-              </div>
-            </header>
+              <SiteHeader />
             <FloatingOrbs />
 
             <main className="flex-1">{children}</main>
