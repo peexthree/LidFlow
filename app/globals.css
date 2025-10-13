@@ -59,7 +59,7 @@
     }
 
     /* ИСПРАВЛЕНО: Заменяем @apply border-border; на стандартный сброс,
-чтобы избежать ошибки синтаксиса Tailwind при сборке. */
+    чтобы избежать ошибки синтаксиса Tailwind при сборке. */
 
     *,
     *::before,
@@ -70,9 +70,10 @@
     }
 
     body {
-        @apply antialiased;
+        /* 🚀 УЛУЧШЕНИЕ: Используем переменную для фона для согласованности с темой */
+        @apply antialiased min-h-screen; 
         color: hsl(var(--foreground));
-        background-color: #050816;
+        background-color: hsl(var(--background)); /* ИСПРАВЛЕНО! */
         background-image:
             radial-gradient(circle at 20% 20%, rgba(129, 140, 248, 0.4), transparent 55%),
             radial-gradient(circle at 80% 5%, rgba(14, 165, 233, 0.35), transparent 55%),
@@ -101,8 +102,37 @@
     }
 }
 
-@keyframes gradientShift {
+/* ======================================= */
+/* 🚀 СТИЛИ ДЛЯ ЛОГОТИПА-ПРЕЛОАДЕРА */
+/* ======================================= */
 
+.logo-spinner {
+    /* Применяем вращение и пульсацию */
+    animation: 
+        rotate 3s linear infinite,        /* 360deg вращение */
+        pulse 1.5s ease-in-out infinite;  /* Пульсация */
+        
+    /* Добавляем мягкое свечение (Glow Effect) */
+    /* Используем цвет --primary для свечения */
+    filter: drop-shadow(0 0 10px hsl(var(--primary) / 0.7)); 
+}
+
+
+/* ======================================= */
+/* АНИМАЦИИ (KEYFRAMES) */
+/* ======================================= */
+
+/* 🆕 Анимация вращения для прелоадера */
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes gradientShift {
     0%,
     100% {
         background-position: 0% 50%;
@@ -150,7 +180,6 @@
 }
 
 @keyframes float {
-
     0%,
     100% {
         transform: translateY(0px);
@@ -162,7 +191,6 @@
 }
 
 @keyframes pulse {
-
     0%,
     100% {
         opacity: 1;
@@ -216,9 +244,9 @@
 
 .shimmer-effect {
     background: linear-gradient(90deg,
-            transparent,
-            rgba(255, 255, 255, 0.4),
-            transparent);
+                transparent,
+                rgba(255, 255, 255, 0.4),
+                transparent);
     background-size: 200% 100%;
     animation: shimmer 2s infinite;
 }
@@ -253,7 +281,6 @@
 
 /* Glow Effect */
 @keyframes glow {
-
     0%,
     100% {
         box-shadow: 0 0 20px rgba(102, 126, 234, 0.4), 0 0 40px rgba(102, 126, 234, 0.2);
@@ -270,7 +297,6 @@
 
 /* Floating Orbs */
 @keyframes floatOrb {
-
     0%,
     100% {
         transform: translate(0, 0) scale(1);
@@ -327,7 +353,6 @@
 
 /* Magnetic Effect */
 @keyframes magneticPulse {
-
     0%,
     100% {
         transform: scale(1);
