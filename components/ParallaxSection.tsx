@@ -38,7 +38,7 @@ export function ParallaxSection({ layers = [], children, className }: ParallaxSe
 
     const updateIntensity = () => {
       const isMobileViewport = window.matchMedia('(max-width: 768px)').matches;
-      setIntensity(isMobileViewport ? 0.45 : 1);
+      setIntensity(isMobileViewport ? 0.75 : 1.35);
     };
 
     updateIntensity();

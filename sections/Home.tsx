@@ -18,19 +18,39 @@ export function HomePage() {
   const parallaxLayers = useMemo(
     () => [
       {
-        speed: -18,
-        className:
-          "bg-[radial-gradient(circle_at_20%_20%,rgba(31,140,255,0.2),transparent_65%)]",
-      },
-      {
-        speed: 22,
-        className:
-          "bg-[radial-gradient(circle_at_80%_60%,rgba(168,85,247,0.16),transparent_65%)]",
-      },
-      {
-        speed: -10,
+        speed: -48,
         content: (
-          <div className="h-full w-full bg-gradient-to-b from-white/60 via-white/30 to-transparent" aria-hidden />
+          <div
+            aria-hidden
+            className="pointer-events-none h-full w-full bg-[radial-gradient(circle_at_18%_20%,rgba(37,99,235,0.6),transparent_70%)] blur-3xl opacity-90"
+          />
+        ),
+      },
+      {
+        speed: 36,
+        content: (
+          <div
+            aria-hidden
+            className="pointer-events-none h-full w-full bg-[radial-gradient(circle_at_82%_65%,rgba(192,38,211,0.5),transparent_65%)] blur-3xl opacity-85"
+          />
+        ),
+      },
+      {
+        speed: -24,
+        content: (
+          <div
+            aria-hidden
+            className="pointer-events-none h-full w-full bg-[radial-gradient(circle_at_50%_110%,rgba(14,165,233,0.35),transparent_70%)] blur-[100px] opacity-75"
+          />
+        ),
+      },
+      {
+        speed: 18,
+        content: (
+          <div
+            aria-hidden
+            className="pointer-events-none mx-auto h-full w-[120%] max-w-5xl bg-gradient-to-b from-white/70 via-white/20 to-transparent blur-[72px]"
+          />
         ),
       },
     ],
