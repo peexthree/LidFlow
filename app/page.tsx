@@ -6,6 +6,7 @@ import { clsx } from "clsx";
 
 import { ContactForm } from "@/components/ContactForm";
 import { Hero, type HeroHighlight } from "@/components/sections/Hero";
+import { InteractiveModelSection } from "@/components/sections/InteractiveModelSection";
 import { PortfolioShowcase, type ProjectShowcaseItem } from "@/components/sections/PortfolioShowcase";
 
 import { Button } from "@/components/ui/button";
@@ -179,7 +180,7 @@ export default function Home() {
         <div className="animate-scale-in">
           <Hero highlights={heroHighlights} />
         </div>
-
+        <InteractiveModelSection />
         {/* Секция Преимущества без электрических рамок */}
         <section
           className="container relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] px-6 py-12 shadow-[0_40px_120px_rgba(76,29,149,0.25)] backdrop-blur-2xl animate-fade-in-up md:px-12"
