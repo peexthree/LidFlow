@@ -86,7 +86,7 @@ export function ContactForm() {
             id="name"
             name="name"
             required
-            className="h-12 w-full rounded-xl border border-white/10 bg-white/[0.08] px-3 text-base text-white placeholder-white/50 shadow-sm transition focus:border-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-400/40"
+            className="h-12 w-full rounded-xl border border-white/10 bg-white/[0.08] px-3 text-base text-white placeholder-white/50 shadow-sm transition-colors duration-300 ease-figma-smooth focus:border-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-400/40"
             placeholder="Как к вам обращаться"
             autoComplete="name"
           />
@@ -100,7 +100,7 @@ export function ContactForm() {
             id="contact"
             name="contact"
             required
-            className="h-12 w-full rounded-xl border border-white/10 bg-white/[0.08] px-3 text-base text-white placeholder-white/50 shadow-sm transition focus:border-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-400/40"
+            className="h-12 w-full rounded-xl border border-white/10 bg-white/[0.08] px-3 text-base text-white placeholder-white/50 shadow-sm transition-colors duration-300 ease-figma-smooth focus:border-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-400/40"
             placeholder="Telegram или email"
             autoComplete="email"
           />
@@ -114,7 +114,7 @@ export function ContactForm() {
             id="message"
             name="message"
             rows={4}
-            className="w-full rounded-xl border border-white/10 bg-white/[0.08] px-3 py-2 text-base text-white placeholder-white/50 shadow-sm transition focus:border-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-400/40"
+            className="w-full rounded-xl border border-white/10 bg-white/[0.08] px-3 py-2 text-base text-white placeholder-white/50 shadow-sm transition-colors duration-300 ease-figma-smooth focus:border-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-400/40"
             placeholder="Кратко опишите проект"
           />
         </div>
@@ -123,7 +123,7 @@ export function ContactForm() {
       <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <Button
           type="submit"
-          className="group inline-flex min-w-[180px] items-center justify-center gap-2 rounded-xl2 bg-cyan-500 px-6 py-3 text-base font-semibold text-white shadow-[0_18px_45px_rgba(6,182,212,0.35)] transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:bg-cyan-400 hover:shadow-[0_22px_55px_rgba(6,182,212,0.45)] disabled:cursor-not-allowed disabled:opacity-70"
+          className="group inline-flex min-w-[180px] items-center justify-center gap-2 rounded-xl2 bg-cyan-500 px-6 py-3 text-base font-semibold text-white shadow-[0_18px_45px_rgba(6,182,212,0.35)] transition-transform duration-300 ease-figma-smooth hover:-translate-y-0.5 hover:bg-cyan-400 hover:shadow-[0_22px_55px_rgba(6,182,212,0.45)] disabled:cursor-not-allowed disabled:opacity-70"
           disabled={isSending}
         >
           {isSending ? "Отправка..." : "Отправить заявку"}

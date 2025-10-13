@@ -69,6 +69,7 @@ const config = {
           foreground: "hsl(var(--destructive-foreground))",
         },
         border: "hsl(var(--border))",
+        "border-subtle": "hsl(var(--border-subtle))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         chart: {
@@ -110,47 +111,49 @@ const config = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
-      boxShadow: {
-        // 🧩 Depth Tokens: мягкие тени для создания объёмности
-        soft: "0 18px 40px rgba(15, 23, 42, 0.08)",
-        floating: "0 22px 60px rgba(15, 23, 42, 0.16)",
+      // 🧩 Depth Tokens: многослойная глубина для эффектов плавания
+      soft: "0 12px 28px rgba(15, 23, 42, 0.08), 0 32px 70px rgba(15, 23, 42, 0.1)",
+      floating: "0 16px 38px rgba(15, 23, 42, 0.14), 0 45px 105px rgba(15, 23, 42, 0.2)",
+    },
+    maxWidth: {
+      // 🧩 Content Grid: предсказуемая сетка контейнеров
+      measure: "60ch",
+    },
+    backgroundImage: {
+      // 🧩 Gradient Tokens: переиспользуемые фоновые эффекты
+      "radial-fade": "radial-gradient(circle at 20% 20%, rgba(31,140,255,0.12), transparent 60%)",
+      "radial-fade-strong": "radial-gradient(circle at 80% 50%, rgba(168,85,247,0.2), transparent 65%)",
+    },
+    transitionTimingFunction: {
+      // 🧩 Motion Curve: фирменное замедление
+      "figma-smooth": "cubic-bezier(0.22, 1, 0.36, 1)",
+    },
+    borderColor: {
+      subtle: "hsl(var(--border-subtle))",
+    },
+    keyframes: {
+      // 🧩 Motion Library: базовые ключевые кадры для переиспользования
+      "fade-up": {
+        "0%": { opacity: "0", transform: "translateY(20px)" },
+        "100%": { opacity: "1", transform: "translateY(0)" },
       },
-      maxWidth: {
-        // 🧩 Content Grid: предсказуемая сетка контейнеров
-        measure: "60ch",
+      "scale-in": {
+        "0%": { opacity: "0", transform: "scale(0.96)" },
+        "100%": { opacity: "1", transform: "scale(1)" },
       },
-      backgroundImage: {
-        // 🧩 Gradient Tokens: переиспользуемые фоновые эффекты
-        "radial-fade": "radial-gradient(circle at 20% 20%, rgba(31,140,255,0.12), transparent 60%)",
-        "radial-fade-strong": "radial-gradient(circle at 80% 50%, rgba(168,85,247,0.2), transparent 65%)",
-      },
-      transitionTimingFunction: {
-        // 🧩 Motion Curve: фирменное замедление
-        "figma-smooth": "cubic-bezier(0.22, 1, 0.36, 1)",
-      },
-      keyframes: {
-        // 🧩 Motion Library: базовые ключевые кадры для переиспользования
-        "fade-up": {
-          "0%": { opacity: "0", transform: "translateY(20px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
-        "scale-in": {
-          "0%": { opacity: "0", transform: "scale(0.96)" },
-          "100%": { opacity: "1", transform: "scale(1)" },
-        },
-        shimmer: {
-          "0%": { backgroundPosition: "-200% center" },
-          "100%": { backgroundPosition: "200% center" },
-        },
-      },
-      animation: {
-        // 🧩 Motion Utility: быстрые классы для микровзаимодействий
-        "fade-up": "fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards",
-        "scale-in": "scale-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards",
-        shimmer: "shimmer 2.2s linear infinite",
+      shimmer: {
+        "0%": { backgroundPosition: "-200% center" },
+        "100%": { backgroundPosition: "200% center" },
       },
     },
+    animation: {
+      // 🧩 Motion Utility: быстрые классы для микровзаимодействий
+      "fade-up": "fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards",
+      "scale-in": "scale-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards",
+      shimmer: "shimmer 2.2s linear infinite",
+    },
   },
+},
   plugins: [animate],
 } satisfies Config;
 

@@ -69,6 +69,7 @@ const config = {
           foreground: "hsl(var(--destructive-foreground))",
         },
         border: "hsl(var(--border))",
+        "border-subtle": "hsl(var(--border-subtle))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         chart: {
@@ -112,8 +113,8 @@ const config = {
       },
       boxShadow: {
         // 🧩 Depth Tokens: мягкие тени для объёмности
-        soft: "0 18px 40px rgba(15, 23, 42, 0.08)",
-        floating: "0 22px 60px rgba(15, 23, 42, 0.16)",
+        soft: "0 10px 26px rgba(15,23,42,0.08), 0 28px 60px rgba(15,23,42,0.08)",
+        floating: "0 14px 35px rgba(15,23,42,0.12), 0 38px 90px rgba(15,23,42,0.18)",
       },
       maxWidth: {
         measure: "60ch",
@@ -145,6 +146,12 @@ const config = {
         "fade-up": "fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards",
         "scale-in": "scale-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards",
         shimmer: "shimmer 2.2s linear infinite",
+      },
+       borderColor: {
+        subtle: "hsl(var(--border-subtle))",
+      },
+      transitionTimingFunction: {
+        "figma-smooth": "cubic-bezier(0.22, 1, 0.36, 1)",
       },
     },
   },

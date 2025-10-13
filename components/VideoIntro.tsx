@@ -80,7 +80,7 @@ export function VideoIntro({ children }: VideoIntroProps) {
         <div className="relative flex min-h-screen flex-1 flex-col">
           <div
             className={clsx(
-              "flex min-h-screen flex-1 flex-col filter transition-[filter] duration-700 ease-in-out",
+              "flex min-h-screen flex-1 flex-col filter transition-[filter] duration-700 ease-figma-smooth",
               phase === "intro" ? "blur-2xl" : "blur-0",
             )}
           >
@@ -93,7 +93,7 @@ export function VideoIntro({ children }: VideoIntroProps) {
               aria-modal="true"
               aria-label="Заставка LidFlow"
               className={clsx(
-                "fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-white/95 backdrop-blur-2xl transition-opacity duration-700 ease-out",
+                "fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-white/95 backdrop-blur-2xl transition-opacity duration-700 ease-figma-smooth",
                 phase === "fading"
                   ? "pointer-events-none opacity-0"
                   : "pointer-events-auto opacity-100",
@@ -107,17 +107,17 @@ export function VideoIntro({ children }: VideoIntroProps) {
 
                 <div className="relative flex flex-col items-center gap-8 px-6 text-center">
                   <div className="relative flex h-36 w-36 items-center justify-center">
-                    <span className="absolute inset-0 rounded-[32px] border border-white/60 bg-gradient-to-br from-brand-500/15 via-violet-500/10 to-rose-500/15 blur" />
+                    <span className="absolute inset-0 rounded-[32px] border border-subtle/80 bg-gradient-to-br from-brand-500/15 via-violet-500/10 to-rose-500/15 blur" />
                     <span className="intro-orbit absolute -inset-6 rounded-full border border-white/40" />
                     <span className="absolute -inset-14 rounded-full bg-gradient-to-br from-brand-500/10 via-sky-400/5 to-rose-500/10 blur-3xl" />
-           
+
                     <Image
                       src="/logo.webp"
                       alt="Логотип LidFlow"
                       width={120}
                       height={120}
                       priority
-                      className="intro-glow relative z-10 h-24 w-24 rounded-3xl border border-white/80 bg-white/95 p-4 shadow-lg"
+                      className="intro-glow relative z-10 h-24 w-24 rounded-3xl border border-subtle bg-white/95 p-4 shadow-[0_18px_45px_rgba(31,140,255,0.28),0_40px_100px_rgba(14,165,233,0.24)]"
                     />
                   </div>
 
@@ -133,7 +133,7 @@ export function VideoIntro({ children }: VideoIntroProps) {
                   <button
                     type="button"
                     onClick={startFadeOut}
-                    className="animate-fade-in-up rounded-full border border-neutral-200/80 bg-white/90 px-6 py-2 text-sm font-medium text-neutral-700 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-400 hover:text-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white [animation-delay:260ms]"
+                    className="animate-fade-in-up rounded-full border border-subtle/80 bg-white/90 px-6 py-2 text-sm font-medium text-neutral-700 shadow-sm transition-all duration-300 ease-figma-smooth hover:-translate-y-0.5 hover:border-brand-400 hover:text-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white [animation-delay:260ms]"
                   >
                     Пропустить заставку
                   </button>

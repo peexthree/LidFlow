@@ -67,11 +67,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         <VideoIntro>
           <>
-            <header className="sticky top-0 z-40 border-b border-white/10 glass-effect animate-fade-in-up">
-              <div className="container flex h-16 items-center justify-between">
+            <header className="sticky top-0 z-40 border-b border-subtle/70 glass-effect animate-fade-in-up">
+              <div className="container flex min-h-[4.5rem] items-center justify-between gap-6 py-4">
                 <Link
                   href="/"
-                  className="inline-flex items-center gap-3 rounded-full px-2 py-1 text-neutral-900 transition-colors hover:text-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                  className="inline-flex items-center gap-3 rounded-full px-3 py-1.5 text-neutral-900 transition-colors duration-300 ease-figma-smooth hover:text-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                   aria-label="LidFlow — на главную"
                 >
                   <Image
@@ -79,27 +79,27 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     alt="Логотип LidFlow"
                     width={36}
                     height={36}
-                    className="h-9 w-9 rounded-2xl border border-white/60 bg-white/90 p-1 shadow-sm"
+                    className="h-9 w-9 rounded-2xl border border-subtle bg-white/90 p-1 shadow-soft"
                     sizes="36px"
                     priority
                   />
                   <span className="text-lg font-semibold tracking-tight">LidFlow</span>
                 </Link>
-                <nav className="flex items-center gap-6 text-sm font-medium text-neutral-700">
+                <nav className="flex items-center gap-8 text-sm font-medium text-neutral-700">
                   <a
-                    className="rounded-full px-2 py-1 text-neutral-700 transition hover:text-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                    className="rounded-full px-3 py-1.5 text-neutral-700 transition-colors duration-300 ease-figma-smooth hover:text-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                     href="#portfolio"
                   >
                     Портфолио
                   </a>
                   <a
-                    className="rounded-full px-2 py-1 text-neutral-700 transition hover:text-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                    className="rounded-full px-3 py-1.5 text-neutral-700 transition-colors duration-300 ease-figma-smooth hover:text-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                     href="#pricing"
                   >
                     Цены
                   </a>
                   <a
-                    className="rounded-full px-2 py-1 text-neutral-700 transition hover:text-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                    className="rounded-full px-3 py-1.5 text-neutral-700 transition-colors duration-300 ease-figma-smooth hover:text-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                     href="#contact"
                   >
                     Контакты
@@ -110,9 +110,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <FloatingOrbs />
 
             <main className="flex-1">{children}</main>
-            <footer className="border-t border-neutral-200 glass-effect">
-              <div className="container flex flex-col gap-3 py-10 text-sm text-neutral-500">
-                <div className="h-px bg-gradient-to-r from-transparent via-neutral-300/70 to-transparent" />
+            <footer className="border-t border-subtle glass-effect">
+              <div className="container flex flex-col gap-4 py-14 text-sm text-neutral-500">
+                <div className="h-px bg-gradient-to-r from-transparent via-border-subtle/80 to-transparent" />
                 <p>© {currentYear} LidFlow. Создаём лендинги, которые продают.</p>
                 <p className="text-xs text-neutral-400">
                   Telegram:{" "}
@@ -120,7 +120,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     href="https://t.me/your_username"
                     target="_blank"
                     rel="noreferrer"
-                    className="underline decoration-dotted underline-offset-4 hover:text-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                    className="underline decoration-dotted underline-offset-4 transition-colors duration-300 ease-figma-smooth hover:text-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                   >
                     @your_username
                   </a>

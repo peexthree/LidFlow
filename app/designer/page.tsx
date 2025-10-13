@@ -15,7 +15,7 @@ interface SectionProps {
 
 function Section({ id, className = "", children }: SectionProps) {
   return (
-    <section id={id} className={`container space-y-10 py-20 ${className}`}>
+    <section id={id} className={`container space-y-14 py-24 md:py-28 ${className}`}>
       {children}
     </section>
   );
@@ -23,7 +23,7 @@ function Section({ id, className = "", children }: SectionProps) {
 
 function Pill({ children }: { children: ReactNode }) {
   return (
-    <span className="inline-flex items-center rounded-full border border-neutral-200 px-3 py-1 text-sm text-neutral-600">
+    <span className="inline-flex items-center rounded-full border border-subtle bg-white/90 px-4 py-1.5 text-sm text-neutral-600 shadow-soft">
       {children}
     </span>
   );
@@ -127,15 +127,15 @@ export default function DesignerPage() {
   return (
     <>
       <Section>
-        <div className="grid items-center gap-12 md:grid-cols-[minmax(0,1fr)_minmax(320px,1fr)]">
+        <div className="grid items-center gap-14 md:grid-cols-[minmax(0,1fr)_minmax(320px,1fr)]">
           <div className="space-y-8">
-            <div className="inline-flex items-center gap-4 rounded-full border border-neutral-200 bg-white px-4 py-2 text-neutral-700 shadow-soft">
+            <div className="inline-flex items-center gap-4 rounded-full border border-subtle bg-white px-5 py-2.5 text-neutral-700 shadow-floating">
               <Image
                 src="/logo.webp"
                 alt="Логотип LidFlow"
                 width={44}
                 height={44}
-                className="h-11 w-11 rounded-2xl border border-neutral-200 bg-neutral-50 p-1"
+                className="h-11 w-11 rounded-2xl border border-subtle bg-neutral-50 p-1"
                 sizes="44px"
                 priority
               />
@@ -154,16 +154,16 @@ export default function DesignerPage() {
                 быструю загрузку и готовность к рекламе.
               </p>
             </div>
-            <div className="flex flex-wrap items-center gap-4">
+            <div className="flex flex-wrap items-center gap-5">
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center rounded-xl2 border border-brand-500 bg-brand-500 px-5 py-3 text-base font-semibold text-white shadow-[0_20px_55px_rgba(14,165,233,0.35)] transition hover:-translate-y-0.5 hover:bg-brand-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                className="inline-flex items-center justify-center rounded-xl2 border border-brand-500 bg-brand-500 px-6 py-3.5 text-base font-semibold text-white shadow-[0_28px_70px_rgba(14,165,233,0.35)] transition-all duration-300 ease-figma-smooth hover:-translate-y-0.5 hover:bg-brand-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               >
                 Обсудить проект
               </a>
               <a
                 href="#portfolio"
-                className="inline-flex items-center justify-center rounded-xl2 border border-neutral-200 bg-white px-5 py-3 text-base font-semibold text-neutral-700 transition hover:-translate-y-0.5 hover:bg-neutral-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                className="inline-flex items-center justify-center rounded-xl2 border border-subtle bg-white px-6 py-3.5 text-base font-semibold text-neutral-700 transition-all duration-300 ease-figma-smooth hover:-translate-y-0.5 hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               >
                 Портфолио
               </a>
@@ -174,8 +174,8 @@ export default function DesignerPage() {
               ))}
             </div>
           </div>
-          <div className="flex flex-col gap-4 rounded-2xl border border-neutral-200 bg-white p-6 shadow-soft">
-            <div className="relative aspect-video overflow-hidden rounded-xl border border-neutral-200">
+          <div className="flex flex-col gap-5 rounded-2xl border border-subtle bg-white p-7 shadow-floating">
+            <div className="relative aspect-video overflow-hidden rounded-xl border border-subtle">
               <video
                 autoPlay
                 muted
@@ -197,7 +197,7 @@ export default function DesignerPage() {
 
       <Section
         id="benefits"
-        className="rounded-[32px] border border-neutral-200 bg-neutral-50 px-6 md:px-10"
+        className="rounded-[32px] border border-subtle bg-neutral-50 px-8 md:px-14"
       >
         <div className="space-y-4">
           <h2 className="text-2xl font-semibold md:text-3xl">Почему со мной удобно</h2>
@@ -206,11 +206,11 @@ export default function DesignerPage() {
             работают на доверие и конверсию.
           </p>
         </div>
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-3">
           {benefits.map((benefit, index) => (
             <article
               key={benefit.title}
-              className="flex h-full flex-col gap-3 rounded-2xl border border-neutral-200 bg-white p-6 shadow-soft"
+              className="flex h-full flex-col gap-4 rounded-2xl border border-subtle bg-white p-7 shadow-soft"
             >
               <span className="text-sm font-semibold text-brand-600">0{index + 1}</span>
               <h3 className="text-xl font-semibold text-neutral-900">{benefit.title}</h3>
@@ -221,25 +221,25 @@ export default function DesignerPage() {
       </Section>
 
       <Section id="portfolio">
-        <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+        <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div className="space-y-2">
             <h2 className="text-2xl font-semibold md:text-3xl">Недавние проекты</h2>
             <p className="text-neutral-500">Больше кейсов покажу на созвоне.</p>
           </div>
           <span className="text-sm text-neutral-500">Ещё работы — по запросу</span>
         </div>
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-3">
           {projects.map((project) => (
             <article
               key={project.title}
-              className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-[0_30px_60px_rgba(15,23,42,0.12)]"
+              className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-subtle bg-white shadow-soft transition-all duration-300 ease-figma-smooth hover:-translate-y-1 hover:shadow-[0_35px_80px_rgba(15,23,42,0.16)]"
             >
-              <div className="relative h-44 w-full overflow-hidden border-b border-neutral-200">
+              <div className="relative h-48 w-full overflow-hidden border-b border-subtle">
                 <Image
                   src={project.image}
                   alt={project.title}
                   fill
-                  className="object-cover transition duration-500 group-hover:scale-105"
+                  className="object-cover transition duration-500 ease-figma-smooth group-hover:scale-105"
                   sizes="(min-width: 1024px) 320px, (min-width: 768px) 40vw, 90vw"
                 />
               </div>
@@ -251,7 +251,7 @@ export default function DesignerPage() {
                 <p className="flex-1 text-sm text-neutral-600">{project.description}</p>
                 {project.href ? (
                   <a
-                    className="inline-flex items-center text-sm font-medium text-brand-600 underline decoration-dotted underline-offset-4 transition hover:text-brand-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                    className="inline-flex items-center text-sm font-medium text-brand-600 underline decoration-dotted underline-offset-4 transition-colors duration-300 ease-figma-smooth hover:text-brand-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                     href={project.href}
                     target="_blank"
                     rel="noreferrer"
@@ -269,7 +269,7 @@ export default function DesignerPage() {
 
       <Section
         id="process"
-        className="rounded-[32px] border border-neutral-200 bg-neutral-50 px-6 md:px-10"
+        className="rounded-[32px] border border-subtle bg-neutral-50 px-8 md:px-14"
       >
         <div className="space-y-4">
           <h2 className="text-2xl font-semibold md:text-3xl">Как работаем</h2>
@@ -278,11 +278,11 @@ export default function DesignerPage() {
             быстро запускаем итерации.
           </p>
         </div>
-        <ol className="grid gap-6 md:grid-cols-4">
+        <ol className="grid gap-8 md:grid-cols-4">
           {processSteps.map((step, index) => (
             <li
               key={step.title}
-              className="flex h-full flex-col gap-3 rounded-2xl border border-neutral-200 bg-white p-6 shadow-soft"
+              className="flex h-full flex-col gap-4 rounded-2xl border border-subtle bg-white p-7 shadow-soft"
             >
               <span className="text-sm font-semibold text-brand-600">Шаг {index + 1}</span>
               <h3 className="text-lg font-semibold text-neutral-900">{step.title}</h3>
@@ -293,17 +293,17 @@ export default function DesignerPage() {
       </Section>
 
       <Section id="pricing">
-        <div className="space-y-4">
+        <div className="space-y-5">
           <h2 className="text-2xl font-semibold md:text-3xl">Стоимость</h2>
           <p className="max-w-3xl text-lg text-neutral-600">
             Тарифы можно дополнить: подключим CRM, создадим блог или добавим доп.языки по запросу.
           </p>
         </div>
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-3">
           {pricingPlans.map((plan) => (
             <article
               key={plan.name}
-              className={`flex h-full flex-col gap-4 rounded-2xl border bg-white p-6 shadow-soft transition hover:-translate-y-0.5 hover:shadow-[0_24px_60px_rgba(15,23,42,0.14)] ${plan.featured ? "border-brand-200 ring-1 ring-brand-200" : "border-neutral-200"}`}
+              className={`flex h-full flex-col gap-5 rounded-2xl border bg-white p-7 shadow-soft transition-all duration-300 ease-figma-smooth hover:-translate-y-0.5 hover:shadow-[0_32px_72px_rgba(15,23,42,0.16)] ${plan.featured ? "border-brand-200 ring-1 ring-brand-200" : "border-subtle"}`}
             >
               <div className="space-y-2">
                 <span className="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-400">
@@ -318,7 +318,7 @@ export default function DesignerPage() {
               </ul>
               <a
                 href="#contact"
-                className="mt-auto inline-flex items-center justify-center rounded-xl2 border border-brand-500 bg-brand-500 px-4 py-2 text-base font-semibold text-white shadow-[0_18px_45px_rgba(14,165,233,0.32)] transition hover:-translate-y-0.5 hover:bg-brand-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                className="mt-auto inline-flex items-center justify-center rounded-xl2 border border-brand-500 bg-brand-500 px-5 py-2.5 text-base font-semibold text-white shadow-[0_24px_60px_rgba(14,165,233,0.3)] transition-all duration-300 ease-figma-smooth hover:-translate-y-0.5 hover:bg-brand-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               >
                 Хочу такой
               </a>
@@ -329,19 +329,19 @@ export default function DesignerPage() {
 
       <Section
         id="reviews"
-        className="rounded-[32px] border border-neutral-200 bg-neutral-50 px-6 md:px-10"
+        className="rounded-[32px] border border-subtle bg-neutral-50 px-8 md:px-14"
       >
-        <div className="space-y-4">
+        <div className="space-y-5">
           <h2 className="text-2xl font-semibold md:text-3xl">Отзывы</h2>
           <p className="max-w-3xl text-lg text-neutral-600">
             Ведём проект прозрачно: регулярные созвоны, отчёты по аналитике и быстрые внедрения гипотез.
           </p>
         </div>
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-3">
           {testimonials.map((testimonial) => (
             <blockquote
               key={testimonial.author}
-              className="flex h-full flex-col justify-between gap-4 rounded-2xl border border-neutral-200 bg-white p-6 text-neutral-600 shadow-soft"
+              className="flex h-full flex-col justify-between gap-5 rounded-2xl border border-subtle bg-white p-7 text-neutral-600 shadow-soft"
             >
               <p className="text-base leading-relaxed">“{testimonial.quote}”</p>
               <footer className="text-sm font-semibold text-neutral-500">— {testimonial.author}</footer>
@@ -351,8 +351,8 @@ export default function DesignerPage() {
       </Section>
 
       <Section id="contact">
-        <div className="rounded-[32px] border border-neutral-200 bg-neutral-50 px-6 py-12 shadow-soft md:px-10">
-          <div className="grid gap-12 md:grid-cols-[minmax(0,1fr)_minmax(320px,1fr)]">
+        <div className="rounded-[32px] border border-subtle bg-neutral-50 px-8 py-14 shadow-floating md:px-14">
+          <div className="grid gap-14 md:grid-cols-[minmax(0,1fr)_minmax(320px,1fr)]">
             <div className="space-y-6">
               <h2 className="text-2xl font-semibold md:text-3xl">Обсудим ваш лендинг?</h2>
               <p className="text-lg text-neutral-600">
@@ -362,7 +362,7 @@ export default function DesignerPage() {
                 <li>
                   • Telegram:
                   <a
-                    className="ml-1 inline-flex items-center gap-1 text-brand-600 underline decoration-dotted underline-offset-4 transition hover:text-brand-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-50"
+                    className="ml-1 inline-flex items-center gap-1 text-brand-600 underline decoration-dotted underline-offset-4 transition-colors duration-300 ease-figma-smooth hover:text-brand-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-50"
                     href="https://t.me/peexthree"
                     target="_blank"
                     rel="noreferrer"

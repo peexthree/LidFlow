@@ -22,6 +22,7 @@
         --destructive: 0 84% 62%;
         --destructive-foreground: 0 0% 100%;
         --border: 216 30% 90%;
+        --border-subtle: 214 40% 94%;
         --input: 216 30% 90%;
         --ring: 213 100% 54%;
         --chart-1: 213 100% 54%;
@@ -50,6 +51,7 @@
         --destructive: 0 74% 38%;
         --destructive-foreground: 210 40% 96%;
         --border: 223 34% 24%;
+        --border-subtle: 223 30% 30%;
         --input: 223 34% 24%;
         --ring: 213 100% 68%;
     }
@@ -59,7 +61,8 @@
     *::before,
     *::after {
         box-sizing: border-box;
-        border-color: hsl(var(--border));
+        /* 🧩 Border System: по умолчанию используем более мягкий токен */
+        border-color: hsl(var(--border-subtle));
     }
 
     body {
@@ -343,8 +346,10 @@
 .glass-effect {
     background: rgba(255, 255, 255, 0.82);
     backdrop-filter: blur(16px);
-    border: 1px solid rgba(148, 163, 184, 0.18);
-    box-shadow: 0 30px 80px rgba(15, 23, 42, 0.08);
+    border: 1px solid hsl(var(--border-subtle));
+    box-shadow:
+        0 12px 24px rgba(15, 23, 42, 0.08),
+        0 35px 90px rgba(15, 23, 42, 0.16);
 }
 
 .shimmer-effect {

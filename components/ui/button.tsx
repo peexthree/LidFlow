@@ -3,14 +3,14 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { clsx } from "clsx";
 
 const button = cva(
-  "inline-flex items-center justify-center rounded-xl2 px-4 py-2 text-sm font-medium border transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+  "inline-flex items-center justify-center rounded-xl2 px-4 py-2 text-sm font-medium border transition-colors duration-300 ease-figma-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
   {
     variants: {
       variant: {
         default:
           "bg-brand-500 text-white border-brand-500 hover:bg-brand-600",
-        ghost: "bg-transparent border-neutral-200 hover:bg-neutral-50",
-        outline: "bg-white border-neutral-300 hover:bg-neutral-100",
+        ghost: "bg-transparent border-subtle hover:bg-neutral-100",
+        outline: "bg-white border-subtle hover:bg-neutral-100",
       },
     },
     defaultVariants: { variant: "default" },
@@ -19,7 +19,7 @@ const button = cva(
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof button> {
+  VariantProps<typeof button> {
   asChild?: boolean;
   className?: string;
   children?: React.ReactNode;
