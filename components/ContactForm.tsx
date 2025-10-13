@@ -50,6 +50,7 @@ export function ContactForm() {
     setStatus("loading");
     setError(null);
 
+
     try {
       const response = await fetch("/api/telegram", {
         method: "POST",
@@ -74,61 +75,61 @@ export function ContactForm() {
   return (
     <form
       onSubmit={onSubmit}
-      className="relative rounded-2xl border border-neutral-200 bg-white/80 p-6 shadow-soft backdrop-blur"
+      className="relative rounded-2xl border border-white/10 bg-white/[0.05] p-6 shadow-[0_30px_100px_rgba(14,165,233,0.25)] backdrop-blur-xl"
     >
       <div className="grid gap-5">
         <div className="grid gap-2">
-          <label className="text-sm font-medium text-neutral-800" htmlFor="name">
+          <label className="text-sm font-medium text-white/70" htmlFor="name">
             Имя
           </label>
           <input
             id="name"
             name="name"
             required
-            className="h-12 w-full rounded-xl border border-neutral-200 bg-white px-3 text-base text-neutral-800 shadow-sm transition focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-200"
+            className="h-12 w-full rounded-xl border border-white/10 bg-white/[0.08] px-3 text-base text-white placeholder-white/50 shadow-sm transition focus:border-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-400/40"
             placeholder="Как к вам обращаться"
             autoComplete="name"
           />
         </div>
 
         <div className="grid gap-2">
-          <label className="text-sm font-medium text-neutral-800" htmlFor="contact">
+          <label className="text-sm font-medium text-white/70" htmlFor="contact">
             Контакт
           </label>
           <input
             id="contact"
             name="contact"
             required
-            className="h-12 w-full rounded-xl border border-neutral-200 bg-white px-3 text-base text-neutral-800 shadow-sm transition focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-200"
+            className="h-12 w-full rounded-xl border border-white/10 bg-white/[0.08] px-3 text-base text-white placeholder-white/50 shadow-sm transition focus:border-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-400/40"
             placeholder="Telegram или email"
             autoComplete="email"
           />
         </div>
 
         <div className="grid gap-2">
-          <label className="text-sm font-medium text-neutral-800" htmlFor="message">
+          <label className="text-sm font-medium text-white/70" htmlFor="message">
             Задача
           </label>
           <textarea
             id="message"
             name="message"
             rows={4}
-            className="w-full rounded-xl border border-neutral-200 bg-white px-3 py-2 text-base text-neutral-800 shadow-sm transition focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-200"
+            className="w-full rounded-xl border border-white/10 bg-white/[0.08] px-3 py-2 text-base text-white placeholder-white/50 shadow-sm transition focus:border-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-400/40"
             placeholder="Кратко опишите проект"
           />
         </div>
       </div>
 
-      <div className="mt-6 flex items-center justify-between gap-4">
+      <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <Button
           type="submit"
-          className="group inline-flex min-w-[180px] items-center justify-center gap-2 rounded-xl2 bg-brand-500 px-6 py-3 text-base font-semibold text-white shadow-[0_18px_40px_rgba(14,165,233,0.28)] transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-400 hover:shadow-[0_20px_45px_rgba(14,165,233,0.45)] disabled:cursor-not-allowed disabled:opacity-70"
+          className="group inline-flex min-w-[180px] items-center justify-center gap-2 rounded-xl2 bg-cyan-500 px-6 py-3 text-base font-semibold text-white shadow-[0_18px_45px_rgba(6,182,212,0.35)] transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:bg-cyan-400 hover:shadow-[0_22px_55px_rgba(6,182,212,0.45)] disabled:cursor-not-allowed disabled:opacity-70"
           disabled={isSending}
         >
           {isSending ? "Отправка..." : "Отправить заявку"}
         </Button>
         <p
-          className="text-sm text-neutral-500"
+          className="text-sm text-white/60"
           role="status"
           aria-live="polite"
         >
