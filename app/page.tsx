@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { clsx } from "clsx";
 
@@ -173,7 +174,7 @@ export default function Home() {
           <Hero highlights={heroHighlights} />
         </div>
 
-        <section className="container relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] px-6 py-12 shadow-[0_40px_120px_rgba(76,29,149,0.25)] backdrop-blur-2xl md:px-12 animate-fade-in-up">
+      <section className="container relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] px-6 py-12 shadow-[0_40px_120px_rgba(76,29,149,0.25)] backdrop-blur-2xl md:px-12 lg:overflow-visible animate-fade-in-up">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(168,85,247,0.35),_transparent_65%)] opacity-90" />
           <div className="relative space-y-10">
             <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
@@ -343,6 +344,20 @@ export default function Home() {
                   </figcaption>
                 </ElectricBorder>
               ))}
+            </div>
+              <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -right-24 bottom-[-140px] hidden lg:block lg:z-20"
+            >
+              <div className="relative h-[420px] w-[560px]">
+                <Image
+                  src="/tal2.webp"
+                  alt=""
+                  fill
+                  className="object-contain drop-shadow-[0_60px_140px_rgba(59,130,246,0.35)]"
+                  sizes="(min-width: 1024px) 560px"
+                />
+              </div>
             </div>
           </div>
         </section>
