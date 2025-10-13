@@ -408,16 +408,16 @@ export default function Home() {
           {/* Блок с изображением tal2.webp - Позиционирование в правом верхнем углу, поднято выше */}
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute top-[-160px] right-[-100px] hidden lg:block z-10" // <-- ИЗМЕНЕНО: top-[-160px] (поднято еще выше)
+             className="pointer-events-none absolute top-[-240px] right-[-180px] hidden lg:block z-10"
           >
-            <div className="relative h-[600px] w-[600px]"> 
+            <div className="relative h-[300px] w-[300px]">
               <Image
                 src="/tal2.webp"
                 alt="Талисман LidFlow"
                 fill
-                className="object-contain drop-shadow-[0_60px_140px_rgba(59,130,246,0.35)]"
-                sizes="(min-width: 1024px) 600px" 
-                priority 
+                className="object-contain drop-shadow-[0_32px_90px_rgba(59,130,246,0.28)]"
+                sizes="(min-width: 1024px) 400px"
+                priority
               />
             </div>
           </div>

@@ -30,10 +30,10 @@ export const electricBorderPalettes = {
     "--electric-glow-color": "rgba(251,191,36,0.35)",
   },
   green: {
-    "--electric-color-1": "hsla(162, 83%, 42%, 0.40)",
-    "--electric-color-2": "rgba(236,72,153,0.38)",
-    "--electric-color-3": "rgba(14,165,233,0.35)",
-    "--electric-glow-color": "rgba(251,191,36,0.35)",
+    "--electric-color-1": "hsla(162, 83%, 62%, 0.40)",
+    "--electric-color-2": "rgba(12, 191, 246, 0.38)",
+    "--electric-color-3": "rgba(34, 213, 222, 0.35)",
+    "--electric-glow-color": "rgba(222, 29, 203, 0.35)",
   },
 } as const satisfies Record<string, Record<`--${string}`, string>>;
 

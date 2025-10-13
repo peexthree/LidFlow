@@ -230,11 +230,11 @@ export function Hero({ highlights }: HeroProps) {
               <Image
                 src="/tal.webp"
                 alt="Иллюстрация талисмана LidFlow"
-                width={520}
-                height={640}
+                 width={640}
+                height={780}
                 priority
-                className="absolute -top-20 -right-14 z-20 h-auto w-[320px] max-w-none object-contain drop-shadow-[0_55px_150px_rgba(12,74,110,0.45)] sm:w-[400px] lg:w-[480px] xl:w-[520px]"
-                sizes="(min-width: 1280px) 520px, (min-width: 1024px) 480px, (min-width: 768px) 400px, 320px"
+                className="absolute -top-20 -right-14 z-20 h-auto w-[380px] max-w-none object-contain drop-shadow-[0_65px_170px_rgba(12,74,110,0.5)] sm:w-[470px] lg:w-[560px] xl:w-[620px]"
+                sizes="(min-width: 1536px) 620px, (min-width: 1280px) 560px, (min-width: 1024px) 470px, (min-width: 768px) 380px, 320px"
               />
             </div>
             <motion.figcaption

@@ -1,177 +1,43 @@
-import React, {
-  CSSProperties,
-  PropsWithChildren,
-  useCallback,
-  useEffect,
-  useId,
-  useLayoutEffect,
-  useRef
-} from 'react';
+import React, { CSSProperties, PropsWithChildren, useMemo } from 'react';
 
 import './ElectricBorder.css';
 
 type ElectricBorderProps = PropsWithChildren<{
   color?: string;
-  speed?: number;
-  chaos?: number;
   thickness?: number;
   className?: string;
   style?: CSSProperties;
 }>;
 
-type AnimateWithBegin = SVGAnimateElement & { beginElement?: () => void };
-type ElectricBorderCSSVars = CSSProperties & {
-  '--electric-border-color': string;
-  '--eb-border-width': string;
+type ElectricBorderStyleVars = CSSProperties & {
+  '--electric-border-color'?: string;
+  '--eb-border-width'?: string;
+  '--eb-border-glow'?: string;
 };
 
 const ElectricBorder: React.FC<ElectricBorderProps> = ({
   children,
   color = '#5227FF',
-  speed = 1,
-  chaos = 1,
   thickness = 2,
   className,
   style
 }: ElectricBorderProps) => {
-  const rawId = useId().replace(/[:]/g, '');
-  const filterId = `turbulent-displace-${rawId}`;
-  const svgRef = useRef<SVGSVGElement | null>(null);
-  const rootRef = useRef<HTMLDivElement | null>(null);
-  const strokeRef = useRef<HTMLDivElement | null>(null);
+  const mergedStyle = useMemo<ElectricBorderStyleVars>(
+    () => ({
+      '--electric-border-color': color,
+      '--eb-border-width': `${Math.max(0, thickness)}px`,
+      '--eb-border-glow': 'rgba(82, 39, 255, 0.35)',
+      ...(style ?? {})
+    }),
+    [color, thickness, style]
+  );
 
-  const updateAnim = useCallback(() => {
-    const svg = svgRef.current;
-    const host = rootRef.current;
-    if (!svg || !host) return;
-
-    if (strokeRef.current) {
-      strokeRef.current.style.filter = `url(#${filterId})`;
-    }
-
-    const width = Math.max(
-      1,
-      Math.round(host.clientWidth || host.getBoundingClientRect().width || 0)
-    );
-    const height = Math.max(
-      1,
-      Math.round(host.clientHeight || host.getBoundingClientRect().height || 0)
-    );
-
-    const dyAnims = Array.from(
-      svg.querySelectorAll<SVGAnimateElement>('feOffset > animate[attributeName="dy"]')
-    );
-    const [firstDy, secondDy] = dyAnims;
-    if (firstDy && secondDy) {
-      firstDy.setAttribute('values', `${height}; 0`);
-      secondDy.setAttribute('values', `0; -${height}`);
-    }
-
-    const dxAnims = Array.from(
-      svg.querySelectorAll<SVGAnimateElement>('feOffset > animate[attributeName="dx"]')
-    );
-    const [firstDx, secondDx] = dxAnims;
-    if (firstDx && secondDx) {
-      firstDx.setAttribute('values', `${width}; 0`);
-      secondDx.setAttribute('values', `0; -${width}`);
-    }
-
-    const baseDur = 6;
-    const dur = Math.max(0.001, baseDur / (speed || 1));
-    [...dyAnims, ...dxAnims].forEach(animation => animation.setAttribute('dur', `${dur}s`));
-
-    const disp = svg.querySelector('feDisplacementMap');
-    if (disp) disp.setAttribute('scale', String(30 * (chaos || 1)));
-
-    const filterEl = svg.querySelector<SVGFilterElement>(`#${CSS.escape(filterId)}`);
-    if (filterEl) {
-      filterEl.setAttribute('x', '-200%');
-      filterEl.setAttribute('y', '-200%');
-      filterEl.setAttribute('width', '500%');
-      filterEl.setAttribute('height', '500%');
-    }
-
-    const animElements: AnimateWithBegin[] = [...dyAnims, ...dxAnims];
-    requestAnimationFrame(() => {
-      animElements.forEach(animation => {
-        if (typeof animation.beginElement === 'function') {
-          try {
-            animation.beginElement();
-          } catch {
-            // Some browsers may throw when restarting SMIL animations; ignore gracefully.
-          }
-        }
-      });
-    });
-  }, [chaos, filterId, speed]);
-
-  useEffect(() => {
-    updateAnim();
-  }, [updateAnim]);
-
-  useLayoutEffect(() => {
-    const host = rootRef.current;
-    if (!host) return;
-
-    const ro = new ResizeObserver(() => updateAnim());
-    ro.observe(host);
-    updateAnim();
-    return () => ro.disconnect();
-  }, [updateAnim]);
-
-  const vars: ElectricBorderCSSVars = {
-    '--electric-border-color': color,
-    '--eb-border-width': `${thickness}px`
-  };
+  const classes = ['electric-border', className].filter(Boolean).join(' ');
 
   return (
-    <div ref={rootRef} className={`electric-border ${className ?? ''}`} style={{ ...vars, ...style }}>
-      <svg ref={svgRef} className="eb-svg" aria-hidden focusable="false">
-        <defs>
-          <filter id={filterId} colorInterpolationFilters="sRGB" x="-20%" y="-20%" width="140%" height="140%">
-            <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise1" seed="1" />
-            <feOffset in="noise1" dx="0" dy="0" result="offsetNoise1">
-              <animate attributeName="dy" values="700; 0" dur="6s" repeatCount="indefinite" calcMode="linear" />
-            </feOffset>
-
-            <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise2" seed="1" />
-            <feOffset in="noise2" dx="0" dy="0" result="offsetNoise2">
-              <animate attributeName="dy" values="0; -700" dur="6s" repeatCount="indefinite" calcMode="linear" />
-            </feOffset>
-
-            <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise1" seed="2" />
-            <feOffset in="noise1" dx="0" dy="0" result="offsetNoise3">
-              <animate attributeName="dx" values="490; 0" dur="6s" repeatCount="indefinite" calcMode="linear" />
-            </feOffset>
-
-            <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise2" seed="2" />
-            <feOffset in="noise2" dx="0" dy="0" result="offsetNoise4">
-              <animate attributeName="dx" values="0; -490" dur="6s" repeatCount="indefinite" calcMode="linear" />
-            </feOffset>
-
-            <feComposite in="offsetNoise1" in2="offsetNoise2" result="part1" />
-            <feComposite in="offsetNoise3" in2="offsetNoise4" result="part2" />
-            <feBlend in="part1" in2="part2" mode="color-dodge" result="combinedNoise" />
-            <feDisplacementMap
-              in="SourceGraphic"
-              in2="combinedNoise"
-              scale="30"
-              xChannelSelector="R"
-              yChannelSelector="B"
-            />
-          </filter>
-        </defs>
-
-        <title>Electric border animation filter</title>
-      </svg>
-
-      <div className="eb-layers">
-        <div ref={strokeRef} className="eb-stroke" />
-        <div className="eb-glow-1" />
-        <div className="eb-glow-2" />
-        <div className="eb-background-glow" />
-      </div>
-
+    <div className={classes} style={mergedStyle}>
+      <div className="eb-outline" aria-hidden />
+      <div className="eb-glow" aria-hidden />
       <div className="eb-content">{children}</div>
     </div>
   );

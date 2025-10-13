@@ -176,11 +176,11 @@ export function Hero() {
                 <Image
                   src="/tal.webp"
                   alt="Футуристичный талисман LidFlow"
-                  width={640}
-                  height={640}
+                width={760}
+                  height={760}
                   priority
-                  sizes="(min-width: 1280px) 520px, (min-width: 768px) 420px, 320px"
-                  className="relative z-20 w-full max-w-[520px] -translate-y-4 translate-x-2 drop-shadow-[0_40px_80px_rgba(59,130,246,0.45)]"
+                  sizes="(min-width: 1280px) 620px, (min-width: 1024px) 540px, (min-width: 768px) 460px, 340px"
+                  className="relative z-20 w-full max-w-[620px] -translate-y-6 translate-x-4 drop-shadow-[0_40px_90px_rgba(59,130,246,0.45)]"
                 />
 
                 <div
