@@ -63,7 +63,8 @@
 
     *,
     *::before,
-    *::after {
+    *::after 
+    {
         box-sizing: border-box;
         border-color: hsl(var(--border));
     }
