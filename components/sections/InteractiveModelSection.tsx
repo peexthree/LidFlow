@@ -6,32 +6,34 @@ import { useGLTF } from "@react-three/drei";
 import { clsx } from "clsx";
 import * as THREE from "three";
 
-// --- Настройки Сцены и Модели (СКОРРЕКТИРОВАННЫЕ ДЛЯ КРУТОГО ЭФФЕКТА) ---
-const CAMERA_FOV = 40; // Уменьшим FOV для более сильного ощущения перспективы
-const CAMERA_Z_POSITION = 10; // СИЛЬНО отодвигаем камеру, чтобы вместить крупную модель
-const MODEL_SCALE = 5.0; // Значительно увеличенный масштаб (с 1.7 до 5.0)
+// --- Настройки Сцены и Модели (ФИНАЛЬНАЯ КОНФИГУРАЦИЯ) ---
+const CAMERA_FOV = 40; 
+const CAMERA_Z_POSITION = 12; // СИЛЬНО отодвинутая камера
+const MODEL_SCALE = 8.0; // Значительно увеличенный масштаб (если мало, увеличьте до 10-15)
 const INITIAL_ROTATION_Y = -Math.PI / 4; 
 
-// СНИЖАЕМ чувствительность мыши, чтобы модель плавно ВРАЩАЛАСЬ, а не "прыгала"
-const MOUSE_ROTATION_FACTOR = 0.02; // Снижено с 0.1 до 0.02
-const MOUSE_LERP_SPEED = 0.05; // Сделаем вращение более плавным
-const SCROLL_SPEED_FACTOR = 0.012; 
+// Чувствительность мыши (очень низкая, чтобы избежать "прыжков" - только плавное вращение)
+const MOUSE_ROTATION_FACTOR = 0.015; 
+const MOUSE_LERP_SPEED = 0.05; 
+
+// Скорость параллакса
+const SCROLL_SPEED_FACTOR = 0.008; // Ещё немного снизим, чтобы движение было минимальным
 const SCROLL_LERP_SPEED = 0.08;
 
-// Сдвигаем модель вниз для центрирования
-const INITIAL_MODEL_Y_OFFSET = -1.5; 
+// Сдвигаем модель вниз для лучшего центрирования (возможно, потребуется подгонка)
+const INITIAL_MODEL_Y_OFFSET = -2.5; 
 
 // ------------------------------------------------------------------------
 // 1. Компонент 3D-модели и логика анимации
 // ------------------------------------------------------------------------
 
 const MascotModel: React.FC = () => {
-    // ВАЖНО: Убедитесь, что модель "/model.glb" лежит в папке 'public'
     const { scene } = useGLTF("/model.glb"); 
     const modelRef = useRef<THREE.Group | null>(null);
 
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-    const [scrollTop, setScrollTop] = useState(0);
+    // НОВОЕ СОСТОЯНИЕ для Lenis:
+    const [lenisScrollY, setLenisScrollY] = useState(0); 
 
     // Инициализация позиции и подписки на события
     useEffect(() => {
@@ -46,18 +48,36 @@ const MascotModel: React.FC = () => {
             setMousePosition({ x, y });
         };
 
-        const handleScroll = () => {
-            setScrollTop(document.documentElement.scrollTop);
-        };
+        // --- ИСПРАВЛЕНИЕ: ПЕРЕХВАТ СОБЫТИЯ СКРОЛЛА ОТ LENIS ---
+        
+        // Проверяем, существует ли глобальный объект Lenis (если он инициализирован где-то выше)
+        const checkLenis = () => {
+            // @ts-ignore
+            if (window.lenis) { 
+                // @ts-ignore
+                window.lenis.on('scroll', ({ scroll }) => {
+                    setLenisScrollY(scroll);
+                });
+            } else {
+                // Если Lenis нет, используем стандартный скролл (резервный вариант)
+                const handleStandardScroll = () => {
+                    setLenisScrollY(document.documentElement.scrollTop);
+                };
+                window.addEventListener("scroll", handleStandardScroll, { passive: true });
+                return () => window.removeEventListener("scroll", handleStandardScroll);
+            }
+        }
+        
+        // Поскольку Lenis обычно инициализируется после загрузки, делаем задержку
+        const lenisTimeout = setTimeout(checkLenis, 500);
 
-        handleScroll();
 
         window.addEventListener("mousemove", handleMouseMove);
-        window.addEventListener("scroll", handleScroll, { passive: true });
 
         return () => {
             window.removeEventListener("mousemove", handleMouseMove);
-            window.removeEventListener("scroll", handleScroll);
+            clearTimeout(lenisTimeout);
+            // Здесь может потребоваться отписка от события Lenis, если оно было найдено.
         };
     }, []);
 
@@ -67,29 +87,29 @@ const MascotModel: React.FC = () => {
         }
 
         // --- 1. ПАРАЛЛАКС СКРОЛЛА (вертикальное плавание) ---
-        const parallaxOffset = -scrollTop * SCROLL_SPEED_FACTOR + INITIAL_MODEL_Y_OFFSET;
+        // Используем lenisScrollY
+        const parallaxOffset = -lenisScrollY * SCROLL_SPEED_FACTOR + INITIAL_MODEL_Y_OFFSET;
         
         // Ограничиваем вертикальное смещение
-        const clampedY = THREE.MathUtils.clamp(parallaxOffset, -3, 0.5); 
+        const clampedY = THREE.MathUtils.clamp(parallaxOffset, -4, 0.5); 
         
         modelRef.current.position.y = THREE.MathUtils.lerp(
             modelRef.current.position.y,
             clampedY,
-            SCROLL_LERP_SPEED // Плавность скролла
+            SCROLL_LERP_SPEED 
         );
 
-        // --- 2. ПЛАВНОЕ ВРАЩЕНИЕ ОТ МЫШИ (ОБЪЕМНЫЙ ЭФФЕКТ) ---
-        // Множитель MOUSE_ROTATION_FACTOR очень мал, чтобы модель лишь слегка наклонялась
+        // --- 2. ПЛАВНОЕ ВРАЩЕНИЕ ОТ МЫШИ (объемный эффект) ---
+        
         const targetRotationX = mousePosition.y * MOUSE_ROTATION_FACTOR;
         const targetRotationY = -mousePosition.x * MOUSE_ROTATION_FACTOR + INITIAL_ROTATION_Y;
 
-        // Плавное вращение по X (вверх/вниз)
+        // Плавное вращение (убрали "прыжки" благодаря очень малому MOUSE_ROTATION_FACTOR)
         modelRef.current.rotation.x = THREE.MathUtils.lerp(
             modelRef.current.rotation.x,
             targetRotationX,
             MOUSE_LERP_SPEED 
         );
-        // Плавное вращение по Y (влево/вправо)
         modelRef.current.rotation.y = THREE.MathUtils.lerp(
             modelRef.current.rotation.y,
             targetRotationY,
@@ -101,7 +121,6 @@ const MascotModel: React.FC = () => {
         <primitive 
             object={scene.clone()} 
             ref={modelRef} 
-            // Крупный масштаб
             scale={MODEL_SCALE} 
             rotation={[0, INITIAL_ROTATION_Y, 0]}
         />
@@ -142,7 +161,7 @@ export const InteractiveModelSection: React.FC<InteractiveModelSectionProps> = (
                 <div className="relative w-full max-w-4xl">
                     <div className="pointer-events-none absolute inset-0 rounded-[2.5rem] border border-cyan-400/40 bg-gradient-to-br from-cyan-400/30 via-transparent to-fuchsia-500/20 blur-[90px]" />
                     <div className="relative overflow-hidden rounded-[2.5rem] border border-white/15 bg-slate-950/60 p-2 backdrop-blur-xl">
-                        {/* Увеличение высоты фрейма (Canvas) */}
+                        {/* Высота увеличена, чтобы вместить крупную модель */}
                         <Canvas className="h-[550px] w-full" camera={{ fov: CAMERA_FOV, position: [0, 0, CAMERA_Z_POSITION] }}>
                             <ambientLight intensity={1.5} />
                             <directionalLight position={[4, 6, 6]} intensity={1.8} castShadow />
