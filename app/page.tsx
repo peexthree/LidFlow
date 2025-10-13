@@ -1,20 +1,12 @@
-import type { CSSProperties } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { clsx } from "clsx";
 
 import { ContactForm } from "@/components/ContactForm";
 import { Hero, type HeroHighlight } from "@/components/sections/Hero";
+import { PortfolioShowcase, type ProjectShowcaseItem } from "@/components/sections/PortfolioShowcase";
 import { ElectricBorder } from "@/components/ui/ElectricBorder";
 import { Button } from "@/components/ui/button";
-type ProjectCard = {
-  title: string;
-  description: string;
-  tag: string;
-  href?: string;
-  image: string;
-  linkLabel: string;
-};
+import { paletteStyle } from "@/utils/electricPalettes";
 
 const heroHighlights: ReadonlyArray<HeroHighlight> = [
   {
@@ -52,7 +44,7 @@ const benefits = [
   },
 ];
 
-const projects: ReadonlyArray<ProjectCard> = [
+const projects: ReadonlyArray<ProjectShowcaseItem> = [
   {
     title: "Akulenok — сайт-визитка",
     description:
@@ -148,35 +140,7 @@ const testimonials = [
       "Мощная связка дизайна и кода. Все гипотезы внедряются в тот же день, аналитика показывает рост конверсии.",
   },
 ] as const;
-const electricBorderPalettes = {
-  cyan: {
-    "--electric-color-1": "rgba(14,165,233,0.28)",
-    "--electric-color-2": "rgba(79,70,229,0.55)",
-    "--electric-color-3": "rgba(236,72,153,0.45)",
-    "--electric-glow-color": "rgba(34,211,238,0.35)",
-  },
-  blue: {
-    "--electric-color-1": "rgba(59,130,246,0.32)",
-    "--electric-color-2": "rgba(14,165,233,0.5)",
-    "--electric-color-3": "rgba(147,51,234,0.48)",
-    "--electric-glow-color": "rgba(59,130,246,0.32)",
-  },
-  violet: {
-    "--electric-color-1": "rgba(168,85,247,0.38)",
-    "--electric-color-2": "rgba(236,72,153,0.48)",
-    "--electric-color-3": "rgba(59,130,246,0.35)",
-    "--electric-glow-color": "rgba(168,85,247,0.38)",
-  },
-  amber: {
-    "--electric-color-1": "rgba(251,191,36,0.4)",
-    "--electric-color-2": "rgba(236,72,153,0.38)",
-    "--electric-color-3": "rgba(14,165,233,0.35)",
-    "--electric-glow-color": "rgba(251,191,36,0.35)",
-  },
-} as const satisfies Record<string, Record<`--${string}`, string>>;
 
-const paletteStyle = (palette: keyof typeof electricBorderPalettes): CSSProperties =>
-  electricBorderPalettes[palette] as CSSProperties;
 export default function Home() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#050816] text-slate-200">
@@ -234,68 +198,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="container relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] px-6 py-12 shadow-[0_45px_140px_rgba(37,99,235,0.28)] backdrop-blur-2xl md:px-12 animate-fade-in-up">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom,_rgba(6,182,212,0.25),_transparent_70%)]" />
-          <div className="relative space-y-10">
-            <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-              <div className="space-y-3">
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs uppercase tracking-[0.28em] text-white/60">
-                  Портфолио
-                </span>
-                <h2 className="text-3xl font-semibold text-white md:text-4xl">
-                  Недавние проекты
-                </h2>
-                <p className="text-slate-300">
-                  Настоящие ссылки — по запросу. Ниже часть публичных работ.
-                </p>
-              </div>
-              <span className="text-sm text-white/60">
-                Ещё кейсы обсудим при созвоне
-              </span>
-            </div>
-            <div className="grid gap-6 md:grid-cols-3">
-              {projects.map((project) => (
-                <ElectricBorder
-                  key={project.title}
-                  as="article"
-                  className="group relative h-full transition-transform duration-500 hover:-translate-y-2 [--electric-radius:1.5rem]"
-                  contentClassName="relative flex h-full flex-col overflow-hidden bg-white/[0.04] p-6 shadow-[0_30px_100px_rgba(59,130,246,0.22)] transition-colors duration-500 group-hover:bg-white/[0.06]"
-                  style={paletteStyle("blue")}
-                >
-                  <div className="relative aspect-[4/3] overflow-hidden">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      className="object-cover transition duration-500 group-hover:scale-105"
-                      sizes="(min-width: 1024px) 350px, (min-width: 768px) 45vw, 90vw"
-                    />
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#050816] via-transparent to-transparent" />
-                  </div>
-                  <div className="relative flex flex-1 flex-col gap-3 p-6">
-                    <span className="text-xs font-semibold uppercase tracking-[0.28em] text-white/50">
-                      {project.tag}
-                    </span>
-                    <h3 className="text-lg font-semibold text-white">{project.title}</h3>
-                    <p className="flex-1 text-sm text-slate-300">{project.description}</p>
-                    {project.href ? (
-                      <a
-                        href={project.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-2 text-sm font-medium text-cyan-300 transition hover:text-cyan-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050816]"
-                      >
-                        {project.linkLabel}
-                      </a>
-                    ) : (
-                      <span className="text-sm text-white/50">{project.linkLabel}</span>
-                    )}
-                  </div>
-                </ElectricBorder>
-              ))}
-            </div>
-          </div>
-        </section>
+        <PortfolioShowcase projects={projects} />
 
         <section className="container relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] px-6 py-12 shadow-[0_40px_120px_rgba(76,29,149,0.25)] backdrop-blur-2xl md:px-12 animate-fade-in-up">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.28),_transparent_70%)]" />
