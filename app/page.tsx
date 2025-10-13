@@ -7,9 +7,9 @@ import { clsx } from "clsx";
 import { ContactForm } from "@/components/ContactForm";
 import { Hero, type HeroHighlight } from "@/components/sections/Hero";
 import { PortfolioShowcase, type ProjectShowcaseItem } from "@/components/sections/PortfolioShowcase";
-import { ElectricBorder } from "@/components/ui/ElectricBorder";
+
 import { Button } from "@/components/ui/button";
-import { paletteStyle } from "@/utils/electricPalettes";
+
 
 
 // --- ОПРЕДЕЛЕНИЯ ВСЕХ КОНСТАНТ ---
@@ -180,15 +180,9 @@ export default function Home() {
           <Hero highlights={heroHighlights} />
         </div>
 
-        {/* Секция Преимущества с ElectricBorder на секции */}
-        <ElectricBorder
-          as="section"
-          animated // Включаем анимацию для всей секции
-          className="container rounded-3xl animate-fade-in-up"
-          // contentClassName содержит стили, которые были у <section> ранее
-          contentClassName="overflow-hidden border border-white/10 bg-white/[0.03] px-6 py-12 shadow-[0_40px_120px_rgba(76,29,149,0.25)] backdrop-blur-2xl md:px-12"
-          color="#7c3aed" // Цвет рамки для секции
-          style={paletteStyle("violet")} // Определяем палитру для внутренних элементов, если нужно
+        {/* Секция Преимущества без электрических рамок */}
+        <section
+          className="container relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] px-6 py-12 shadow-[0_40px_120px_rgba(76,29,149,0.25)] backdrop-blur-2xl animate-fade-in-up md:px-12"
         >
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(168,85,247,0.35),_transparent_65%)] opacity-90" />
           <div className="relative space-y-10">
@@ -211,14 +205,9 @@ export default function Home() {
             </div>
             <div className="grid gap-6 md:grid-cols-3">
               {benefits.map((benefit) => (
-                <ElectricBorder
+                <article
                   key={benefit.title}
-                  as="article"
-                  // Удаляем transition-transform hover:-translate-y-2, если не нужно, или оставляем для эффекта внутри карточки
-                  className="group relative h-full [--electric-radius:1.5rem] transition-transform duration-500 hover:-translate-y-2"
-                  animated={false} // Отключаем анимацию для отдельных карточек
-                  contentClassName="relative z-10 flex h-full flex-col overflow-hidden bg-white/[0.05] p-6 shadow-[0_25px_80px_rgba(14,165,233,0.18)] transition-colors duration-500 group-hover:bg-white/[0.07]"
-                  style={paletteStyle("cyan")}
+                  className="group relative h-full overflow-hidden rounded-3xl border border-white/10 bg-white/[0.05] p-6 shadow-[0_25px_80px_rgba(14,165,233,0.18)] transition-transform duration-500 hover:-translate-y-2 transition-colors group-hover:bg-white/[0.07]"
                 >
                   <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(14,165,233,0.35),_transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="relative z-10 space-y-3">
@@ -228,32 +217,19 @@ export default function Home() {
                     <h3 className="text-xl font-semibold text-white">{benefit.title}</h3>
                     <p className="text-sm text-slate-300">{benefit.description}</p>
                   </div>
-                </ElectricBorder>
+                </article>
               ))}
             </div>
           </div>
-        </ElectricBorder>
+        </section>
 
-        {/* PortfolioShowcase теперь тоже обернут в ElectricBorder */}
-        <ElectricBorder
-          as="section"
-          animated
-          className="container rounded-3xl animate-fade-in-up"
-          contentClassName="relative overflow-hidden border border-white/10 bg-white/[0.03] px-6 py-12 shadow-[0_45px_140px_rgba(34,197,94,0.28)] backdrop-blur-2xl md:px-12"
-          color="#22c55e"
-          style={paletteStyle("green")}
-        >
+        <div className="animate-fade-in-up">
           <PortfolioShowcase projects={projects} />
-        </ElectricBorder>
+        </div>
 
-        {/* Секция Процесс с ElectricBorder на секции */}
-        <ElectricBorder
-          as="section"
-          animated
-          className="container rounded-3xl animate-fade-in-up"
-          contentClassName="overflow-hidden border border-white/10 bg-white/[0.03] px-6 py-12 shadow-[0_40px_120px_rgba(76,29,149,0.25)] backdrop-blur-2xl md:px-12"
-          color="#3b82f6"
-          style={paletteStyle("blue")}
+        {/* Секция Процесс */}
+        <section
+          className="container relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] px-6 py-12 shadow-[0_40px_120px_rgba(76,29,149,0.25)] backdrop-blur-2xl animate-fade-in-up md:px-12"
         >
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.28),_transparent_70%)]" />
           <div className="relative space-y-10">
@@ -268,13 +244,9 @@ export default function Home() {
             </div>
             <ol className="grid gap-6 md:grid-cols-4">
               {processSteps.map((step, index) => (
-                <ElectricBorder
+                <li
                   key={step.title}
-                  as="li"
-                  className="group relative h-full transition-transform duration-500 hover:-translate-y-2 [--electric-radius:1.5rem]"
-                  animated={false}
-                  contentClassName="relative z-10 flex h-full flex-col justify-between overflow-hidden bg-white/[0.05] p-6 shadow-[0_25px_80px_rgba(168,85,247,0.2)] transition-colors duration-500 group-hover:bg-white/[0.07]"
-                  style={paletteStyle("violet")}
+                  className="group relative h-full overflow-hidden rounded-3xl border border-white/10 bg-white/[0.05] p-6 shadow-[0_25px_80px_rgba(168,85,247,0.2)] transition-transform duration-500 hover:-translate-y-2 transition-colors group-hover:bg-white/[0.07]"
                 >
                   <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(236,72,153,0.3),_transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="relative z-10 space-y-3">
@@ -282,20 +254,15 @@ export default function Home() {
                     <h3 className="text-lg font-semibold text-white">{step.title}</h3>
                     <p className="text-sm text-slate-300">{step.description}</p>
                   </div>
-                </ElectricBorder>
+                </li>
               ))}
             </ol>
           </div>
-        </ElectricBorder>
+        </section>
 
-        {/* Секция Стоимость с ElectricBorder на секции */}
-        <ElectricBorder
-          as="section"
-          animated
-          className="container rounded-3xl animate-fade-in-up"
-          contentClassName="overflow-hidden border border-white/10 bg-white/[0.03] px-6 py-12 shadow-[0_45px_140px_rgba(14,165,233,0.28)] backdrop-blur-2xl md:px-12"
-          color="#22d3ee"
-          style={paletteStyle("cyan")}
+        {/* Секция Стоимость */}
+        <section
+          className="container relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] px-6 py-12 shadow-[0_45px_140px_rgba(14,165,233,0.28)] backdrop-blur-2xl animate-fade-in-up md:px-12"
         >
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(14,165,233,0.28),_transparent_70%)]" />
           <div className="relative space-y-10">
@@ -312,18 +279,14 @@ export default function Home() {
             </div>
             <div className="grid gap-6 md:grid-cols-3">
               {pricingPlans.map((plan) => (
-                <ElectricBorder
+                <article
                   key={plan.name}
-                  as="article"
-                  className="group relative h-full transition-transform duration-500 hover:-translate-y-2 [--electric-radius:1.5rem]"
-                  animated={false}
-                  contentClassName={clsx(
-                    "relative z-10 flex h-full flex-col gap-6 overflow-hidden p-6 shadow-[0_30px_100px_rgba(6,182,212,0.25)] transition-colors duration-500",
+                  className={clsx(
+                    "group relative flex h-full flex-col gap-6 overflow-hidden rounded-3xl border border-white/10 p-6 shadow-[0_30px_100px_rgba(6,182,212,0.25)] transition-transform duration-500 hover:-translate-y-2 transition-colors",
                     plan.popular
                       ? "bg-gradient-to-b from-cyan-400/20 via-transparent to-transparent"
                       : "bg-white/[0.05]"
                   )}
-                  style={paletteStyle(plan.popular ? "cyan" : "blue")}
                 >
                   <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(6,182,212,0.3),_transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="relative z-10 flex flex-1 flex-col gap-6">
@@ -348,25 +311,19 @@ export default function Home() {
                       <Link href="#contact">Хочу такой</Link>
                     </Button>
                   </div>
-                </ElectricBorder>
+                </article>
               ))}
             </div>
           </div>
-        </ElectricBorder>
+        </section>
 
-        {/* Секция Отзывы с ElectricBorder на секции и талисманом */}
-        <ElectricBorder
-          as="section"
-          animated
-          className="container rounded-3xl animate-fade-in-up"
-          // Для секции отзывов overflow-visible нужен, чтобы изображение выходило за ее пределы
-          contentClassName="relative overflow-visible border border-white/10 bg-white/[0.03] px-6 py-12 shadow-[0_40px_120px_rgba(76,29,149,0.25)] backdrop-blur-2xl md:px-12"
-          color="#a855f7"
-          style={paletteStyle("violet")}
+        {/* Секция Отзывы */}
+        <section
+          className="container relative overflow-visible rounded-3xl border border-white/10 bg-white/[0.03] px-6 py-12 shadow-[0_40px_120px_rgba(76,29,149,0.25)] backdrop-blur-2xl animate-fade-in-up md:px-12"
         >
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom,_rgba(168,85,247,0.3),_transparent_70%)]" />
-          
-          <div className="relative space-y-10 z-20"> {/* Добавляем z-20, чтобы контент был над изображением */}
+
+          <div className="relative z-20 space-y-10"> {/* Добавляем z-20, чтобы контент был над изображением */}
             <div className="space-y-4">
               <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs uppercase tracking-[0.28em] text-white/60">
                 Отзывы
@@ -378,17 +335,13 @@ export default function Home() {
                 Работаем прозрачно: регулярные созвоны, понятные отчёты по аналитике, быстро реагируем на гипотезы.
               </p>
             </div>
-            
+
             {/* Контейнер для отзывов, чтобы оставить место для талисмана */}
             <div className="grid gap-6 md:grid-cols-3">
               {testimonials.map((testimonial) => (
-                <ElectricBorder
+                <figure
                   key={testimonial.name}
-                  as="figure"
-                  className="group relative h-full transition-transform duration-500 hover:-translate-y-2 [--electric-radius:1.5rem]"
-                  animated={false} // Отключаем анимацию для отдельных карточек
-                  contentClassName="relative z-10 flex h-full flex-col justify-between overflow-hidden bg-white/[0.05] p-6 shadow-[0_25px_80px_rgba(168,85,247,0.2)] transition-colors duration-500 group-hover:bg-white/[0.07]"
-                  style={paletteStyle("violet")}
+                  className="group relative h-full overflow-hidden rounded-3xl border border-white/10 bg-white/[0.05] p-6 shadow-[0_25px_80px_rgba(168,85,247,0.2)] transition-transform duration-500 hover:-translate-y-2 transition-colors group-hover:bg-white/[0.07]"
                 >
                   <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(236,72,153,0.32),_transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <blockquote className="relative z-10 text-base text-slate-200">
@@ -400,15 +353,15 @@ export default function Home() {
                       {testimonial.role}
                     </div>
                   </figcaption>
-                </ElectricBorder>
+                </figure>
               ))}
             </div>
           </div>
-          
+
           {/* Блок с изображением tal2.webp - Позиционирование в правом верхнем углу, поднято выше */}
           <div
             aria-hidden="true"
-             className="pointer-events-none absolute top-[-240px] right-[-180px] hidden lg:block z-10"
+            className="pointer-events-none absolute top-[-240px] right-[-180px] hidden lg:block z-10"
           >
             <div className="relative h-[300px] w-[300px]">
               <Image
@@ -421,16 +374,12 @@ export default function Home() {
               />
             </div>
           </div>
-        </ElectricBorder>
+        </section>
 
-        {/* Секция Контакты с ElectricBorder на секции */}
-        <ElectricBorder
-          as="section"
-          animated
-          className="container rounded-3xl animate-fade-in-up"
-          contentClassName="overflow-hidden border border-white/10 bg-gradient-to-br from-white/[0.04] via-white/[0.02] to-transparent px-6 py-16 shadow-[0_50px_160px_rgba(14,165,233,0.35)] backdrop-blur-2xl md:grid md:grid-cols-[minmax(0,1fr)_380px] md:gap-12 md:px-12"
-          color="#06b6d4"
-          style={paletteStyle("cyan")}
+        {/* Секция Контакты */}
+        <section
+          id="contact"
+          className="container relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.04] via-white/[0.02] to-transparent px-6 py-16 shadow-[0_50px_160px_rgba(14,165,233,0.35)] backdrop-blur-2xl animate-fade-in-up md:grid md:grid-cols-[minmax(0,1fr)_380px] md:gap-12 md:px-12"
         >
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(6,182,212,0.28),_transparent_65%)]" />
           <div className="relative space-y-6">
@@ -462,7 +411,7 @@ export default function Home() {
           <div className="relative mt-10 md:mt-0">
             <ContactForm />
           </div>
-        </ElectricBorder>
+        </section>
       </div>
     </div>
   );

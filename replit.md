@@ -129,7 +129,7 @@ Preferred communication style: Simple, everyday language.
 **Sitemap & Robots**
 - Programmatic sitemap generation via `sitemap.ts`
 - Robot.txt configuration via `robots.ts`
-- Priority-based page hierarchy (homepage priority 1.0, designer 0.6)
+- Priority-based page hierarchy for the homepage (priority 1.0)
 
 ### Build & Deployment
 
