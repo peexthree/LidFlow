@@ -66,7 +66,7 @@ export function VideoIntro({ children }: VideoIntroProps) {
         <div
           aria-hidden
           className={clsx(
-            "fixed inset-0 z-50 flex items-center justify-center bg-black transition-opacity duration-700 ease-out",
+            "fixed inset-0 z-50 flex items-center justify-center bg-white transition-opacity duration-700 ease-out",
             phase === "fading" ? "pointer-events-none opacity-0" : "pointer-events-auto opacity-100",
           )}
         >
@@ -75,7 +75,7 @@ export function VideoIntro({ children }: VideoIntroProps) {
             muted
             playsInline
             preload="auto"
-            className="h-full w-full object-cover"
+            className="h-[512px] w-[512px] max-h-[80vh] max-w-[90vw] rounded-3xl object-contain"
             onEnded={finishIntro}
             onError={finishIntro}
           >

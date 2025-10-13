@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Analytics } from "@vercel/analytics/react";
 
 import "./globals.css";
-import { FloatingOrbs, CursorTrail } from "@/components/ui/VisualEffects";
+import { FloatingOrbs } from "@/components/ui/VisualEffects";
 import { VideoIntro } from "@/components/VideoIntro";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://lidflow.vercel.app";
 
@@ -108,7 +108,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </div>
             </header>
             <FloatingOrbs />
-            <CursorTrail />
+
             <main className="flex-1">{children}</main>
             <footer className="border-t border-neutral-200 glass-effect">
               <div className="container flex flex-col gap-3 py-10 text-sm text-neutral-500">
