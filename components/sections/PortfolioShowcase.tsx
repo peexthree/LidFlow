@@ -1,9 +1,33 @@
+"use client";
+
 import Image from "next/image";
 import { clsx } from "clsx";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type PointerEvent as ReactPointerEvent,
+  type FocusEvent as ReactFocusEvent,
+} from "react";
 
 import { ElectricBorder } from "@/components/ui/ElectricBorder";
 import type { ElectricPaletteKey } from "@/utils/electricPalettes";
 import { paletteStyle } from "@/utils/electricPalettes";
+
+type ProjectPreviewMedia = {
+  src: string;
+  /**
+   * Используется как fallback-постер для видео-анимации.
+   */
+  poster?: string;
+  /**
+   * Дополнительный альтернативный текст для описания анимации.
+   */
+  alt?: string;
+  type?: "video" | "image";
+};
 
 export type ProjectShowcaseItem = {
   title: string;
@@ -12,6 +36,7 @@ export type ProjectShowcaseItem = {
   image: string;
   linkLabel: string;
   href?: string;
+  preview?: ProjectPreviewMedia;
 };
 
 type PortfolioShowcaseProps = {
@@ -32,10 +57,158 @@ const badgeAccent = [
   "bg-gradient-to-r from-amber-400/30 via-rose-400/20 to-transparent text-amber-100",
 ] as const;
 
+type PreviewStyle = {
+  top: number;
+  left: number;
+  width: number;
+  height: number;
+};
+
+const PREVIEW_ASPECT_RATIO = 16 / 9;
+const PREVIEW_MAX_WIDTH = 320;
+const PREVIEW_MARGIN = 16;
+const PREVIEW_GAP = 20;
+
+const computePreviewStyle = (rect: DOMRect): PreviewStyle | null => {
+  if (typeof window === "undefined") {
+    return null;
+  }
+
+  const viewportWidth = window.innerWidth;
+  const viewportHeight = window.innerHeight;
+
+  const width = Math.min(
+    PREVIEW_MAX_WIDTH,
+    Math.max(220, viewportWidth - PREVIEW_MARGIN * 2)
+  );
+  const height = Math.round(width / PREVIEW_ASPECT_RATIO);
+
+  let top = rect.top - height - PREVIEW_GAP;
+  const fitsAbove = top >= PREVIEW_MARGIN;
+  if (!fitsAbove) {
+    top = rect.bottom + PREVIEW_GAP;
+  }
+
+  const maxTop = viewportHeight - height - PREVIEW_MARGIN;
+  top = Math.min(Math.max(PREVIEW_MARGIN, top), Math.max(PREVIEW_MARGIN, maxTop));
+
+  let left = rect.left + rect.width / 2 - width / 2;
+  const maxLeft = viewportWidth - width - PREVIEW_MARGIN;
+  left = Math.min(Math.max(PREVIEW_MARGIN, left), Math.max(PREVIEW_MARGIN, maxLeft));
+
+  return { top, left, width, height } satisfies PreviewStyle;
+};
+
 /**
  * Витрина портфолио с электрическими рамками и свечением, повторяющая композицию из референса.
  */
 export function PortfolioShowcase({ projects }: PortfolioShowcaseProps) {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [previewStyle, setPreviewStyle] = useState<PreviewStyle | null>(null);
+  const activeElementRef = useRef<HTMLElement | null>(null);
+
+  const hidePreview = useCallback(() => {
+    setActiveIndex(null);
+    setPreviewStyle(null);
+    activeElementRef.current = null;
+  }, []);
+
+  const updatePreview = useCallback(() => {
+    const element = activeElementRef.current;
+    if (!element) {
+      return;
+    }
+    const rect = element.getBoundingClientRect();
+    const nextStyle = computePreviewStyle(rect);
+    if (nextStyle) {
+      setPreviewStyle(nextStyle);
+    }
+  }, []);
+
+  const showPreview = useCallback(
+    (index: number, element: HTMLElement | null) => {
+      if (!element) {
+        return;
+      }
+
+      activeElementRef.current = element;
+      setActiveIndex(index);
+
+      const rect = element.getBoundingClientRect();
+      const nextStyle = computePreviewStyle(rect);
+      if (nextStyle) {
+        setPreviewStyle(nextStyle);
+      }
+    },
+    []
+  );
+
+  useEffect(() => {
+    if (activeIndex === null) {
+      return;
+    }
+
+    updatePreview();
+    window.addEventListener("resize", updatePreview);
+    window.addEventListener("scroll", updatePreview, true);
+
+    return () => {
+      window.removeEventListener("resize", updatePreview);
+      window.removeEventListener("scroll", updatePreview, true);
+    };
+  }, [activeIndex, updatePreview]);
+
+  const handlePointerEnter = useCallback(
+    (index: number) => (event: ReactPointerEvent<HTMLElement>) => {
+      showPreview(index, event.currentTarget);
+    },
+    [showPreview]
+  );
+
+  const handlePointerDown = useCallback(
+    (index: number) => (event: ReactPointerEvent<HTMLElement>) => {
+      showPreview(index, event.currentTarget);
+    },
+    [showPreview]
+  );
+
+  const handlePointerLeave = useCallback(() => {
+    hidePreview();
+  }, [hidePreview]);
+
+  const handlePointerUp = useCallback(
+    (event: ReactPointerEvent<HTMLElement>) => {
+      if (event.pointerType === "touch") {
+        hidePreview();
+      }
+    },
+    [hidePreview]
+  );
+
+  const handleFocus = useCallback(
+    (index: number) => (event: ReactFocusEvent<HTMLElement>) => {
+      showPreview(index, event.currentTarget);
+    },
+    [showPreview]
+  );
+
+  const handleBlur = useCallback(() => {
+    hidePreview();
+  }, [hidePreview]);
+
+  const previewContent = useMemo(() => {
+    if (activeIndex === null) {
+      return null;
+    }
+
+    const project = projects[activeIndex];
+    if (!project) {
+      return null;
+    }
+
+    return project.preview;
+  }, [activeIndex, projects]);
+
   return (
     <section className="container relative overflow-hidden rounded-[38px] border border-white/10 bg-gradient-to-br from-[#050b1f] via-[#040616] to-[#02030a] px-6 py-16 shadow-[0_60px_160px_rgba(30,64,175,0.45)] backdrop-blur-3xl md:px-16">
       <div className="pointer-events-none absolute inset-0">
@@ -74,6 +247,14 @@ export function PortfolioShowcase({ projects }: PortfolioShowcaseProps) {
                 className="group relative h-full transition-transform duration-500 hover:-translate-y-3 [--electric-radius:1.75rem]"
                 contentClassName="relative flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-white/5 bg-white/[0.03] p-6 shadow-[0_45px_140px_rgba(37,99,235,0.22)] backdrop-blur-xl transition-colors duration-500 group-hover:bg-white/[0.06]"
                 style={paletteStyle(palette)}
+                tabIndex={0}
+                onPointerEnter={handlePointerEnter(index)}
+                onPointerDown={handlePointerDown(index)}
+                onPointerLeave={handlePointerLeave}
+                onPointerCancel={handlePointerLeave}
+                onPointerUp={handlePointerUp}
+                onFocus={handleFocus(index)}
+                onBlur={handleBlur}
               >
                 <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.35),_transparent_65%)]" />
@@ -123,6 +304,60 @@ export function PortfolioShowcase({ projects }: PortfolioShowcaseProps) {
           })}
         </div>
       </div>
+
+      {activeIndex !== null && previewStyle && (
+        <div
+          className="pointer-events-none fixed z-50 transition-opacity duration-200"
+          style={{
+            top: previewStyle.top,
+            left: previewStyle.left,
+            width: previewStyle.width,
+            height: previewStyle.height,
+            opacity: previewContent ? 1 : 0.8,
+          }}
+        >
+          <div className="relative h-full w-full overflow-hidden rounded-2xl border border-white/15 bg-[#0b122c]/80 shadow-[0_40px_120px_rgba(30,64,175,0.45)] backdrop-blur-xl">
+            {/*
+              Подсказка с анимированным предпросмотром проекта. Показывается при наведении или фокусе на карточке.
+            */}
+            {previewContent ? (
+              previewContent.type === "image" ? (
+                <div className="absolute inset-0">
+                  <Image
+                    src={previewContent.src}
+                    alt={previewContent.alt ?? "Предпросмотр проекта"}
+                    fill
+                    className="object-cover"
+                    sizes="(min-width: 768px) 320px, calc(100vw - 3rem)"
+                  />
+                </div>
+              ) : (
+                <video
+                  className="absolute inset-0 h-full w-full object-cover"
+                  src={previewContent.src}
+                  poster={previewContent.poster}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                >
+                  Ваш браузер не поддерживает видео-тег.
+                </video>
+              )
+            ) : (
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.35),_transparent_70%)]" />
+            )}
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#050b1f] via-[#050b1f]/60 to-transparent p-4">
+              <p className="text-xs font-medium uppercase tracking-[0.3em] text-white/60">Live preview</p>
+              {activeIndex !== null && projects[activeIndex] ? (
+                <p className="text-sm font-semibold text-white">
+                  {projects[activeIndex]?.title}
+                </p>
+              ) : null}
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

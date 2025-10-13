@@ -53,6 +53,12 @@ const projects: ReadonlyArray<ProjectShowcaseItem> = [
     href: "https://akulenok-tmz.ru/",
     image: "/placeholder/1.jpg",
     linkLabel: "Смотреть сайт",
+    preview: {
+      src: "/previews/akulenok-preview.mp4",
+      poster: "/placeholder/1.jpg",
+      type: "video",
+      alt: "Akulenok: интерактивный фрейм с прокруткой сайта",
+    },
   },
   {
     title: "Лендинг услуги",
@@ -61,6 +67,12 @@ const projects: ReadonlyArray<ProjectShowcaseItem> = [
     tag: "Leadgen · Промо",
     image: "/placeholder/2.jpg",
     linkLabel: "Ссылка по запросу",
+    preview: {
+      src: "/previews/service-preview.mp4",
+      poster: "/placeholder/2.jpg",
+      type: "video",
+      alt: "Лендинг услуги: динамичный просмотр блоков",
+    },
   },
   {
     title: "Лендинг под трафик",
@@ -69,6 +81,12 @@ const projects: ReadonlyArray<ProjectShowcaseItem> = [
     tag: "B2B · Услуги",
     image: "/placeholder/3.jpg",
     linkLabel: "Ссылка по запросу",
+    preview: {
+      src: "/previews/traffic-preview.mp4",
+      poster: "/placeholder/3.jpg",
+      type: "video",
+      alt: "Лендинг под трафик: анимированный просмотр слайдов",
+    },
   },
 ];
 
