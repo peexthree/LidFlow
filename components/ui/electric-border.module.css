@@ -1,116 +1,69 @@
-.wrapper {
-  --electric-border-width: 2px;
-  --electric-radius: 1.75rem;
-  --electric-color-1: rgba(14, 165, 233, 0.28);
-  --electric-color-2: rgba(79, 70, 229, 0.55);
-  --electric-color-3: rgba(236, 72, 153, 0.45);
-  --electric-glow-color: rgba(59, 130, 246, 0.35);
+.electric-border {
+  --electric-light-color: oklch(from var(--electric-border-color) l c h);
+  --eb-border-width: 2px;
   position: relative;
-  display: block;
-  border-radius: var(--electric-radius);
+  border-radius: inherit;
+  overflow: visible;
   isolation: isolate;
 }
 
-.border {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  border-radius: inherit;
-  padding: var(--electric-border-width);
-  /* Static gradient base keeps the frame fixed while the lightning effect animates separately. */
-  background: linear-gradient(
-      135deg,
-      var(--electric-color-1),
-      var(--electric-color-2) 55%,
-      var(--electric-color-3)
-    )
-    border-box;
-  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  mask-composite: exclude;
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  filter: saturate(1.1);
-  opacity: 0.8;
-  pointer-events: none;
-  transition: opacity 0.5s ease, filter 0.5s ease;
-}
-
-.border::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: var(--electric-border-width);
-  background: conic-gradient(
-    from 0deg,
-    transparent 0deg 40deg,
-    rgba(255, 255, 255, 0.4) 45deg,
-    rgba(255, 255, 255, 0.8) 55deg,
-    rgba(190, 242, 100, 0.9) 65deg,
-    rgba(255, 255, 255, 0.5) 75deg,
-    transparent 80deg 360deg
-  );
-  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  mask-composite: exclude;
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  filter: blur(1px) saturate(1.5) brightness(1.2);
-  mix-blend-mode: screen;
-  animation: electric-trace 3.5s linear infinite, electric-flicker 1.6s ease-in-out infinite;
+.eb-svg {
+  position: fixed;
+  left: -10000px;
+  top: -10000px;
+  width: 10px;
+  height: 10px;
+  opacity: 0.001;
   pointer-events: none;
 }
 
-.glow {
-  position: absolute;
-  inset: -35%;
-  z-index: 0;
-  border-radius: inherit;
-  background: radial-gradient(circle at 50% 50%, var(--electric-glow-color), transparent 65%);
-  filter: blur(32px);
-  opacity: 0.45;
-  pointer-events: none;
-  transition: opacity 0.5s ease;
-}
-
-.inner {
+.eb-content {
   position: relative;
+  border-radius: inherit;
   z-index: 1;
-  border-radius: calc(var(--electric-radius) - var(--electric-border-width));
-  background-color: var(--electric-inner-bg, transparent);
 }
 
-.wrapper:hover .border,
-.wrapper:focus-within .border {
-  opacity: 1;
-  filter: saturate(1.35) brightness(1.05);
+.eb-layers {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 2;
 }
 
-.wrapper:hover .glow,
-.wrapper:focus-within .glow {
-  opacity: 0.75;
+.eb-stroke,
+.eb-glow-1,
+.eb-glow-2,
+.eb-overlay-1,
+.eb-overlay-2,
+.eb-background-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-sizing: border-box;
 }
 
-@keyframes electric-trace {
-  to {
-    transform: rotate(360deg);
-  }
+.eb-stroke {
+  border: var(--eb-border-width) solid var(--electric-border-color);
 }
 
-@keyframes electric-flicker {
-  0%,
-  100% {
-    opacity: 0.8;
-  }
-  40% {
-    opacity: 1;
-  }
-  70% {
-    opacity: 0.6;
-  }
+.eb-glow-1 {
+  border: var(--eb-border-width) solid oklch(from var(--electric-border-color) l c h / 0.6);
+  opacity: 0.5;
+  filter: blur(calc(0.5px + (var(--eb-border-width) * 0.25)));
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .border::after {
-    animation: none;
-  }
+.eb-glow-2 {
+  border: var(--eb-border-width) solid var(--electric-light-color);
+  opacity: 0.5;
+  filter: blur(calc(2px + (var(--eb-border-width) * 0.5)));
+}
+
+.eb-background-glow {
+  z-index: -1;
+  transform: scale(1.08);
+  filter: blur(32px);
+  opacity: 0.3;
+  background: linear-gradient(-30deg, var(--electric-light-color), transparent, var(--electric-border-color));
 }

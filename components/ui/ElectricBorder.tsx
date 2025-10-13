@@ -1,67 +1,180 @@
-import { clsx } from "clsx";
-import { createElement, type ComponentPropsWithoutRef, type ElementType, type ReactNode } from "react";
+import React, {
+  CSSProperties,
+  PropsWithChildren,
+  useCallback,
+  useEffect,
+  useId,
+  useLayoutEffect,
+  useRef
+} from 'react';
 
-import styles from "./electric-border.module.css";
+import './ElectricBorder.css';
 
-export type ElectricBorderProps<T extends ElementType> = {
-  /**
-   * Allows rendering the electric border as a semantic element like `article` or `li`.
-   */
-  as?: T;
-  children: ReactNode;
-  /**
-   * Classes applied to the outer wrapper that hosts the animated border.
-   */
+type ElectricBorderProps = PropsWithChildren<{
+  color?: string;
+  speed?: number;
+  chaos?: number;
+  thickness?: number;
   className?: string;
-  /**
-   * Classes applied to the inner content container.
-   */
-  contentClassName?: string;
-  /**
-   * Additional classes for the animated gradient border layer.
-   */
-  borderClassName?: string;
-  /**
-   * Additional classes for the glow layer.
-   */
-  glowClassName?: string;
-} & Omit<ComponentPropsWithoutRef<T>, "as" | "children" | "className">;
+  style?: CSSProperties;
+}>;
 
-export function ElectricBorder<T extends ElementType = "div">({
-  as,
+type AnimateWithBegin = SVGAnimateElement & { beginElement?: () => void };
+type ElectricBorderCSSVars = CSSProperties & {
+  '--electric-border-color': string;
+  '--eb-border-width': string;
+};
+
+const ElectricBorder: React.FC<ElectricBorderProps> = ({
   children,
+  color = '#5227FF',
+  speed = 1,
+  chaos = 1,
+  thickness = 2,
   className,
-  contentClassName,
-  borderClassName,
-  glowClassName,
-  ...rest
-}: ElectricBorderProps<T>) {
-  const Component = (as ?? "div") as ElementType;
+  style
+}: ElectricBorderProps) => {
+  const rawId = useId().replace(/[:]/g, '');
+  const filterId = `turbulent-displace-${rawId}`;
+  const svgRef = useRef<SVGSVGElement | null>(null);
+  const rootRef = useRef<HTMLDivElement | null>(null);
+  const strokeRef = useRef<HTMLDivElement | null>(null);
 
-  const componentProps = {
-    ...rest,
-    className: clsx(styles.wrapper, className),
-  } as ComponentPropsWithoutRef<T>;
+  const updateAnim = useCallback(() => {
+    const svg = svgRef.current;
+    const host = rootRef.current;
+    if (!svg || !host) return;
 
-  return createElement(
-    Component,
-    componentProps,
-    [
-      createElement("span", {
-        "aria-hidden": true,
-        className: clsx(styles.border, borderClassName),
-        key: "border",
-      }),
-      createElement("span", {
-        "aria-hidden": true,
-        className: clsx(styles.glow, glowClassName),
-        key: "glow",
-      }),
-      createElement(
-        "div",
-        { className: clsx(styles.inner, contentClassName), key: "content" },
-        children,
-      ),
-    ],
+    if (strokeRef.current) {
+      strokeRef.current.style.filter = `url(#${filterId})`;
+    }
+
+    const width = Math.max(
+      1,
+      Math.round(host.clientWidth || host.getBoundingClientRect().width || 0)
+    );
+    const height = Math.max(
+      1,
+      Math.round(host.clientHeight || host.getBoundingClientRect().height || 0)
+    );
+
+    const dyAnims = Array.from(
+      svg.querySelectorAll<SVGAnimateElement>('feOffset > animate[attributeName="dy"]')
+    );
+    const [firstDy, secondDy] = dyAnims;
+    if (firstDy && secondDy) {
+      firstDy.setAttribute('values', `${height}; 0`);
+      secondDy.setAttribute('values', `0; -${height}`);
+    }
+
+    const dxAnims = Array.from(
+      svg.querySelectorAll<SVGAnimateElement>('feOffset > animate[attributeName="dx"]')
+    );
+    const [firstDx, secondDx] = dxAnims;
+    if (firstDx && secondDx) {
+      firstDx.setAttribute('values', `${width}; 0`);
+      secondDx.setAttribute('values', `0; -${width}`);
+    }
+
+    const baseDur = 6;
+    const dur = Math.max(0.001, baseDur / (speed || 1));
+    [...dyAnims, ...dxAnims].forEach(animation => animation.setAttribute('dur', `${dur}s`));
+
+    const disp = svg.querySelector('feDisplacementMap');
+    if (disp) disp.setAttribute('scale', String(30 * (chaos || 1)));
+
+    const filterEl = svg.querySelector<SVGFilterElement>(`#${CSS.escape(filterId)}`);
+    if (filterEl) {
+      filterEl.setAttribute('x', '-200%');
+      filterEl.setAttribute('y', '-200%');
+      filterEl.setAttribute('width', '500%');
+      filterEl.setAttribute('height', '500%');
+    }
+
+    const animElements: AnimateWithBegin[] = [...dyAnims, ...dxAnims];
+    requestAnimationFrame(() => {
+      animElements.forEach(animation => {
+        if (typeof animation.beginElement === 'function') {
+          try {
+            animation.beginElement();
+          } catch {
+            // Some browsers may throw when restarting SMIL animations; ignore gracefully.
+          }
+        }
+      });
+    });
+  }, [chaos, filterId, speed]);
+
+  useEffect(() => {
+    updateAnim();
+  }, [updateAnim]);
+
+  useLayoutEffect(() => {
+    const host = rootRef.current;
+    if (!host) return;
+
+    const ro = new ResizeObserver(() => updateAnim());
+    ro.observe(host);
+    updateAnim();
+    return () => ro.disconnect();
+  }, [updateAnim]);
+
+  const vars: ElectricBorderCSSVars = {
+    '--electric-border-color': color,
+    '--eb-border-width': `${thickness}px`
+  };
+
+  return (
+    <div ref={rootRef} className={`electric-border ${className ?? ''}`} style={{ ...vars, ...style }}>
+      <svg ref={svgRef} className="eb-svg" aria-hidden focusable="false">
+        <defs>
+          <filter id={filterId} colorInterpolationFilters="sRGB" x="-20%" y="-20%" width="140%" height="140%">
+            <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise1" seed="1" />
+            <feOffset in="noise1" dx="0" dy="0" result="offsetNoise1">
+              <animate attributeName="dy" values="700; 0" dur="6s" repeatCount="indefinite" calcMode="linear" />
+            </feOffset>
+
+            <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise2" seed="1" />
+            <feOffset in="noise2" dx="0" dy="0" result="offsetNoise2">
+              <animate attributeName="dy" values="0; -700" dur="6s" repeatCount="indefinite" calcMode="linear" />
+            </feOffset>
+
+            <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise1" seed="2" />
+            <feOffset in="noise1" dx="0" dy="0" result="offsetNoise3">
+              <animate attributeName="dx" values="490; 0" dur="6s" repeatCount="indefinite" calcMode="linear" />
+            </feOffset>
+
+            <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise2" seed="2" />
+            <feOffset in="noise2" dx="0" dy="0" result="offsetNoise4">
+              <animate attributeName="dx" values="0; -490" dur="6s" repeatCount="indefinite" calcMode="linear" />
+            </feOffset>
+
+            <feComposite in="offsetNoise1" in2="offsetNoise2" result="part1" />
+            <feComposite in="offsetNoise3" in2="offsetNoise4" result="part2" />
+            <feBlend in="part1" in2="part2" mode="color-dodge" result="combinedNoise" />
+            <feDisplacementMap
+              in="SourceGraphic"
+              in2="combinedNoise"
+              scale="30"
+              xChannelSelector="R"
+              yChannelSelector="B"
+            />
+          </filter>
+        </defs>
+
+        <title>Electric border animation filter</title>
+      </svg>
+
+      <div className="eb-layers">
+        <div ref={strokeRef} className="eb-stroke" />
+        <div className="eb-glow-1" />
+        <div className="eb-glow-2" />
+        <div className="eb-background-glow" />
+      </div>
+
+      <div className="eb-content">{children}</div>
+    </div>
   );
-}
+};
+
+export default ElectricBorder;
