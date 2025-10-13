@@ -6,21 +6,28 @@ import { useGLTF } from "@react-three/drei";
 import { clsx } from "clsx";
 import * as THREE from "three";
 
-// --- Параметры сцены и модели ---
-const CAMERA_FOV = 48;
-const CAMERA_Z_POSITION = 5.5; // Немного отодвигаем камеру, чтобы вместить больший масштаб
-const MODEL_SCALE = 1.7; // Увеличенный масштаб
-const INITIAL_ROTATION_Y = -Math.PI / 4; // Начальный поворот на -45 градусов (смотрит вправо)
-const SCROLL_SPEED_FACTOR = 0.012; // Чем меньше, тем медленнее параллакс (больше глубина)
-const MOUSE_ROTATION_FACTOR = 0.1; // Ограничитель вращения от мыши
-const INITIAL_MODEL_Y_OFFSET = -0.5; // Смещение Y для центрирования модели в окне Canvas
+// --- Настройки Сцены и Модели (СКОРРЕКТИРОВАННЫЕ ДЛЯ КРУТОГО ЭФФЕКТА) ---
+const CAMERA_FOV = 40; // Уменьшим FOV для более сильного ощущения перспективы
+const CAMERA_Z_POSITION = 10; // СИЛЬНО отодвигаем камеру, чтобы вместить крупную модель
+const MODEL_SCALE = 5.0; // Значительно увеличенный масштаб (с 1.7 до 5.0)
+const INITIAL_ROTATION_Y = -Math.PI / 4; 
+
+// СНИЖАЕМ чувствительность мыши, чтобы модель плавно ВРАЩАЛАСЬ, а не "прыгала"
+const MOUSE_ROTATION_FACTOR = 0.02; // Снижено с 0.1 до 0.02
+const MOUSE_LERP_SPEED = 0.05; // Сделаем вращение более плавным
+const SCROLL_SPEED_FACTOR = 0.012; 
+const SCROLL_LERP_SPEED = 0.08;
+
+// Сдвигаем модель вниз для центрирования
+const INITIAL_MODEL_Y_OFFSET = -1.5; 
 
 // ------------------------------------------------------------------------
 // 1. Компонент 3D-модели и логика анимации
 // ------------------------------------------------------------------------
 
 const MascotModel: React.FC = () => {
-    const { scene } = useGLTF("/model.glb");
+    // ВАЖНО: Убедитесь, что модель "/model.glb" лежит в папке 'public'
+    const { scene } = useGLTF("/model.glb"); 
     const modelRef = useRef<THREE.Group | null>(null);
 
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -29,7 +36,6 @@ const MascotModel: React.FC = () => {
     // Инициализация позиции и подписки на события
     useEffect(() => {
         if (modelRef.current) {
-            // Устанавливаем начальное смещение Y для центрирования
             modelRef.current.position.y = INITIAL_MODEL_Y_OFFSET;
         }
 
@@ -41,7 +47,6 @@ const MascotModel: React.FC = () => {
         };
 
         const handleScroll = () => {
-            // Получаем текущее смещение прокрутки страницы
             setScrollTop(document.documentElement.scrollTop);
         };
 
@@ -62,20 +67,19 @@ const MascotModel: React.FC = () => {
         }
 
         // --- 1. ПАРАЛЛАКС СКРОЛЛА (вертикальное плавание) ---
-        // Движем модель противоположно скроллу с низкой скоростью
         const parallaxOffset = -scrollTop * SCROLL_SPEED_FACTOR + INITIAL_MODEL_Y_OFFSET;
-
-        // Ограничиваем вертикальное смещение, чтобы модель не "улетела"
-        const clampedY = THREE.MathUtils.clamp(parallaxOffset, -3, 0.5);
-
+        
+        // Ограничиваем вертикальное смещение
+        const clampedY = THREE.MathUtils.clamp(parallaxOffset, -3, 0.5); 
+        
         modelRef.current.position.y = THREE.MathUtils.lerp(
             modelRef.current.position.y,
             clampedY,
-            0.07 // Плавность скролла
+            SCROLL_LERP_SPEED // Плавность скролла
         );
 
-        // --- 2. ВРАЩЕНИЕ ОТ МЫШИ (объемный эффект) ---
-
+        // --- 2. ПЛАВНОЕ ВРАЩЕНИЕ ОТ МЫШИ (ОБЪЕМНЫЙ ЭФФЕКТ) ---
+        // Множитель MOUSE_ROTATION_FACTOR очень мал, чтобы модель лишь слегка наклонялась
         const targetRotationX = mousePosition.y * MOUSE_ROTATION_FACTOR;
         const targetRotationY = -mousePosition.x * MOUSE_ROTATION_FACTOR + INITIAL_ROTATION_Y;
 
@@ -83,22 +87,22 @@ const MascotModel: React.FC = () => {
         modelRef.current.rotation.x = THREE.MathUtils.lerp(
             modelRef.current.rotation.x,
             targetRotationX,
-            0.07 // Плавность вращения
+            MOUSE_LERP_SPEED 
         );
         // Плавное вращение по Y (влево/вправо)
         modelRef.current.rotation.y = THREE.MathUtils.lerp(
             modelRef.current.rotation.y,
             targetRotationY,
-            0.07
+            MOUSE_LERP_SPEED
         );
     });
 
     return (
-        <primitive
-            object={scene.clone()}
-            ref={modelRef}
-            scale={MODEL_SCALE}
-            // Начальное вращение устанавливаем через rotation, чтобы Lerp его использовал
+        <primitive 
+            object={scene.clone()} 
+            ref={modelRef} 
+            // Крупный масштаб
+            scale={MODEL_SCALE} 
             rotation={[0, INITIAL_ROTATION_Y, 0]}
         />
     );
@@ -138,8 +142,8 @@ export const InteractiveModelSection: React.FC<InteractiveModelSectionProps> = (
                 <div className="relative w-full max-w-4xl">
                     <div className="pointer-events-none absolute inset-0 rounded-[2.5rem] border border-cyan-400/40 bg-gradient-to-br from-cyan-400/30 via-transparent to-fuchsia-500/20 blur-[90px]" />
                     <div className="relative overflow-hidden rounded-[2.5rem] border border-white/15 bg-slate-950/60 p-2 backdrop-blur-xl">
-                        {/* H-[420px] – это высота всего окна Canvas */}
-                        <Canvas className="h-[420px] w-full" camera={{ fov: CAMERA_FOV, position: [0, 0, CAMERA_Z_POSITION] }}>
+                        {/* Увеличение высоты фрейма (Canvas) */}
+                        <Canvas className="h-[550px] w-full" camera={{ fov: CAMERA_FOV, position: [0, 0, CAMERA_Z_POSITION] }}>
                             <ambientLight intensity={1.5} />
                             <directionalLight position={[4, 6, 6]} intensity={1.8} castShadow />
                             <Suspense fallback={null}>
