@@ -541,9 +541,11 @@
 }
 
 .intro-glow {
-    animation:
-        intro-glow 3.6s ease-in-out infinite,
-        intro-spinner 14s linear infinite;
+    animation: intro-glow 3.6s ease-in-out infinite;
+}
+
+.intro-logo-spin {
+    animation: intro-spinner 14s linear infinite;
 }
 
 .intro-orbit {
@@ -555,6 +557,7 @@
 @media (prefers-reduced-motion: reduce) {
 
     .intro-glow,
+    .intro-logo-spin,
     .intro-orbit {
 
         animation: none !important;

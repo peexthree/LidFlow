@@ -6,7 +6,6 @@ import {
   useCallback,
   useEffect,
   useMemo,
-  useRef,
   useState,
   type PointerEvent as ReactPointerEvent,
   type FocusEvent as ReactFocusEvent,
@@ -65,11 +64,11 @@ type PreviewStyle = {
 };
 
 const PREVIEW_ASPECT_RATIO = 16 / 9;
-const PREVIEW_MAX_WIDTH = 320;
+const PREVIEW_MAX_WIDTH = 1600;
+const PREVIEW_MIN_WIDTH = 320;
 const PREVIEW_MARGIN = 16;
-const PREVIEW_GAP = 20;
 
-const computePreviewStyle = (rect: DOMRect): PreviewStyle | null => {
+const computePreviewStyle = (): PreviewStyle | null => {
   if (typeof window === "undefined") {
     return null;
   }
@@ -77,24 +76,45 @@ const computePreviewStyle = (rect: DOMRect): PreviewStyle | null => {
   const viewportWidth = window.innerWidth;
   const viewportHeight = window.innerHeight;
 
-  const width = Math.min(
-    PREVIEW_MAX_WIDTH,
-    Math.max(220, viewportWidth - PREVIEW_MARGIN * 2)
-  );
-  const height = Math.round(width / PREVIEW_ASPECT_RATIO);
+  const availableWidth = Math.max(0, viewportWidth - PREVIEW_MARGIN * 2);
+  const availableHeight = Math.max(0, viewportHeight - PREVIEW_MARGIN * 2);
 
-  let top = rect.top - height - PREVIEW_GAP;
-  const fitsAbove = top >= PREVIEW_MARGIN;
-  if (!fitsAbove) {
-    top = rect.bottom + PREVIEW_GAP;
+  if (availableWidth <= 0 || availableHeight <= 0) {
+    return null;
+  }
+
+  let width = Math.min(PREVIEW_MAX_WIDTH, availableWidth);
+  if (width < PREVIEW_MIN_WIDTH && availableWidth >= PREVIEW_MIN_WIDTH) {
+    width = PREVIEW_MIN_WIDTH;
+  }
+
+  let height = Math.round(width / PREVIEW_ASPECT_RATIO);
+
+  if (height > availableHeight) {
+    height = availableHeight;
+    if (height <= 0) {
+      return null;
+    }
+
+    width = Math.min(Math.round(height * PREVIEW_ASPECT_RATIO), availableWidth);
+    if (width <= 0) {
+      return null;
+    }
+
+    height = Math.round(width / PREVIEW_ASPECT_RATIO);
   }
 
   const maxTop = viewportHeight - height - PREVIEW_MARGIN;
-  top = Math.min(Math.max(PREVIEW_MARGIN, top), Math.max(PREVIEW_MARGIN, maxTop));
-
-  let left = rect.left + rect.width / 2 - width / 2;
   const maxLeft = viewportWidth - width - PREVIEW_MARGIN;
-  left = Math.min(Math.max(PREVIEW_MARGIN, left), Math.max(PREVIEW_MARGIN, maxLeft));
+
+  const top = Math.min(
+    Math.max(PREVIEW_MARGIN, Math.round((viewportHeight - height) / 2)),
+    Math.max(PREVIEW_MARGIN, maxTop)
+  );
+  const left = Math.min(
+    Math.max(PREVIEW_MARGIN, Math.round((viewportWidth - width) / 2)),
+    Math.max(PREVIEW_MARGIN, maxLeft)
+  );
 
   return { top, left, width, height } satisfies PreviewStyle;
 };
@@ -105,43 +125,22 @@ const computePreviewStyle = (rect: DOMRect): PreviewStyle | null => {
 export function PortfolioShowcase({ projects }: PortfolioShowcaseProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [previewStyle, setPreviewStyle] = useState<PreviewStyle | null>(null);
-  const activeElementRef = useRef<HTMLElement | null>(null);
 
   const hidePreview = useCallback(() => {
     setActiveIndex(null);
     setPreviewStyle(null);
-    activeElementRef.current = null;
   }, []);
 
   const updatePreview = useCallback(() => {
-    const element = activeElementRef.current;
-    if (!element) {
-      return;
-    }
-    const rect = element.getBoundingClientRect();
-    const nextStyle = computePreviewStyle(rect);
-    if (nextStyle) {
-      setPreviewStyle(nextStyle);
-    }
+    const nextStyle = computePreviewStyle();
+    setPreviewStyle(nextStyle);
   }, []);
 
-  const showPreview = useCallback(
-    (index: number, element: HTMLElement | null) => {
-      if (!element) {
-        return;
-      }
-
-      activeElementRef.current = element;
-      setActiveIndex(index);
-
-      const rect = element.getBoundingClientRect();
-      const nextStyle = computePreviewStyle(rect);
-      if (nextStyle) {
-        setPreviewStyle(nextStyle);
-      }
-    },
-    []
-  );
+  const showPreview = useCallback((index: number) => {
+    setActiveIndex(index);
+    const nextStyle = computePreviewStyle();
+    setPreviewStyle(nextStyle);
+  }, []);
 
   useEffect(() => {
     if (activeIndex === null) {
@@ -160,14 +159,16 @@ export function PortfolioShowcase({ projects }: PortfolioShowcaseProps) {
 
   const handlePointerEnter = useCallback(
     (index: number) => (event: ReactPointerEvent<HTMLElement>) => {
-      showPreview(index, event.currentTarget);
+      void event;
+      showPreview(index);
     },
     [showPreview]
   );
 
   const handlePointerDown = useCallback(
     (index: number) => (event: ReactPointerEvent<HTMLElement>) => {
-      showPreview(index, event.currentTarget);
+      void event;
+      showPreview(index);
     },
     [showPreview]
   );
@@ -187,7 +188,8 @@ export function PortfolioShowcase({ projects }: PortfolioShowcaseProps) {
 
   const handleFocus = useCallback(
     (index: number) => (event: ReactFocusEvent<HTMLElement>) => {
-      showPreview(index, event.currentTarget);
+      void event;
+      showPreview(index);
     },
     [showPreview]
   );

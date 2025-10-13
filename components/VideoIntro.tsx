@@ -111,14 +111,19 @@ export function VideoIntro({ children }: VideoIntroProps) {
                     <span className="intro-orbit absolute -inset-6 rounded-full border border-white/40" />
                     <span className="absolute -inset-14 rounded-full bg-gradient-to-br from-brand-500/10 via-sky-400/5 to-rose-500/10 blur-3xl" />
 
-                    <Image
-                      src="/logo.webp"
-                      alt="Логотип LidFlow"
-                      width={120}
-                      height={120}
-                      priority
-                      className="intro-glow relative z-10 h-24 w-24 rounded-3xl border border-subtle bg-white/95 p-4 shadow-[0_18px_45px_rgba(31,140,255,0.28),0_40px_100px_rgba(14,165,233,0.24)]"
-                    />
+                    <div
+                      className="intro-glow relative z-10 flex h-24 w-24 items-center justify-center rounded-3xl border border-subtle bg-white/95 p-4 shadow-[0_18px_45px_rgba(31,140,255,0.28),0_40px_100px_rgba(14,165,233,0.24)]"
+                    >
+                      {/* Оставляем фон статичным, вращаем только сам символ логотипа */}
+                      <Image
+                        src="/logo.webp"
+                        alt="Логотип LidFlow"
+                        width={120}
+                        height={120}
+                        priority
+                        className="intro-logo-spin h-full w-full object-contain"
+                      />
+                    </div>
                   </div>
 
                   <div className="space-y-3">
