@@ -23,6 +23,7 @@ type ElectricBorderProps = PropsWithChildren<
     speed?: number;
     chaos?: number;
     thickness?: number;
+    animated?: boolean;
   }
 >;
 
@@ -34,6 +35,7 @@ const ElectricBorder: React.FC<ElectricBorderProps> = ({
   speed = 1,
   chaos = 1,
   thickness = 2,
+  animated = false,
   className,
   contentClassName,
   style,
@@ -47,17 +49,24 @@ const ElectricBorder: React.FC<ElectricBorderProps> = ({
   const strokeRef = useRef<HTMLDivElement | null>(null);
   const normalizedThickness = Math.max(0, thickness);
 
+  const animatedFilterId = animated ? filterId : undefined;
+
   const layerStyles = useMemo(() => {
-    const borderValue = `${normalizedThickness}px solid ${color}`;
+    const borderColor = `var(--electric-color-2, ${color})`;
+    const glowBorder = `${normalizedThickness}px solid ${borderColor}`;
+    const glowColorPrimary = `var(--electric-color-1, ${color})`;
+    const glowColorSecondary = `var(--electric-color-3, ${color})`;
+    const backgroundGlowColor = `var(--electric-glow-color, ${color})`;
+    const strokeValue = `${normalizedThickness}px solid ${borderColor}`;
     return {
-      stroke: { border: borderValue },
+      stroke: { border: strokeValue },
       glow1: {
-        border: borderValue,
+        border: glowBorder,
         opacity: 0.5,
         filter: `blur(${0.5 + normalizedThickness * 0.25}px)`
       },
       glow2: {
-        border: borderValue,
+        border: glowBorder,
         opacity: 0.5,
         filter: `blur(${2 + normalizedThickness * 0.5}px)`
       },
@@ -65,17 +74,21 @@ const ElectricBorder: React.FC<ElectricBorderProps> = ({
         transform: 'scale(1.08)',
         filter: 'blur(32px)',
         opacity: 0.3,
-        background: `linear-gradient(-30deg, ${color}, transparent, ${color})`
+        background: `linear-gradient(-30deg, ${glowColorPrimary}, transparent, ${glowColorSecondary})`,
+        boxShadow: `0 0 40px 8px ${backgroundGlowColor}`
       }
     } satisfies Record<string, CSSProperties>;
   }, [color, normalizedThickness]);
   const updateAnim = useCallback(() => {
+    if (!animatedFilterId) {
+      return;
+    }
     const svg = svgRef.current;
     const host = rootRef.current;
     if (!svg || !host) return;
 
     if (strokeRef.current) {
-      strokeRef.current.style.filter = `url(#${filterId})`;
+      strokeRef.current.style.filter = `url(#${animatedFilterId})`;
     }
 
     const width = Math.max(
@@ -112,7 +125,7 @@ const ElectricBorder: React.FC<ElectricBorderProps> = ({
     const disp = svg.querySelector('feDisplacementMap');
     if (disp) disp.setAttribute('scale', String(30 * (chaos || 1)));
 
-    const filterEl = svg.querySelector<SVGFilterElement>(`#${CSS.escape(filterId)}`);
+    const filterEl = svg.querySelector<SVGFilterElement>(`#${CSS.escape(animatedFilterId)}`);
     if (filterEl) {
       filterEl.setAttribute('x', '-200%');
       filterEl.setAttribute('y', '-200%');
@@ -132,13 +145,19 @@ const ElectricBorder: React.FC<ElectricBorderProps> = ({
         }
       });
     });
-  }, [chaos, filterId, speed]);
+  }, [animatedFilterId, chaos, speed]);
 
   useEffect(() => {
+    if (!animatedFilterId) {
+      return;
+    }
     updateAnim();
-  }, [updateAnim]);
+  }, [animatedFilterId, updateAnim]);
 
   useLayoutEffect(() => {
+    if (!animatedFilterId) {
+      return;
+    }
     const host = rootRef.current;
     if (!host) return;
 
@@ -146,7 +165,17 @@ const ElectricBorder: React.FC<ElectricBorderProps> = ({
     ro.observe(host);
     updateAnim();
     return () => ro.disconnect();
-  }, [updateAnim]);
+  }, [animatedFilterId, updateAnim]);
+
+  const handleStrokeRef = useCallback(
+    (node: HTMLDivElement | null) => {
+      strokeRef.current = node;
+      if (!animatedFilterId && node) {
+        node.style.removeProperty('filter');
+      }
+    },
+    [animatedFilterId]
+  );
 
   return (
     <Element
@@ -157,54 +186,56 @@ const ElectricBorder: React.FC<ElectricBorderProps> = ({
       style={style}
       {...rest}
     >
-      <svg
-        ref={svgRef}
-        aria-hidden
-        focusable="false"
-        className="pointer-events-none fixed opacity-[0.001]"
-        style={{ left: -10000, top: -10000, width: 10, height: 10 }}
-      >
-        <defs>
-          <filter id={filterId} colorInterpolationFilters="sRGB" x="-20%" y="-20%" width="140%" height="140%">
-            <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise1" seed="1" />
-            <feOffset in="noise1" dx="0" dy="0" result="offsetNoise1">
-              <animate attributeName="dy" values="700; 0" dur="6s" repeatCount="indefinite" calcMode="linear" />
-            </feOffset>
+      {animatedFilterId ? (
+        <svg
+          ref={svgRef}
+          aria-hidden
+          focusable="false"
+          className="pointer-events-none fixed opacity-[0.001]"
+          style={{ left: -10000, top: -10000, width: 10, height: 10 }}
+        >
+          <defs>
+            <filter id={animatedFilterId} colorInterpolationFilters="sRGB" x="-20%" y="-20%" width="140%" height="140%">
+              <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise1" seed="1" />
+              <feOffset in="noise1" dx="0" dy="0" result="offsetNoise1">
+                <animate attributeName="dy" values="700; 0" dur="6s" repeatCount="indefinite" calcMode="linear" />
+              </feOffset>
 
-            <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise2" seed="1" />
-            <feOffset in="noise2" dx="0" dy="0" result="offsetNoise2">
-              <animate attributeName="dy" values="0; -700" dur="6s" repeatCount="indefinite" calcMode="linear" />
-            </feOffset>
+              <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise2" seed="1" />
+              <feOffset in="noise2" dx="0" dy="0" result="offsetNoise2">
+                <animate attributeName="dy" values="0; -700" dur="6s" repeatCount="indefinite" calcMode="linear" />
+              </feOffset>
 
-            <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise1" seed="2" />
-            <feOffset in="noise1" dx="0" dy="0" result="offsetNoise3">
-              <animate attributeName="dx" values="490; 0" dur="6s" repeatCount="indefinite" calcMode="linear" />
-            </feOffset>
+              <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise1" seed="2" />
+              <feOffset in="noise1" dx="0" dy="0" result="offsetNoise3">
+                <animate attributeName="dx" values="490; 0" dur="6s" repeatCount="indefinite" calcMode="linear" />
+              </feOffset>
 
-            <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise2" seed="2" />
-            <feOffset in="noise2" dx="0" dy="0" result="offsetNoise4">
-              <animate attributeName="dx" values="0; -490" dur="6s" repeatCount="indefinite" calcMode="linear" />
-            </feOffset>
+              <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise2" seed="2" />
+              <feOffset in="noise2" dx="0" dy="0" result="offsetNoise4">
+                <animate attributeName="dx" values="0; -490" dur="6s" repeatCount="indefinite" calcMode="linear" />
+              </feOffset>
 
-            <feComposite in="offsetNoise1" in2="offsetNoise2" result="part1" />
-            <feComposite in="offsetNoise3" in2="offsetNoise4" result="part2" />
-            <feBlend in="part1" in2="part2" mode="color-dodge" result="combinedNoise" />
-            <feDisplacementMap
-              in="SourceGraphic"
-              in2="combinedNoise"
-              scale="30"
-              xChannelSelector="R"
-              yChannelSelector="B"
-            />
-          </filter>
-        </defs>
+              <feComposite in="offsetNoise1" in2="offsetNoise2" result="part1" />
+              <feComposite in="offsetNoise3" in2="offsetNoise4" result="part2" />
+              <feBlend in="part1" in2="part2" mode="color-dodge" result="combinedNoise" />
+              <feDisplacementMap
+                in="SourceGraphic"
+                in2="combinedNoise"
+                scale="30"
+                xChannelSelector="R"
+                yChannelSelector="B"
+              />
+            </filter>
+          </defs>
 
-        <title>Electric border animation filter</title>
-      </svg>
+          <title>Electric border animation filter</title>
+        </svg>
+      ) : null}
 
       <div className="pointer-events-none absolute inset-0 z-[2] rounded-[inherit]">
         <div
-          ref={strokeRef}
+          ref={handleStrokeRef}
           className="pointer-events-none absolute inset-0 rounded-[inherit] box-border"
           style={layerStyles.stroke}
         />

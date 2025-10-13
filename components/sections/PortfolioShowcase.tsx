@@ -212,7 +212,14 @@ export function PortfolioShowcase({ projects }: PortfolioShowcaseProps) {
   }, [activeIndex, projects]);
 
   return (
-    <section className="container relative overflow-hidden rounded-[38px] border border-white/10 bg-gradient-to-br from-[#050b1f] via-[#040616] to-[#02030a] px-6 py-16 shadow-[0_60px_160px_rgba(30,64,175,0.45)] backdrop-blur-3xl md:px-16">
+    <ElectricBorder
+      as="section"
+      animated
+      className="container rounded-[38px]"
+      contentClassName="overflow-hidden border border-white/10 bg-gradient-to-br from-[#050b1f] via-[#040616] to-[#02030a] px-6 py-16 shadow-[0_60px_160px_rgba(30,64,175,0.45)] backdrop-blur-3xl md:px-16"
+      color="#2563eb"
+      style={paletteStyle("blue")}
+    >
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -left-16 top-1/4 h-72 w-72 rounded-full bg-cyan-500/25 blur-3xl" />
         <div className="absolute bottom-0 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-blue-600/20 blur-[140px]" />
@@ -247,6 +254,7 @@ export function PortfolioShowcase({ projects }: PortfolioShowcaseProps) {
                 key={project.title}
                 as="article"
                 className="group relative h-full transition-transform duration-500 hover:-translate-y-3 [--electric-radius:1.75rem]"
+                animated={false}
                 contentClassName="relative flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-white/5 bg-white/[0.03] p-6 shadow-[0_45px_140px_rgba(37,99,235,0.22)] backdrop-blur-xl transition-colors duration-500 group-hover:bg-white/[0.06]"
                 style={paletteStyle(palette)}
                 tabIndex={0}
@@ -360,6 +368,6 @@ export function PortfolioShowcase({ projects }: PortfolioShowcaseProps) {
           </div>
         </div>
       )}
-    </section>
+    </ElectricBorder>
   );
 }
