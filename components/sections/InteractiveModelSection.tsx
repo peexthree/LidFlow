@@ -9,8 +9,8 @@ import * as THREE from "three";
 // --- Настройки Сцены и Модели (ФИНАЛЬНАЯ КОНФИГУРАЦИЯ) ---
 const CAMERA_FOV = 40; 
 const CAMERA_Z_POSITION = 12; // СИЛЬНО отодвинутая камера
-const MODEL_SCALE = 8.0; // Значительно увеличенный масштаб 
-const INITIAL_ROTATION_Y = -Math.PI / 4; 
+const MODEL_SCALE = 15.0; // Значительно увеличенный масштаб 
+const INITIAL_ROTATION_Y = -Math.PI / 5; 
 
 // Чувствительность мыши (очень низкая, чтобы избежать "прыжков" - только плавное вращение)
 const MOUSE_ROTATION_FACTOR = 0.015; 
@@ -156,7 +156,7 @@ export const InteractiveModelSection: React.FC<InteractiveModelSectionProps> = (
                     <div className="pointer-events-none absolute inset-0 rounded-[2.5rem] border border-cyan-400/40 bg-gradient-to-br from-cyan-400/30 via-transparent to-fuchsia-500/20 blur-[90px]" />
                     <div className="relative overflow-hidden rounded-[2.5rem] border border-white/15 bg-slate-950/60 p-2 backdrop-blur-xl">
                         {/* Высота увеличена, чтобы вместить крупную модель */}
-                        <Canvas className="h-[550px] w-full" camera={{ fov: CAMERA_FOV, position: [0, 0, CAMERA_Z_POSITION] }}>
+                        <Canvas className="h-[750px] w-full" camera={{ fov: CAMERA_FOV, position: [0, 0, CAMERA_Z_POSITION] }}>
                             <ambientLight intensity={1.5} />
                             <directionalLight position={[4, 6, 6]} intensity={1.8} castShadow />
                             <Suspense fallback={null}>
