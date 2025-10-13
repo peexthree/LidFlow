@@ -56,6 +56,22 @@ export function AnimatedSection({
     return base * (isMobile ? ANIMATION_CONFIG.mobileDistanceFactor : 1);
   }, [duration, isMobile]);
 
+  const transition = useMemo(() => {
+    if (motionType === "lift" || motionType === "tilt") {
+      return {
+        type: "spring",
+        ...ANIMATION_CONFIG.spring,
+        delay,
+      } as const;
+    }
+
+    return {
+      duration: animationDuration,
+      delay,
+      ease: motionType === "mask-reveal" ? ANIMATION_CONFIG.maskEase : ANIMATION_CONFIG.ease,
+    } as const;
+  }, [animationDuration, delay, motionType]);
+
   if (shouldReduceMotion) {
     // Если включено снижение движения, рендерим компонент без motion.section
     return (
@@ -73,12 +89,8 @@ export function AnimatedSection({
       // Анимируем в "visible", когда элемент виден
       animate={inView ? "visible" : "hidden"}
       variants={variants}
-      transition={{
-        duration: animationDuration,
-        delay,
-        // Используем другую функцию сглаживания для эффекта mask-reveal
-        ease: motionType === "mask-reveal" ? ANIMATION_CONFIG.maskEase : ANIMATION_CONFIG.ease,
-      }}
+      transition={transition}
+      viewport={{ amount: 0.35, once }}
     >
       {children}
     </motion.section>

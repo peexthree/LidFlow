@@ -4,101 +4,110 @@
 
 @layer base {
     :root {
-        --background: 226 45% 11%;
-        --foreground: 210 40% 96%;
-        --card: 226 47% 14%;
-        --card-foreground: 210 40% 96%;
-        --popover: 226 47% 14%;
-        --popover-foreground: 210 40% 96%;
-        --primary: 199 89% 60%;
-        --primary-foreground: 210 40% 12%;
-        --secondary: 266 89% 68%;
-        --secondary-foreground: 222 73% 11%;
-        --muted: 226 42% 22%;
-        --muted-foreground: 215 20% 72%;
-        --accent: 286 83% 75%;
-        --accent-foreground: 223 13% 92%;
-        --destructive: 0 84.2% 60.2%;
-        --destructive-foreground: 210 40% 96%;
-        --border: 226 45% 24%;
-        --input: 226 45% 24%;
-        --ring: 199 89% 60%;
-        --chart-1: 199 89% 60%;
-        --chart-2: 266 89% 68%;
-        --chart-3: 210 92% 70%;
-        --chart-4: 158 64% 60%;
-        --chart-5: 45 93% 64%;
-        --radius: 0.8rem;
+        /* 🧩 Design Tokens: обновлённая светлая палитра и радиусы */
+        --background: 213 60% 98%;
+        --foreground: 221 41% 12%;
+        --card: 0 0% 100%;
+        --card-foreground: 221 41% 12%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 221 41% 12%;
+        --primary: 213 100% 54%;
+        --primary-foreground: 211 100% 98%;
+        --secondary: 267 90% 64%;
+        --secondary-foreground: 255 100% 98%;
+        --muted: 214 40% 92%;
+        --muted-foreground: 222 15% 44%;
+        --accent: 199 92% 68%;
+        --accent-foreground: 215 52% 14%;
+        --destructive: 0 84% 62%;
+        --destructive-foreground: 0 0% 100%;
+        --border: 216 30% 90%;
+        --input: 216 30% 90%;
+        --ring: 213 100% 54%;
+        --chart-1: 213 100% 54%;
+        --chart-2: 267 90% 64%;
+        --chart-3: 199 92% 64%;
+        --chart-4: 168 64% 58%;
+        --chart-5: 45 94% 58%;
+        --radius: 1.25rem;
     }
 
     .dark {
-        --background: 224 44% 8%;
+        --background: 223 47% 10%;
         --foreground: 210 40% 96%;
-        --card: 224 44% 10%;
+        --card: 223 47% 12%;
         --card-foreground: 210 40% 96%;
-        --popover: 224 44% 10%;
+        --popover: 223 47% 12%;
         --popover-foreground: 210 40% 96%;
-        --primary: 199 89% 60%;
-        --primary-foreground: 210 40% 12%;
-        --secondary: 266 89% 68%;
-        --secondary-foreground: 210 40% 10%;
-        --muted: 226 42% 20%;
+        --primary: 213 100% 68%;
+        --primary-foreground: 223 47% 12%;
+        --secondary: 267 84% 72%;
+        --secondary-foreground: 223 47% 12%;
+        --muted: 226 42% 18%;
         --muted-foreground: 215 20% 72%;
-        --accent: 286 83% 75%;
-        --accent-foreground: 223 13% 92%;
-        --destructive: 0 62.8% 30.6%;
+        --accent: 199 92% 64%;
+        --accent-foreground: 223 47% 12%;
+        --destructive: 0 74% 38%;
         --destructive-foreground: 210 40% 96%;
-        --border: 225 40% 22%;
-        --input: 225 40% 22%;
-        --ring: 199 89% 60%;
-        --chart-1: 199 89% 60%;
-        --chart-2: 266 89% 68%;
-        --chart-3: 210 92% 70%;
-        --chart-4: 158 64% 60%;
-        --chart-5: 45 93% 64%;
+        --border: 223 34% 24%;
+        --input: 223 34% 24%;
+        --ring: 213 100% 68%;
     }
 
-    /* ИСПРАВЛЕНО: Заменяем @apply border-border; на стандартный сброс,
-    чтобы избежать ошибки синтаксиса Tailwind при сборке. */
-
+    /* 🧩 Base Reset: строгий контроль границ и box-sizing */
     *,
     *::before,
-    *::after 
-    {
+    *::after {
         box-sizing: border-box;
         border-color: hsl(var(--border));
     }
 
     body {
-        /* 🚀 УЛУЧШЕНИЕ: Используем переменную для фона для согласованности с темой */
-        @apply antialiased min-h-screen; 
+        /* 🧩 Visual System: светлый фон с мягкими градиентами, влияющий на depth */
+        @apply min-h-screen font-sans antialiased;
         color: hsl(var(--foreground));
-        background-color: hsl(var(--background)); /* ИСПРАВЛЕНО! */
+        background-color: hsl(var(--background));
         background-image:
-            radial-gradient(circle at 20% 20%, rgba(129, 140, 248, 0.4), transparent 55%),
-            radial-gradient(circle at 80% 5%, rgba(14, 165, 233, 0.35), transparent 55%),
-            radial-gradient(circle at 50% 95%, rgba(236, 72, 153, 0.28), transparent 60%),
-            linear-gradient(160deg, #050816 0%, #0b1120 45%, #111827 100%);
-        background-size: 180% 180%;
-        animation: gradientShift 18s ease infinite;
-        position: relative;
+            radial-gradient(circle at 12% 18%, rgba(31, 140, 255, 0.12), transparent 55%),
+            radial-gradient(circle at 82% 12%, rgba(168, 85, 247, 0.12), transparent 60%),
+            radial-gradient(circle at 55% 95%, rgba(236, 72, 153, 0.14), transparent 70%);
+        background-repeat: no-repeat;
+        background-size: 120% 120%;
+        animation: gradientShift 26s ease-in-out infinite;
     }
 
     body::before {
+        /* 🧩 Motion Depth: дополнительный слой с blur для параллакс эффекта */
         content: '';
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        inset: 0;
         background:
-            radial-gradient(circle at 15% 25%, rgba(129, 140, 248, 0.25), transparent 65%),
-            radial-gradient(circle at 85% 15%, rgba(34, 211, 238, 0.22), transparent 60%),
-            radial-gradient(circle at 60% 80%, rgba(236, 72, 153, 0.18), transparent 65%);
-        filter: blur(0px);
+            radial-gradient(circle at 24% 24%, rgba(79, 70, 229, 0.12), transparent 60%),
+            radial-gradient(circle at 74% 64%, rgba(14, 165, 233, 0.16), transparent 60%),
+            radial-gradient(circle at 50% 80%, rgba(236, 72, 153, 0.12), transparent 68%);
         pointer-events: none;
+        mix-blend-mode: screen;
         z-index: -1;
-        opacity: 0.9;
+        opacity: 0.85;
+        filter: blur(12px);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+        /* 🧩 Accessibility: отключаем фоновые анимации для пользователей с PWA */
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+        }
+
+        body,
+        body::before {
+            animation: none !important;
+        }
     }
 }
 
@@ -114,7 +123,7 @@
     justify-content: center;
     width: var(--loader-size);
     height: var(--loader-size);
-    filter: drop-shadow(0 0 32px hsla(var(--primary) / 0.35));
+    filter: drop-shadow(0 0 32px rgba(31, 140, 255, 0.35));
 }
 
 .logo-loader__orbit {
@@ -123,24 +132,22 @@
     border-radius: 9999px;
     border-style: solid;
     border-width: clamp(6px, calc(var(--loader-size) / 18), 12px);
-    border-color: hsla(var(--primary) / 0.12);
+    border-color: hsla(var(--primary) / 0.1);
     border-top-color: hsl(var(--primary));
-    border-right-color: hsla(var(--primary) / 0.6);
+    border-right-color: hsla(var(--primary) / 0.55);
     animation: logoOrbit 1.8s linear infinite;
-    box-shadow: 0 0 38px hsla(var(--primary) / 0.35);
+    box-shadow: 0 0 32px hsla(var(--primary) / 0.28);
 }
 
 .logo-loader__trail {
     position: absolute;
     inset: clamp(18px, calc(var(--loader-size) / 8), 28px);
     border-radius: 9999px;
-    background: conic-gradient(
-        from 90deg,
-        hsla(var(--primary) / 0) 0deg,
-        hsla(var(--primary) / 0.75) 120deg,
-        hsla(var(--primary) / 0.05) 240deg,
-        hsla(var(--primary) / 0) 360deg
-    );
+    background: conic-gradient(from 90deg,
+            hsla(var(--primary) / 0) 0deg,
+            hsla(var(--primary) / 0.75) 120deg,
+            hsla(var(--primary) / 0.05) 240deg,
+            hsla(var(--primary) / 0) 360deg);
     mask: radial-gradient(farthest-side, transparent calc(100% - 12px), #000 calc(100% - 4px));
     -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 12px), #000 calc(100% - 4px));
     opacity: 0.85;
@@ -177,11 +184,10 @@
     border-radius: 2rem;
     background: hsl(0 0% 100% / 0.96);
     box-shadow:
-        0 24px 48px hsla(222 47% 11% / 0.35),
+        0 24px 48px hsla(222 47% 11% / 0.18),
         0 0 32px hsla(var(--primary) / 0.25);
     animation: logoFloat 3.4s ease-in-out infinite;
 }
-
 
 /* ======================================= */
 /* АНИМАЦИИ (KEYFRAMES) */
@@ -198,9 +204,11 @@
         transform: rotate(0deg);
         opacity: 0.65;
     }
+
     50% {
         opacity: 1;
     }
+
     100% {
         transform: rotate(360deg);
         opacity: 0.65;
@@ -214,16 +222,19 @@
 }
 
 @keyframes logoFloat {
+
     0%,
     100% {
         transform: scale(0.98) rotate(-4deg);
     }
+
     50% {
         transform: scale(1.02) rotate(4deg);
     }
 }
 
 @keyframes gradientShift {
+
     0%,
     100% {
         background-position: 0% 50%;
@@ -245,6 +256,7 @@
         transform: translateY(0);
     }
 }
+
 @keyframes scaleIn {
     from {
         opacity: 0;
@@ -270,6 +282,7 @@
 }
 
 @keyframes float {
+
     0%,
     100% {
         transform: translateY(0px);
@@ -281,6 +294,7 @@
 }
 
 @keyframes pulse {
+
     0%,
     100% {
         opacity: 1;
@@ -302,7 +316,7 @@
 }
 
 .container {
-    @apply mx-auto max-w-6xl px-4;
+    @apply mx-auto max-w-6xl px-6;
 }
 
 .animate-fade-in-up {
@@ -325,18 +339,16 @@
     animation: pulse 2s ease-in-out infinite;
 }
 
+/* 🧩 Glass Morphism: обновлённые параметры для хедера и футера */
 .glass-effect {
-    background: rgba(15, 23, 42, 0.7);
-    backdrop-filter: blur(18px);
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(16px);
     border: 1px solid rgba(148, 163, 184, 0.18);
-    box-shadow: 0 30px 80px rgba(2, 6, 23, 0.45);
+    box-shadow: 0 30px 80px rgba(15, 23, 42, 0.08);
 }
 
 .shimmer-effect {
-    background: linear-gradient(90deg,
-                transparent,
-                rgba(255, 255, 255, 0.4),
-                transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
     background-size: 200% 100%;
     animation: shimmer 2s infinite;
 }
@@ -354,7 +366,7 @@
 
 .gradient-border {
     position: relative;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.78));
     backdrop-filter: blur(10px);
 }
 
@@ -362,8 +374,8 @@
     content: '';
     position: absolute;
     inset: -2px;
-    background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #4facfe, #667eea);
-    background-size: 300% 300%;
+    background: linear-gradient(45deg, #4facfe, #1f8cff, #a855f7, #ec4899, #4facfe);
+    background-size: 320% 320%;
     border-radius: inherit;
     z-index: -1;
     animation: gradientShift 4s ease infinite;
@@ -371,22 +383,39 @@
 
 /* Glow Effect */
 @keyframes glow {
+
     0%,
     100% {
-        box-shadow: 0 0 20px rgba(102, 126, 234, 0.4), 0 0 40px rgba(102, 126, 234, 0.2);
+        box-shadow: 0 0 20px rgba(31, 140, 255, 0.4), 0 0 40px rgba(31, 140, 255, 0.2);
     }
 
     50% {
-        box-shadow: 0 0 30px rgba(240, 147, 251, 0.5), 0 0 60px rgba(240, 147, 251, 0.3);
+        box-shadow: 0 0 30px rgba(236, 72, 153, 0.45), 0 0 60px rgba(236, 72, 153, 0.25);
     }
 }
 
-.glow-effect {
-    animation: glow 3s ease-in-out infinite;
+/* 🧩 Cursor Trail: мягкое затухание курсора */
+@keyframes cursor-fade-out {
+    to {
+        opacity: 0;
+        transform: scale(2);
+    }
 }
 
-/* Floating Orbs */
-@keyframes floatOrb {
+.cursor-trail {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(31, 140, 255, 0.45), transparent);
+    pointer-events: none;
+    z-index: 60;
+    animation: cursor-fade-out 0.8s ease-out forwards;
+}
+
+/* 🧩 Floating Orbs: фоновые световые акценты */
+@keyframes float-orb {
+
     0%,
     100% {
         transform: translate(0, 0) scale(1);
@@ -394,73 +423,136 @@
     }
 
     33% {
-        transform: translate(30px, -30px) scale(1.1);
-        opacity: 0.8;
+        transform: translate(30px, -30px) scale(1.08);
+        opacity: 0.78;
     }
 
     66% {
-        transform: translate(-20px, 20px) scale(0.9);
+        transform: translate(-22px, 18px) scale(0.94);
         opacity: 0.7;
     }
 }
 
 .floating-orb {
     position: absolute;
-    border-radius: 50%;
-    filter: blur(40px);
-    animation: floatOrb 8s ease-in-out infinite;
+    border-radius: 9999px;
+    filter: blur(38px);
+    animation: float-orb 8s cubic-bezier(0.22, 1, 0.36, 1) infinite;
     pointer-events: none;
 }
 
-/* Cursor Trail */
-.cursor-trail {
-    position: fixed;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(102, 126, 234, 0.6), transparent);
-    pointer-events: none;
-    z-index: 9999;
-    animation: fadeOut 0.8s ease-out forwards;
-}
-
-@keyframes fadeOut {
-    to {
-        opacity: 0;
-        transform: scale(2);
-    }
-}
-
-/* Tilt Effect */
-.tilt-effect {
-    transform-style: preserve-3d;
-    transition: transform 0.3s ease;
-}
-
-.tilt-effect:hover {
-    transform: perspective(1000px) rotateX(5deg) rotateY(-5deg) scale(1.02);
-}
-
-/* Magnetic Effect */
-@keyframes magneticPulse {
-    0%,
-    100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.05);
-    }
-}
-
-/* Scroll Reveal */
+/* 🧩 Scroll Reveal helper для ScrollReveal компонента */
 .scroll-reveal {
     opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .scroll-reveal.revealed {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* 🧩 Split Text: типографская анимация */
+.split-text {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.05em;
+}
+
+.split-text span {
+    display: inline-block;
+    will-change: transform, opacity, clip-path, filter;
+}
+
+.split-text[data-type='words'] span::after {
+    content: '\00a0';
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .split-text span {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* 🧩 Intro Overlay: эффекты для заставки */
+@keyframes intro-glow {
+
+    0%,
+    100% {
+        box-shadow: 0 28px 70px -32px rgba(31, 140, 255, 0.45);
+    }
+
+    50% {
+        box-shadow: 0 32px 80px -30px rgba(236, 72, 153, 0.5);
+    }
+}
+
+@keyframes intro-orbit {
+    0% {
+        transform: rotate(0deg) scale(1);
+        opacity: 0.65;
+    }
+
+    50% {
+        opacity: 0.85;
+    }
+
+    100% {
+        transform: rotate(360deg) scale(1);
+        opacity: 0.65;
+    }
+}
+
+@keyframes intro-spinner {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+
+    40% {
+        transform: rotate(160deg) scale(1.02);
+    }
+
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+.intro-glow {
+    animation:
+        intro-glow 3.6s ease-in-out infinite,
+        intro-spinner 14s linear infinite;
+}
+
+.intro-orbit {
+    animation: intro-orbit 12s linear infinite;
+}
+
+.intro-spinner {
+    position: absolute;
+    inset: -2.5rem;
+    border-radius: 2.75rem;
+    border-width: 3px;
+    border-style: solid;
+    border-color: rgba(14, 165, 233, 0.75) rgba(236, 72, 153, 0.45) rgba(59, 130, 246, 0.2) transparent;
+    pointer-events: none;
+    filter: drop-shadow(0 8px 28px rgba(15, 118, 110, 0.12));
+    animation: intro-spinner 4.2s cubic-bezier(0.22, 0.61, 0.36, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .intro-glow,
+    .intro-orbit,
+    .intro-spinner {
+        animation: none !important;
+    }
+}
+
+/* Responsive helpers */
+@media (max-width: 768px) {
+    .container {
+        @apply px-4;
+    }
 }

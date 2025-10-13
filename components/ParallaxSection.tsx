@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useReducedMotion } from "framer-motion";
 import { clsx } from "clsx";
 
@@ -19,17 +19,38 @@ export interface ParallaxSectionProps {
 export function ParallaxSection({ layers = [], children, className }: ParallaxSectionProps) {
   const containerRef = useRef<HTMLElement | null>(null);
   const layerRefs = useRef<(HTMLDivElement | null)[]>([]);
+  // 🧩 Parallax Responsiveness: управляем силой слоя на разных экранах
+  const [intensity, setIntensity] = useState(1);
   const prefersReducedMotion = useReducedMotion();
 
   layerRefs.current = layerRefs.current.slice(0, layers.length);
 
   useEffect(() => {
     if (prefersReducedMotion) {
+      setIntensity(0);
       layerRefs.current.forEach((layer) => {
         if (layer) {
           layer.style.transform = "translate3d(0, 0, 0)";
         }
       });
+      return undefined;
+    }
+
+    const updateIntensity = () => {
+      const isMobileViewport = window.matchMedia('(max-width: 768px)').matches;
+      setIntensity(isMobileViewport ? 0.45 : 1);
+    };
+
+    updateIntensity();
+    window.addEventListener('resize', updateIntensity);
+
+    return () => {
+      window.removeEventListener('resize', updateIntensity);
+    };
+  }, [prefersReducedMotion]);
+
+  useEffect(() => {
+    if (prefersReducedMotion || intensity === 0) {
       return;
     }
 
@@ -55,7 +76,7 @@ export function ParallaxSection({ layers = [], children, className }: ParallaxSe
           return;
         }
 
-        const offset = (clamped - 0.5) * 2 * definition.speed;
+        const offset = (clamped - 0.5) * 2 * definition.speed * intensity;
         layer.style.transform = `translate3d(0, ${offset}px, 0)`;
       });
     };
@@ -80,7 +101,7 @@ export function ParallaxSection({ layers = [], children, className }: ParallaxSe
       window.removeEventListener("scroll", scheduleUpdate);
       window.removeEventListener("resize", scheduleUpdate);
     };
-  }, [layers, prefersReducedMotion]);
+  }, [intensity, layers, prefersReducedMotion]);
 
   return (
     <section ref={containerRef} className={clsx("relative overflow-hidden", className)}>

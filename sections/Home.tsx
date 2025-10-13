@@ -1,7 +1,8 @@
 "use client";
 
 import { useMemo } from "react";
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from "@vercel/speed-insights/next";
+
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { useLenis } from "@/components/useLenis";
 import { ParallaxSection } from "@/components/ParallaxSection";
@@ -19,17 +20,17 @@ export function HomePage() {
       {
         speed: -18,
         className:
-          "bg-[radial-gradient(circle_at_20%_20%,rgba(14,165,233,0.25),transparent_60%)]",
+          "bg-[radial-gradient(circle_at_20%_20%,rgba(31,140,255,0.2),transparent_65%)]",
       },
       {
         speed: 22,
         className:
-          "bg-[radial-gradient(circle_at_80%_60%,rgba(147,51,234,0.18),transparent_65%)]",
+          "bg-[radial-gradient(circle_at_80%_60%,rgba(168,85,247,0.16),transparent_65%)]",
       },
       {
         speed: -10,
         content: (
-          <div className="h-full w-full bg-gradient-to-b from-white/60 via-white/20 to-transparent" aria-hidden />
+          <div className="h-full w-full bg-gradient-to-b from-white/60 via-white/30 to-transparent" aria-hidden />
         ),
       },
     ],
@@ -41,19 +42,17 @@ export function HomePage() {
       <ScrollProgress />
       <Hero />
       <Features />
-      <ParallaxSection layers={parallaxLayers} className="py-24">
+      <ParallaxSection layers={parallaxLayers} className="py-26">
         <div className="container mx-auto flex max-w-4xl flex-col gap-8 px-6 text-center text-neutral-900">
-          <AnimatedSection motion="fade" once>
-            <span className="text-sm font-semibold uppercase tracking-[0.3em] text-brand-500">
+          <AnimatedSection motion="lift" once>
+            <span className="text-xs font-semibold uppercase tracking-[0.3em] text-brand-500">
               Съёмка внимания пользователя
             </span>
           </AnimatedSection>
           <AnimatedSection motion="fade-slide" direction="up" once>
-            <h2 className="text-3xl font-semibold sm:text-4xl">
-              Параллакс-композиция усиливает ощущение глубины
-            </h2>
+            <h2 className="font-display text-display-md">Параллакс-композиция усиливает ощущение глубины</h2>
           </AnimatedSection>
-          <AnimatedSection motion="blur" direction="up" once className="text-base text-neutral-600 sm:text-lg">
+          <AnimatedSection motion="blur" direction="up" once className="text-body-md text-neutral-600">
             <p>
               Добавляйте слои через пропсы <code>layers</code> и задавайте скорость движения. ScrollTrigger синхронизирует анимации
               относительно секции, а для мобильных скорость автоматически снижается.
@@ -63,7 +62,7 @@ export function HomePage() {
       </ParallaxSection>
       <Gallery />
       <CTA />
-      <SpeedInsights/>
+      <SpeedInsights />
     </div>
   );
 }

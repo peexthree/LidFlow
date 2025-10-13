@@ -1,9 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 
 export function ScrollProgress() {
   const [progress, setProgress] = useState(0);
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
     if (typeof window === "undefined") {
@@ -50,9 +52,12 @@ export function ScrollProgress() {
       aria-valuemax={100}
       aria-valuenow={Math.round(progress * 100)}
     >
-      <div
-        className="h-full origin-left bg-gradient-to-r from-brand-400 via-brand-500 to-brand-600 transition-transform"
-        style={{ transform: `scaleX(${progress})` }}
+      {/* 🧩 Scroll Feedback: плавно синхронизируем ширину полосы с прогрессом */}
+      <motion.div
+        className="h-full origin-left bg-gradient-to-r from-brand-400 via-brand-500 to-brand-600"
+        initial={false}
+        animate={{ scaleX: progress }}
+        transition={{ duration: shouldReduceMotion ? 0 : 0.3, ease: [0.22, 1, 0.36, 1] }}
       />
     </div>
   );

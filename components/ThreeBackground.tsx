@@ -38,7 +38,7 @@ function ParticleField({ count = 600 }: ParticleFieldProps) {
     <Points ref={ref} positions={positions} stride={3} frustumCulled>
       <PointMaterial
         transparent
-        color="#38bdf8"
+        color="#1f8cff"
         size={0.08}
         sizeAttenuation
         depthWrite={false}
@@ -96,7 +96,7 @@ export function ThreeBackground() {
       >
         <Suspense fallback={null}>
           <ambientLight intensity={0.4} />
-          <pointLight position={[6, 4, 8]} intensity={1.4} color="#0ea5e9" />
+            <pointLight position={[6, 4, 8]} intensity={1.4} color="#1f8cff" />
           <ParticleField count={isMobile ? 320 : 600} />
         </Suspense>
       </Canvas>

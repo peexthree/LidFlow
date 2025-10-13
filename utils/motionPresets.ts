@@ -1,7 +1,7 @@
 import type { Variants } from "framer-motion";
 
 export type Direction = "up" | "down" | "left" | "right" | "none";
-export type MotionType = "fade" | "fade-slide" | "scale" | "rotate" | "blur" | "mask-reveal";
+export type MotionType = "fade" | "fade-slide" | "scale" | "rotate" | "blur" | "mask-reveal" | "lift" | "tilt";
 
 export interface MotionPresetOptions {
   direction?: Direction;
@@ -11,18 +11,20 @@ export interface MotionPresetOptions {
 
 export const ANIMATION_CONFIG = {
   distance: 48,
-  mobileDistanceFactor: 0.8,
+  mobileDistanceFactor: 0.75,
   durations: {
-    default: 0.8,
+    default: 0.9,
     min: 0.6,
-    max: 1.2,
+    max: 1.4,
   },
   ease: [0.22, 1, 0.36, 1] as const,
   maskEase: [0.33, 1, 0.68, 1] as const,
+  // 🧩 Motion Timing: единые настройки пружины для hover/scroll эффектов
+  spring: { stiffness: 120, damping: 18, mass: 0.4 },
   stagger: {
     default: 0.045,
-    fast: 0.02,
-    slow: 0.08,
+    fast: 0.018,
+    slow: 0.085,
   },
 };
 
@@ -92,12 +94,27 @@ const maskReveal = (): Variants => ({
   hidden: {
     opacity: 0,
     clipPath: "inset(0% 0% 100% 0%)",
+    filter: "blur(6px)",
   },
   visible: {
     opacity: 1,
     clipPath: "inset(0% 0% 0% 0%)",
+    filter: "blur(0px)",
   },
 });
+
+const lift = (): Variants => ({
+  hidden: { opacity: 0, y: 24, scale: 0.98 },
+  visible: { opacity: 1, y: 0, scale: 1 },
+});
+
+const tilt = ({ direction, distance }: MotionPresetOptions): Variants => {
+  const offset = resolveOffset(direction, ((distance ?? ANIMATION_CONFIG.distance) / 2));
+  return {
+    hidden: { opacity: 0, rotateX: 6, rotateY: -6, x: offset.x, y: offset.y },
+    visible: { opacity: 1, rotateX: 0, rotateY: 0, x: 0, y: 0 },
+  };
+};
 
 export const motionPresets: Record<MotionType, (options: MotionPresetOptions) => Variants> = {
   fade: () => fade,
@@ -106,6 +123,8 @@ export const motionPresets: Record<MotionType, (options: MotionPresetOptions) =>
   rotate: (options) => rotate(options),
   blur: (options) => blur(options),
   "mask-reveal": () => maskReveal(),
+  lift: () => lift(),
+  tilt: (options) => tilt(options),
 };
 
 export const getMotionVariants = (
