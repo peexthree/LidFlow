@@ -1,10 +1,12 @@
+import type { CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { clsx } from "clsx";
 
-import { Button } from "@/components/ui/button";
 import { ContactForm } from "@/components/ContactForm";
 import { Hero, type HeroHighlight } from "@/components/sections/Hero";
-
+import { ElectricBorder } from "@/components/ui/ElectricBorder";
+import { Button } from "@/components/ui/button";
 type ProjectCard = {
   title: string;
   description: string;
@@ -146,7 +148,35 @@ const testimonials = [
       "Мощная связка дизайна и кода. Все гипотезы внедряются в тот же день, аналитика показывает рост конверсии.",
   },
 ] as const;
+const electricBorderPalettes = {
+  cyan: {
+    "--electric-color-1": "rgba(14,165,233,0.28)",
+    "--electric-color-2": "rgba(79,70,229,0.55)",
+    "--electric-color-3": "rgba(236,72,153,0.45)",
+    "--electric-glow-color": "rgba(34,211,238,0.35)",
+  },
+  blue: {
+    "--electric-color-1": "rgba(59,130,246,0.32)",
+    "--electric-color-2": "rgba(14,165,233,0.5)",
+    "--electric-color-3": "rgba(147,51,234,0.48)",
+    "--electric-glow-color": "rgba(59,130,246,0.32)",
+  },
+  violet: {
+    "--electric-color-1": "rgba(168,85,247,0.38)",
+    "--electric-color-2": "rgba(236,72,153,0.48)",
+    "--electric-color-3": "rgba(59,130,246,0.35)",
+    "--electric-glow-color": "rgba(168,85,247,0.38)",
+  },
+  amber: {
+    "--electric-color-1": "rgba(251,191,36,0.4)",
+    "--electric-color-2": "rgba(236,72,153,0.38)",
+    "--electric-color-3": "rgba(14,165,233,0.35)",
+    "--electric-glow-color": "rgba(251,191,36,0.35)",
+  },
+} as const satisfies Record<string, Record<`--${string}`, string>>;
 
+const paletteStyle = (palette: keyof typeof electricBorderPalettes): CSSProperties =>
+  electricBorderPalettes[palette] as CSSProperties;
 export default function Home() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#050816] text-slate-200">
@@ -183,9 +213,12 @@ export default function Home() {
             </div>
             <div className="grid gap-6 md:grid-cols-3">
               {benefits.map((benefit) => (
-                <article
+                <ElectricBorder
                   key={benefit.title}
-                  className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.05] p-6 shadow-[0_25px_80px_rgba(14,165,233,0.18)] transition-all duration-500 hover:-translate-y-2 hover:bg-white/[0.07]"
+                  as="article"
+                  className="group relative h-full transition-transform duration-500 hover:-translate-y-2 [--electric-radius:1.5rem]"
+                  contentClassName="relative z-10 flex h-full flex-col overflow-hidden bg-white/[0.05] p-6 shadow-[0_25px_80px_rgba(14,165,233,0.18)] transition-colors duration-500 group-hover:bg-white/[0.07]"
+                  style={paletteStyle("cyan")}
                 >
                   <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(14,165,233,0.35),_transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="relative z-10 space-y-3">
@@ -195,7 +228,7 @@ export default function Home() {
                     <h3 className="text-xl font-semibold text-white">{benefit.title}</h3>
                     <p className="text-sm text-slate-300">{benefit.description}</p>
                   </div>
-                </article>
+                </ElectricBorder>
               ))}
             </div>
           </div>
@@ -222,9 +255,12 @@ export default function Home() {
             </div>
             <div className="grid gap-6 md:grid-cols-3">
               {projects.map((project) => (
-                <article
+                <ElectricBorder
                   key={project.title}
-                  className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] shadow-[0_30px_100px_rgba(59,130,246,0.22)] transition-all duration-500 hover:-translate-y-2 hover:bg-white/[0.06]"
+                  as="article"
+                  className="group relative h-full transition-transform duration-500 hover:-translate-y-2 [--electric-radius:1.5rem]"
+                  contentClassName="relative flex h-full flex-col overflow-hidden bg-white/[0.04] p-6 shadow-[0_30px_100px_rgba(59,130,246,0.22)] transition-colors duration-500 group-hover:bg-white/[0.06]"
+                  style={paletteStyle("blue")}
                 >
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <Image
@@ -255,7 +291,7 @@ export default function Home() {
                       <span className="text-sm text-white/50">{project.linkLabel}</span>
                     )}
                   </div>
-                </article>
+                </ElectricBorder>
               ))}
             </div>
           </div>
@@ -275,9 +311,12 @@ export default function Home() {
             </div>
             <ol className="grid gap-6 md:grid-cols-4">
               {processSteps.map((step, index) => (
-                <li
+                <ElectricBorder
                   key={step.title}
-                  className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.05] p-6 shadow-[0_25px_80px_rgba(168,85,247,0.2)] transition-all duration-500 hover:-translate-y-2 hover:bg-white/[0.07]"
+                  as="li"
+                  className="group relative h-full transition-transform duration-500 hover:-translate-y-2 [--electric-radius:1.5rem]"
+                  contentClassName="relative z-10 flex h-full flex-col justify-between overflow-hidden bg-white/[0.05] p-6 shadow-[0_25px_80px_rgba(168,85,247,0.2)] transition-colors duration-500 group-hover:bg-white/[0.07]"
+                  style={paletteStyle("violet")}
                 >
                   <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(236,72,153,0.3),_transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="relative z-10 space-y-3">
@@ -285,7 +324,7 @@ export default function Home() {
                     <h3 className="text-lg font-semibold text-white">{step.title}</h3>
                     <p className="text-sm text-slate-300">{step.description}</p>
                   </div>
-                </li>
+                </ElectricBorder>
               ))}
             </ol>
           </div>
@@ -307,11 +346,17 @@ export default function Home() {
             </div>
             <div className="grid gap-6 md:grid-cols-3">
               {pricingPlans.map((plan) => (
-                <article
+                <ElectricBorder
                   key={plan.name}
-                  className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border ${
-                    plan.popular ? "border-cyan-300/80 bg-gradient-to-b from-cyan-400/20 via-transparent to-transparent" : "border-white/10 bg-white/[0.05]"
-                  } p-6 shadow-[0_30px_100px_rgba(6,182,212,0.25)] transition-all duration-500 hover:-translate-y-2`}
+                  as="article"
+                  className="group relative h-full transition-transform duration-500 hover:-translate-y-2 [--electric-radius:1.5rem]"
+                  contentClassName={clsx(
+                    "relative z-10 flex h-full flex-col gap-6 overflow-hidden p-6 shadow-[0_30px_100px_rgba(6,182,212,0.25)] transition-colors duration-500",
+                    plan.popular
+                      ? "bg-gradient-to-b from-cyan-400/20 via-transparent to-transparent"
+                      : "bg-white/[0.05]"
+                  )}
+                  style={paletteStyle(plan.popular ? "cyan" : "blue")}
                 >
                   <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(6,182,212,0.3),_transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="relative z-10 flex flex-1 flex-col gap-6">
@@ -336,7 +381,7 @@ export default function Home() {
                       <Link href="#contact">Хочу такой</Link>
                     </Button>
                   </div>
-                </article>
+                </ElectricBorder>
               ))}
             </div>
           </div>
@@ -358,9 +403,12 @@ export default function Home() {
             </div>
             <div className="grid gap-6 md:grid-cols-3">
               {testimonials.map((testimonial) => (
-                <figure
+                <ElectricBorder
                   key={testimonial.name}
-                  className="group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-white/[0.05] p-6 shadow-[0_25px_80px_rgba(168,85,247,0.2)] transition-all duration-500 hover:-translate-y-2 hover:bg-white/[0.07]"
+                  as="figure"
+                  className="group relative h-full transition-transform duration-500 hover:-translate-y-2 [--electric-radius:1.5rem]"
+                  contentClassName="relative z-10 flex h-full flex-col justify-between overflow-hidden bg-white/[0.05] p-6 shadow-[0_25px_80px_rgba(168,85,247,0.2)] transition-colors duration-500 group-hover:bg-white/[0.07]"
+                  style={paletteStyle("violet")}
                 >
                   <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(236,72,153,0.32),_transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <blockquote className="relative z-10 text-base text-slate-200">
@@ -372,7 +420,7 @@ export default function Home() {
                       {testimonial.role}
                     </div>
                   </figcaption>
-                </figure>
+                </ElectricBorder>
               ))}
             </div>
           </div>
