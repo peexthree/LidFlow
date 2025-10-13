@@ -85,7 +85,7 @@ export function Hero({ highlights }: HeroProps) {
   return (
     <motion.section
       ref={sectionRef}
-      className="container relative isolate overflow-hidden rounded-3xl border border-cyan-400/20 bg-slate-950 px-6 py-20 shadow-[0_45px_140px_rgba(12,74,110,0.55)] sm:px-12"
+      className="container relative isolate overflow-hidden rounded-3xl border border-cyan-400/25 bg-[#050818] px-6 py-20 shadow-[0_45px_140px_rgba(14,116,144,0.55)] sm:px-12"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.55 }}
@@ -96,7 +96,7 @@ export function Hero({ highlights }: HeroProps) {
         className="pointer-events-none absolute inset-0 -z-10"
         style={{ y: backgroundShift, opacity: easedGlowOpacity }}
       >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(34,211,238,0.18),_transparent_55%),radial-gradient(circle_at_bottom,_rgba(59,130,246,0.25),_transparent_65%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(14,165,233,0.32),_transparent_55%),radial-gradient(circle_at_bottom,_rgba(147,51,234,0.22),_transparent_65%)]" />
         <div
           className="absolute inset-0 opacity-35 mix-blend-screen"
           style={{
@@ -118,7 +118,7 @@ export function Hero({ highlights }: HeroProps) {
         style={{ y: orbShift }}
       />
 
-      <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_420px] lg:items-center">
+      <div className="grid gap-16 lg:grid-cols-[minmax(0,1fr)_440px] lg:items-center">
         <motion.div className="relative z-10 space-y-10 text-slate-100" variants={itemVariants}>
           <motion.div className="space-y-6" variants={itemVariants}>
             <motion.div
@@ -139,7 +139,7 @@ export function Hero({ highlights }: HeroProps) {
               LidFlow · AI Experience Studio
             </motion.div>
             <motion.span
-              className="inline-flex items-center gap-2 rounded-full border border-cyan-400/40 bg-cyan-400/10 px-4 py-1 text-[13px] font-medium uppercase tracking-[0.2em] text-cyan-200"
+              className="inline-flex items-center gap-2 rounded-full border border-cyan-400/50 bg-cyan-400/15 px-4 py-1 text-[13px] font-medium uppercase tracking-[0.2em] text-cyan-100"
               variants={itemVariants}
             >
               <span className="h-1.5 w-1.5 rounded-full bg-cyan-300" />
@@ -202,43 +202,52 @@ export function Hero({ highlights }: HeroProps) {
         </motion.div>
 
         <motion.div className="relative z-10 flex flex-col items-center gap-8" variants={itemVariants}>
-          <motion.div
-            className="relative aspect-square w-full max-w-[22rem] overflow-hidden rounded-full border border-cyan-400/30 bg-[radial-gradient(circle_at_25%_25%,_rgba(34,211,238,0.35),_transparent_55%),radial-gradient(circle_at_75%_75%,_rgba(129,140,248,0.35),_transparent_65%)] p-6 shadow-[0_45px_120px_rgba(12,74,110,0.55)]"
+          {/* Карточка героя с иллюстрацией талисмана, повторяющая композицию из референса. */}
+          <motion.figure
+            className="group relative aspect-[4/5] w-full max-w-[26rem] overflow-hidden rounded-[3rem] border border-cyan-400/40 bg-[radial-gradient(circle_at_25%_20%,_rgba(34,211,238,0.32),_transparent_60%),radial-gradient(circle_at_75%_80%,_rgba(147,51,234,0.28),_transparent_65%)] p-6 shadow-[0_55px_140px_rgba(12,74,110,0.55)]"
             variants={highlightVariants}
-            whileHover={{ rotateX: shouldReduceMotion ? 0 : -2, rotateY: shouldReduceMotion ? 0 : 2 }}
+            whileHover={{ rotateX: shouldReduceMotion ? 0 : -3, rotateY: shouldReduceMotion ? 0 : 3 }}
             transition={{ type: "spring", stiffness: 120, damping: 18, mass: 0.5 }}
           >
             <motion.div
               aria-hidden
-              className="absolute inset-4 rounded-full border border-white/20 bg-gradient-to-br from-white/10 via-transparent to-white/5"
+              className="absolute inset-0"
               style={{ opacity: easedGlowOpacity }}
+            >
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.12),_transparent_60%)]" />
+            </motion.div>
+            <div className="absolute inset-2 rounded-[2.5rem] border border-white/10 bg-slate-950/40 backdrop-blur-xl" />
+            <motion.div
+              className="absolute -left-20 top-20 h-40 w-40 rounded-full bg-cyan-400/40 blur-[120px]"
+              style={{ y: orbShift }}
             />
             <motion.div
-              className="absolute inset-0"
-              initial={{ rotate: 12 }}
-              animate={{ rotate: 0 }}
-              transition={{ duration: 1.2, ease }}
-              style={{ opacity: easedGlowOpacity }}
-            >
-              <div className="h-full w-full animate-[spin_18s_linear_infinite] bg-[conic-gradient(from_90deg,_rgba(34,211,238,0.35),_transparent_35%,_rgba(129,140,248,0.35),_transparent_75%)]" />
-            </motion.div>
-            <div className="absolute inset-10 rounded-full border border-white/20 bg-slate-900/40 backdrop-blur" />
-            <div className="relative z-10 flex h-full items-center justify-center">
-              <Image src="/logo.webp" alt="LidFlow orb" width={96} height={96} className="h-24 w-24 opacity-90" priority />
+              className="absolute -right-12 bottom-16 h-36 w-36 rounded-full bg-indigo-500/35 blur-[110px]"
+              style={{ y: orbShift }}
+            />
+            <div className="relative z-10 h-full w-full">
+              <Image
+                src="/tal.webp"
+                alt="Иллюстрация талисмана LidFlow"
+                fill
+                className="object-contain object-center"
+                sizes="(min-width: 1024px) 420px, (min-width: 768px) 50vw, 90vw"
+                priority
+              />
             </div>
-            <motion.div
-              className="absolute -top-6 right-6 flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs uppercase tracking-[0.28em] text-white/70 backdrop-blur"
+            <motion.figcaption
+              className="absolute left-10 top-10 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1 text-xs uppercase tracking-[0.28em] text-white/70 backdrop-blur"
               style={{ y: orbShift }}
             >
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-300" />AI Core
-            </motion.div>
+              <span className="h-1.5 w-1.5 rounded-full bg-cyan-300" />AI Assistant
+            </motion.figcaption>
             <motion.div
-              className="absolute -bottom-6 left-8 flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs uppercase tracking-[0.28em] text-white/70 backdrop-blur"
+              className="absolute bottom-8 right-8 flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1 text-xs uppercase tracking-[0.28em] text-white/70 backdrop-blur"
               style={{ y: orbShift }}
             >
-              <span className="h-1.5 w-1.5 rounded-full bg-sky-300" />Realtime
+              <span className="h-1.5 w-1.5 rounded-full bg-sky-300" />Immersive
             </motion.div>
-          </motion.div>
+          </motion.figure>
 
           <motion.ul className="grid w-full gap-4 rounded-3xl border border-white/10 bg-white/5 p-6 text-left text-slate-100 shadow-[0_35px_110px_rgba(12,74,110,0.5)] backdrop-blur" variants={itemVariants}>
             {highlights.map((item) => (
