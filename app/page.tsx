@@ -3,14 +3,19 @@
 import Image from "next/image";
 import Link from "next/link";
 import { clsx } from "clsx";
+import { Suspense, useRef } from "react";
 
+import { Canvas, useFrame } from "@react-three/fiber";
+import type { Group } from "three";
+
+import Mascot from "@/components/Mascot";
 import { ContactForm } from "@/components/ContactForm";
+import { useScrollRotation } from "@/components/useScrollRotation";
 import { Hero, type HeroHighlight } from "@/components/sections/Hero";
 import { InteractiveModelSection } from "@/components/sections/InteractiveModelSection";
 import { PortfolioShowcase, type ProjectShowcaseItem } from "@/components/sections/PortfolioShowcase";
 
 import { Button } from "@/components/ui/button";
-
 
 
 // --- ОПРЕДЕЛЕНИЯ ВСЕХ КОНСТАНТ ---
@@ -165,11 +170,50 @@ const testimonials = [
   },
 ] as const;
 // --- КОНЕЦ ОПРЕДЕЛЕНИЙ КОНСТАНТ ---
+function RotatingMascot({ rotationY }: { rotationY: number }) {
+  const mascotRef = useRef<Group>(null);
+
+  useFrame(() => {
+    if (!mascotRef.current) {
+      return;
+    }
+
+    // Синхронизация вращения модели с текущим положением скролла.
+    mascotRef.current.rotation.y = rotationY;
+  });
+
+  return (
+    <Mascot
+      ref={mascotRef}
+      initialPosition={[1.4, -1.1, 0]}
+      initialScale={1.45}
+    />
+  );
+}
+
+function MascotCanvas() {
+  const rotationY = useScrollRotation({ maxScroll: 1400, maxRotationDeg: 15 });
+
+  return (
+    <Canvas
+      className="mascot-canvas"
+      camera={{ position: [1.2, 1.25, 4.4], fov: 42 }}
+      shadows={false}
+    >
+      <ambientLight intensity={0.85} />
+      <directionalLight position={[4, 5, 3]} intensity={1.15} />
+      <Suspense fallback={null}>
+        <RotatingMascot rotationY={rotationY} />
+      </Suspense>
+    </Canvas>
+  );
+}
 
 
 export default function Home() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#050816] text-slate-200">
+      <MascotCanvas />
       <div className="pointer-events-none absolute inset-0">
         <div className="floating-orb top-[-15%] left-[-5%] h-72 w-72 bg-fuchsia-500/30" />
         <div className="floating-orb right-[-10%] top-[20%] h-[22rem] w-[22rem] bg-cyan-500/20" />
