@@ -1,7 +1,7 @@
 "use client";
 
 import { forwardRef, useMemo } from "react";
-// 🛑 Импортируем useGLTF и Html (для Suspense fallback)
+// Добавляем Html, чтобы иметь возможность отобразить сообщение о загрузке/ошибке в Canvas
 import { useGLTF, Html } from "@react-three/drei";
 import type { Group } from "three";
 
@@ -11,15 +11,16 @@ type MascotProps = {
 };
 
 /**
- * Рабочая версия, которая загружает модель.
+ * Внутренний компонент, который загружает 3D-модель.
+ * Хуки useGLTF и useMemo вызываются безусловно на верхнем уровне.
  */
 const MascotContent = forwardRef<Group, MascotProps>(
   ({ initialPosition = [0, 0, 0], initialScale = 1 }, ref) => {
-    // 🛑 Хуки useGLTF и useMemo возвращены
-    // Файл 'model.glb' должен лежать в папке 'public/'.
+    // 🛑 Хуки вызываются на верхнем уровне, чтобы соответствовать правилам React.
+    // Файл 'model.glb' ДОЛЖЕН лежать в папке 'public/'.
     const { scene } = useGLTF("/model.glb");
     
-    // Клонирование сцены
+    // Клонирование сцены предотвращает проблемы с реактивностью R3F
     const mascotScene = useMemo(() => scene.clone(), [scene]);
 
     return (
@@ -35,16 +36,14 @@ const MascotContent = forwardRef<Group, MascotProps>(
 
 MascotContent.displayName = "MascotContent";
 
-// Preload модели
+// Preload модели для лучшей производительности
 useGLTF.preload("/model.glb");
 
-// Внешний компонент Mascot
+// Внешний компонент Mascot, который используется в page.tsx
 const Mascot = forwardRef<Group, MascotProps>((props, ref) => (
-  // 🛑 Компонент, использующий MascotContent, не должен быть обернут Suspense
   <MascotContent ref={ref} {...props} />
 ));
 
 Mascot.displayName = "Mascot";
 
 export default Mascot;
-
