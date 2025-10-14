@@ -42,24 +42,24 @@ const projects: ReadonlyArray<ProjectShowcaseItem> = [
   {
     title: "LidFlow App",
     description: "Многостраничный корпоративный сайт с анимацией на базе React.",
-    // 🛑 ИСПРАВЛЕНО: Заменили 'tags' на 'tag' для устранения ошибки TypeScript
-    tag: ["React", "Next.js", "Three.js", "Tailwind"], 
+    // ✅ ИСПРАВЛЕНО: Преобразовали массив тегов в строку "string | string | ..."
+    tag: "React | Next.js | Three.js | Tailwind", 
     imageSrc: "/images/project-1.jpg", 
     link: "#",
   },
   {
     title: "CRM Dashboard",
     description: "Интерактивная дашборд-панель для финансового мониторинга.",
-    // 🛑 ИСПРАВЛЕНО: Заменили 'tags' на 'tag'
-    tag: ["Next.js", "Zustand", "Recharts", "Tailwind"],
+    // ✅ ИСПРАВЛЕНО: Преобразовали массив тегов в строку
+    tag: "Next.js | Zustand | Recharts | Tailwind",
     imageSrc: "/images/project-2.jpg", 
     link: "#",
   },
   {
     title: "E-commerce Redesign",
     description: "Полный редизайн интернет-магазина с фокусом на мобильные устройства.",
-    // 🛑 ИСПРАВЛЕНО: Заменили 'tags' на 'tag'
-    tag: ["Vue", "Nuxt.js", "TypeScript", "Tailwind"],
+    // ✅ ИСПРАВЛЕНО: Преобразовали массив тегов в строку
+    tag: "Vue | Nuxt.js | TypeScript | Tailwind",
     imageSrc: "/images/project-3.jpg", 
     link: "#",
   },
