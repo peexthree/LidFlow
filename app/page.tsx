@@ -16,7 +16,7 @@ import { InteractiveModelSection } from "@/components/sections/InteractiveModelS
 import { PortfolioShowcase, type ProjectShowcaseItem } from "@/components/sections/PortfolioShowcase";
 
 import { Button } from "@/components/ui/button";
-import { Html } from "@react-three/drei";
+import { Html } from "@react-three/drei"; 
 
 
 // --- ОПРЕДЕЛЕНИЯ ВСЕХ КОНСТАНТ ---
@@ -42,22 +42,25 @@ const projects: ReadonlyArray<ProjectShowcaseItem> = [
   {
     title: "LidFlow App",
     description: "Многостраничный корпоративный сайт с анимацией на базе React.",
-    tags: ["React", "Next.js", "Three.js", "Tailwind"],
-    imageSrc: "/images/project-1.jpg", // Замените на реальное изображение
+    // 🛑 ИСПРАВЛЕНО: Заменили 'tags' на 'tag' для устранения ошибки TypeScript
+    tag: ["React", "Next.js", "Three.js", "Tailwind"], 
+    imageSrc: "/images/project-1.jpg", 
     link: "#",
   },
   {
     title: "CRM Dashboard",
     description: "Интерактивная дашборд-панель для финансового мониторинга.",
-    tags: ["Next.js", "Zustand", "Recharts", "Tailwind"],
-    imageSrc: "/images/project-2.jpg", // Замените на реальное изображение
+    // 🛑 ИСПРАВЛЕНО: Заменили 'tags' на 'tag'
+    tag: ["Next.js", "Zustand", "Recharts", "Tailwind"],
+    imageSrc: "/images/project-2.jpg", 
     link: "#",
   },
   {
     title: "E-commerce Redesign",
     description: "Полный редизайн интернет-магазина с фокусом на мобильные устройства.",
-    tags: ["Vue", "Nuxt.js", "TypeScript", "Tailwind"],
-    imageSrc: "/images/project-3.jpg", // Замените на реальное изображение
+    // 🛑 ИСПРАВЛЕНО: Заменили 'tags' на 'tag'
+    tag: ["Vue", "Nuxt.js", "TypeScript", "Tailwind"],
+    imageSrc: "/images/project-3.jpg", 
     link: "#",
   },
 ];
@@ -99,7 +102,7 @@ function MascotCanvas() {
 
   return (
     <Canvas
-      // 🛑 КРИТИЧНЫЕ СТИЛИ: фиксированное позиционирование и z-index=0 для фона
+      // КРИТИЧНЫЕ СТИЛИ: фиксированное позиционирование и z-index=0 для фона
       className="fixed top-0 left-0 w-full h-full z-0 pointer-events-none"
       camera={{ position: [1.2, 1.25, 4.4], fov: 42 }}
       shadows={false}
@@ -113,7 +116,12 @@ function MascotCanvas() {
       <Suspense 
         fallback={
           <Html center>
-            <div className="p-4 bg-gray-800/80 backdrop-blur-sm rounded-lg text-white text-sm">
+            {/* ARIA Fix: Добавлен role="status" и aria-live="polite" */}
+            <div 
+              role="status" 
+              aria-live="polite"
+              className="p-4 bg-gray-800/80 backdrop-blur-sm rounded-lg text-white text-sm"
+            >
               Загрузка 3D-модели...
             </div>
           </Html>
@@ -141,27 +149,29 @@ export default function Home() {
         <InteractiveModelSection />
 
         {/* Секция Контактов */}
-        <section className="relative overflow-hidden pt-32 pb-32">
+        <section id="contact-section" className="relative overflow-hidden pt-32 pb-32">
           <div className="container">
             <div className="mx-auto max-w-4xl rounded-[2.5rem] bg-[#050816] p-8 md:p-14 shadow-[0_50px_90px_-20px_rgba(20,126,255,0.4)] border border-primary/20">
               <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs uppercase tracking-[0.28em] text-white/60">
                 Контакты
               </span>
-              <h2 className="mt-4 text-3xl font-semibold text-white md:text-4xl">
+              {/* ARIA Fix: Добавлен уникальный ID для заголовка. */}
+              <h2 id="contact-heading" className="mt-4 text-3xl font-semibold text-white md:text-4xl">
                 Заполните заявку — и обсудим проект
               </h2>
               <p className="mt-4 text-base text-slate-300 md:text-lg">
                 Отвечаю в течение рабочего дня. Подготовлю структуру, бюджет и таймлайн, а также варианты апсейлов.
               </p>
               
-              <ContactForm className="mt-8" />
+              {/* ARIA Fix: Добавлен aria-labelledby для привязки формы к заголовку. */}
+              <ContactForm className="mt-8" aria-labelledby="contact-heading" />
               
               <div className="mt-12 space-y-2 text-sm text-slate-300 md:text-base">
                 <p>
                   • Telegram:
                   <a
                     className="ml-1 inline-flex items-center gap-1 text-cyan-300 underline decoration-dotted underline-offset-4 transition hover:text-cyan-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050816]"
-                    href="[https://t.me/peexthree](https://t.me/peexthree)"
+                    href="https://t.me/peexthree"
                     target="_blank"
                     rel="noreferrer"
                   >
