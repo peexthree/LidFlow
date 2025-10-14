@@ -1,8 +1,8 @@
 "use client";
 
 import { forwardRef, useMemo } from "react";
-// Добавляем Html, чтобы иметь возможность отобразить сообщение о загрузке/ошибке в Canvas
-import { useGLTF, Html } from "@react-three/drei";
+// Для этого теста нам не нужен useGLTF
+import { Html } from "@react-three/drei";
 import type { Group } from "three";
 
 type MascotProps = {
@@ -11,33 +11,36 @@ type MascotProps = {
 };
 
 /**
- * Внутренний компонент, который загружает 3D-модель.
- * Хуки useGLTF и useMemo вызываются безусловно на верхнем уровне.
+ * ВРЕМЕННАЯ ВЕРСИЯ: Отображает простую красную сферу для проверки,
+ * работает ли Canvas, освещение и камера.
  */
 const MascotContent = forwardRef<Group, MascotProps>(
   ({ initialPosition = [0, 0, 0], initialScale = 1 }, ref) => {
-    // 🛑 Хуки вызываются на верхнем уровне, чтобы соответствовать правилам React.
-    // Файл 'model.glb' ДОЛЖЕН лежать в папке 'public/'.
-    const { scene } = useGLTF("/model.glb");
+    const scale = Array.isArray(initialScale) ? initialScale : [initialScale, initialScale, initialScale];
     
-    // Клонирование сцены предотвращает проблемы с реактивностью R3F
-    const mascotScene = useMemo(() => scene.clone(), [scene]);
-
+    // Используем простую геометрию MeshStandardMaterial, который реагирует на свет
     return (
-      <primitive
-        ref={ref}
-        object={mascotScene}
-        position={initialPosition}
-        scale={initialScale}
-      />
+      <mesh 
+        ref={ref as any} // Приводим тип, так как mesh ref не совсем Group, но для теста пойдет
+        position={initialPosition} 
+        scale={scale}
+      >
+        {/* Геометрия сферы с большим радиусом (1.2) */}
+        <sphereGeometry args={[1.2, 32, 32]} /> 
+        {/* Яркий материал, чтобы было хорошо видно */}
+        <meshStandardMaterial color="#f87171" metalness={0.5} roughness={0.3} />
+        {/* Сообщение прямо в 3D-сцене */}
+        <Html center>
+          <div className="text-white p-2 bg-red-600/70 rounded font-semibold text-xs">
+            🛑 СФЕРА ВИДНА! (Тест Canvas пройден)
+          </div>
+        </Html>
+      </mesh>
     );
   },
 );
 
 MascotContent.displayName = "MascotContent";
-
-// Preload модели для лучшей производительности
-useGLTF.preload("/model.glb");
 
 // Внешний компонент Mascot, который используется в page.tsx
 const Mascot = forwardRef<Group, MascotProps>((props, ref) => (
