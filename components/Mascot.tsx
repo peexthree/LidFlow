@@ -1,8 +1,7 @@
 "use client";
 
 import { forwardRef, useMemo } from "react";
-// Добавляем Html, чтобы иметь возможность отобразить сообщение о загрузке/ошибке в Canvas
-import { useGLTF, Html } from "@react-three/drei";
+
 import type { Group } from "three";
 
 type MascotProps = {

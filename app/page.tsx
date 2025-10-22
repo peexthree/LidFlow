@@ -12,7 +12,7 @@ import Mascot from "@/components/Mascot";
 import { ContactForm } from "@/components/ContactForm";
 import { useScrollRotation } from "@/components/useScrollRotation";
 import { Hero, type HeroHighlight } from "@/components/sections/Hero";
-import { InteractiveModelSection } from "@/components/sections/InteractiveModelSection";
+
 import { PortfolioShowcase, type ProjectShowcaseItem } from "@/components/sections/PortfolioShowcase";
 
 import { Button } from "@/components/ui/button";
@@ -54,6 +54,24 @@ const benefits = [
     index: "03",
   },
 ];
+// Направления, которые подчёркивают экспертизу в Telegram-ботах и автоматизации поверх лендингов.
+const automationServices = [
+  {
+    title: "Телеграм-боты под процессы",
+    description:
+      "Проектируем сценарии, подключаем CRM, платёжные системы и аналитические события, чтобы бот приносил заявки без ручной рутины.",
+  },
+  {
+    title: "Системная автоматизация",
+    description:
+      "Связываем лендинги, ботов и внутренние сервисы: интеграции с Notion, Airtable, AmoCRM и кастомные вебхуки.",
+  },
+  {
+    title: "Лидогенерация без потерь",
+    description:
+      "Создаём цепочки, где Telegram дополняет лендинги, визитки и страницы под трафик, а данные сразу попадают в воронку.",
+  },
+] as const;
 
 const projects: ReadonlyArray<ProjectShowcaseItem> = [
   {
@@ -224,7 +242,7 @@ export default function Home() {
         <div className="animate-scale-in">
           <Hero highlights={heroHighlights} />
         </div>
-        <InteractiveModelSection />
+       
         {/* Секция Преимущества без электрических рамок */}
         <section
           className="container relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] px-6 py-12 shadow-[0_40px_120px_rgba(76,29,149,0.25)] backdrop-blur-2xl animate-fade-in-up md:px-12"
@@ -267,7 +285,40 @@ export default function Home() {
             </div>
           </div>
         </section>
-
+{/* Секция о Telegram-ботах и автоматизации: подчёркиваем, что делаем больше, чем лендинги */}
+        <section
+          id="automation"
+          className="container relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] px-6 py-12 shadow-[0_45px_140px_rgba(14,165,233,0.28)] backdrop-blur-2xl animate-fade-in-up md:px-12"
+        >
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(59,130,246,0.24),_transparent_68%)]" />
+          <div className="relative space-y-10">
+            <div className="space-y-4">
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs uppercase tracking-[0.28em] text-white/60">
+                Автоматизация
+              </span>
+              <h2 className="text-3xl font-semibold text-white md:text-4xl">
+                Телеграм-боты и интеллектуальные процессы
+              </h2>
+              <p className="max-w-2xl text-base text-slate-300 md:text-lg">
+                Мы создаём лучшие Telegram-боты и автоматизируем системы вокруг них: от лендингов и визиток до страниц для лидогенерации — вся связка работает как единый продукт.
+              </p>
+            </div>
+            <div className="grid gap-6 md:grid-cols-3">
+              {automationServices.map((service) => (
+                <article
+                  key={service.title}
+                  className="group relative h-full overflow-hidden rounded-3xl border border-white/10 bg-white/[0.05] p-6 shadow-[0_30px_100px_rgba(59,130,246,0.25)] transition-transform duration-500 hover:-translate-y-2 transition-colors group-hover:bg-white/[0.08]"
+                >
+                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.35),_transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                  <div className="relative z-10 space-y-3">
+                    <h3 className="text-xl font-semibold text-white">{service.title}</h3>
+                    <p className="text-sm text-slate-300">{service.description}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
         <div className="animate-fade-in-up">
           <PortfolioShowcase projects={projects} />
         </div>
