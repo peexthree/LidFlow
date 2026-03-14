@@ -1,160 +1,138 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
-import { useMemo, useRef } from "react";
+import { motion } from "framer-motion";
 
+import { AnimatedSection } from "@/components/AnimatedSection";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "@/components/ui/icons";
+import { SplitText } from "@/utils/splitText";
 import { ANIMATION_CONFIG } from "@/utils/motionPresets";
-import { SplitText } from "@/components/ReactBits/SplitText";
-import { DecryptedText } from "@/components/ReactBits/DecryptedText";
-
-
-
-const metrics: ReadonlyArray<{ readonly value: string; readonly label: string }> = [
-  { value: "0 ms", label: "Задержка UI" },
-  { value: "100", label: "Баллов Lighthouse" },
-  { value: "24/7", label: "Техподдержка" },
-];
-
-const ease = ANIMATION_CONFIG.ease;
 
 export function Hero() {
-  const sectionRef = useRef<HTMLElement | null>(null);
-  const shouldReduceMotion = useReducedMotion();
-  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end center"] });
-
-  const backgroundShiftRange = useMemo(() => (shouldReduceMotion ? [0, 0] : [0, -120]), [shouldReduceMotion]);
-  const glowOpacityRange = useMemo(() => (shouldReduceMotion ? [0.5, 0.5] : [0.7, 0.2]), [shouldReduceMotion]);
-
-  const backgroundShift = useTransform(scrollYProgress, [0, 1], backgroundShiftRange);
-  const glowOpacity = useTransform(scrollYProgress, [0, 1], glowOpacityRange);
-  const easedGlowOpacity = useSpring(glowOpacity, { stiffness: 110, damping: 26, mass: 0.5 });
-
-  const containerVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: ANIMATION_CONFIG.durations.default,
-        ease,
-        staggerChildren: ANIMATION_CONFIG.stagger.default,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease },
-    },
-  };
-
   return (
-    <motion.section
-      ref={sectionRef}
-      className="container relative isolate mt-24 overflow-hidden rounded-[2.5rem] border border-white/5 bg-white/[0.02] px-6 py-20 backdrop-blur-3xl sm:px-12 lg:py-28"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-      variants={containerVariants}
+    <section
+      id="hero"
+      className="relative flex h-[100svh] min-h-[600px] w-full items-center justify-center overflow-hidden"
     >
-      <motion.div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10"
-        style={{ y: backgroundShift, opacity: easedGlowOpacity }}
-      >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(34,211,238,0.08),_transparent_55%),radial-gradient(circle_at_bottom_left,_rgba(147,51,234,0.05),_transparent_65%)]" />
-        <div
-          className="absolute inset-0 opacity-[0.15] mix-blend-screen"
-          style={{
-            backgroundImage:
-              "url('data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'40\\' height=\\'40\\' fill=\\'none\\'><path d=\\'M0 20h40M20 0v40\\' stroke=\\'rgba(255,255,255,0.2)\\' stroke-width=\\'1\\' stroke-dasharray=\\'2 6\\'/></svg>')",
-            backgroundSize: "40px 40px",
-          }}
-        />
-      </motion.div>
-
-      <div className="grid gap-16 lg:grid-cols-[1fr_420px] lg:items-center">
-        {/* Left Content Area */}
-        <motion.div className="relative z-10 space-y-12" variants={itemVariants}>
-          <div className="space-y-6">
-            <motion.div
-              className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-mono uppercase tracking-widest text-slate-300 backdrop-blur-md"
-              variants={itemVariants}
-            >
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75"></span>
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-500"></span>
-              </span>
-              <DecryptedText text="ЭКСПЕРТИЗА: High-End Frontend & TWA" animateOn="view" />
-            </motion.div>
-
-            <motion.h1
-              className="text-display-lg font-semibold tracking-tight text-slate-50 md:leading-[1.1]"
-              variants={itemVariants}
-            >
-              <SplitText text="ХВАТИТ ТЕРЯТЬ ЛИДОВ. ВРЕМЯ 10X ПРОДАЖ." delay={30} />
-            </motion.h1>
-
-            <motion.p className="max-w-xl text-body-lg text-slate-400 leading-relaxed" variants={itemVariants}>
-              Вы здесь не за красивыми картинками. Вы здесь за результатом. Шаблоны не работают — они сливают ваш бюджет.
-              Я создаю High-End Frontend, TWA и AI-ботов, которые захватывают внимание и конвертируют посетителей в деньги.
-              Доминируйте в своей нише с безупречным кодом и агрессивным маркетингом.
-            </motion.p>
-          </div>
-
-          <motion.div
-            className="flex flex-wrap items-center gap-4"
-            variants={itemVariants}
-          >
-            <Button asChild>
-              <Link href="#contact">
-                <span className="flex items-center gap-2">
-                  ЗАБРАТЬ РЕЗУЛЬТАТ
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </span>
-              </Link>
-            </Button>
-            <Button asChild variant="ghost">
-              <Link href="#services">КАК Я ЭТО ДЕЛАЮ</Link>
-            </Button>
-          </motion.div>
-
-          {/* Metric Bento */}
-          <motion.div className="grid grid-cols-3 gap-4 border-t border-white/5 pt-8" variants={itemVariants}>
-            {metrics.map((metric) => (
-              <div key={metric.label}>
-                <div className="font-mono text-2xl font-bold text-slate-100">{metric.value}</div>
-                <div className="mt-1 text-xs text-slate-500 uppercase tracking-wider">{metric.label}</div>
-              </div>
-            ))}
-          </motion.div>
-        </motion.div>
-
-        {/* Right Mascot Area */}
-        <motion.div className="relative z-10 flex flex-col items-center" variants={itemVariants}>
-          <motion.figure
-            className="relative w-full aspect-[4/5] max-w-[400px]"
-            whileHover={{ scale: shouldReduceMotion ? 1 : 1.02 }}
-            transition={{ type: "spring", stiffness: 200, damping: 20 }}
-          >
-            <div className="absolute inset-0 rounded-[2.5rem] border border-white/10 bg-gradient-to-br from-white/5 to-transparent backdrop-blur-2xl shadow-[0_0_80px_rgba(255,255,255,0.03)] overflow-hidden">
-               <div className="absolute inset-0 bg-[url('/tal.webp')] bg-cover bg-center bg-no-repeat opacity-80 mix-blend-luminosity hover:mix-blend-normal transition-all duration-700" />
-            </div>
-
-            <motion.div
-              className="absolute left-6 top-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/40 px-3 py-1 text-xs font-mono uppercase tracking-wider text-slate-300 backdrop-blur-md"
-            >
-              СИСТЕМА АКТИВНА
-            </motion.div>
-          </motion.figure>
-        </motion.div>
+      {/* Video Background */}
+      <div className="absolute inset-0 z-0 bg-slate-950">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="h-full w-full object-cover opacity-80"
+        >
+          <source src="/Man.mp4" type="video/mp4" />
+        </video>
+        {/* Overlay to ensure text readability */}
+        <div className="absolute inset-0 bg-black/40 bg-gradient-to-t from-slate-950 via-black/20 to-transparent" />
       </div>
-    </motion.section>
+
+      <div className="container relative z-10 mx-auto flex max-w-6xl flex-col items-center justify-center gap-8 px-6 text-center">
+        <AnimatedSection
+          motion="lift"
+          once
+          className="rounded-full border border-white/10 bg-black/30 px-5 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-cyan-400 shadow-[0_0_20px_rgba(6,182,212,0.2)] backdrop-blur-md"
+        >
+          <span>Доминируй в своей нише</span>
+        </AnimatedSection>
+
+        <AnimatedSection motion="fade-slide" direction="up" once>
+          <h1 className="font-display text-display-xl font-bold uppercase tracking-tighter text-white drop-shadow-2xl md:text-[5.5rem] lg:text-[7rem] leading-[0.9]">
+            <SplitText
+              text="Абсолютный"
+              stagger={ANIMATION_CONFIG.stagger.fast}
+            />
+            <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 drop-shadow-none">
+              <SplitText
+                text="Результат"
+                stagger={ANIMATION_CONFIG.stagger.fast}
+              />
+            </span>
+          </h1>
+        </AnimatedSection>
+
+        <AnimatedSection
+          motion="blur"
+          direction="up"
+          once
+          className="max-w-3xl text-body-lg text-slate-300 md:text-xl font-light"
+        >
+          <p>
+            Мы не делаем шаблоны. Мы создаём High-End машины для генерации прибыли.
+            Твой бизнес заслуживает системы, которая продаёт 24/7. Вложись в рост.
+          </p>
+        </AnimatedSection>
+
+        <AnimatedSection
+          motion="lift"
+          once
+          className="mt-4 flex flex-wrap items-center justify-center gap-6"
+        >
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: {},
+              visible: {
+                transition: {
+                  staggerChildren: ANIMATION_CONFIG.stagger.default,
+                },
+              },
+            }}
+            className="flex flex-wrap justify-center gap-4"
+          >
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 24 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              transition={{
+                duration: ANIMATION_CONFIG.durations.default,
+                ease: ANIMATION_CONFIG.ease,
+              }}
+            >
+              <Button asChild className="rounded-full bg-white px-8 py-6 text-lg font-bold text-black transition-transform hover:scale-105 hover:bg-slate-200">
+                <Link href="#contact">Забрать рынок</Link>
+              </Button>
+            </motion.div>
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 24 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              transition={{
+                duration: ANIMATION_CONFIG.durations.default,
+                ease: ANIMATION_CONFIG.ease,
+                delay: 0.1,
+              }}
+            >
+              <Button
+                asChild
+                variant="outline"
+                className="rounded-full border-white/20 bg-white/5 px-8 py-6 text-lg font-bold text-white backdrop-blur-md transition-colors hover:bg-white/10 hover:text-white"
+              >
+                <Link href="#features">Узнать систему</Link>
+              </Button>
+            </motion.div>
+          </motion.div>
+        </AnimatedSection>
+      </div>
+
+      {/* Scroll Indicator */}
+      <motion.div
+        className="absolute bottom-10 left-1/2 z-10 -translate-x-1/2"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1, duration: 1 }}
+      >
+        <div className="flex flex-col items-center gap-2">
+          <span className="text-[10px] uppercase tracking-widest text-white/50">Скролл вниз</span>
+          <div className="h-12 w-[1px] bg-gradient-to-b from-white/50 to-transparent" />
+        </div>
+      </motion.div>
+    </section>
   );
 }

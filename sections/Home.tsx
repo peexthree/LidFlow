@@ -7,7 +7,7 @@ import { ScrollProgress } from "@/components/ScrollProgress";
 import { useLenis } from "@/components/useLenis";
 import { ParallaxSection } from "@/components/ParallaxSection";
 import { AnimatedSection } from "@/components/AnimatedSection";
-import { Hero } from "@/sections/Hero";
+import { Hero } from "@/components/sections/Hero";
 import { Features } from "@/sections/Features";
 import { Gallery } from "@/sections/Gallery";
 import { CTA } from "@/sections/CTA";
