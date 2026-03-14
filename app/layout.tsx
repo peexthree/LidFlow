@@ -3,8 +3,8 @@ import { Analytics } from "@vercel/analytics/react";
 
 import "./globals.css";
 import { FloatingOrbs } from "@/components/ui/VisualEffects";
-import { VideoIntro } from "@/components/VideoIntro";
 import { SiteHeader } from "@/components/layout/SiteHeader";
+
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://lidflow.vercel.app";
 
 export const metadata: Metadata = {
@@ -62,35 +62,30 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang="ru" className="h-full">
-      <body className="flex min-h-screen flex-col bg-background text-foreground">
+      <body className="flex min-h-screen flex-col bg-slate-950 text-slate-100 selection:bg-white/20">
+        <SiteHeader />
+        <FloatingOrbs />
 
-        <VideoIntro>
-          <>
-              <SiteHeader />
-            <FloatingOrbs />
+        <main className="flex-1">{children}</main>
 
-            <main className="flex-1">{children}</main>
-            <footer className="border-t border-subtle glass-effect">
-              <div className="container flex flex-col gap-4 py-14 text-sm text-neutral-500">
-                <div className="h-px bg-gradient-to-r from-transparent via-border-subtle/80 to-transparent" />
-                <p>© {currentYear} LidFlow. Создаём лендинги, которые продают.</p>
-                <p className="text-xs text-neutral-400">
-                  Telegram:{" "}
-                  <a
-                    href="https://t.me/your_username"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="underline decoration-dotted underline-offset-4 transition-colors duration-300 ease-figma-smooth hover:text-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                  >
-                    @your_username
-                  </a>
-                </p>
-              </div>
-            </footer>
-            <Analytics />
-          </>
-        </VideoIntro>
-
+        <footer className="border-t border-white/5 bg-white/[0.02] backdrop-blur-md">
+          <div className="container flex flex-col gap-4 py-14 text-sm text-slate-400">
+            <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+            <p>© {currentYear} LidFlow. Создаём лендинги, которые продают.</p>
+            <p className="text-xs text-slate-500">
+              Telegram:{" "}
+              <a
+                href="https://t.me/peexthree"
+                target="_blank"
+                rel="noreferrer"
+                className="underline decoration-dotted underline-offset-4 transition-colors duration-300 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20"
+              >
+                @peexthree
+              </a>
+            </p>
+          </div>
+        </footer>
+        <Analytics />
       </body>
     </html>
   );
