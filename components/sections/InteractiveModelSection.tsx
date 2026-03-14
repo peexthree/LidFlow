@@ -60,16 +60,16 @@ const MascotModel: React.FC = () => {
     let lenisCheckInterval: number | undefined;
 
     const activateLenis = () => {
-      if (!window.lenis) {
+      // @ts-expect-error window.lenis is not in global typings
+      const lenis = window.lenis;
+      if (!lenis) {
         return false;
       }
 
       detachLenis?.();
-      // @ts-expect-error property on doesn't exist on type
-      window.lenis.on("scroll", handleLenisScroll);
+      lenis.on("scroll", handleLenisScroll);
       detachLenis = () => {
-        // @ts-expect-error property off doesn't exist on type
-        window.lenis?.off?.("scroll", handleLenisScroll);
+        lenis?.off?.("scroll", handleLenisScroll);
       };
 
       return true;

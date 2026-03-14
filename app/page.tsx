@@ -37,23 +37,7 @@ const heroHighlights: ReadonlyArray<HeroHighlight> = [
   },
 ];
 
-const benefits = [
-  {
-    title: "Скорость",
-    description: "Код чистый, бандл маленький, загрузка мгновенная. Google любит.",
-    index: "01",
-  },
-  {
-    title: "Дизайн",
-    description: "Взаимодействия и анимации, которые продают, а не отвлекают.",
-    index: "02",
-  },
-  {
-    title: "Цена",
-    description: "Нет посредников. Прямая работа с разработчиком.",
-    index: "03",
-  },
-];
+
 // Направления, которые подчёркивают экспертизу в Telegram-ботах и автоматизации поверх лендингов.
 const automationServices = [
   {
@@ -243,48 +227,86 @@ export default function Home() {
           <Hero highlights={heroHighlights} />
         </div>
        
-        {/* Секция Преимущества без электрических рамок */}
+
+        {/* Секция Услуги (Bento Box) */}
         <section
-          className="container relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] px-6 py-12 shadow-[0_40px_120px_rgba(76,29,149,0.25)] backdrop-blur-2xl animate-fade-in-up md:px-12"
+          id="services"
+          className="container relative overflow-hidden rounded-3xl border border-white/10 bg-[#0F1220]/60 px-6 py-12 shadow-[inset_0_2px_40px_rgba(255,255,255,0.02)] backdrop-blur-3xl animate-fade-in-up md:px-12"
         >
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(168,85,247,0.35),_transparent_65%)] opacity-90" />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(31,140,255,0.15),_transparent_60%)]" />
           <div className="relative space-y-10">
-            <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/5 pb-8">
               <div className="space-y-4">
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs uppercase tracking-[0.28em] text-white/60">
-                  Преимущества
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 font-mono text-xs uppercase tracking-[0.28em] text-cyan-400">
+                  <span className="flex h-2 w-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                  SERVICES.EXE
                 </span>
-                <h2 className="text-3xl font-semibold text-white md:text-4xl">
-                  Почему это работает
+                <h2 className="text-3xl font-semibold tracking-tight text-white md:text-5xl font-mono">
+                  Что мы <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">собираем</span>
                 </h2>
-                <p className="max-w-2xl text-base text-slate-300 md:text-lg">
-                  Комбинируем маркетинговую стратегию, строгий TypeScript и визуальные эффекты, чтобы получать заявки, а не лайки.
-                </p>
               </div>
-              <div className="grid gap-3 text-right text-sm text-white/60 md:text-base">
-                <span>Прозрачные сроки — от 7 дней до запуска</span>
-                <span>Работаем напрямую, без лишних согласований</span>
-              </div>
+              <p className="max-w-md text-base text-slate-400 md:text-right">
+                Разработка масштабируемых веб-интерфейсов на <span className="font-mono text-white">Next.js</span> с упором на конверсию и производительность.
+              </p>
             </div>
-            <div className="grid gap-6 md:grid-cols-3">
-              {benefits.map((benefit) => (
-                <article
-                  key={benefit.title}
-                  className="group relative h-full overflow-hidden rounded-3xl border border-white/10 bg-white/[0.05] p-6 shadow-[0_25px_80px_rgba(14,165,233,0.18)] transition-transform duration-500 hover:-translate-y-2 transition-colors group-hover:bg-white/[0.07]"
-                >
-                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(14,165,233,0.35),_transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                  <div className="relative z-10 space-y-3">
-                    <span className="text-sm font-semibold uppercase tracking-[0.28em] text-white/50">
-                      {benefit.index}
-                    </span>
-                    <h3 className="text-xl font-semibold text-white">{benefit.title}</h3>
-                    <p className="text-sm text-slate-300">{benefit.description}</p>
-                  </div>
-                </article>
-              ))}
+
+            <div className="grid gap-6 md:grid-cols-12 md:grid-rows-2">
+              <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-white/5 bg-gradient-to-b from-white/[0.03] to-white/[0.01] p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] transition-all hover:bg-white/[0.05] hover:shadow-[0_0_40px_rgba(31,140,255,0.1)] md:col-span-8 md:row-span-1">
+                 <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500/10 text-blue-400">
+                   <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                 </div>
+                 <h3 className="mb-3 text-2xl font-semibold text-white font-mono">Корпоративные сайты</h3>
+                 <p className="mb-6 max-w-lg text-slate-400 flex-1">
+                   Сложные многостраничные порталы для бизнеса. Интеграция с CRM, CMS, сложная фильтрация и кабинеты пользователей.
+                 </p>
+                 <div className="flex gap-2">
+                   {['React', 'Next.js', 'Tailwind'].map(tech => (
+                     <span key={tech} className="rounded bg-white/5 px-2 py-1 font-mono text-xs text-slate-300 border border-white/10">{tech}</span>
+                   ))}
+                 </div>
+              </article>
+
+              <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-white/5 bg-gradient-to-b from-white/[0.03] to-white/[0.01] p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] transition-all hover:bg-white/[0.05] hover:shadow-[0_0_40px_rgba(236,72,153,0.1)] md:col-span-4 md:row-span-1">
+                 <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-pink-500/10 text-pink-400">
+                   <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                 </div>
+                 <h3 className="mb-3 text-xl font-semibold text-white font-mono">Промо-лендинги</h3>
+                 <p className="text-slate-400">
+                   Конверсионные страницы для запуска продуктов, мероприятий или рекламы. Максимальная скорость и вау-эффекты.
+                 </p>
+              </article>
+
+              <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-white/5 bg-gradient-to-b from-white/[0.03] to-white/[0.01] p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] transition-all hover:bg-white/[0.05] hover:shadow-[0_0_40px_rgba(168,85,247,0.1)] md:col-span-5 md:row-span-1">
+                 <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-purple-500/10 text-purple-400">
+                   <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+                 </div>
+                 <h3 className="mb-3 text-xl font-semibold text-white font-mono">SaaS Интерфейсы</h3>
+                 <p className="text-slate-400">
+                   Проектирование и разработка интерфейсов для веб-приложений. Dashboard, аналитика, настройки.
+                 </p>
+              </article>
+
+              <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-white/5 bg-gradient-to-b from-white/[0.03] to-white/[0.01] p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] transition-all hover:bg-white/[0.05] hover:shadow-[0_0_40px_rgba(20,184,166,0.1)] md:col-span-7 md:row-span-1">
+                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_rgba(20,184,166,0.15),_transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                 <div className="relative z-10 flex flex-col h-full">
+                   <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-teal-500/10 text-teal-400">
+                     <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" /></svg>
+                   </div>
+                   <h3 className="mb-3 text-2xl font-semibold text-white font-mono">E-commerce / Каталоги</h3>
+                   <p className="mb-6 text-slate-400 flex-1">
+                     Быстрые каталоги товаров с удобной навигацией. Оптимизированы для SEO и высоких нагрузок. Подключение корзины и оплат.
+                   </p>
+                   <div className="flex gap-2 mt-auto">
+                     {['Supabase', 'Stripe', 'Framer Motion'].map(tech => (
+                       <span key={tech} className="rounded bg-white/5 px-2 py-1 font-mono text-xs text-slate-300 border border-white/10">{tech}</span>
+                     ))}
+                   </div>
+                 </div>
+              </article>
             </div>
           </div>
         </section>
+
 {/* Секция о Telegram-ботах и автоматизации: подчёркиваем, что делаем больше, чем лендинги */}
         <section
           id="automation"
