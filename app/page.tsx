@@ -11,6 +11,7 @@ import Mascot from "@/components/Mascot";
 import { ContactForm } from "@/components/ContactForm";
 import { useScrollRotation } from "@/components/useScrollRotation";
 import { Hero } from "@/components/sections/Hero";
+import { MasterpieceServices } from "@/components/sections/MasterpieceServices";
 import { TrueFocus } from "@/components/ReactBits/TrueFocus";
 import { TiltedCard } from "@/components/ReactBits/TiltedCard";
 
@@ -25,16 +26,19 @@ import { Button } from "@/components/ui/button";
 // Направления, которые подчёркивают экспертизу в Telegram-ботах и автоматизации поверх лендингов.
 const automationServices = [
   {
+    icon: "/tg-bot-core.svg",
     title: "Телеграм-боты под процессы",
     description:
       "Проектируем сценарии, подключаем CRM, платёжные системы и аналитические события, чтобы бот приносил заявки без ручной рутины.",
   },
   {
+    icon: "/api-gateway.svg",
     title: "Системная автоматизация",
     description:
       "Связываем лендинги, ботов и внутренние сервисы: интеграции с Notion, Airtable, AmoCRM и кастомные вебхуки.",
   },
   {
+    icon: "/logic-tree.svg",
     title: "Лидогенерация без потерь",
     description:
       "Создаём цепочки, где Telegram дополняет лендинги, визитки и страницы под трафик, а данные сразу попадают в воронку.",
@@ -317,6 +321,9 @@ export default function Home() {
                 >
                   <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.35),_transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="relative z-10 space-y-3">
+                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500/10">
+                      <img src={service.icon} alt={service.title} className="h-full w-full object-contain" />
+                    </div>
                     <h3 className="text-xl font-semibold text-white">{service.title}</h3>
                     <p className="text-sm text-slate-300">{service.description}</p>
                   </div>
@@ -325,6 +332,10 @@ export default function Home() {
             </div>
           </div>
         </section>
+        <div className="animate-fade-in-up">
+          <MasterpieceServices />
+        </div>
+
         <div className="animate-fade-in-up">
           <PortfolioShowcase projects={projects} />
         </div>
