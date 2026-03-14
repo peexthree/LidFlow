@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { clsx } from "clsx";
 import { Suspense, useRef } from "react";
@@ -12,6 +11,8 @@ import Mascot from "@/components/Mascot";
 import { ContactForm } from "@/components/ContactForm";
 import { useScrollRotation } from "@/components/useScrollRotation";
 import { Hero } from "@/components/sections/Hero";
+import { TrueFocus } from "@/components/ReactBits/TrueFocus";
+import { TiltedCard } from "@/components/ReactBits/TiltedCard";
 
 import { PortfolioShowcase, type ProjectShowcaseItem } from "@/components/sections/PortfolioShowcase";
 
@@ -302,7 +303,7 @@ export default function Home() {
                 Автоматизация
               </span>
               <h2 className="text-3xl font-semibold text-white md:text-4xl">
-                Телеграм-боты и интеллектуальные процессы
+                <TrueFocus sentence="Телеграм-боты и интеллектуальные процессы" manualMode={false} />
               </h2>
               <p className="max-w-2xl text-base text-slate-300 md:text-lg">
                 Мы создаём лучшие Telegram-боты и автоматизируем системы вокруг них: от лендингов и визиток до страниц для лидогенерации — вся связка работает как единый продукт.
@@ -462,16 +463,17 @@ export default function Home() {
           {/* Блок с изображением tal2.webp - Позиционирование в правом верхнем углу, поднято выше */}
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute top-[-240px] right-[-180px] hidden lg:block z-10"
+            className="absolute top-[-240px] right-[-180px] hidden lg:block z-10"
           >
             <div className="relative h-[300px] w-[300px]">
-              <Image
-                src="/tal2.webp"
-                alt="Талисман LidFlow"
-                fill
-                className="object-contain drop-shadow-[0_32px_90px_rgba(59,130,246,0.28)]"
-                sizes="(min-width: 1024px) 400px"
-                priority
+              <TiltedCard
+                imageSrc="/tal2.webp"
+                altText="Талисман LidFlow"
+                captionText="Талисман LidFlow"
+                containerHeight="300px"
+                containerWidth="300px"
+                imageHeight="300px"
+                imageWidth="300px"
               />
             </div>
           </div>

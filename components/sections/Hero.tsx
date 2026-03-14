@@ -7,6 +7,8 @@ import { useMemo, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "@/components/ui/icons";
 import { ANIMATION_CONFIG } from "@/utils/motionPresets";
+import { SplitText } from "@/components/ReactBits/SplitText";
+import { DecryptedText } from "@/components/ReactBits/DecryptedText";
 
 
 
@@ -89,14 +91,16 @@ export function Hero() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75"></span>
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-500"></span>
               </span>
-              LidFlow Web Solutions
+              <DecryptedText text="LidFlow Web Solutions" animateOn="view" />
             </motion.div>
 
             <motion.h1
               className="text-display-lg font-semibold tracking-tight text-slate-50 md:leading-[1.1]"
               variants={itemVariants}
             >
-              Продающие сайты <br className="hidden sm:block" /> с технологичным подходом
+              <h1 className="text-display-lg font-semibold tracking-tight text-slate-50 md:leading-[1.1]">
+              <SplitText text="Продающие сайты с технологичным подходом" delay={30} />
+            </h1>
             </motion.h1>
 
             <motion.p className="max-w-xl text-body-lg text-slate-400 leading-relaxed" variants={itemVariants}>
