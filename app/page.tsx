@@ -23,33 +23,33 @@ import { Button } from "@/components/ui/button";
 const automationServices = [
   {
     icon: "/tg-bot-core.svg",
-    title: "Телеграм-боты под процессы",
+    title: "Телеграм-боты, Которые Делают Деньги",
     description:
-      "Проектируем сценарии, подключаем CRM, платёжные системы и аналитические события, чтобы бот приносил заявки без ручной рутины.",
+      "Забудьте про рутину. Мы проектируем ботов, которые прогревают лидов, закрывают сделки и принимают оплаты 24/7. Ваша команда отдыхает — бот продаёт.",
   },
   {
     icon: "/api-gateway.svg",
-    title: "Системная автоматизация",
+    title: "Тотальная Автоматизация",
     description:
-      "Связываем лендинги, ботов и внутренние сервисы: интеграции с Notion, Airtable, AmoCRM и кастомные вебхуки.",
+      "Никаких потерянных клиентов. Идеальная связка: Лендинг + TWA + CRM (AmoCRM, Notion, Airtable). Все данные синхронизированы. Все заявки под контролем.",
   },
   {
     icon: "/logic-tree.svg",
-    title: "Лидогенерация без потерь",
+    title: "Агрессивная Лидогенерация",
     description:
-      "Создаём цепочки, где Telegram дополняет лендинги, визитки и страницы под трафик, а данные сразу попадают в воронку.",
+      "Мы не ждём, мы забираем рынок. Telegram-воронки и мощные веб-интерфейсы захватывают трафик и втягивают пользователя в непрерывный процесс покупки.",
   },
 ] as const;
 
 const projects: ReadonlyArray<ProjectShowcaseItem> = [
   {
-    title: "Akulenok — сайт-визитка",
+    title: "Akulenok — 10X Конверсия",
     description:
-      "Минималистичный лендинг с высокой конверсией и быстрым onboardingом.",
-    tag: "Landing · Бренд",
+      "Агрессивный лендинг, бьющий точно в цель. Моментальный онбординг, никаких лишних кликов — только продажи.",
+    tag: "Доминирование · Бренд",
     href: "https://akulenok-tmz.ru/",
     image: "/placeholder/1.jpg",
-    linkLabel: "Смотреть сайт",
+    linkLabel: "УВИДЕТЬ В ДЕЛЕ",
     preview: {
       src: "/previews/akulenok-preview.mp4",
       poster: "/placeholder/1.jpg",
@@ -58,12 +58,12 @@ const projects: ReadonlyArray<ProjectShowcaseItem> = [
     },
   },
   {
-    title: "Лендинг услуги",
+    title: "Машина по генерации Лидов",
     description:
-      "Готовая к рекламе структура: оффер, боли, решение, отзывы и частые вопросы.",
-    tag: "Leadgen · Промо",
+      "Структура, созданная для того, чтобы забирать деньги у конкурентов. Жесткий оффер, отработка возражений, мощный CTA.",
+    tag: "Трафик · Продажи",
     image: "/placeholder/2.jpg",
-    linkLabel: "Ссылка по запросу",
+    linkLabel: "ЗАПРОСИТЬ ДОСТУП",
     preview: {
       src: "/previews/service-preview.mp4",
       poster: "/placeholder/2.jpg",
@@ -72,12 +72,12 @@ const projects: ReadonlyArray<ProjectShowcaseItem> = [
     },
   },
   {
-    title: "Лендинг под трафик",
+    title: "B2B Платформа Доминирования",
     description:
-      "B2B-решение с интеграцией аналитики и кастомным конструктором кейсов.",
-    tag: "B2B · Услуги",
+      "Корпоративное решение, которое продаёт на высокий чек. Сквозная аналитика и доказательная база, которая закрывает сделки.",
+    tag: "B2B · Масштабирование",
     image: "/placeholder/3.jpg",
-    linkLabel: "Ссылка по запросу",
+    linkLabel: "ЗАПРОСИТЬ ДОСТУП",
     preview: {
       src: "/previews/traffic-preview.mp4",
       poster: "/placeholder/3.jpg",
@@ -89,49 +89,49 @@ const projects: ReadonlyArray<ProjectShowcaseItem> = [
 
 const processSteps = [
   {
-    title: "Бриф",
+    title: "10X Бриф",
     description:
-      "Цели, аудитория, ключевые смыслы. Помогаем сформулировать сильный оффер.",
+      "Мы не задаём глупых вопросов. Мы выясняем, где ваши деньги и как их забрать быстрее всего. Формируем оффер, от которого невозможно отказаться.",
   },
   {
-    title: "Дизайн",
+    title: "High-End Архитектура",
     description:
-      "Создаём в коде: используем UI-паттерны reactbits, анимации и микровзаимодействия.",
+      "Пишем код, который работает быстрее ваших конкурентов. Премиум дизайн, никаких тяжелых шаблонов. Только чистый перфоманс.",
   },
   {
-    title: "Запуск",
+    title: "Агрессивный Запуск",
     description:
-      "Домен, Vercel, SSL, аналитика. Подключаем Telegram-бота и CRM по запросу.",
+      "Выкатываем в продакшн. Vercel, SSL, идеальный Lighthouse. Интегрируем ботов и CRM. Готовы принимать трафик с первой секунды.",
   },
   {
-    title: "Оптимизация",
+    title: "Масштабирование и Доминация",
     description:
-      "Отслеживаем KPI, тестируем гипотезы, подготавливаем план апгрейдов.",
+      "Анализируем KPI, тестируем гипотезы, внедряем апсейлы. Мы не останавливаемся — мы увеличиваем отрыв от конкурентов.",
   },
 ] as const;
 
 const pricingPlans = [
   {
-    name: "Старт",
+    name: "Быстрый Старт",
     price: "от 25 000 ₽",
     popular: false,
-    perks: ["1 экран + CTA", "Быстрый MVP-запуск", "Базовая аналитика"],
+    perks: ["MVP за считанные дни", "Мощный оффер + CTA", "Базовая связка аналитики"],
   },
   {
-    name: "Стандарт",
+    name: "Полное Доминирование",
     price: "от 45 000 ₽",
     popular: true,
     perks: [
-      "5–7 секций",
-      "Под ключ: домен, SSL, TG-бот",
-      "Готов к рекламным кабинетам",
+      "5–7 высококонверсионных экранов",
+      "TG-бот + Интеграции под ключ",
+      "Сразу готов к жесткому трафику",
     ],
   },
   {
-    name: "Премиум",
+    name: "10X Масштабирование",
     price: "от 75 000 ₽",
     popular: false,
-    perks: ["Индивидуальный UI", "Анимации, кейсы, блог", "A/B-эксперименты"],
+    perks: ["Premium Motion & 3D", "AI Интеграции & Автоматизация", "Пожизненное A/B тестирование"],
   },
 ] as const;
 
@@ -140,19 +140,19 @@ const testimonials = [
     name: "Дарья Акуленок",
     role: "Основатель бренда Akulenok",
     quote:
-      "Получили первый поток заявок в день запуска. Дальше дорабатывали секции на лету — всё максимально гибко.",
+      "Результат с первого дня. Мы просто залили трафик, и заявки пошли. Работают быстро, жестко, без лишних слов — как я люблю. Настоящие профи.",
   },
   {
     name: "Александр Сергеев",
     role: "CEO b2b-сервиса",
     quote:
-      "Собрали лендинг за неделю, подключили аналитику и CRM. Команда довольна скоростью и прозрачностью.",
+      "Связка лендинга и CRM была собрана за неделю. Скорость феноменальная. Конверсия выросла в разы. Мы просто уничтожаем конкурентов в своей нише.",
   },
   {
     name: "Анна Петрова",
-    role: "Маркетолог",
+    role: "Директор по маркетингу",
     quote:
-      "Мощная связка дизайна и кода. Все гипотезы внедряются в тот же день, аналитика показывает рост конверсии.",
+      "Идеальный баланс технологий и психологии продаж. Мы тестируем гипотезы на лету, внедрения происходят в тот же день. ROI просто сумасшедший.",
   },
 ] as const;
 // --- КОНЕЦ ОПРЕДЕЛЕНИЙ КОНСТАНТ ---
@@ -183,14 +183,14 @@ export default function Home() {
               <div className="space-y-4">
                 <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 font-mono text-xs uppercase tracking-[0.28em] text-cyan-400">
                   <span className="flex h-2 w-2 rounded-full bg-cyan-400 animate-pulse"></span>
-                  SERVICES.EXE
+                  ВАШ АРСЕНАЛ.EXE
                 </span>
                 <h2 className="text-3xl font-semibold tracking-tight text-white md:text-5xl font-mono">
                   Что вы <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">получаете</span>
                 </h2>
               </div>
               <p className="max-w-md text-base text-slate-400 md:text-right">
-                Я мыслю бизнес-метриками, а не просто «закрываю таски». Готовы к продукту уровня Senior? Напишите мне — разберем вашу задачу на молекулы.
+                Я не пишу код ради кода. Я строю цифровые активы, которые приносят прибыль. Вам нужен результат? Пишите. Мы разберем вашу бизнес-модель и сделаем ее в 10 раз эффективнее.
               </p>
             </div>
 
@@ -199,9 +199,9 @@ export default function Home() {
                  <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500/10 text-blue-400">
                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
                  </div>
-                 <h3 className="mb-3 text-2xl font-semibold text-white font-mono">TWA и Боты</h3>
+                 <h3 className="mb-3 text-2xl font-semibold text-white font-mono">МАШИНА ПРОДАЖ В ТЕЛЕГРАМ</h3>
                  <p className="mb-6 max-w-lg text-slate-400 flex-1">
-                   Полноценные Web-приложения и магазины прямо в Telegram. Автоматизация, CRM, воронки.
+                   TWA и боты, которые работают как лучшие менеджеры по продажам. Идеальные воронки, автоматизация и CRM-интеграции.
                  </p>
                  <div className="flex gap-2">
                    {['React', 'Vite', 'Zustand'].map(tech => (
@@ -214,9 +214,9 @@ export default function Home() {
                  <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-pink-500/10 text-pink-400">
                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                  </div>
-                 <h3 className="mb-3 text-xl font-semibold text-white font-mono">Web-интерфейсы</h3>
+                 <h3 className="mb-3 text-xl font-semibold text-white font-mono">HIGH-END ИНТЕРФЕЙСЫ</h3>
                  <p className="text-slate-400">
-                   Продающие лендинги с кастомной геометрией. Никаких тяжелых UI-китов — только чистый код, плавность и эффект стекла.
+                   Безупречный UI/UX, который заставляет покупать. Никаких дешевых шаблонов. Чистый код, эффект стекла и максимальная конверсия.
                  </p>
               </article>
 
@@ -224,9 +224,9 @@ export default function Home() {
                  <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-purple-500/10 text-purple-400">
                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
                  </div>
-                 <h3 className="mb-3 text-xl font-semibold text-white font-mono">Premium Motion</h3>
+                 <h3 className="mb-3 text-xl font-semibold text-white font-mono">ПРЕМИАЛЬНЫЙ MOTION</h3>
                  <p className="text-slate-400">
-                   Зацикленные видеоаватары для «вау-эффекта», плавная SVG-анимация и уникальные иконки.
+                   Ваши клиенты должны испытывать ВАУ-эффект. Плавные GSAP анимации, 3D элементы и видеоаватары, которые продают эмоцию.
                  </p>
               </article>
 
@@ -236,9 +236,9 @@ export default function Home() {
                    <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-teal-500/10 text-teal-400">
                      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" /></svg>
                    </div>
-                   <h3 className="mb-3 text-2xl font-semibold text-white font-mono">AI-Суперсила</h3>
+                   <h3 className="mb-3 text-2xl font-semibold text-white font-mono">ИСКУССТВЕННЫЙ ИНТЕЛЛЕКТ. ДОМИНАЦИЯ.</h3>
                    <p className="mb-6 text-slate-400 flex-1">
-                     Внедряю LLM-модели, генерирую топовую графику (Nano Banana Pro + Photoshop) и реалистичные видеоаватары (Veo3).
+                     Не отставайте от технологий. Внедряем LLM, генерируем премиальный контент (Midjourney + Photoshop) и AI-аватары (Veo3). Оставьте конкурентов в прошлом веке.
                    </p>
                    <div className="flex gap-2 mt-auto">
                      {['ChatGPT', 'Midjourney', 'AI Voice'].map(tech => (
@@ -260,13 +260,13 @@ export default function Home() {
           <div className="relative space-y-10">
             <div className="space-y-4">
               <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs uppercase tracking-[0.28em] text-white/60">
-                Автоматизация
+                10X АВТОМАТИЗАЦИЯ
               </span>
               <h2 className="text-3xl font-semibold text-white md:text-4xl">
-                <TrueFocus sentence="Телеграм-боты и интеллектуальные процессы" manualMode={false} />
+                <TrueFocus sentence="Автоматизируй или умри. Телеграм-боты для бизнеса." manualMode={false} />
               </h2>
               <p className="max-w-2xl text-base text-slate-300 md:text-lg">
-                Мы создаём лучшие Telegram-боты и автоматизируем системы вокруг них: от лендингов и визиток до страниц для лидогенерации — вся связка работает как единый продукт.
+                Хватит терять клиентов из-за человеческого фактора. Наши Telegram-боты и связки интегрируются в единый, безотказный механизм генерации прибыли.
               </p>
             </div>
             <div className="grid gap-6 md:grid-cols-3">
@@ -304,11 +304,11 @@ export default function Home() {
           <div className="relative space-y-10">
             <div className="space-y-4">
               <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs uppercase tracking-[0.28em] text-white/60">
-                Процесс
+                10X ПРОЦЕСС
               </span>
-              <h2 className="text-3xl font-semibold text-white md:text-4xl">Как идёт работа</h2>
+              <h2 className="text-3xl font-semibold text-white md:text-4xl">Как мы забираем рынок</h2>
               <p className="max-w-2xl text-base text-slate-300 md:text-lg">
-                Прозрачный пайплайн: понятные этапы, быстрые ревью, никаких «ещё недельку на дизайн».
+                Никаких долгих согласований. Мы действуем жестко, быстро и на результат. Вы платите за скорость и доминирование.
               </p>
             </div>
             <ol className="grid gap-6 md:grid-cols-4">
@@ -319,7 +319,7 @@ export default function Home() {
                 >
                   <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(236,72,153,0.3),_transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="relative z-10 space-y-3">
-                    <span className="text-sm font-semibold text-white/60">Шаг {index + 1}</span>
+                    <span className="text-sm font-semibold text-white/60">ФАЗА {index + 1}</span>
                     <h3 className="text-lg font-semibold text-white">{step.title}</h3>
                     <p className="text-sm text-slate-300">{step.description}</p>
                   </div>
@@ -337,13 +337,13 @@ export default function Home() {
           <div className="relative space-y-10">
             <div className="space-y-4">
               <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs uppercase tracking-[0.28em] text-white/60">
-                Стоимость
+                ИНВЕСТИЦИИ В РОСТ
               </span>
               <h2 className="text-3xl font-semibold text-white md:text-4xl">
-                Стоимость и пакеты
+                Цена Доминирования
               </h2>
               <p className="max-w-2xl text-base text-slate-300 md:text-lg">
-                Каждый тариф можно кастомизировать под ваши задачи: дополнительные блоки, интеграции, мультиязычность.
+                Вы не тратите деньги, вы инвестируете в систему, которая будет приносить вам прибыль годами. Выбирайте уровень масштабирования.
               </p>
             </div>
             <div className="grid gap-6 md:grid-cols-3">
@@ -377,7 +377,7 @@ export default function Home() {
                       asChild
                       className="mt-auto inline-flex w-full justify-center rounded-xl2 bg-cyan-500 py-3 text-base font-semibold text-white shadow-[0_18px_45px_rgba(6,182,212,0.38)] transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:bg-cyan-400 hover:shadow-[0_20px_55px_rgba(6,182,212,0.45)]"
                     >
-                      <Link href="#contact">Хочу такой</Link>
+                      <Link href="#contact">НАЧАТЬ ЭКСПАНСИЮ</Link>
                     </Button>
                   </div>
                 </article>
@@ -395,13 +395,13 @@ export default function Home() {
           <div className="relative z-20 space-y-10"> {/* Добавляем z-20, чтобы контент был над изображением */}
             <div className="space-y-4">
               <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs uppercase tracking-[0.28em] text-white/60">
-                Отзывы
+                ДОКАЗАТЕЛЬСТВА
               </span>
               <h2 className="text-3xl font-semibold text-white md:text-4xl">
-                Что говорят клиенты
+                Те, кто уже сделал 10X
               </h2>
               <p className="max-w-2xl text-base text-slate-300 md:text-lg">
-                Работаем прозрачно: регулярные созвоны, понятные отчёты по аналитике, быстро реагируем на гипотезы.
+                Цифры не лгут. Люди, которые инвестировали в High-End продукты, уже делят прибыль. Ознакомьтесь с фактами.
               </p>
             </div>
 
@@ -454,13 +454,13 @@ export default function Home() {
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(6,182,212,0.28),_transparent_65%)]" />
           <div className="relative space-y-6">
             <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs uppercase tracking-[0.28em] text-white/60">
-              Контакты
+              СВЯЗЬ. ДЕЙСТВИЕ.
             </span>
             <h2 className="text-3xl font-semibold text-white md:text-4xl">
-              Заполните заявку — и обсудим проект
+              ВРЕМЯ ДЕЙСТВОВАТЬ. ХВАТИТ ЖДАТЬ.
             </h2>
             <p className="text-base text-slate-300 md:text-lg">
-              Отвечаю в течение рабочего дня. Подготовлю структуру, бюджет и таймлайн, а также варианты апсейлов.
+              Оставьте заявку прямо сейчас. Я свяжусь с вами, и мы построим стратегию доминации в вашей нише. Без воды. Только бизнес.
             </p>
             <ul className="space-y-2 text-sm text-slate-300 md:text-base">
               <li>
@@ -475,7 +475,7 @@ export default function Home() {
                 </a>
               </li>
               <li>• Email: linderop@yandex.ru</li>
-              <li>• Время ответа: до 1 часа в рабочие дни</li>
+              <li>• Скорость реакции: Молниеносная (в рабочее время)</li>
             </ul>
           </div>
           <div className="relative mt-10 md:mt-0">

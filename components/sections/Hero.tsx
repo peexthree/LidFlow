@@ -91,7 +91,7 @@ export function Hero() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75"></span>
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-500"></span>
               </span>
-              <DecryptedText text="High-End Frontend & TWA" animateOn="view" />
+              <DecryptedText text="ЭКСПЕРТИЗА: High-End Frontend & TWA" animateOn="view" />
             </motion.div>
 
             <motion.h1
@@ -99,13 +99,14 @@ export function Hero() {
               variants={itemVariants}
             >
               <h1 className="text-display-lg font-semibold tracking-tight text-slate-50 md:leading-[1.1]">
-              <SplitText text="Цифровые инструменты, генерирующие прибыль" delay={30} />
+              <SplitText text="ХВАТИТ ТЕРЯТЬ ЛИДОВ. ВРЕМЯ 10X ПРОДАЖ." delay={30} />
             </h1>
             </motion.h1>
 
             <motion.p className="max-w-xl text-body-lg text-slate-400 leading-relaxed" variants={itemVariants}>
-              Я не собираю проекты на шаблонах. Мой профиль — High-End Frontend, Telegram Web Apps и умные боты.
-              Я объединяю строгую IT-архитектуру с психологией продаж. Ваша цель — конверсия. Моя задача — код и дизайн, которые её обеспечат.
+              Вы здесь не за красивыми картинками. Вы здесь за результатом. Шаблоны не работают — они сливают ваш бюджет.
+              Я создаю High-End Frontend, TWA и AI-ботов, которые захватывают внимание и конвертируют посетителей в деньги.
+              Доминируйте в своей нише с безупречным кодом и агрессивным маркетингом.
             </motion.p>
           </div>
 
@@ -116,13 +117,13 @@ export function Hero() {
             <Button asChild>
               <Link href="#contact">
                 <span className="flex items-center gap-2">
-                  Обсудить проект
+                  ЗАБРАТЬ РЕЗУЛЬТАТ
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </span>
               </Link>
             </Button>
             <Button asChild variant="ghost">
-              <Link href="#services">Смотреть услуги</Link>
+              <Link href="#services">КАК Я ЭТО ДЕЛАЮ</Link>
             </Button>
           </motion.div>
 
@@ -151,7 +152,7 @@ export function Hero() {
             <motion.div
               className="absolute left-6 top-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/40 px-3 py-1 text-xs font-mono uppercase tracking-wider text-slate-300 backdrop-blur-md"
             >
-              System Online
+              СИСТЕМА АКТИВНА
             </motion.div>
           </motion.figure>
         </motion.div>
