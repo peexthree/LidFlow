@@ -5,7 +5,6 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 import { AnimatedSection } from "@/components/AnimatedSection";
-import { ThreeBackground } from "@/components/ThreeBackground";
 import { Button } from "@/components/ui/button";
 import { SplitText } from "@/utils/splitText";
 import { ANIMATION_CONFIG } from "@/utils/motionPresets";
@@ -39,10 +38,7 @@ export function Hero() {
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-30 bg-radial-fade-strong"
         style={{ opacity: 0.85 }}
-      />
-      <ThreeBackground />
-
-      <div className="container relative mx-auto flex max-w-6xl flex-col gap-12 px-6">
+      /><div className="container relative mx-auto flex max-w-6xl flex-col gap-12 px-6">
         <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]">
           <div className="flex flex-col gap-10">
             <AnimatedSection
