@@ -21,7 +21,7 @@ export const TrueFocus: React.FC<TrueFocusProps> = ({
 }) => {
   const words = sentence.split(' ');
   const [currentIndex, setCurrentIndex] = useState(0);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLSpanElement>(null);
   const wordRefs = useRef<(HTMLSpanElement | null)[]>([]);
 
   useEffect(() => {
@@ -34,7 +34,7 @@ export const TrueFocus: React.FC<TrueFocusProps> = ({
   }, [manualMode, words.length, animationDuration, pauseBetweenAnimations]);
 
   return (
-    <div
+    <span
       ref={containerRef}
       className="flex flex-wrap gap-4 items-center justify-center p-8 relative"
     >
@@ -64,6 +64,6 @@ export const TrueFocus: React.FC<TrueFocusProps> = ({
           </span>
         );
       })}
-    </div>
+    </span>
   );
 };
