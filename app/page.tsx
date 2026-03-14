@@ -230,11 +230,11 @@ export default function Home() {
                   SERVICES.EXE
                 </span>
                 <h2 className="text-3xl font-semibold tracking-tight text-white md:text-5xl font-mono">
-                  Что мы <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">собираем</span>
+                  Что вы <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">получаете</span>
                 </h2>
               </div>
               <p className="max-w-md text-base text-slate-400 md:text-right">
-                Разработка масштабируемых веб-интерфейсов на <span className="font-mono text-white">Next.js</span> с упором на конверсию и производительность.
+                Я мыслю бизнес-метриками, а не просто «закрываю таски». Готовы к продукту уровня Senior? Напишите мне — разберем вашу задачу на молекулы.
               </p>
             </div>
 
@@ -243,12 +243,12 @@ export default function Home() {
                  <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500/10 text-blue-400">
                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
                  </div>
-                 <h3 className="mb-3 text-2xl font-semibold text-white font-mono">Корпоративные сайты</h3>
+                 <h3 className="mb-3 text-2xl font-semibold text-white font-mono">TWA и Боты</h3>
                  <p className="mb-6 max-w-lg text-slate-400 flex-1">
-                   Сложные многостраничные порталы для бизнеса. Интеграция с CRM, CMS, сложная фильтрация и кабинеты пользователей.
+                   Полноценные Web-приложения и магазины прямо в Telegram. Автоматизация, CRM, воронки.
                  </p>
                  <div className="flex gap-2">
-                   {['React', 'Next.js', 'Tailwind'].map(tech => (
+                   {['React', 'Vite', 'Zustand'].map(tech => (
                      <span key={tech} className="rounded bg-white/5 px-2 py-1 font-mono text-xs text-slate-300 border border-white/10">{tech}</span>
                    ))}
                  </div>
@@ -258,9 +258,9 @@ export default function Home() {
                  <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-pink-500/10 text-pink-400">
                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                  </div>
-                 <h3 className="mb-3 text-xl font-semibold text-white font-mono">Промо-лендинги</h3>
+                 <h3 className="mb-3 text-xl font-semibold text-white font-mono">Web-интерфейсы</h3>
                  <p className="text-slate-400">
-                   Конверсионные страницы для запуска продуктов, мероприятий или рекламы. Максимальная скорость и вау-эффекты.
+                   Продающие лендинги с кастомной геометрией. Никаких тяжелых UI-китов — только чистый код, плавность и эффект стекла.
                  </p>
               </article>
 
@@ -268,9 +268,9 @@ export default function Home() {
                  <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-purple-500/10 text-purple-400">
                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
                  </div>
-                 <h3 className="mb-3 text-xl font-semibold text-white font-mono">SaaS Интерфейсы</h3>
+                 <h3 className="mb-3 text-xl font-semibold text-white font-mono">Premium Motion</h3>
                  <p className="text-slate-400">
-                   Проектирование и разработка интерфейсов для веб-приложений. Dashboard, аналитика, настройки.
+                   Зацикленные видеоаватары для «вау-эффекта», плавная SVG-анимация и уникальные иконки.
                  </p>
               </article>
 
@@ -280,12 +280,12 @@ export default function Home() {
                    <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-teal-500/10 text-teal-400">
                      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" /></svg>
                    </div>
-                   <h3 className="mb-3 text-2xl font-semibold text-white font-mono">E-commerce / Каталоги</h3>
+                   <h3 className="mb-3 text-2xl font-semibold text-white font-mono">AI-Суперсила</h3>
                    <p className="mb-6 text-slate-400 flex-1">
-                     Быстрые каталоги товаров с удобной навигацией. Оптимизированы для SEO и высоких нагрузок. Подключение корзины и оплат.
+                     Внедряю LLM-модели, генерирую топовую графику (Nano Banana Pro + Photoshop) и реалистичные видеоаватары (Veo3).
                    </p>
                    <div className="flex gap-2 mt-auto">
-                     {['Supabase', 'Stripe', 'Framer Motion'].map(tech => (
+                     {['ChatGPT', 'Midjourney', 'AI Voice'].map(tech => (
                        <span key={tech} className="rounded bg-white/5 px-2 py-1 font-mono text-xs text-slate-300 border border-white/10">{tech}</span>
                      ))}
                    </div>
