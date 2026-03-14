@@ -160,7 +160,7 @@ const testimonials = [
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#050816] text-slate-200"><div className="pointer-events-none absolute inset-0">
+    <div className="relative min-h-screen overflow-hidden bg-transparent text-slate-200"><div className="pointer-events-none absolute inset-0">
         <div className="floating-orb top-[-15%] left-[-5%] h-72 w-72 bg-fuchsia-500/30" />
         <div className="floating-orb right-[-10%] top-[20%] h-[22rem] w-[22rem] bg-cyan-500/20" />
         <div className="floating-orb bottom-[-10%] left-1/2 h-80 w-80 -translate-x-1/2 bg-indigo-500/30" />

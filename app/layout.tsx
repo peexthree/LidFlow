@@ -67,10 +67,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SiteHeader />
         <FloatingOrbs />
 
-        <div className="fixed inset-0 z-[-20]">
+        <div className="fixed inset-0 z-[0]">
           <LetterGlitch glitchSpeed={50} centerVignette={true} outerVignette={true} smooth={true} />
         </div>
-        <main className="flex-1 relative z-0">{children}</main>
+        <main className="flex-1 relative z-10">{children}</main>
 
         <footer className="border-t border-white/5 bg-white/[0.02] backdrop-blur-md">
           <div className="container flex flex-col gap-4 py-14 text-sm text-slate-400">
