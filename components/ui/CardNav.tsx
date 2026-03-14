@@ -38,7 +38,7 @@ const CardNav: React.FC<CardNavProps> = ({
   items,
   className = '',
   ease = 'power3.out',
-  baseColor = '#fff',
+  baseColor = 'rgba(15, 23, 42, 0.4)',
   menuColor,
   buttonBgColor,
   buttonTextColor
@@ -162,11 +162,11 @@ const CardNav: React.FC<CardNavProps> = ({
 
   return (
     <div
-      className={`card-nav-container fixed left-1/2 -translate-x-1/2 w-[90%] max-w-[800px] z-[99] top-[1.2em] md:top-[2em] ${className}`}
+      className={`card-nav-container absolute left-1/2 -translate-x-1/2 w-[90%] max-w-[800px] z-[99] top-[1.2em] md:top-[2em] ${className}`}
     >
       <nav
         ref={navRef}
-        className={`card-nav ${isExpanded ? 'open' : ''} block h-[60px] p-0 rounded-xl shadow-md relative overflow-hidden will-change-[height]`}
+        className={`card-nav ${isExpanded ? 'open' : ''} block h-[60px] p-0 rounded-2xl shadow-lg shadow-black/20 border border-white/10 backdrop-blur-md relative overflow-hidden will-change-[height]`}
         style={{ backgroundColor: baseColor }}
       >
         <div className="card-nav-top absolute inset-x-0 top-0 h-[60px] flex items-center justify-between p-2 pl-[1.1rem] z-[2]">
@@ -201,7 +201,7 @@ const CardNav: React.FC<CardNavProps> = ({
 
           <Link
             href="#contact"
-            className="card-nav-cta-button hidden md:inline-flex border-0 rounded-[calc(0.75rem-0.2rem)] px-4 items-center h-full font-medium cursor-pointer transition-colors duration-300 no-underline"
+            className="card-nav-cta-button hidden md:inline-flex border-0 rounded-xl px-4 items-center h-full font-medium cursor-pointer transition-transform hover:scale-105 duration-300 no-underline"
             style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
           >
             Оставить заявку
@@ -217,7 +217,7 @@ const CardNav: React.FC<CardNavProps> = ({
           {(items || []).slice(0, 3).map((item, idx) => (
             <div
               key={`${item.label}-${idx}`}
-              className="nav-card select-none relative flex flex-col gap-2 p-[12px_16px] rounded-[calc(0.75rem-0.2rem)] min-w-0 flex-[1_1_auto] h-auto min-h-[60px] md:h-full md:min-h-0 md:flex-[1_1_0%]"
+              className="nav-card select-none relative flex flex-col gap-2 p-[12px_16px] rounded-xl border border-white/5 backdrop-blur-md min-w-0 flex-[1_1_auto] h-auto min-h-[60px] md:h-full md:min-h-0 md:flex-[1_1_0%]"
               ref={setCardRef(idx)}
               style={{ backgroundColor: item.bgColor, color: item.textColor }}
             >

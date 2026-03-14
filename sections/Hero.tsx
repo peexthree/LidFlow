@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
@@ -9,212 +8,131 @@ import { Button } from "@/components/ui/button";
 import { SplitText } from "@/utils/splitText";
 import { ANIMATION_CONFIG } from "@/utils/motionPresets";
 
-const HIGHLIGHTS = [
-  {
-    title: "Пиксельная точность",
-    description: "Компоненты готовы к масштабированию и дизайн-системам.",
-  },
-  {
-    title: "Глубокий сторителлинг",
-    description: "Секции раскрывают продукт последовательно и без перегруза.",
-  },
-  {
-    title: "Живая типографика",
-    description: "Split-text анимации подчёркивают ключевые смыслы.",
-  },
-];
-
 export function Hero() {
   return (
     <section
       id="hero"
-      className="relative overflow-hidden pb-30 pt-32 sm:pt-28"
+      className="relative flex h-[100svh] min-h-[600px] w-full items-center justify-center overflow-hidden"
     >
-      <motion.div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-20 bg-radial-fade"
-      />
-      <motion.div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-30 bg-radial-fade-strong"
-        style={{ opacity: 0.85 }}
-      /><div className="container relative mx-auto flex max-w-6xl flex-col gap-12 px-6">
-        <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]">
-          <div className="flex flex-col gap-10">
-            <AnimatedSection
-              motion="lift"
-              once
-              className="max-w-fit rounded-full border border-white/40 bg-white/70 px-4 py-1 text-xs font-semibold uppercase tracking-[0.32em] text-brand-600 shadow-soft backdrop-blur"
-            >
-              <span>Флоу из дизайн-системы и анимированного кода</span>
-            </AnimatedSection>
+      {/* Video Background */}
+      <div className="absolute inset-0 z-0 bg-slate-950">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="h-full w-full object-cover opacity-80"
+        >
+          <source src="/Man.mp4" type="video/mp4" />
+        </video>
+        {/* Overlay to ensure text readability */}
+        <div className="absolute inset-0 bg-black/40 bg-gradient-to-t from-slate-950 via-black/20 to-transparent" />
+      </div>
 
-            <AnimatedSection motion="fade-slide" direction="up" once>
-              <h1 className="font-display text-display-xl text-neutral-900">
-                <SplitText
-                  text="Продакшн-лендинг с Figma-like плавностью"
-                  stagger={ANIMATION_CONFIG.stagger.fast}
-                />
-              </h1>
-            </AnimatedSection>
+      <div className="container relative z-10 mx-auto flex max-w-6xl flex-col items-center justify-center gap-8 px-6 text-center">
+        <AnimatedSection
+          motion="lift"
+          once
+          className="rounded-full border border-white/10 bg-black/30 px-5 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-cyan-400 shadow-[0_0_20px_rgba(6,182,212,0.2)] backdrop-blur-md"
+        >
+          <span>Доминируй в своей нише</span>
+        </AnimatedSection>
 
-            <AnimatedSection
-              motion="blur"
-              direction="up"
-              once
-              className="max-w-measure text-body-lg text-charcoal-600"
-            >
-              <p>
-                Комбинируем framer-motion, GSAP и Three.js для глубины, но
-                держим перфоманс под контролем: плавный скролл на Lenis, умные
-                параллаксы и отключение эффектов при prefers-reduced-motion.
-              </p>
-            </AnimatedSection>
-
-            <AnimatedSection
-              motion="lift"
-              once
-              className="flex flex-wrap items-center gap-4"
-            >
-              <motion.div
-                className="flex flex-wrap items-center gap-4"
-                initial="hidden"
-                animate="visible"
-                variants={{
-                  hidden: {},
-                  visible: {
-                    transition: {
-                      staggerChildren: ANIMATION_CONFIG.stagger.default,
-                    },
-                  },
-                }}
-              >
-                <motion.div
-                  variants={{
-                    hidden: { opacity: 0, y: 24 },
-                    visible: { opacity: 1, y: 0 },
-                  }}
-                  transition={{
-                    duration: ANIMATION_CONFIG.durations.default,
-                    ease: ANIMATION_CONFIG.ease,
-                  }}
-                >
-                  <Button asChild className="rounded-full px-6 py-3 text-base">
-                    <Link href="#features">Смотреть эффекты</Link>
-                  </Button>
-                </motion.div>
-                <motion.div
-                  variants={{
-                    hidden: { opacity: 0, y: 24 },
-                    visible: { opacity: 1, y: 0 },
-                  }}
-                  transition={{
-                    duration: ANIMATION_CONFIG.durations.default,
-                    ease: ANIMATION_CONFIG.ease,
-                    delay: 0.05,
-                  }}
-                >
-                  <Button
-                    asChild
-                    variant="ghost"
-                    className="rounded-full border border-brand-100 bg-white/80 px-6 py-3 text-base text-brand-600 hover:border-brand-200"
-                  >
-                    <Link href="#cta">Обсудить проект</Link>
-                  </Button>
-                </motion.div>
-              </motion.div>
-            </AnimatedSection>
-          </div>
-
-          <AnimatedSection
-            motion="tilt"
-            once
-            className="relative overflow-visible rounded-[44px]"
-          >
-            <motion.div
-              className="relative isolate flex items-center justify-center"
-
-            >
-              <div className="absolute inset-0 -z-10 rounded-[44px] border border-white/30 bg-white/60 shadow-[0_40px_120px_rgba(15,23,42,0.18)] backdrop-blur-xl" />
-              <div
-                className="absolute -inset-16 -z-20 opacity-80 blur-3xl"
-                style={{
-                  background:
-                    "linear-gradient(140deg, rgba(59,130,246,0.45), rgba(17,24,39,0.25))",
-                }}
+        <AnimatedSection motion="fade-slide" direction="up" once>
+          <h1 className="font-display text-display-xl font-bold uppercase tracking-tighter text-white drop-shadow-2xl md:text-[5.5rem] lg:text-[7rem] leading-[0.9]">
+            <SplitText
+              text="Абсолютный"
+              stagger={ANIMATION_CONFIG.stagger.fast}
+            />
+            <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 drop-shadow-none">
+              <SplitText
+                text="Результат"
+                stagger={ANIMATION_CONFIG.stagger.fast}
               />
-              <div className="absolute -right-28 top-1/2 -z-10 hidden h-64 w-64 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,_rgba(59,130,246,0.35)_0%,_rgba(59,130,246,0)_70%)] blur-2xl lg:block" />
-
-              {/* Showcase frame intentionally keeps overflow visible so тал-герой выходит за границы обрамления. */}
-              <div className="relative overflow-visible rounded-[32px] bg-gradient-to-br from-white/80 via-white/60 to-white/30 p-6 backdrop-blur-lg">
-                <div className="pointer-events-none absolute inset-0 -z-10 rounded-[28px] border border-white/50" />
-                <Image
-                  src="/tal.webp"
-                  alt="Футуристичный талисман LidFlow"
-                  width={760}
-                  height={760}
-                  priority
-                  sizes="(min-width: 1280px) 620px, (min-width: 1024px) 540px, (min-width: 768px) 460px, 340px"
-                  className="relative z-20 w-full max-w-[620px] -translate-y-6 translate-x-4 drop-shadow-[0_40px_90px_rgba(59,130,246,0.45)]"
-                />
-
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute -right-24 -top-24 z-30 hidden h-72 w-72 rounded-full bg-[radial-gradient(circle,_rgba(59,130,246,0.35)_0%,_rgba(59,130,246,0)_70%)] blur-2xl lg:block"
-                />
-                <Image
-                  src="/tal2.webp"
-                  alt="Лазурный талисман LidFlow"
-                  width={520}
-                  height={520}
-                  sizes="(min-width: 1280px) 440px, (min-width: 768px) 360px, 260px"
-                  className="absolute -right-16 -top-10 z-40 w-[260px] -rotate-6 sm:w-[320px] lg:-right-20 lg:-top-16 lg:w-[360px] xl:-right-24 xl:-top-20 xl:w-[420px] drop-shadow-[0_28px_90px_rgba(37,99,235,0.38)]"
-                />
-              </div>
-            </motion.div>
-          </AnimatedSection>
-        </div>
+            </span>
+          </h1>
+        </AnimatedSection>
 
         <AnimatedSection
-          motion="tilt"
+          motion="blur"
+          direction="up"
           once
-          className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          className="max-w-3xl text-body-lg text-slate-300 md:text-xl font-light"
         >
-          {HIGHLIGHTS.map((item, index) => (
-            <motion.article
-              key={item.title}
-              className="group relative overflow-hidden rounded-3xl border border-white/40 bg-white/70 p-6 shadow-soft backdrop-blur-sm"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.45 }}
+          <p>
+            Мы не делаем шаблоны. Мы создаём High-End машины для генерации прибыли.
+            Твой бизнес заслуживает системы, которая продаёт 24/7. Вложись в рост.
+          </p>
+        </AnimatedSection>
+
+        <AnimatedSection
+          motion="lift"
+          once
+          className="mt-4 flex flex-wrap items-center justify-center gap-6"
+        >
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: {},
+              visible: {
+                transition: {
+                  staggerChildren: ANIMATION_CONFIG.stagger.default,
+                },
+              },
+            }}
+            className="flex flex-wrap justify-center gap-4"
+          >
+            <motion.div
               variants={{
-                hidden: { opacity: 0, y: 24, filter: "blur(10px)" },
-                visible: { opacity: 1, y: 0, filter: "blur(0px)" },
+                hidden: { opacity: 0, y: 24 },
+                visible: { opacity: 1, y: 0 },
               }}
               transition={{
-                duration: 0.8,
+                duration: ANIMATION_CONFIG.durations.default,
                 ease: ANIMATION_CONFIG.ease,
-                delay: index * 0.04,
               }}
-              whileHover={{ scale: 1.02 }}
             >
-              <div
-                className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                style={{
-                  background:
-                    "radial-gradient(circle at top, rgba(31,140,255,0.18), transparent 70%)",
-                }}
-              />
-              <div className="relative z-10 space-y-2">
-                <h3 className="font-semibold text-neutral-900">{item.title}</h3>
-                <p className="text-body-sm text-neutral-600">
-                  {item.description}
-                </p>
-              </div>
-            </motion.article>
-          ))}
+              <Button asChild className="rounded-full bg-white px-8 py-6 text-lg font-bold text-black transition-transform hover:scale-105 hover:bg-slate-200">
+                <Link href="#contact">Забрать рынок</Link>
+              </Button>
+            </motion.div>
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 24 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              transition={{
+                duration: ANIMATION_CONFIG.durations.default,
+                ease: ANIMATION_CONFIG.ease,
+                delay: 0.1,
+              }}
+            >
+              <Button
+                asChild
+                variant="outline"
+                className="rounded-full border-white/20 bg-white/5 px-8 py-6 text-lg font-bold text-white backdrop-blur-md transition-colors hover:bg-white/10 hover:text-white"
+              >
+                <Link href="#features">Узнать систему</Link>
+              </Button>
+            </motion.div>
+          </motion.div>
         </AnimatedSection>
       </div>
+
+      {/* Scroll Indicator */}
+      <motion.div
+        className="absolute bottom-10 left-1/2 z-10 -translate-x-1/2"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1, duration: 1 }}
+      >
+        <div className="flex flex-col items-center gap-2">
+          <span className="text-[10px] uppercase tracking-widest text-white/50">Скролл вниз</span>
+          <div className="h-12 w-[1px] bg-gradient-to-b from-white/50 to-transparent" />
+        </div>
+      </motion.div>
     </section>
   );
 }
