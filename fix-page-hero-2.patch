@@ -1,0 +1,10 @@
+--- /app/app/page.tsx
++++ /app/app/page.tsx
+@@ -167,7 +167,7 @@
+       </div>
+
+       {/* Hero section removed from padded container so it starts exactly at the top edge */}
+-      <div className="relative z-10 animate-scale-in">
++      <div className="relative z-10 w-full">
+         <Hero />
+       </div>
