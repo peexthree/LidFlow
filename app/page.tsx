@@ -166,11 +166,12 @@ export default function Home() {
         <div className="floating-orb bottom-[-10%] left-1/2 h-80 w-80 -translate-x-1/2 bg-indigo-500/30" />
       </div>
 
-      <div className="relative z-10 space-y-24 py-16 md:py-24">
-        <div className="animate-scale-in">
-          <Hero />
-        </div>
+      {/* Hero section removed from padded container so it starts exactly at the top edge */}
+      <div className="relative z-10 w-full">
+        <Hero />
+      </div>
        
+      <div className="relative z-10 space-y-24 py-16 md:py-24">
 
         {/* Секция Услуги (Bento Box) */}
         <section
