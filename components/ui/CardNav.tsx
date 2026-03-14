@@ -190,14 +190,22 @@ const CardNav: React.FC<CardNavProps> = ({
             />
           </div>
 
-          <Link href="/" className="logo-container flex items-center md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 order-1 md:order-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-full">
-            <div className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-white/5 shadow-soft transition-transform hover:scale-105">
-              <Image src={logo} alt={logoAlt} width={32} height={32} className="h-8 w-8 object-contain" />
-            </div>
-            <span className="ml-3 font-mono text-lg font-semibold tracking-tight text-white/90">
-              LidFlow
-            </span>
-          </Link>
+<Link href="/" className="logo-container flex items-center md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 order-1 md:order-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-full">
+  {/* Убрали фиксированный h-10 w-10, border и bg. Увеличили размер до h-14 w-14 (или больше) */}
+  <div className="relative flex h-14 w-14 items-center justify-center overflow-hidden transition-transform hover:scale-110">
+    <Image 
+      src={logo} 
+      alt={logoAlt} 
+      width={56} // Увеличили ширину (4 * 14)
+      height={56} // Увеличили высоту
+      className="h-full w-full object-contain" // Растягиваем на весь контейнер
+      priority // Добавь priority для быстрой загрузки логотипа
+    />
+  </div>
+  <span className="ml-2 font-mono text-xl font-bold tracking-tight text-white/90">
+    LidFlow
+  </span>
+</Link>
 
           <Link
             href="#contact"
