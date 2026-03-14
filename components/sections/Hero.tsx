@@ -91,7 +91,7 @@ export function Hero() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75"></span>
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-500"></span>
               </span>
-              <DecryptedText text="LidFlow Web Solutions" animateOn="view" />
+              <DecryptedText text="High-End Frontend & TWA" animateOn="view" />
             </motion.div>
 
             <motion.h1
@@ -99,13 +99,13 @@ export function Hero() {
               variants={itemVariants}
             >
               <h1 className="text-display-lg font-semibold tracking-tight text-slate-50 md:leading-[1.1]">
-              <SplitText text="Продающие сайты с технологичным подходом" delay={30} />
+              <SplitText text="Цифровые инструменты, генерирующие прибыль" delay={30} />
             </h1>
             </motion.h1>
 
             <motion.p className="max-w-xl text-body-lg text-slate-400 leading-relaxed" variants={itemVariants}>
-              Разрабатываем лендинги на React и Next.js 15. Фокус на
-              скорости загрузки, современном UI и высокой конверсии. Никаких шаблонов — только чистый код.
+              Я не собираю проекты на шаблонах. Мой профиль — High-End Frontend, Telegram Web Apps и умные боты.
+              Я объединяю строгую IT-архитектуру с психологией продаж. Ваша цель — конверсия. Моя задача — код и дизайн, которые её обеспечат.
             </motion.p>
           </div>
 
