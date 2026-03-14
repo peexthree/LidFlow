@@ -4,44 +4,7 @@
 
 @layer base {
     :root {
-        /* 🧩 Design Tokens: обновлённая светлая палитра и радиусы */
-        --background: 213 60% 98%;
-        --foreground: 221 41% 12%;
-        --card: 0 0% 100%;
-        --card-foreground: 221 41% 12%;
-        --popover: 0 0% 100%;
-        --popover-foreground: 221 41% 12%;
-        --primary: 213 100% 54%;
-        --primary-alpha-0: rgba(20, 126, 255, 0);
-        --primary-alpha-5: rgba(20, 126, 255, 0.05);
-        --primary-alpha-10: rgba(20, 126, 255, 0.1);
-        --primary-alpha-25: rgba(20, 126, 255, 0.25);
-        --primary-alpha-28: rgba(20, 126, 255, 0.28);
-        --primary-alpha-55: rgba(20, 126, 255, 0.55);
-        --primary-alpha-75: rgba(20, 126, 255, 0.75);
-        --primary-alpha-80: rgba(20, 126, 255, 0.8);
-        --primary-foreground: 211 100% 98%;
-        --secondary: 267 90% 64%;
-        --secondary-foreground: 255 100% 98%;
-        --muted: 214 40% 92%;
-        --muted-foreground: 222 15% 44%;
-        --accent: 199 92% 68%;
-        --accent-foreground: 215 52% 14%;
-        --destructive: 0 84% 62%;
-        --destructive-foreground: 0 0% 100%;
-        --border: 216 30% 90%;
-        --border-subtle: 214 40% 94%;
-        --input: 216 30% 90%;
-        --ring: 213 100% 54%;
-        --chart-1: 213 100% 54%;
-        --chart-2: 267 90% 64%;
-        --chart-3: 199 92% 64%;
-        --chart-4: 168 64% 58%;
-        --chart-5: 45 94% 58%;
-        --radius: 1.25rem;
-    }
-
-    .dark {
+        /* 🧩 Design Tokens: Developer Aesthetic (Dark Theme default) */
         --background: 223 47% 10%;
         --foreground: 210 40% 96%;
         --card: 223 47% 12%;
@@ -49,14 +12,14 @@
         --popover: 223 47% 12%;
         --popover-foreground: 210 40% 96%;
         --primary: 213 100% 68%;
-        --primary-alpha-0: rgba(92, 165, 255, 0);
-        --primary-alpha-5: rgba(92, 165, 255, 0.05);
-        --primary-alpha-10: rgba(92, 165, 255, 0.1);
-        --primary-alpha-25: rgba(92, 165, 255, 0.25);
-        --primary-alpha-28: rgba(92, 165, 255, 0.28);
-        --primary-alpha-55: rgba(92, 165, 255, 0.55);
-        --primary-alpha-75: rgba(92, 165, 255, 0.75);
-        --primary-alpha-80: rgba(92, 165, 255, 0.8);
+        --primary-alpha-0: rgba(255, 255, 255, 0);
+        --primary-alpha-5: rgba(255, 255, 255, 0.05);
+        --primary-alpha-10: rgba(255, 255, 255, 0.1);
+        --primary-alpha-25: rgba(255, 255, 255, 0.25);
+        --primary-alpha-28: rgba(255, 255, 255, 0.28);
+        --primary-alpha-55: rgba(255, 255, 255, 0.55);
+        --primary-alpha-75: rgba(255, 255, 255, 0.75);
+        --primary-alpha-80: rgba(255, 255, 255, 0.8);
         --primary-foreground: 223 47% 12%;
         --secondary: 267 84% 72%;
         --secondary-foreground: 223 47% 12%;
@@ -70,50 +33,31 @@
         --border-subtle: 223 30% 30%;
         --input: 223 34% 24%;
         --ring: 213 100% 68%;
+        --radius: 1.25rem;
     }
 
-    /* 🧩 Base Reset: строгий контроль границ и box-sizing */
+    /* 🧩 Base Reset */
     *,
     *::before,
     *::after {
         box-sizing: border-box;
-        /* 🧩 Border System: по умолчанию используем более мягкий токен */
         border-color: hsl(var(--border-subtle));
     }
 
     body {
-        /* 🧩 Visual System: светлый фон с мягкими градиентами, влияющий на depth */
-        @apply min-h-screen font-sans antialiased;
-        color: hsl(var(--foreground));
-        background-color: hsl(var(--background));
+        /* 🧩 Visual System: Тёмный фон с лёгким шумом и градиентами */
+        @apply min-h-screen font-sans antialiased text-slate-100 bg-[#020617];
         background-image:
-            radial-gradient(circle at 12% 18%, rgba(31, 140, 255, 0.12), transparent 55%),
-            radial-gradient(circle at 82% 12%, rgba(168, 85, 247, 0.12), transparent 60%),
-            radial-gradient(circle at 55% 95%, rgba(236, 72, 153, 0.14), transparent 70%);
-        background-repeat: no-repeat;
-        background-size: 120% 120%;
-        animation: gradientShift 26s ease-in-out infinite;
+            radial-gradient(circle at 15% 50%, rgba(255,255,255,0.03), transparent 25%),
+            radial-gradient(circle at 85% 30%, rgba(255,255,255,0.04), transparent 35%);
     }
 
-    body::before {
-        /* 🧩 Motion Depth: дополнительный слой с blur для параллакс эффекта */
-        content: '';
-        position: fixed;
-        inset: 0;
-        background:
-            radial-gradient(circle at 24% 24%, rgba(79, 70, 229, 0.12), transparent 60%),
-            radial-gradient(circle at 74% 64%, rgba(14, 165, 233, 0.16), transparent 60%),
-            radial-gradient(circle at 50% 80%, rgba(236, 72, 153, 0.12), transparent 68%);
-        pointer-events: none;
-        mix-blend-mode: screen;
-        z-index: -1;
-        opacity: 0.85;
-        filter: blur(12px);
+    ::selection {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: white;
     }
 
     @media (prefers-reduced-motion: reduce) {
-
-        /* 🧩 Accessibility: отключаем фоновые анимации для пользователей с PWA */
         *,
         *::before,
         *::after {
@@ -156,208 +100,34 @@
     }
 }
 
-/* ======================================= */
-/* 🚀 СТИЛИ ДЛЯ ЛОГОТИПА-ПРЕЛОАДЕРА */
-/* ======================================= */
-
-.logo-loader {
-    --loader-size: min(38vw, 220px);
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: var(--loader-size);
-    height: var(--loader-size);
-    filter: drop-shadow(0 0 32px rgba(31, 140, 255, 0.35));
-}
-
-.logo-loader__orbit {
-    position: absolute;
-    inset: 0;
-    border-radius: 9999px;
-    border-style: solid;
-    border-width: clamp(6px, calc(var(--loader-size) / 18), 12px);
-    border-color: var(--primary-alpha-10);
-    border-top-color: hsl(var(--primary));
-    border-right-color: var(--primary-alpha-55);
-    animation: logoOrbit 1.8s linear infinite;
-    box-shadow: 0 0 32px var(--primary-alpha-28);
-}
-
-.logo-loader__trail {
-    position: absolute;
-    inset: clamp(18px, calc(var(--loader-size) / 8), 28px);
-    border-radius: 9999px;
-    background: conic-gradient(from 90deg,
-            var(--primary-alpha-0) 0deg,
-            var(--primary-alpha-75) 120deg,
-            var(--primary-alpha-5) 240deg,
-            var(--primary-alpha-0) 360deg);
-    mask: radial-gradient(farthest-side, transparent calc(100% - 12px), #000 calc(100% - 4px));
-    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 12px), #000 calc(100% - 4px));
-    opacity: 0.85;
-    animation: logoTrail 1.8s ease-in-out infinite;
-}
-
-.logo-loader__dot {
-    position: absolute;
-    inset: 0;
-    border-radius: 9999px;
-    animation: logoDot 1.8s linear infinite;
-}
-
-.logo-loader__dot::after {
-    content: "";
-    position: absolute;
-    top: clamp(-6px, calc(var(--loader-size) / -26), -2px);
-    left: 50%;
-    transform: translate(-50%, 0);
-    width: clamp(12px, calc(var(--loader-size) / 12), 20px);
-    height: clamp(12px, calc(var(--loader-size) / 12), 20px);
-    border-radius: 9999px;
-    background: hsl(var(--primary));
-    box-shadow: 0 0 18px var(--primary-alpha-80);
-}
-
-.logo-loader__image {
-    position: relative;
-    z-index: 10;
-    display: block;
-    width: clamp(120px, calc(var(--loader-size) * 0.7), 180px);
-    height: clamp(120px, calc(var(--loader-size) * 0.7), 180px);
-    padding: clamp(16px, calc(var(--loader-size) / 10), 24px);
-    border-radius: 2rem;
-    background: hsl(0 0% 100% / 0.96);
-    box-shadow:
-        0 24px 48px hsla(222 47% 11% / 0.18),
-        0 0 32px var(--primary-alpha-25);
-    animation: logoFloat 3.4s ease-in-out infinite;
-}
-
-/* ======================================= */
-/* АНИМАЦИИ (KEYFRAMES) */
-/* ======================================= */
-
-@keyframes logoOrbit {
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes logoTrail {
-    0% {
-        transform: rotate(0deg);
-        opacity: 0.65;
-    }
-
-    50% {
-        opacity: 1;
-    }
-
-    100% {
-        transform: rotate(360deg);
-        opacity: 0.65;
-    }
-}
-
-@keyframes logoDot {
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes logoFloat {
-
-    0%,
-    100% {
-        transform: scale(0.98) rotate(-4deg);
-    }
-
-    50% {
-        transform: scale(1.02) rotate(4deg);
-    }
-}
-
 @keyframes gradientShift {
-
-    0%,
-    100% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
 }
 
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes scaleIn {
-    from {
-        opacity: 0;
-        transform: scale(0.95);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-@keyframes slideInRight {
-    from {
-        opacity: 0;
-        transform: translateX(30px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
 }
 
 @keyframes float {
-
-    0%,
-    100% {
-        transform: translateY(0px);
-    }
-
-    50% {
-        transform: translateY(-10px);
-    }
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
 }
 
 @keyframes pulse {
-
-    0%,
-    100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0.8;
-    }
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
 }
 
 @keyframes shimmer {
-    0% {
-        background-position: -200% center;
-    }
-
-    100% {
-        background-position: 200% center;
-    }
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
 }
 
 .container {
@@ -372,10 +142,6 @@
     animation: scaleIn 0.5s ease-out forwards;
 }
 
-.animate-slide-in-right {
-    animation: slideInRight 0.6s ease-out forwards;
-}
-
 .animate-float {
     animation: float 3s ease-in-out infinite;
 }
@@ -384,100 +150,27 @@
     animation: pulse 2s ease-in-out infinite;
 }
 
-/* 🧩 Glass Morphism: обновлённые параметры для хедера и футера */
+/* 🧩 Glass Morphism */
 .glass-effect {
-    background: rgba(255, 255, 255, 0.82);
+    background: rgba(15, 23, 42, 0.3);
     backdrop-filter: blur(16px);
-    border: 1px solid hsl(var(--border-subtle));
-    box-shadow:
-        0 12px 24px rgba(15, 23, 42, 0.08),
-        0 35px 90px rgba(15, 23, 42, 0.16);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+                0 12px 24px rgba(0, 0, 0, 0.2),
+                0 35px 90px rgba(0, 0, 0, 0.4);
 }
 
 .shimmer-effect {
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
     background-size: 200% 100%;
     animation: shimmer 2s infinite;
 }
 
-/* Gradient Border Effect */
-@keyframes rotateBorder {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-.gradient-border {
-    position: relative;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.78));
-    backdrop-filter: blur(10px);
-}
-
-.gradient-border::before {
-    content: '';
-    position: absolute;
-    inset: -2px;
-    background: linear-gradient(45deg, #4facfe, #1f8cff, #a855f7, #ec4899, #4facfe);
-    background-size: 320% 320%;
-    border-radius: inherit;
-    z-index: -1;
-    animation: gradientShift 4s ease infinite;
-}
-
 /* Glow Effect */
 @keyframes glow {
-
-    0%,
-    100% {
-        box-shadow: 0 0 20px rgba(31, 140, 255, 0.4), 0 0 40px rgba(31, 140, 255, 0.2);
-    }
-
-    50% {
-        box-shadow: 0 0 30px rgba(236, 72, 153, 0.45), 0 0 60px rgba(236, 72, 153, 0.25);
-    }
-}
-
-/* 🧩 Cursor Trail: мягкое затухание курсора */
-@keyframes cursor-fade-out {
-    to {
-        opacity: 0;
-        transform: scale(2);
-    }
-}
-
-.cursor-trail {
-    position: fixed;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(31, 140, 255, 0.45), transparent);
-    pointer-events: none;
-    z-index: 60;
-    animation: cursor-fade-out 0.8s ease-out forwards;
-}
-
-/* 🧩 Floating Orbs: фоновые световые акценты */
-@keyframes float-orb {
-
-    0%,
-    100% {
-        transform: translate(0, 0) scale(1);
-        opacity: 0.6;
-    }
-
-    33% {
-        transform: translate(30px, -30px) scale(1.08);
-        opacity: 0.78;
-    }
-
-    66% {
-        transform: translate(-22px, 18px) scale(0.94);
-        opacity: 0.7;
-    }
+    0%, 100% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.05), 0 0 40px rgba(255, 255, 255, 0.02); }
+    50% { box-shadow: 0 0 30px rgba(255, 255, 255, 0.1), 0 0 60px rgba(255, 255, 255, 0.05); }
 }
 
 .floating-orb {
@@ -488,109 +181,12 @@
     pointer-events: none;
 }
 
-/* 🧩 Scroll Reveal helper для ScrollReveal компонента */
-.scroll-reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+@keyframes float-orb {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.15; }
+    33% { transform: translate(30px, -30px) scale(1.08); opacity: 0.25; }
+    66% { transform: translate(-22px, 18px) scale(0.94); opacity: 0.2; }
 }
 
-.scroll-reveal.revealed {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* 🧩 Split Text: типографская анимация */
-.split-text {
-    display: inline-flex;
-    flex-wrap: wrap;
-    gap: 0.05em;
-}
-
-.split-text span {
-    display: inline-block;
-    will-change: transform, opacity, clip-path, filter;
-}
-
-.split-text[data-type='words'] span::after {
-    content: '\00a0';
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .split-text span {
-        transition: none !important;
-        animation: none !important;
-    }
-}
-
-/* 🧩 Intro Overlay: эффекты для заставки */
-@keyframes intro-glow {
-
-    0%,
-    100% {
-        box-shadow: 0 28px 70px -32px rgba(31, 140, 255, 0.45);
-    }
-
-    50% {
-        box-shadow: 0 32px 80px -30px rgba(236, 72, 153, 0.5);
-    }
-}
-
-@keyframes intro-orbit {
-    0% {
-        transform: rotate(0deg) scale(1);
-        opacity: 0.65;
-    }
-
-    50% {
-        opacity: 0.85;
-    }
-
-    100% {
-        transform: rotate(360deg) scale(1);
-        opacity: 0.65;
-    }
-}
-
-@keyframes intro-spinner {
-    0% {
-        transform: rotate(0deg) scale(1);
-    }
-
-    40% {
-        transform: rotate(160deg) scale(1.02);
-    }
-
-    100% {
-        transform: rotate(360deg) scale(1);
-    }
-}
-
-.intro-glow {
-    animation: intro-glow 3.6s ease-in-out infinite;
-}
-
-.intro-logo-spin {
-    animation: intro-spinner 14s linear infinite;
-}
-
-.intro-orbit {
-    animation: intro-orbit 12s linear infinite;
-}
-
-
-
-@media (prefers-reduced-motion: reduce) {
-
-    .intro-glow,
-    .intro-logo-spin,
-    .intro-orbit {
-
-        animation: none !important;
-    }
-}
-
-/* Responsive helpers */
 @media (max-width: 768px) {
     .container {
         @apply px-4;

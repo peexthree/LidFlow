@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
-
 import { clsx } from "clsx";
 
 interface NavigationItem {
@@ -21,6 +20,7 @@ const MOBILE_BREAKPOINT = 768;
 
 export function SiteHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const toggleMenu = useCallback(() => {
     setIsMenuOpen((previous) => !previous);
@@ -31,7 +31,15 @@ export function SiteHeader() {
   }, []);
 
   useEffect(() => {
-    // Сбрасываем мобильное меню при возврате на десктоп, чтобы избежать наложений.
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
     const mediaQuery = window.matchMedia(`(min-width: ${MOBILE_BREAKPOINT}px)`);
 
     const handleChange = (event: MediaQueryListEvent) => {
@@ -56,9 +64,7 @@ export function SiteHeader() {
   }, []);
 
   useEffect(() => {
-    // Блокируем прокрутку фона, когда открыт мобильный оверлей.
     document.body.classList.toggle("overflow-hidden", isMenuOpen);
-
     return () => {
       document.body.classList.remove("overflow-hidden");
     };
@@ -70,31 +76,42 @@ export function SiteHeader() {
   );
 
   return (
-    <header className="sticky top-0 z-40 border-b border-subtle/70 glass-effect animate-fade-in-up">
-      <div className="container flex flex-wrap items-center justify-between gap-x-4 gap-y-3 py-3 sm:py-4">
+    <header
+      className={clsx(
+        "fixed top-0 z-50 w-full transition-all duration-300 ease-figma-smooth",
+        isScrolled
+          ? "border-b border-white/5 bg-[#020617]/70 backdrop-blur-xl py-3 shadow-[0_4px_30px_rgba(0,0,0,0.1)]"
+          : "bg-transparent py-5"
+      )}
+    >
+      <div className="container flex flex-wrap items-center justify-between gap-x-4">
         <Link
           href="/"
-          className="inline-flex items-center gap-3 rounded-full px-2.5 py-1.5 text-neutral-900 transition-colors duration-300 ease-figma-smooth hover:text-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          className="group inline-flex items-center gap-3 rounded-full text-slate-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
           aria-label="LidFlow — на главную"
           onClick={closeMenu}
         >
-          <Image
-            src="/logo.webp"
-            alt="Логотип LidFlow"
-            width={36}
-            height={36}
-            className="h-9 w-9 rounded-2xl border border-subtle bg-white/90 p-1 shadow-soft"
-            sizes="36px"
-            priority
-          />
-          <span className="text-lg font-semibold tracking-tight">LidFlow</span>
+          <div className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-white/5 shadow-soft transition-transform group-hover:scale-105">
+            <Image
+              src="/logo.webp"
+              alt="Логотип LidFlow"
+              width={32}
+              height={32}
+              className="h-8 w-8 object-contain"
+              sizes="32px"
+              priority
+            />
+          </div>
+          <span className="font-mono text-lg font-semibold tracking-tight text-white/90">
+            LidFlow
+          </span>
         </Link>
 
-        <nav className="hidden items-center gap-6 text-sm font-medium text-neutral-700 md:flex">
+        <nav className="hidden items-center gap-1 rounded-full border border-white/5 bg-white/[0.03] px-2 py-1 backdrop-blur-md md:flex">
           {navigationItems.map((item) => (
             <a
               key={item.href}
-              className="rounded-full px-3 py-1.5 transition-colors duration-300 ease-figma-smooth hover:text-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              className="rounded-full px-4 py-2 text-sm font-medium text-slate-300 transition-colors duration-300 hover:bg-white/10 hover:text-white"
               href={item.href}
             >
               {item.label}
@@ -102,10 +119,19 @@ export function SiteHeader() {
           ))}
         </nav>
 
+        <div className="hidden md:block">
+          <Link
+            href="#contact"
+            className="inline-flex h-10 items-center justify-center rounded-full border border-white/10 bg-white/5 px-6 text-sm font-medium text-white shadow-[0_0_20px_rgba(255,255,255,0.05)] backdrop-blur-md transition-all duration-300 hover:bg-white/10 hover:shadow-[0_0_30px_rgba(255,255,255,0.1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20"
+          >
+            Связаться
+          </Link>
+        </div>
+
         <button
           type="button"
           onClick={toggleMenu}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-subtle bg-white/70 text-neutral-800 shadow-soft transition-colors duration-300 ease-figma-smooth hover:bg-white md:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-300 backdrop-blur-md transition-colors hover:bg-white/10 hover:text-white md:hidden"
           aria-expanded={isMenuOpen}
           aria-label={menuAriaLabel}
         >
@@ -134,17 +160,17 @@ export function SiteHeader() {
 
       <div
         className={clsx(
-          "overflow-hidden border-t border-subtle/80 bg-white/90 text-neutral-900 transition-all duration-300 ease-figma-smooth md:hidden",
-          isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          "absolute left-0 top-full w-full overflow-hidden border-b border-white/5 bg-[#020617]/95 backdrop-blur-2xl transition-all duration-300 ease-in-out md:hidden",
+          isMenuOpen ? "max-h-[400px] border-t opacity-100" : "max-h-0 opacity-0"
         )}
       >
-        <nav className="container flex flex-col gap-2 py-4">
+        <nav className="container flex flex-col gap-2 py-6">
           {navigationItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
               onClick={closeMenu}
-              className="rounded-xl px-4 py-3 text-base font-medium transition-colors duration-300 ease-figma-smooth hover:bg-brand-50"
+              className="rounded-xl px-4 py-3 text-base font-medium text-slate-300 transition-colors hover:bg-white/5 hover:text-white"
             >
               {item.label}
             </a>
@@ -152,7 +178,7 @@ export function SiteHeader() {
           <Link
             href="#contact"
             onClick={closeMenu}
-            className="mt-2 inline-flex items-center justify-center rounded-xl border border-brand-200 bg-brand-500 px-4 py-3 text-base font-semibold text-white shadow-soft transition-all duration-300 ease-figma-smooth hover:-translate-y-0.5 hover:bg-brand-400"
+            className="mt-4 flex h-12 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-base font-medium text-white transition-colors hover:bg-white/10"
           >
             Оставить заявку
           </Link>

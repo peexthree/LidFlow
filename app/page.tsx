@@ -11,7 +11,7 @@ import type { Group } from "three";
 import Mascot from "@/components/Mascot";
 import { ContactForm } from "@/components/ContactForm";
 import { useScrollRotation } from "@/components/useScrollRotation";
-import { Hero, type HeroHighlight } from "@/components/sections/Hero";
+import { Hero } from "@/components/sections/Hero";
 
 import { PortfolioShowcase, type ProjectShowcaseItem } from "@/components/sections/PortfolioShowcase";
 
@@ -19,23 +19,6 @@ import { Button } from "@/components/ui/button";
 
 
 // --- ОПРЕДЕЛЕНИЯ ВСЕХ КОНСТАНТ ---
-const heroHighlights: ReadonlyArray<HeroHighlight> = [
-  {
-    title: "Современные технологии",
-    description:
-      "Адаптивный Next.js 15, оптимизация Core Web Vitals и мгновенные обновления.",
-  },
-  {
-    title: "Высокая конверсия",
-    description:
-      "Структура блоков проверена на реальных кейсах и усилена A/B-паттернами.",
-  },
-  {
-    title: "Быстрый запуск",
-    description:
-      "Настраиваем домен, деплой на Vercel и подключаем аналитику без лишней бюрократии.",
-  },
-];
 
 
 // Направления, которые подчёркивают экспертизу в Telegram-ботах и автоматизации поверх лендингов.
@@ -224,7 +207,7 @@ export default function Home() {
 
       <div className="relative z-10 space-y-24 py-16 md:py-24">
         <div className="animate-scale-in">
-          <Hero highlights={heroHighlights} />
+          <Hero />
         </div>
        
 

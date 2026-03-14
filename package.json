@@ -22,6 +22,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-intersection-observer": "^9.16.0",
+    "tailwind-merge": "^3.5.0",
     "tailwindcss-animate": "^1.0.7",
     "three": "^0.180.0",
     "zod": "^3.23.8"
@@ -31,6 +32,7 @@
     "@types/react": "19.2.2",
     "@types/three": "^0.183.1",
     "autoprefixer": "^10.4.20",
+    "baseline-browser-mapping": "^2.10.7",
     "eslint": "^9.9.0",
     "eslint-config-next": "15.5.2",
     "postcss": "^8.4.47",

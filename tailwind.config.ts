@@ -11,7 +11,7 @@ const config = {
   ],
   theme: {
     extend: {
-      // 🧩 Design Tokens: единая палитра и типографика под Figma-like эстетику
+      // 🧩 Design Tokens: Developer Aesthetic (Anthracite/Slate)
       colors: {
         brand: {
           50: "#ECF7FF",
@@ -26,17 +26,18 @@ const config = {
           900: "#0A2D5B",
           DEFAULT: "#1F8CFF",
         },
-        charcoal: {
-          50: "#F8FAFC",
-          100: "#EEF2F7",
-          200: "#D9E0EB",
-          300: "#B6C0D1",
-          400: "#8995AA",
-          500: "#64708A",
-          600: "#485068",
-          700: "#31374A",
-          800: "#1F2333",
-          900: "#0F1220",
+        slate: {
+          50: "#f8fafc",
+          100: "#f1f5f9",
+          200: "#e2e8f0",
+          300: "#cbd5e1",
+          400: "#94a3b8",
+          500: "#64748b",
+          600: "#475569",
+          700: "#334155",
+          800: "#1e293b",
+          900: "#0f172a",
+          950: "#020617",
         },
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
@@ -81,12 +82,11 @@ const config = {
         },
       },
       fontFamily: {
-        // 🧩 Typography: плавное масштабирование гарнитур
         sans: ["'Inter Variable'", "Inter", "system-ui", "sans-serif"],
-        display: ["'Satoshi Variable'", "Inter", "system-ui", "sans-serif"],
+        display: ["'Inter Variable'", "Inter", "system-ui", "sans-serif"],
+        mono: ["'Geist Mono Variable'", "'JetBrains Mono'", "monospace"],
       },
       fontSize: {
-        // 🧩 Responsive Type Scale: clamp повышает читабельность
         "display-2xl": ["clamp(3.5rem, 6vw, 4.75rem)", { lineHeight: "1.04", letterSpacing: "-0.04em" }],
         "display-xl": ["clamp(3rem, 5vw, 4rem)", { lineHeight: "1.05", letterSpacing: "-0.035em" }],
         "display-lg": ["clamp(2.5rem, 4vw, 3.5rem)", { lineHeight: "1.08", letterSpacing: "-0.03em" }],
@@ -98,7 +98,6 @@ const config = {
         "body-xs": ["0.8125rem", { lineHeight: "1.6", letterSpacing: "0.02em" }],
       },
       spacing: {
-        // 🧩 Spacing Rhythm: дополнительные значения для сетки
         18: "4.5rem",
         22: "5.5rem",
         26: "6.5rem",
@@ -112,23 +111,20 @@ const config = {
         sm: "calc(var(--radius) - 4px)",
       },
       boxShadow: {
-        // 🧩 Depth Tokens: мягкие тени для объёмности
-        soft: "0 10px 26px rgba(15,23,42,0.08), 0 28px 60px rgba(15,23,42,0.08)",
-        floating: "0 14px 35px rgba(15,23,42,0.12), 0 38px 90px rgba(15,23,42,0.18)",
+        soft: "0 10px 26px rgba(0,0,0,0.4), 0 28px 60px rgba(0,0,0,0.6)",
+        floating: "0 14px 35px rgba(0,0,0,0.5), 0 38px 90px rgba(0,0,0,0.7)",
       },
       maxWidth: {
         measure: "60ch",
       },
       backgroundImage: {
-        // 🧩 Gradient Tokens: переиспользуемые эффекты
-        "radial-fade": "radial-gradient(circle at 20% 20%, rgba(31,140,255,0.12), transparent 60%)",
-        "radial-fade-strong": "radial-gradient(circle at 80% 50%, rgba(168,85,247,0.2), transparent 65%)",
+        "radial-fade": "radial-gradient(circle at 20% 20%, rgba(255,255,255,0.05), transparent 60%)",
+        "radial-fade-strong": "radial-gradient(circle at 80% 50%, rgba(255,255,255,0.08), transparent 65%)",
       },
       transitionTimingFunction: {
         "figma-smooth": "cubic-bezier(0.22, 1, 0.36, 1)",
       },
       keyframes: {
-        // 🧩 Motion Library: базовые ключевые кадры
         "fade-up": {
           "0%": { opacity: "0", transform: "translateY(20px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
@@ -150,7 +146,6 @@ const config = {
       borderColor: {
         subtle: "hsl(var(--border-subtle))",
       },
-
     },
   },
   plugins: [animate],
