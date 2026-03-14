@@ -1,6 +1,7 @@
 "use client";
 
 import { forwardRef, useMemo } from "react";
+import { useGLTF } from "@react-three/drei";
 
 import type { Group } from "three";
 
@@ -18,7 +19,7 @@ const MascotContent = forwardRef<Group, MascotProps>(
     // 🛑 Хуки вызываются на верхнем уровне, чтобы соответствовать правилам React.
     // Файл 'model.glb' ДОЛЖЕН лежать в папке 'public/'.
     const { scene } = useGLTF("/model.glb");
-    
+
     // Клонирование сцены предотвращает проблемы с реактивностью R3F
     const mascotScene = useMemo(() => scene.clone(), [scene]);
 

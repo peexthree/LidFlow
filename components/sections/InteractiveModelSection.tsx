@@ -5,19 +5,11 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
 import { clsx } from "clsx";
 import * as THREE from "three";
-declare global {
-    interface Window {
-        lenis?: {
-            on: (event: "scroll", handler: (payload: { scroll: number }) => void) => void;
-            off?: (event: "scroll", handler: (payload: { scroll: number }) => void) => void;
-        };
-    }
-}
 
 // --- Настройки Сцены и Модели (ФИНАЛЬНАЯ КОНФИГУРАЦИЯ) ---
 const CAMERA_FOV = 40;
 const CAMERA_Z_POSITION = 12; // СИЛЬНО отодвинутая камера
-const MODEL_SCALE = 15.0; // Значительно увеличенный масштаб 
+const MODEL_SCALE = 15.0; // Значительно увеличенный масштаб
 const INITIAL_ROTATION_Y = -Math.PI / 5;
 
 // Чувствительность мыши (очень низкая, чтобы избежать "прыжков" - только плавное вращение)
@@ -36,124 +28,130 @@ const INITIAL_MODEL_Y_OFFSET = -2.5;
 // ------------------------------------------------------------------------
 
 const MascotModel: React.FC = () => {
-    const { scene } = useGLTF("/model.glb");
-    const modelRef = useRef<THREE.Group | null>(null);
+  const { scene } = useGLTF("/model.glb");
+  const modelRef = useRef<THREE.Group | null>(null);
 
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-    const [lenisScrollY, setLenisScrollY] = useState(0);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [lenisScrollY, setLenisScrollY] = useState(0);
 
-    // Инициализация позиции и подписки на события
-    useEffect(() => {
-        if (modelRef.current) {
-            modelRef.current.position.y = INITIAL_MODEL_Y_OFFSET;
+  // Инициализация позиции и подписки на события
+  useEffect(() => {
+    if (modelRef.current) {
+      modelRef.current.position.y = INITIAL_MODEL_Y_OFFSET;
+    }
+
+    const handleMouseMove = (event: MouseEvent) => {
+      const x = (event.clientX / window.innerWidth) * 2 - 1;
+      const y = -(event.clientY / window.innerHeight) * 2 + 1;
+      setMousePosition({ x, y });
+    };
+
+    // --- Логика подписки на Lenis или стандартный скролл ---
+    const handleLenisScroll = ({ scroll }: { scroll: number }) => {
+      setLenisScrollY(scroll);
+    };
+
+    const handleStandardScroll = () => {
+      setLenisScrollY(document.documentElement.scrollTop);
+    };
+
+    let detachStandardScroll: (() => void) | undefined;
+    let detachLenis: (() => void) | undefined;
+    let lenisCheckInterval: number | undefined;
+
+    const activateLenis = () => {
+      if (!window.lenis) {
+        return false;
+      }
+
+      detachLenis?.();
+      // @ts-expect-error property on doesn't exist on type
+      window.lenis.on("scroll", handleLenisScroll);
+      detachLenis = () => {
+        // @ts-expect-error property off doesn't exist on type
+        window.lenis?.off?.("scroll", handleLenisScroll);
+      };
+
+      return true;
+    };
+
+    if (!activateLenis()) {
+      window.addEventListener("scroll", handleStandardScroll, {
+        passive: true,
+      });
+      detachStandardScroll = () => {
+        window.removeEventListener("scroll", handleStandardScroll);
+      };
+
+      // После загрузки Lenis переводим подписку с нативного scroll на плавный скролл
+      lenisCheckInterval = window.setInterval(() => {
+        if (activateLenis()) {
+          detachStandardScroll?.();
+          detachStandardScroll = undefined;
+          if (lenisCheckInterval) {
+            window.clearInterval(lenisCheckInterval);
+            lenisCheckInterval = undefined;
+          }
         }
+      }, 200);
+    }
 
-        const handleMouseMove = (event: MouseEvent) => {
-            const x = (event.clientX / window.innerWidth) * 2 - 1;
-            const y = -(event.clientY / window.innerHeight) * 2 + 1;
-            setMousePosition({ x, y });
-        };
+    window.addEventListener("mousemove", handleMouseMove);
 
-        // --- Логика подписки на Lenis или стандартный скролл ---
-        const handleLenisScroll = ({ scroll }: { scroll: number }) => {
-            setLenisScrollY(scroll);
-        };
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      detachStandardScroll?.();
+      detachLenis?.();
+      if (lenisCheckInterval) {
+        window.clearInterval(lenisCheckInterval);
+      }
+    };
+  }, []);
 
-        const handleStandardScroll = () => {
-            setLenisScrollY(document.documentElement.scrollTop);
-        };
+  useFrame(() => {
+    if (!modelRef.current) {
+      return;
+    }
 
-        let detachStandardScroll: (() => void) | undefined;
-        let detachLenis: (() => void) | undefined;
-        let lenisCheckInterval: number | undefined;
+    // --- 1. ПАРАЛЛАКС СКРОЛЛА (вертикальное плавание) ---
+    const parallaxOffset =
+      -lenisScrollY * SCROLL_SPEED_FACTOR + INITIAL_MODEL_Y_OFFSET;
 
-        const activateLenis = () => {
-            if (!window.lenis) {
-                return false;
-            }
+    // Ограничиваем вертикальное смещение
+    const clampedY = THREE.MathUtils.clamp(parallaxOffset, -4, 0.5);
 
-            detachLenis?.();
-            window.lenis.on("scroll", handleLenisScroll);
-            detachLenis = () => {
-                window.lenis?.off?.("scroll", handleLenisScroll);
-            };
-
-            return true;
-        };
-
-        if (!activateLenis()) {
-            window.addEventListener("scroll", handleStandardScroll, { passive: true });
-            detachStandardScroll = () => {
-                window.removeEventListener("scroll", handleStandardScroll);
-            };
-
-            // После загрузки Lenis переводим подписку с нативного scroll на плавный скролл
-            lenisCheckInterval = window.setInterval(() => {
-                if (activateLenis()) {
-                    detachStandardScroll?.();
-                    detachStandardScroll = undefined;
-                    if (lenisCheckInterval) {
-                        window.clearInterval(lenisCheckInterval);
-                        lenisCheckInterval = undefined;
-                    }
-                }
-            }, 200);
-        }
-
-        window.addEventListener("mousemove", handleMouseMove);
-
-        return () => {
-            window.removeEventListener("mousemove", handleMouseMove);
-            detachStandardScroll?.();
-            detachLenis?.();
-            if (lenisCheckInterval) {
-                window.clearInterval(lenisCheckInterval);
-            }
-        };
-    }, []);
-
-    useFrame(() => {
-        if (!modelRef.current) {
-            return;
-        }
-
-        // --- 1. ПАРАЛЛАКС СКРОЛЛА (вертикальное плавание) ---
-        const parallaxOffset = -lenisScrollY * SCROLL_SPEED_FACTOR + INITIAL_MODEL_Y_OFFSET;
-
-        // Ограничиваем вертикальное смещение
-        const clampedY = THREE.MathUtils.clamp(parallaxOffset, -4, 0.5);
-
-        modelRef.current.position.y = THREE.MathUtils.lerp(
-            modelRef.current.position.y,
-            clampedY,
-            SCROLL_LERP_SPEED
-        );
-
-        // --- 2. ПЛАВНОЕ ВРАЩЕНИЕ ОТ МЫШИ (объемный эффект) ---
-
-        const targetRotationX = mousePosition.y * MOUSE_ROTATION_FACTOR;
-        const targetRotationY = -mousePosition.x * MOUSE_ROTATION_FACTOR + INITIAL_ROTATION_Y;
-
-        modelRef.current.rotation.x = THREE.MathUtils.lerp(
-            modelRef.current.rotation.x,
-            targetRotationX,
-            MOUSE_LERP_SPEED
-        );
-        modelRef.current.rotation.y = THREE.MathUtils.lerp(
-            modelRef.current.rotation.y,
-            targetRotationY,
-            MOUSE_LERP_SPEED
-        );
-    });
-
-    return (
-        <primitive
-            object={scene.clone()}
-            ref={modelRef}
-            scale={MODEL_SCALE}
-            rotation={[0, INITIAL_ROTATION_Y, 0]}
-        />
+    modelRef.current.position.y = THREE.MathUtils.lerp(
+      modelRef.current.position.y,
+      clampedY,
+      SCROLL_LERP_SPEED,
     );
+
+    // --- 2. ПЛАВНОЕ ВРАЩЕНИЕ ОТ МЫШИ (объемный эффект) ---
+
+    const targetRotationX = mousePosition.y * MOUSE_ROTATION_FACTOR;
+    const targetRotationY =
+      -mousePosition.x * MOUSE_ROTATION_FACTOR + INITIAL_ROTATION_Y;
+
+    modelRef.current.rotation.x = THREE.MathUtils.lerp(
+      modelRef.current.rotation.x,
+      targetRotationX,
+      MOUSE_LERP_SPEED,
+    );
+    modelRef.current.rotation.y = THREE.MathUtils.lerp(
+      modelRef.current.rotation.y,
+      targetRotationY,
+      MOUSE_LERP_SPEED,
+    );
+  });
+
+  return (
+    <primitive
+      object={scene.clone()}
+      ref={modelRef}
+      scale={MODEL_SCALE}
+      rotation={[0, INITIAL_ROTATION_Y, 0]}
+    />
+  );
 };
 
 // ------------------------------------------------------------------------
@@ -161,51 +159,62 @@ const MascotModel: React.FC = () => {
 // ------------------------------------------------------------------------
 
 interface InteractiveModelSectionProps {
-    className?: string;
+  className?: string;
 }
 
-export const InteractiveModelSection: React.FC<InteractiveModelSectionProps> = ({ className }) => {
-    return (
-        <section
-            id="technology"
-            className={clsx(
-                "container relative z-40 rounded-3xl border border-white/10 bg-white/5 px-6 py-12 shadow-[0_40px_120px_rgba(14,116,144,0.45)] backdrop-blur-2xl",
-                "before:pointer-events-none before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_top,_rgba(34,211,238,0.28),_transparent_60%)] before:opacity-90",
-                className
-            )}
-            aria-labelledby="interactive-model-heading"
-        >
-            <div className="relative z-30 mx-auto flex flex-col items-center gap-8">
-                <div className="space-y-3 text-center">
-                    <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-1 text-xs uppercase tracking-[0.28em] text-white/70">
-                        3D-предпросмотр
-                    </span>
-                    <h2 id="interactive-model-heading" className="text-3xl font-semibold text-white md:text-4xl">
-                        Маскот реагирует на движение и скролл
-                    </h2>
-                    <p className="max-w-2xl text-balance text-base text-slate-300 md:text-lg">
-                        Наведите курсор или прокрутите страницу — мы подключили лёгкую WebGL-сцену на <strong>React Three Fiber</strong>, чтобы показать живую динамику будущего интерфейса.
-                    </p>
-                </div>
-                <div className="relative z-40 w-full max-w-4xl">
-                    <div className="pointer-events-none absolute inset-0 z-20 rounded-[2.5rem] border border-cyan-400/40 bg-gradient-to-br from-cyan-400/30 via-transparent to-fuchsia-500/20 blur-[90px]" />
-                    <div className="relative z-30 overflow-visible rounded-[2.5rem] border border-white/15 bg-slate-950/60 p-2 backdrop-blur-xl">
-                        {/* Высота увеличена, чтобы вместить крупную модель */}
-                        <Canvas
-                            className="relative z-50 h-[550px] w-full"
-                            camera={{ fov: CAMERA_FOV, position: [0, 0, CAMERA_Z_POSITION] }}
-                        >
-                            <ambientLight intensity={1.5} />
-                            <directionalLight position={[4, 6, 6]} intensity={1.8} castShadow />
-                            <Suspense fallback={null}>
-                                <MascotModel />
-                            </Suspense>
-                        </Canvas>
-                    </div>
-                </div>
-            </div>
-        </section>
-    );
+export const InteractiveModelSection: React.FC<
+  InteractiveModelSectionProps
+> = ({ className }) => {
+  return (
+    <section
+      id="technology"
+      className={clsx(
+        "container relative z-40 rounded-3xl border border-white/10 bg-white/5 px-6 py-12 shadow-[0_40px_120px_rgba(14,116,144,0.45)] backdrop-blur-2xl",
+        "before:pointer-events-none before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_top,_rgba(34,211,238,0.28),_transparent_60%)] before:opacity-90",
+        className,
+      )}
+      aria-labelledby="interactive-model-heading"
+    >
+      <div className="relative z-30 mx-auto flex flex-col items-center gap-8">
+        <div className="space-y-3 text-center">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-1 text-xs uppercase tracking-[0.28em] text-white/70">
+            3D-предпросмотр
+          </span>
+          <h2
+            id="interactive-model-heading"
+            className="text-3xl font-semibold text-white md:text-4xl"
+          >
+            Маскот реагирует на движение и скролл
+          </h2>
+          <p className="max-w-2xl text-balance text-base text-slate-300 md:text-lg">
+            Наведите курсор или прокрутите страницу — мы подключили лёгкую
+            WebGL-сцену на <strong>React Three Fiber</strong>, чтобы показать
+            живую динамику будущего интерфейса.
+          </p>
+        </div>
+        <div className="relative z-40 w-full max-w-4xl">
+          <div className="pointer-events-none absolute inset-0 z-20 rounded-[2.5rem] border border-cyan-400/40 bg-gradient-to-br from-cyan-400/30 via-transparent to-fuchsia-500/20 blur-[90px]" />
+          <div className="relative z-30 overflow-visible rounded-[2.5rem] border border-white/15 bg-slate-950/60 p-2 backdrop-blur-xl">
+            {/* Высота увеличена, чтобы вместить крупную модель */}
+            <Canvas
+              className="relative z-50 h-[550px] w-full"
+              camera={{ fov: CAMERA_FOV, position: [0, 0, CAMERA_Z_POSITION] }}
+            >
+              <ambientLight intensity={1.5} />
+              <directionalLight
+                position={[4, 6, 6]}
+                intensity={1.8}
+                castShadow
+              />
+              <Suspense fallback={null}>
+                <MascotModel />
+              </Suspense>
+            </Canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 useGLTF.preload("/model.glb");
