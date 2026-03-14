@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/react";
 
 import "./globals.css";
 import { FloatingOrbs } from "@/components/ui/VisualEffects";
+import LetterGlitch from "@/components/ui/LetterGlitch";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://lidflow.vercel.app";
@@ -66,7 +67,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SiteHeader />
         <FloatingOrbs />
 
-        <main className="flex-1">{children}</main>
+        <div className="fixed inset-0 z-[-20]">
+          <LetterGlitch glitchSpeed={50} centerVignette={true} outerVignette={true} smooth={true} />
+        </div>
+        <main className="flex-1 relative z-0">{children}</main>
 
         <footer className="border-t border-white/5 bg-white/[0.02] backdrop-blur-md">
           <div className="container flex flex-col gap-4 py-14 text-sm text-slate-400">
