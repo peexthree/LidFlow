@@ -60,8 +60,7 @@ const MascotModel: React.FC = () => {
     let lenisCheckInterval: number | undefined;
 
     const activateLenis = () => {
-      // @ts-expect-error window.lenis is not in global typings
-      const lenis = window.lenis;
+      const lenis = (window as unknown as { lenis?: { on: (event: string, callback: ({ scroll }: { scroll: number }) => void) => void, off: (event: string, callback: ({ scroll }: { scroll: number }) => void) => void } }).lenis;
       if (!lenis) {
         return false;
       }
