@@ -98,9 +98,7 @@ export function Hero() {
               className="text-display-lg font-semibold tracking-tight text-slate-50 md:leading-[1.1]"
               variants={itemVariants}
             >
-              <h1 className="text-display-lg font-semibold tracking-tight text-slate-50 md:leading-[1.1]">
               <SplitText text="ХВАТИТ ТЕРЯТЬ ЛИДОВ. ВРЕМЯ 10X ПРОДАЖ." delay={30} />
-            </h1>
             </motion.h1>
 
             <motion.p className="max-w-xl text-body-lg text-slate-400 leading-relaxed" variants={itemVariants}>

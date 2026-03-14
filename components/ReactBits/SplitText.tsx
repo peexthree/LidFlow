@@ -28,7 +28,7 @@ export const SplitText: React.FC<SplitTextProps> = ({
 }) => {
   const letters = text.split('');
   const [inView, setInView] = useState(false);
-  const ref = useRef<HTMLParagraphElement>(null);
+  const ref = useRef<HTMLSpanElement>(null);
   const animatedCount = useRef(0);
 
   useEffect(() => {
@@ -69,7 +69,7 @@ export const SplitText: React.FC<SplitTextProps> = ({
   );
 
   return (
-    <p
+    <span
       ref={ref}
       className={`split-parent overflow-hidden inline ${className}`}
       style={{ textAlign, whiteSpace: 'normal', wordWrap: 'break-word' }}
@@ -82,6 +82,6 @@ export const SplitText: React.FC<SplitTextProps> = ({
           {letters[index] === ' ' ? '\u00A0' : letters[index]}
         </animated.span>
       ))}
-    </p>
+    </span>
   );
 };
