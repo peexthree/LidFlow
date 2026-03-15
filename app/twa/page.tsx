@@ -183,61 +183,72 @@ export default function TWAPage() {
         <div className="floating-orb right-[-10%] top-[20%] h-[22rem] w-[22rem] bg-cyan-500/20 blur-3xl" />
         <div className="floating-orb bottom-[-10%] left-1/2 h-80 w-80 -translate-x-1/2 bg-indigo-500/30 blur-[140px]" />
       </div>
-{/* 1. Hero-блок «Интеллект Системы» */}
+{/* 1. Hero-блок «Интеллект Системы» (Финотоговая B2B версия) */}
       <section className="relative w-full h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden bg-[#020304] border-b border-white/5">
         
-        {/* СЛОЙ 1: ВИДЕО */}
-        <div className="absolute inset-0 z-0 flex items-center justify-center">
+        {/* СЛОЙ 1: ВИДЕО (Полноэкранное холст от края до края) */}
+        <div className="absolute inset-0 z-0">
           <video
             autoPlay
             loop
             muted
             playsInline
-            // object-contain гарантирует, что видео впишется в экран целиком без обрезки
-            className="w-full h-full object-contain pointer-events-none"
+            // object-cover гарантирует растяжение на весь экран без пустых полос
+            className="w-full h-full object-cover pointer-events-none"
           >
             <source src="/demo.mp4" type="video/mp4" />
           </video>
-          {/* Легкий градиент только в самом низу для бесшовной склейки со следующей секцией */}
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#020304] pointer-events-none"></div>
+          
+          {/* ИЗОЛИРОВАННОЕ ЗАТЕМНЕНИЕ: Мягкий радиальный градиент по центру 
+              Обеспечивает 100% читаемость текста, оставляя края видео чистыми.
+          */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(2,3,10,0.5)_0%,transparent_65%)] pointer-events-none"></div>
+          
+          {/* Нижний градиент для плавного перехода к следующей секции */}
+          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#020304] to-transparent pointer-events-none"></div>
         </div>
 
-        {/* СЛОЙ 2: КОНТЕНТ (Изолированное затемнение) */}
+        {/* СЛОЙ 2: КОНТЕНТ (Парящая современная типографика) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          // Кастомная геометрия (скошенный угол), эффект стекла и цвет eidos-bg только под текстом
-          className="relative z-10 space-y-8 max-w-3xl mx-auto mt-20 md:mt-0 p-8 md:p-12 bg-[#020304]/60 backdrop-blur-md border border-[#66FCF1]/15 [clip-path:polygon(0_0,100%_0,100%_calc(100%-30px),calc(100%-30px)_100%,0_100%)]"
+          // Убраны тяжелые подложки, блюры и кастомная геометрия
+          className="relative z-10 space-y-8 max-w-3xl mx-auto mt-20 md:mt-0"
         >
           <div className="space-y-4">
-            <span className="inline-flex items-center gap-2 rounded-full border border-[#66FCF1]/30 bg-white/5 px-4 py-1 text-[10px] md:text-xs uppercase tracking-[0.28em] text-[#66FCF1] backdrop-blur-md">
-              <span className="flex h-1.5 w-1.5 md:h-2 md:w-2 rounded-full bg-[#66FCF1] animate-pulse shadow-[0_0_10px_#66FCF1]"></span>
+            {/* Значок статуса в современном чистом стиле */}
+            <span className="inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/5 px-4 py-1 text-[10px] md:text-xs uppercase tracking-[0.28em] text-cyan-300 shadow-[0_0_15px_rgba(34,211,238,0.1)]">
+              <span className="flex h-1.5 w-1.5 md:h-2 md:w-2 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_10px_#22d3ee]"></span>
               ИНТЕЛЛЕКТ СИСТЕМЫ
             </span>
             
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white font-mono leading-tight">
+            {/* Крупный заголовок с усиленными тенями для читаемости */}
+            <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-white leading-tight drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">
               Архитектура <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#66FCF1] to-blue-500 drop-shadow-[0_0_15px_rgba(102,252,241,0.4)]">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 drop-shadow-[0_0_20px_rgba(34,211,238,0.3)]">
                 автономного бизнеса
               </span>
             </h1>
             
-            <p className="text-sm md:text-lg text-slate-300 max-w-xl mx-auto leading-relaxed mt-4 drop-shadow-md font-medium">
+            {/* Описание */}
+            <p className="text-sm md:text-lg text-slate-100 max-w-xl mx-auto leading-relaxed mt-4 font-medium drop-shadow-[0_2px_2px_rgba(0,0,0,0.9)]">
               Создание независимых IT-активов: Telegram-системы с ИИ под ключ. <br className="hidden md:block" />
-              <span className="font-semibold text-white drop-shadow-lg">Без абонентской платы разработчику.</span>
+              <span className="font-semibold text-white">Без абонентской платы разработчику.</span>
             </p>
           </div>
 
+          {/* ИТОГОВАЯ КОММЕРЧЕСКАЯ КНОПКА (rounded-2xl, коммерческий градиент) */}
           <Button
             onClick={scrollToCalculator}
-            // Стилизовал кнопку под eidos-cyan
-            className="mt-6 bg-gradient-to-r from-[#020304] to-[#020304] border border-[#66FCF1]/50 py-6 px-8 text-base md:text-lg font-bold text-[#66FCF1] shadow-[0_0_20px_rgba(102,252,241,0.2)] transition-all duration-300 hover:scale-105 hover:bg-[#66FCF1]/10 hover:shadow-[0_0_30px_rgba(102,252,241,0.4)] [clip-path:polygon(15px_0,100%_0,100%_calc(100%-15px),calc(100%-15px)_100%,0_100%,0_15px)] rounded-none"
+            // Премиальный B2B стиль: скругление rounded-2xl, современный градиент, глубокая тень
+            className="mt-8 px-10 py-5 text-base md:text-lg font-bold text-white bg-gradient-to-r from-blue-600 to-cyan-500 rounded-2xl shadow-[0_8px_25px_rgba(59,130,246,0.3)] transition-all duration-300 hover:scale-105 hover:from-blue-500 hover:to-cyan-400 hover:shadow-[0_12px_35px_rgba(59,130,246,0.5)] active:scale-95"
           >
             Настроить систему
           </Button>
         </motion.div>
       </section>
+      
       
       {/* 2. Интерактивный калькулятор «Инвестиции в рост» */}
       <section ref={calculatorRef} className="container mx-auto px-4 py-16 max-w-3xl">
