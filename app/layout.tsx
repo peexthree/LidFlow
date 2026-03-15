@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     siteName: "LidFlow",
     images: [
       {
-        url: "/placeholder/1.jpg",
+        url: "/placeholder/n1.jpeg",
         width: 1200,
         height: 630,
         alt: "LidFlow — современный лендинг",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     title: "LidFlow — Лендинги, которые приводят клиентов",
     description:
       "Современные лендинги на Next.js и React с аналитикой, оптимизацией и быстрой загрузкой.",
-    images: ["/placeholder/1.jpg", "/logo.webp"],
+    images: ["/placeholder/n1.jpeg", "/logo.webp"],
   },
   icons: {
     icon: [{ url: "/logo.webp", type: "image/webp", sizes: "32x32" }],
