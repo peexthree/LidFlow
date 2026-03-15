@@ -183,37 +183,46 @@ export default function TWAPage() {
         <div className="floating-orb right-[-10%] top-[20%] h-[22rem] w-[22rem] bg-cyan-500/20 blur-3xl" />
         <div className="floating-orb bottom-[-10%] left-1/2 h-80 w-80 -translate-x-1/2 bg-indigo-500/30 blur-[140px]" />
       </div>
-
-      {/* 1. Hero-блок «Интеллект Системы» */}
-      <section className="relative w-full h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden border-b border-white/5">
-        <div className="absolute inset-0 z-0">
+{/* 1. Hero-блок «Интеллект Системы» */}
+      <section className="relative w-full h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden bg-[#020304] border-b border-white/5">
+        
+        {/* СЛОЙ 1: ВИДЕО */}
+        <div className="absolute inset-0 z-0 flex items-center justify-center">
           <video
             autoPlay
             loop
             muted
             playsInline
-            className="w-full h-full object-cover opacity-60 mix-blend-screen"
+            // object-contain гарантирует, что видео впишется в экран целиком без обрезки
+            className="w-full h-full object-contain pointer-events-none"
           >
             <source src="/demo.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-[#02030a]/0 to-[#02030a] backdrop-blur-[1px]"></div>
+          {/* Легкий градиент только в самом низу для бесшовной склейки со следующей секцией */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#020304] pointer-events-none"></div>
         </div>
 
+        {/* СЛОЙ 2: КОНТЕНТ (Изолированное затемнение) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative z-10 space-y-8 max-w-2xl mx-auto mt-20 md:mt-0"
+          // Кастомная геометрия (скошенный угол), эффект стекла и цвет eidos-bg только под текстом
+          className="relative z-10 space-y-8 max-w-3xl mx-auto mt-20 md:mt-0 p-8 md:p-12 bg-[#020304]/60 backdrop-blur-md border border-[#66FCF1]/15 [clip-path:polygon(0_0,100%_0,100%_calc(100%-30px),calc(100%-30px)_100%,0_100%)]"
         >
           <div className="space-y-4">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-[10px] md:text-xs uppercase tracking-[0.28em] text-cyan-400 backdrop-blur-md">
-              <span className="flex h-1.5 w-1.5 md:h-2 md:w-2 rounded-full bg-cyan-400 animate-pulse"></span>
+            <span className="inline-flex items-center gap-2 rounded-full border border-[#66FCF1]/30 bg-white/5 px-4 py-1 text-[10px] md:text-xs uppercase tracking-[0.28em] text-[#66FCF1] backdrop-blur-md">
+              <span className="flex h-1.5 w-1.5 md:h-2 md:w-2 rounded-full bg-[#66FCF1] animate-pulse shadow-[0_0_10px_#66FCF1]"></span>
               ИНТЕЛЛЕКТ СИСТЕМЫ
             </span>
+            
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white font-mono leading-tight">
               Архитектура <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 drop-shadow-[0_0_15px_rgba(65,174,255,0.4)]">автономного бизнеса</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#66FCF1] to-blue-500 drop-shadow-[0_0_15px_rgba(102,252,241,0.4)]">
+                автономного бизнеса
+              </span>
             </h1>
+            
             <p className="text-sm md:text-lg text-slate-300 max-w-xl mx-auto leading-relaxed mt-4 drop-shadow-md font-medium">
               Создание независимых IT-активов: Telegram-системы с ИИ под ключ. <br className="hidden md:block" />
               <span className="font-semibold text-white drop-shadow-lg">Без абонентской платы разработчику.</span>
@@ -222,13 +231,14 @@ export default function TWAPage() {
 
           <Button
             onClick={scrollToCalculator}
-            className="mt-6 rounded-xl2 bg-gradient-to-r from-cyan-600 to-blue-600 py-6 px-8 text-base md:text-lg font-bold text-white shadow-[0_0_30px_rgba(31,140,255,0.4)] transition-all duration-300 hover:scale-105 hover:from-cyan-500 hover:to-blue-500"
+            // Стилизовал кнопку под eidos-cyan
+            className="mt-6 bg-gradient-to-r from-[#020304] to-[#020304] border border-[#66FCF1]/50 py-6 px-8 text-base md:text-lg font-bold text-[#66FCF1] shadow-[0_0_20px_rgba(102,252,241,0.2)] transition-all duration-300 hover:scale-105 hover:bg-[#66FCF1]/10 hover:shadow-[0_0_30px_rgba(102,252,241,0.4)] [clip-path:polygon(15px_0,100%_0,100%_calc(100%-15px),calc(100%-15px)_100%,0_100%,0_15px)] rounded-none"
           >
             Настроить систему
           </Button>
         </motion.div>
       </section>
-
+      
       {/* 2. Интерактивный калькулятор «Инвестиции в рост» */}
       <section ref={calculatorRef} className="container mx-auto px-4 py-16 max-w-3xl">
         <div className="space-y-4 mb-10 text-center">
