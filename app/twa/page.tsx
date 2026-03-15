@@ -196,7 +196,7 @@ export default function TWAPage() {
           >
             <source src="/demo.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-[#02030a]/90 to-[#02030a] backdrop-blur-[1px]"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-[#02030a]/0 to-[#02030a] backdrop-blur-[1px]"></div>
         </div>
 
         <motion.div
