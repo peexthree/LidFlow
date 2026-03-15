@@ -76,19 +76,19 @@ const cases = [
     id: "lizing",
     title: "Lizing-Phi (Финтех)",
     metric: "Экономия времени админа: 80 часов/мес",
-    image: "/placeholder/1.jpg",
+    image: "/placeholder/n2.jpeg",
   },
   {
     id: "fermer",
     title: "FermerHub (Агро-сектор)",
     metric: "Конверсия в заявку +45%",
-    image: "/placeholder/2.jpg",
+    image: "/placeholder/n3.jpeg",
   },
   {
     id: "akulenok",
     title: "Акуленок (Образование)",
     metric: "Рост ROI на 120%",
-    image: "/placeholder/3.jpg",
+    image: "/placeholder/n1.jpeg",
   },
 ];
 // --- КОНЕЦ КОНСТАНТ ---
