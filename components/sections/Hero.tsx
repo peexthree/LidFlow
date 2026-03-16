@@ -35,19 +35,19 @@ export function Hero() {
           once
           className="rounded-full border border-white/10 bg-black/30 px-5 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-cyan-400 shadow-[0_0_20px_rgba(6,182,212,0.2)] backdrop-blur-md"
         >
-          <span>Доминируй в своей нише</span>
+          <span>Telegram Web Apps & Bots</span>
         </AnimatedSection>
 
         <AnimatedSection motion="fade-slide" direction="up" once>
           <h1 className="font-display text-display-xl font-bold uppercase tracking-tighter text-white drop-shadow-2xl md:text-[5.5rem] lg:text-[7rem] leading-[0.9]">
             <SplitText
-              text="Абсолютный"
+              text="Автоматизация"
               stagger={ANIMATION_CONFIG.stagger.fast}
             />
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 drop-shadow-none">
               <SplitText
-                text="Результат"
+                text="Продаж"
                 stagger={ANIMATION_CONFIG.stagger.fast}
               />
             </span>
@@ -61,8 +61,8 @@ export function Hero() {
           className="max-w-3xl text-body-lg text-slate-300 md:text-xl font-light"
         >
           <p>
-            Мы не делаем шаблоны. Мы создаём High-End машины для генерации прибыли.
-            Твой бизнес заслуживает системы, которая продаёт 24/7. Вложись в рост.
+            Увеличиваем конверсию, снижаем нагрузку на менеджеров.
+            Разрабатываем инструменты, которые продают 24/7.
           </p>
         </AnimatedSection>
 
@@ -95,7 +95,7 @@ export function Hero() {
               }}
             >
               <Button asChild className="rounded-full bg-white px-8 py-6 text-lg font-bold text-black transition-transform hover:scale-105 hover:bg-slate-200">
-                <Link href="#contact">Забрать рынок</Link>
+                <Link href="https://t.me/LIDflowDemoBOT" target="_blank" rel="noopener noreferrer">Запустить Демо-Бота</Link>
               </Button>
             </motion.div>
             <motion.div
@@ -114,7 +114,7 @@ export function Hero() {
                 variant="outline"
                 className="rounded-full border-white/20 bg-white/5 px-8 py-6 text-lg font-bold text-white backdrop-blur-md transition-colors hover:bg-white/10 hover:text-white"
               >
-                <Link href="#features">Узнать систему</Link>
+                <Link href="#pricing">Посмотреть тарифы</Link>
               </Button>
             </motion.div>
           </motion.div>

@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { clsx } from "clsx";
-import { Suspense, useRef } from "react";
+
 
 
 import { ContactForm } from "@/components/ContactForm";
@@ -112,47 +113,60 @@ const processSteps = [
 
 const pricingPlans = [
   {
-    name: "Быстрый Старт",
-    price: "от 25 000 ₽",
+    name: "Старт",
+    price: "от 15 000 ₽",
     popular: false,
-    perks: ["MVP за считанные дни", "Мощный оффер + CTA", "Базовая связка аналитики"],
+    perks: ["Бот-визитка / Лидогенератор", "Сбор заявок", "Базовая поддержка", "Быстрый старт за 2 дня"],
   },
   {
-    name: "Полное Доминирование",
+    name: "Бизнес",
     price: "от 45 000 ₽",
     popular: true,
     perks: [
-      "5–7 высококонверсионных экранов",
-      "TG-бот + Интеграции под ключ",
-      "Сразу готов к жесткому трафику",
+      "Полноценный бот для продаж",
+      "Каталог товаров и услуг",
+      "Интеграция с корзиной (E-commerce)",
+      "Индивидуальная логика",
     ],
   },
   {
-    name: "10X Масштабирование",
-    price: "от 75 000 ₽",
+    name: "Масштаб",
+    price: "от 90 000 ₽",
     popular: false,
-    perks: ["Premium Motion & 3D", "AI Интеграции & Автоматизация", "Пожизненное A/B тестирование"],
+    perks: ["Полноценный Telegram WebApp", "Индивидуальный UI/UX дизайн", "Магазин / Запись на услуги", "Сложные интеграции"],
   },
+] as const;
+
+const additionalModules = [
+  { name: "Интеграция с amoCRM / Битрикс24", price: "от 15 000 ₽" },
+  { name: "Интеграция ИИ (ChatGPT-ассистент)", price: "от 20 000 ₽" },
+  { name: "Подключение онлайн-кассы (ЮKassa)", price: "от 5 000 ₽" },
+  { name: "Базовая Админ-панель", price: "от 15 000 ₽" },
+  { name: "Фильтр антимата / Приветствие", price: "от 3 000 ₽" },
+  { name: "Развертывание на сервере клиента", price: "от 8 000 ₽" },
 ] as const;
 
 const testimonials = [
   {
     name: "Дарья Акуленок",
     role: "Основатель бренда Akulenok",
+    avatar: "https://i.pravatar.cc/150?u=a042581f4e29026024d",
     quote:
-      "Результат с первого дня. Мы просто залили трафик, и заявки пошли. Работают быстро, жестко, без лишних слов — как я люблю. Настоящие профи.",
+      "Бот-визитка окупил себя за первые выходные. Настроили сбор заявок, теперь мы не теряем клиентов из Telegram, пока спим. Работают быстро, четко, без воды.",
   },
   {
     name: "Александр Сергеев",
-    role: "CEO b2b-сервиса",
+    role: "Владелец розничного магазина",
+    avatar: "https://i.pravatar.cc/150?u=a042581f4e29026704d",
     quote:
-      "Связка лендинга и CRM была собрана за неделю. Скорость феноменальная. Конверсия выросла в разы. Мы просто уничтожаем конкурентов в своей нише.",
+      "Интеграция каталога и корзины в Telegram сработала на отлично. Заказы падают сразу в CRM. Это именно то решение, которое нужно малому бизнесу для быстрого старта.",
   },
   {
     name: "Анна Петрова",
-    role: "Директор по маркетингу",
+    role: "Директор салона красоты",
+    avatar: "https://i.pravatar.cc/150?u=a042581f4e29026703d",
     quote:
-      "Идеальный баланс технологий и психологии продаж. Мы тестируем гипотезы на лету, внедрения происходят в тот же день. ROI просто сумасшедший.",
+      "Сделали удобную запись на услуги прямо через бота. Клиенты довольны, администратор разгружен. Вложения вернулись буквально за первый месяц работы.",
   },
 ] as const;
 // --- КОНЕЦ ОПРЕДЕЛЕНИЙ КОНСТАНТ ---
@@ -167,11 +181,47 @@ export default function Home() {
       </div>
 
       {/* Hero section removed from padded container so it starts exactly at the top edge */}
+
       <div className="relative z-10 w-full">
         <Hero />
       </div>
        
       <div className="relative z-10 space-y-24 py-16 md:py-24">
+
+        {/* Секция Юридический щит / Trust Signals */}
+        <section className="container relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] px-6 py-10 shadow-[0_20px_50px_rgba(0,0,0,0.3)] backdrop-blur-xl animate-fade-in-up md:px-12">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(255,255,255,0.05),_transparent_70%)]" />
+          <div className="relative z-10 grid gap-8 text-center md:grid-cols-3 md:gap-12">
+            <div className="flex flex-col items-center gap-4">
+              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/5 shadow-inner">
+                <Image src="/data-armor.svg" alt="Договор ИП" width={32} height={32} className="h-8 w-8 text-cyan-400" />
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-white">Работа по договору ИП</h3>
+                <p className="mt-2 text-sm text-slate-400">Официально, прозрачно, с закрывающими документами.</p>
+              </div>
+            </div>
+            <div className="flex flex-col items-center gap-4">
+              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/5 shadow-inner">
+                <Image src="/web-architecture.svg" alt="Передача прав на код" width={32} height={32} className="h-8 w-8 text-cyan-400" />
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-white">100% права на код</h3>
+                <p className="mt-2 text-sm text-slate-400">Полная передача исходников и доступов к серверам.</p>
+              </div>
+            </div>
+            <div className="flex flex-col items-center gap-4">
+              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/5 shadow-inner">
+                <Image src="/ui-ux.svg" alt="Строгое NDA" width={32} height={32} className="h-8 w-8 text-cyan-400" />
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-white">Строгое NDA</h3>
+                <p className="mt-2 text-sm text-slate-400">Защита вашей идеи, клиентской базы и данных.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
 
         {/* Секция Услуги (Bento Box) */}
         <section
@@ -279,7 +329,7 @@ export default function Home() {
                   <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.35),_transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="relative z-10 space-y-3">
                     <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500/10">
-                      <img src={service.icon} alt={service.title} className="h-full w-full object-contain" />
+                      <Image src={service.icon} alt={service.title} width={48} height={48} className="h-full w-full object-contain" unoptimized />
                     </div>
                     <h3 className="text-xl font-semibold text-white">{service.title}</h3>
                     <p className="text-sm text-slate-300">{service.description}</p>
@@ -341,7 +391,7 @@ export default function Home() {
                 ИНВЕСТИЦИИ В РОСТ
               </span>
               <h2 className="text-3xl font-semibold text-white md:text-4xl">
-                Цена Доминирования
+                Тарифы и Инвестиции
               </h2>
               <p className="max-w-2xl text-base text-slate-300 md:text-lg">
                 Вы не тратите деньги, вы инвестируете в систему, которая будет приносить вам прибыль годами. Выбирайте уровень масштабирования.
@@ -378,11 +428,23 @@ export default function Home() {
                       asChild
                       className="mt-auto inline-flex w-full justify-center rounded-xl2 bg-cyan-500 py-3 text-base font-semibold text-white shadow-[0_18px_45px_rgba(6,182,212,0.38)] transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:bg-cyan-400 hover:shadow-[0_20px_55px_rgba(6,182,212,0.45)]"
                     >
-                      <Link href="#contact">НАЧАТЬ ЭКСПАНСИЮ</Link>
+                      <Link href="#contact">НАЧАТЬ РАБОТУ</Link>
                     </Button>
                   </div>
                 </article>
               ))}
+            </div>
+
+            <div className="mt-12 rounded-2xl border border-white/10 bg-white/[0.02] p-6 shadow-inner md:p-8">
+              <h3 className="mb-6 text-xl font-semibold text-white md:text-2xl">Дополнительные модули</h3>
+              <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {additionalModules.map((module) => (
+                  <li key={module.name} className="flex items-center justify-between rounded-xl bg-white/5 p-4 transition-colors hover:bg-white/10">
+                    <span className="text-sm font-medium text-slate-300">{module.name}</span>
+                    <span className="whitespace-nowrap rounded-md bg-white/10 px-2.5 py-1 text-xs font-semibold text-cyan-300">{module.price}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </section>
@@ -417,10 +479,13 @@ export default function Home() {
                   <blockquote className="relative z-10 text-base text-slate-200">
                     “{testimonial.quote}”
                   </blockquote>
-                  <figcaption className="relative z-10 mt-6 space-y-1">
-                    <div className="text-sm font-semibold text-white">{testimonial.name}</div>
-                    <div className="text-xs uppercase tracking-[0.28em] text-white/50">
-                      {testimonial.role}
+                  <figcaption className="relative z-10 mt-6 flex items-center gap-4">
+                    <Image src={testimonial.avatar} alt={testimonial.name} width={48} height={48} className="h-12 w-12 rounded-full border-2 border-white/10 object-cover shadow-sm" unoptimized />
+                    <div className="space-y-1">
+                      <div className="text-sm font-semibold text-white">{testimonial.name}</div>
+                      <div className="text-xs text-white/60">
+                        {testimonial.role}
+                      </div>
                     </div>
                   </figcaption>
                 </figure>
