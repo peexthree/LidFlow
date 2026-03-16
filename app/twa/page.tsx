@@ -37,10 +37,16 @@ const basePlans = [
 ];
 
 const modules = [
-  { id: "ai", title: "Интеграция ИИ (ChatGPT/Gemini)", price: 15000 },
-  { id: "payment", title: "Модуль приема платежей (Эквайринг)", price: 10000 },
-  { id: "admin", title: "Админ-панель с аналитикой", price: 20000 },
+  { id: "crm", title: "Интеграция с amoCRM / Битрикс24", price: 15000 },
+  { id: "ai", title: "Интеграция ИИ (ChatGPT-ассистент)", price: 20000 },
+  { id: "payment", title: "Подключение онлайн-кассы / Крипты", price: 10000 },
+  { id: "admin", title: "Продвинутая Админ-панель", price: 25000 },
   { id: "video", title: "Видео-аватар на входе", price: 12000 },
+  { id: "referral", title: "Реферальная система", price: 18000 },
+  { id: "analytics", title: "Сквозная аналитика", price: 22000 },
+  { id: "push", title: "Push-уведомления (Массовые рассылки)", price: 8000 },
+  { id: "i18n", title: "Мультиязычность (i18n)", price: 15000 },
+  { id: "deploy", title: "Развертывание на сервере клиента", price: 8000 },
 ];
 
 const securityFeatures = [
@@ -321,7 +327,7 @@ export default function TWAPage() {
               <span className="bg-pink-400/10 text-pink-400 p-1 rounded-md text-xs">2</span>
               Дополнительные модули
             </h3>
-            <div className="space-y-3">
+            <div className="grid gap-3 md:grid-cols-2">
               {modules.map((mod) => (
                 <label
                   key={mod.id}
