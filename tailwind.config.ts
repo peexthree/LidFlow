@@ -125,6 +125,11 @@ const config = {
         "figma-smooth": "cubic-bezier(0.22, 1, 0.36, 1)",
       },
       keyframes: {
+        'infinite-scroll': {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(-100%)' },
+        },
+
         "fade-up": {
           "0%": { opacity: "0", transform: "translateY(20px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
@@ -139,6 +144,8 @@ const config = {
         },
       },
       animation: {
+        'infinite-scroll': 'infinite-scroll 45s linear infinite',
+
         "fade-up": "fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards",
         "scale-in": "scale-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards",
         shimmer: "shimmer 2.2s linear infinite",
