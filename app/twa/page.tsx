@@ -31,9 +31,9 @@ declare global {
 
 // --- КОНСТАНТЫ ---
 const basePlans = [
-  { id: "base", title: "База", desc: "Лидогенерация", price: 25000 },
-  { id: "standart", title: "Стандарт", desc: "Управление и БД", price: 45000 },
-  { id: "business", title: "Бизнес", desc: "Сложная CRM", price: 75000 },
+  { id: "base", title: "Старт", desc: "Базовая лидогенерация", price: 21000, features: ["Многоуровневое меню навигации", "Умная форма заявки", "Система мгновенных алертов", "Базовый пульт управления"] },
+  { id: "business", title: "Бизнес", desc: "Автономный отдел продаж", price: 45000, features: ["Интерактивный каталог", "Модуль корзины и чекаута", "Прямой биллинг (Оплата онлайн)", "Система записи (Букинг)", "Экспорт данных"] },
+  { id: "scale", title: "Масштаб", desc: "Премиальная TWA-экосистема", price: 120000, features: ["Полноценный Web-интерфейс (TWA)", "Продвинутый Личный Кабинет", "Сложные фильтры", "Бесшовная интеграция с CRM"] },
 ];
 
 const modules = [
@@ -291,11 +291,19 @@ export default function TWAPage() {
                     className="sr-only"
                   />
                   <div>
-                    <div className="font-semibold text-white mb-1 font-mono">{plan.title}</div>
-                    <div className="text-xs text-slate-400">{plan.desc}</div>
+                    <div className="font-semibold text-white mb-1 text-lg font-mono">{plan.title}</div>
+                    <div className="text-sm text-cyan-200 mb-4">{plan.desc}</div>
+                    <ul className="space-y-2 mb-6">
+                      {plan.features.map((feature, i) => (
+                        <li key={i} className="flex items-start gap-2 text-xs text-slate-300">
+                          <span className="mt-0.5 flex-shrink-0 w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <div className="mt-4 text-sm font-mono text-cyan-300 font-medium drop-shadow-sm">
-                    {plan.price.toLocaleString("ru-RU")} ₽
+                  <div className="mt-auto text-lg font-mono text-cyan-300 font-bold drop-shadow-sm border-t border-white/10 pt-4">
+                    от {plan.price.toLocaleString("ru-RU")} ₽
                   </div>
 
                   {/* Indicator */}
@@ -402,9 +410,9 @@ export default function TWAPage() {
         </div>
 
         {/* Скроллируемый контейнер */}
-        <div className="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory scrollbar-hide">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-8">
            {cases.map((project) => (
-              <article key={project.id} className="snap-center shrink-0 w-[300px] md:w-[360px] overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-b from-white/[0.04] to-white/[0.01] flex flex-col group transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_15px_40px_rgba(31,140,255,0.25)] backdrop-blur-xl">
+              <article key={project.id} className="w-full overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-b from-white/[0.04] to-white/[0.01] flex flex-col group transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_15px_40px_rgba(31,140,255,0.25)] backdrop-blur-xl">
                  <div className="relative h-[200px] w-full overflow-hidden rounded-t-[2rem]">
                     <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#02030a] via-transparent to-transparent opacity-80" />
                     <Image

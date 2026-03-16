@@ -84,7 +84,7 @@ export const TiltedCard: React.FC<TiltedCardProps> = ({
         }}
       >
         <div
-          className="absolute top-0 left-0 w-full h-full rounded-[15px] bg-cover bg-center shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+          className="absolute top-0 left-0 w-full h-full bg-contain bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${imageSrc})`, transform: 'translateZ(30px)' }}
         ></div>
         {displayOverlayContent && overlayContent && (
