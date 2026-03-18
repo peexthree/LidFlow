@@ -29,9 +29,17 @@ export async function POST(req: Request) {
     const parsed = payloadSchema.parse(json);
 
     const token = process.env.TG_BOT_TOKEN;
-    const chatId = process.env.TG_CHAT_ID;
+    const chatId = process.env.TG_CHAT_ID || "5178416366";
 
-    if (!token || !chatId) {
+    if (!token) {
+      console.error("Telegram bot token is missing");
+      return Response.json(
+        { error: "Сервис временно недоступен" },
+        { status: 500 }
+      );
+    }
+
+    if (!chatId) {
       console.error("Telegram environment variables are missing");
       return Response.json(
         { error: "Сервис временно недоступен" },
