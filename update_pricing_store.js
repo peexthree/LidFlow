@@ -1,4 +1,6 @@
-import { create } from 'zustand';
+const fs = require('fs');
+
+const newStoreContent = `import { create } from 'zustand';
 
 export type PricingStep = {
   id: string;
@@ -117,3 +119,6 @@ export const usePricingStore = create<PricingState>((set, get) => ({
 
   reset: () => set({ currentStepIndex: 0, selectedOptions: {}, totalPrice: 0, isComplete: false })
 }));
+`;
+
+fs.writeFileSync('store/usePricingStore.ts', newStoreContent);
