@@ -1,7 +1,5 @@
 import { z } from "zod";
 
-export const runtime = "edge"; // быстро и просто деплоится на Vercel
-
 const payloadSchema = z.object({
   name: z.string().min(2).max(120),
   contact: z.string().min(3).max(320),
