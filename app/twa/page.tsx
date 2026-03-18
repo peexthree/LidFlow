@@ -1,4 +1,6 @@
 "use client";
+import { ArtifactGallery } from "@/components/twa/ArtifactGallery";
+import { AssimilationScreen } from "@/components/twa/AssimilationScreen";
 
 import { useEffect, useState, useRef } from "react";
 import Script from "next/script";
@@ -93,12 +95,14 @@ const cases = [
 // --- КОНЕЦ КОНСТАНТ ---
 
 export default function TWAPage() {
+
   const calculatorRef = useRef<HTMLDivElement>(null);
 
   const [selectedBase, setSelectedBase] = useState<string>("");
   const [selectedModules, setSelectedModules] = useState<string[]>([]);
   const [totalPrice, setTotalPrice] = useState<number>(0);
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
+  const [isAssimilated, setIsAssimilated] = useState(false);
 
   useEffect(() => {
     // Check if Telegram WebApp is available
@@ -180,13 +184,17 @@ export default function TWAPage() {
   };
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-transparent text-slate-200 pb-16 font-sans">
+    <>
+      {!isAssimilated && (
+        <AssimilationScreen onComplete={() => setIsAssimilated(true)} />
+      )}
+    <div className={clsx("relative min-h-screen overflow-x-hidden bg-transparent text-slate-200 pb-16 font-sans transition-opacity duration-1000", !isAssimilated ? "opacity-0 pointer-events-none absolute inset-0" : "opacity-100")}>
       <Script src="https://telegram.org/js/telegram-web-app.js" strategy="beforeInteractive" />
 
       {/* Одинаковый фон из реакта (floating orbs) */}
       <div className="pointer-events-none fixed inset-0 z-[-1]">
         <div className="floating-orb top-[-15%] left-[-5%] h-72 w-72 bg-fuchsia-500/30 blur-3xl" />
-        <div className="floating-orb right-[-10%] top-[20%] h-[22rem] w-[22rem] bg-cyan-500/20 blur-3xl" />
+        <div className="floating-orb right-[-10%] top-[20%] h-[22rem] w-[22rem] bg-[#66FCF1]/20 blur-3xl" />
         <div className="floating-orb bottom-[-10%] left-1/2 h-80 w-80 -translate-x-1/2 bg-indigo-500/30 blur-[140px]" />
       </div>
 {/* 1. Hero-блок «Интеллект Системы» (Финотоговая B2B версия) */}
@@ -224,15 +232,15 @@ export default function TWAPage() {
         >
           <div className="space-y-4">
             {/* Значок статуса в современном чистом стиле */}
-            <span className="inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/5 px-4 py-1 text-[10px] md:text-xs uppercase tracking-[0.28em] text-cyan-300 shadow-[0_0_15px_rgba(34,211,238,0.1)]">
-              <span className="flex h-1.5 w-1.5 md:h-2 md:w-2 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_10px_#22d3ee]"></span>
+            <span className="inline-flex items-center gap-2 rounded-full border border-[#66FCF1]/20 bg-[#66FCF1]/5 px-4 py-1 text-[10px] md:text-xs uppercase tracking-[0.28em] text-[#66FCF1] shadow-[0_0_15px_rgba(34,211,238,0.1)]">
+              <span className="flex h-1.5 w-1.5 md:h-2 md:w-2 rounded-full bg-[#66FCF1] animate-pulse shadow-[0_0_10px_#22d3ee]"></span>
               ИНТЕЛЛЕКТ СИСТЕМЫ
             </span>
             
             {/* Крупный заголовок с усиленными тенями для читаемости */}
             <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-white leading-tight drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">
               Архитектура <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 drop-shadow-[0_0_20px_rgba(34,211,238,0.3)]">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#66FCF1] to-blue-500 drop-shadow-[0_0_20px_rgba(34,211,238,0.3)]">
                 автономного бизнеса
               </span>
             </h1>
@@ -244,11 +252,11 @@ export default function TWAPage() {
             </p>
           </div>
 
-          {/* ИТОГОВАЯ КОММЕРЧЕСКАЯ КНОПКА (rounded-2xl, коммерческий градиент) */}
+          {/* ИТОГОВАЯ КОММЕРЧЕСКАЯ КНОПКА (rounded-none, коммерческий градиент) */}
           <Button
             onClick={scrollToCalculator}
-            // Премиальный B2B стиль: скругление rounded-2xl, современный градиент, глубокая тень
-            className="mt-8 px-10 py-5 text-base md:text-lg font-bold text-white bg-gradient-to-r from-blue-600 to-cyan-500 rounded-2xl shadow-[0_8px_25px_rgba(59,130,246,0.3)] transition-all duration-300 hover:scale-105 hover:from-blue-500 hover:to-cyan-400 hover:shadow-[0_12px_35px_rgba(59,130,246,0.5)] active:scale-95"
+            // Премиальный B2B стиль: скругление rounded-none, современный градиент, глубокая тень
+            className="mt-8 px-10 py-5 text-base md:text-lg font-bold text-white bg-gradient-to-r from-blue-600 to-[#66FCF1] rounded-none shadow-[0_8px_25px_rgba(59,130,246,0.3)] transition-all duration-300 hover:scale-105 hover:from-blue-500 hover:to-[#66FCF1] hover:shadow-[0_12px_35px_rgba(59,130,246,0.5)] active:scale-95"
           >
             Настроить систему
           </Button>
@@ -269,12 +277,12 @@ export default function TWAPage() {
         </div>
 
         <div className="space-y-8 relative">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(31,140,255,0.15),_transparent_60%)] pointer-events-none rounded-3xl" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(31,140,255,0.15),_transparent_60%)] pointer-events-none rounded-none" />
 
           {/* База */}
-          <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 shadow-[inset_0_2px_40px_rgba(255,255,255,0.02)] backdrop-blur-xl relative z-10">
-            <h3 className="text-xl font-semibold text-cyan-400 mb-6 flex items-center gap-2 font-mono">
-              <span className="bg-cyan-400/10 text-cyan-400 p-1 rounded-md text-xs">1</span>
+          <div className="rounded-none border border-white/10 bg-white/[0.03] p-6 shadow-[inset_0_2px_40px_rgba(255,255,255,0.02)] backdrop-blur-xl relative z-10" style={{ clipPath: "polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px)" }}>
+            <h3 className="text-xl font-semibold text-[#66FCF1] mb-6 flex items-center gap-2 font-mono">
+              <span className="bg-[#66FCF1]/10 text-[#66FCF1] p-1 rounded-md text-xs">1</span>
               Выбор базы
             </h3>
             <div className="grid gap-4 md:grid-cols-3">
@@ -282,9 +290,9 @@ export default function TWAPage() {
                 <label
                   key={plan.id}
                   className={clsx(
-                    "cursor-pointer relative overflow-hidden flex flex-col justify-between p-5 rounded-2xl transition-all duration-300",
+                    "cursor-pointer relative overflow-hidden flex flex-col justify-between p-5 rounded-none transition-all duration-300",
                     selectedBase === plan.id
-                      ? "border border-cyan-400/50 bg-cyan-400/10 shadow-[0_0_15px_rgba(65,174,255,0.4)] ring-1 ring-cyan-500/50"
+                      ? "border border-[#66FCF1]/50 bg-[#66FCF1]/10 shadow-[0_0_15px_rgba(65,174,255,0.4)] ring-1 ring-[#66FCF1]/50"
                       : "border border-white/5 bg-white/[0.02] hover:bg-white/[0.1] backdrop-blur-md"
                   )}
                 >
@@ -302,19 +310,19 @@ export default function TWAPage() {
                     <ul className="space-y-2 mb-6">
                       {plan.features.map((feature, i) => (
                         <li key={i} className="flex items-start gap-2 text-xs text-slate-300">
-                          <span className="mt-0.5 flex-shrink-0 w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                          <span className="mt-0.5 flex-shrink-0 w-1.5 h-1.5 rounded-full bg-[#66FCF1]" />
                           <span>{feature}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
-                  <div className="mt-auto text-lg font-mono text-cyan-300 font-bold drop-shadow-sm border-t border-white/10 pt-4">
+                  <div className="mt-auto text-lg font-mono text-[#66FCF1] font-bold drop-shadow-sm border-t border-white/10 pt-4">
                     от {plan.price.toLocaleString("ru-RU")} ₽
                   </div>
 
                   {/* Indicator */}
                   {selectedBase === plan.id && (
-                     <div className="absolute top-3 right-3 w-2 h-2 rounded-full bg-cyan-400 animate-pulse drop-shadow-[0_0_5px_rgba(65,174,255,1)]"></div>
+                     <div className="absolute top-3 right-3 w-2 h-2 rounded-full bg-[#66FCF1] animate-pulse drop-shadow-[0_0_5px_rgba(65,174,255,1)]"></div>
                   )}
                 </label>
               ))}
@@ -322,7 +330,7 @@ export default function TWAPage() {
           </div>
 
           {/* Доп. Модули */}
-          <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 shadow-[inset_0_2px_40px_rgba(255,255,255,0.02)] backdrop-blur-xl relative z-10">
+          <div className="rounded-none border border-white/10 bg-white/[0.03] p-6 shadow-[inset_0_2px_40px_rgba(255,255,255,0.02)] backdrop-blur-xl relative z-10" style={{ clipPath: "polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px)" }}>
             <h3 className="text-xl font-semibold text-pink-400 mb-6 flex items-center gap-2 font-mono">
               <span className="bg-pink-400/10 text-pink-400 p-1 rounded-md text-xs">2</span>
               Дополнительные модули
@@ -332,7 +340,7 @@ export default function TWAPage() {
                 <label
                   key={mod.id}
                   className={clsx(
-                    "cursor-pointer flex items-center justify-between p-4 rounded-2xl transition-all duration-300",
+                    "cursor-pointer flex items-center justify-between p-4 rounded-none transition-all duration-300",
                     selectedModules.includes(mod.id)
                       ? "border border-pink-400/50 bg-pink-400/10 ring-1 ring-pink-500/50 shadow-[0_0_15px_rgba(236,72,153,0.3)]"
                       : "border border-white/5 bg-white/[0.02] hover:bg-white/[0.1] backdrop-blur-md"
@@ -370,9 +378,9 @@ export default function TWAPage() {
           </div>
 
           {/* Итог */}
-          <div className="rounded-3xl border border-blue-500/30 bg-blue-500/10 p-6 backdrop-blur-2xl flex flex-col md:flex-row items-center justify-between gap-4 relative z-10 shadow-[0_0_30px_rgba(59,130,246,0.15)]">
+          <div className="rounded-none border border-blue-500/30 bg-blue-500/10 p-6 backdrop-blur-2xl flex flex-col md:flex-row items-center justify-between gap-4 relative z-10 shadow-[0_0_30px_rgba(59,130,246,0.15)]">
             <div className="text-slate-300 font-medium uppercase tracking-widest text-xs">Предварительная оценка инвестиций:</div>
-            <div className="text-3xl md:text-4xl font-bold font-mono text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300 drop-shadow-[0_0_15px_rgba(65,174,255,0.6)]">
+            <div className="text-3xl md:text-4xl font-bold font-mono text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-[#66FCF1] drop-shadow-[0_0_15px_rgba(65,174,255,0.6)]">
               {totalPrice > 0 ? `${totalPrice.toLocaleString("ru-RU")} ₽` : "0 ₽"}
             </div>
           </div>
@@ -392,8 +400,8 @@ export default function TWAPage() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(236,72,153,0.1),_transparent_60%)] pointer-events-none" />
 
           {securityFeatures.map((feature, idx) => (
-             <article key={idx} className="group relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.05] to-white/[0.01] p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] transition-all duration-300 hover:bg-white/[0.08] hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(236,72,153,0.15)] backdrop-blur-xl z-10">
-                 <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-white/5 border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] transition-transform group-hover:scale-110 duration-300">
+             <article key={idx} className="group relative overflow-hidden rounded-none border border-white/10 bg-gradient-to-b from-white/[0.05] to-white/[0.01] p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] transition-all duration-300 hover:bg-white/[0.08] hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(236,72,153,0.15)] backdrop-blur-xl z-10">
+                 <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-none bg-white/5 border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] transition-transform group-hover:scale-110 duration-300">
                    <Image src={feature.icon} alt={feature.title} width={32} height={32} className="opacity-90 group-hover:opacity-100 drop-shadow-md" />
                  </div>
                  <h3 className="mb-3 text-xl font-semibold text-white font-mono">{feature.title}</h3>
@@ -415,40 +423,8 @@ export default function TWAPage() {
             <p className="text-sm text-slate-400 max-w-md mx-auto font-medium">Проекты, которые уже приносят прибыль.</p>
         </div>
 
-        {/* Скроллируемый контейнер */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-8">
-           {cases.map((project) => (
-              <article key={project.id} className="w-full overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-b from-white/[0.04] to-white/[0.01] flex flex-col group transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_15px_40px_rgba(31,140,255,0.25)] backdrop-blur-xl">
-                 <div className="relative h-[200px] w-full overflow-hidden rounded-t-[2rem]">
-                    <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#02030a] via-transparent to-transparent opacity-80" />
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      className="object-cover transition duration-700 ease-out group-hover:scale-110"
-                      sizes="(min-width: 768px) 360px, 300px"
-                    />
-                    <div className="absolute inset-0 bg-black/30 group-hover:bg-transparent transition-colors z-20 pointer-events-none"></div>
-                 </div>
-                 <div className="p-6 flex-1 flex flex-col bg-white/[0.02] border-t border-white/5 relative z-20">
-                    <span className="inline-flex max-w-max items-center rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] bg-gradient-to-r from-cyan-500/20 to-transparent text-cyan-200 mb-3 border border-cyan-500/10">
-                      {project.metric}
-                    </span>
-                    <h3 className="text-xl font-bold text-white mb-4 font-mono">{project.title}</h3>
 
-                    <button
-                      onClick={() => handleOpenVideo(project.videoSrc)}
-                      className="mt-auto inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-semibold text-white shadow-[0_0_15px_rgba(31,140,255,0.1)] backdrop-blur-md transition-all duration-300 hover:bg-white/10 hover:shadow-[0_0_25px_rgba(31,140,255,0.4)] hover:-translate-y-1"
-                    >
-                      <svg className="h-5 w-5 fill-cyan-400 drop-shadow-md" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
-                      Смотреть демо
-                    </button>
-                 </div>
-              </article>
-           ))}
-        </div>
+        <ArtifactGallery artifacts={cases.map((c) => ({ id: c.id, title: c.title, metric: c.metric, image: c.image, videoSrc: c.videoSrc }))} onOpenVideo={handleOpenVideo} />
       </section>
 
       {/* Модальное окно для видео (TWA) */}
@@ -466,13 +442,13 @@ export default function TWAPage() {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.95, opacity: 0, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative w-full max-w-4xl rounded-[2rem] overflow-hidden border border-white/10 bg-gradient-to-b from-[#0a122c] to-[#040816] shadow-[0_0_60px_rgba(31,140,255,0.3)]"
+              className="relative w-full max-w-4xl rounded-none overflow-hidden border border-white/10 bg-gradient-to-b from-[#0a122c] to-[#040816] shadow-[0_0_60px_rgba(31,140,255,0.3)]"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Хедер модалки */}
               <div className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between p-4 sm:p-6 bg-gradient-to-b from-black/60 to-transparent pointer-events-none">
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-cyan-400 backdrop-blur-md shadow-sm">
-                  <span className="flex h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-[#66FCF1] backdrop-blur-md shadow-sm">
+                  <span className="flex h-1.5 w-1.5 rounded-full bg-[#66FCF1] animate-pulse"></span>
                   LIVE DEMO
                 </span>
 
@@ -501,6 +477,7 @@ export default function TWAPage() {
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+        </div>
+    </>
   );
 }

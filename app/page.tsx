@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
+
 import Image from "next/image";
-import { clsx } from "clsx";
+
 
 
 
@@ -11,10 +11,11 @@ import { Hero } from "@/components/sections/Hero";
 import { MasterpieceServices } from "@/components/sections/MasterpieceServices";
 import { TrueFocus } from "@/components/ReactBits/TrueFocus";
 import { TiltedCard } from "@/components/ReactBits/TiltedCard";
+import { DynamicPricing } from "@/components/twa/DynamicPricing";
 
 import { PortfolioShowcase, type ProjectShowcaseItem } from "@/components/sections/PortfolioShowcase";
 
-import { Button } from "@/components/ui/button";
+
 
 
 // --- ОПРЕДЕЛЕНИЯ ВСЕХ КОНСТАНТ ---
@@ -179,10 +180,11 @@ const testimonials = [
 
 
 export default function Home() {
+
   return (
     <div className="relative min-h-screen overflow-hidden bg-transparent text-slate-200"><div className="pointer-events-none absolute inset-0">
         <div className="floating-orb top-[-15%] left-[-5%] h-72 w-72 bg-fuchsia-500/30" />
-        <div className="floating-orb right-[-10%] top-[20%] h-[22rem] w-[22rem] bg-cyan-500/20" />
+        <div className="floating-orb right-[-10%] top-[20%] h-[22rem] w-[22rem] bg-[#66FCF1]/20" />
         <div className="floating-orb bottom-[-10%] left-1/2 h-80 w-80 -translate-x-1/2 bg-indigo-500/30" />
       </div>
 
@@ -195,12 +197,12 @@ export default function Home() {
       <div className="relative z-10 space-y-24 py-16 md:py-24">
 
         {/* Секция Юридический щит / Trust Signals */}
-        <section className="container relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] px-6 py-10 shadow-[0_20px_50px_rgba(0,0,0,0.3)] backdrop-blur-xl animate-fade-in-up md:px-12">
+        <section className="container relative overflow-hidden rounded-none border border-white/10 bg-white/[0.02] px-6 py-10 shadow-[0_20px_50px_rgba(0,0,0,0.3)] backdrop-blur-xl animate-fade-in-up md:px-12">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(255,255,255,0.05),_transparent_70%)]" />
           <div className="relative z-10 grid gap-8 text-center md:grid-cols-3 md:gap-12">
             <div className="flex flex-col items-center gap-4">
-              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/5 shadow-inner">
-                <Image src="/data-armor.svg" alt="Договор ИП" width={32} height={32} className="h-8 w-8 text-cyan-400" />
+              <div className="flex h-16 w-16 items-center justify-center rounded-none bg-white/5 shadow-inner">
+                <Image src="/data-armor.svg" alt="Договор ИП" width={32} height={32} className="h-8 w-8 text-[#66FCF1]" />
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-white">Работа по договору ИП</h3>
@@ -208,8 +210,8 @@ export default function Home() {
               </div>
             </div>
             <div className="flex flex-col items-center gap-4">
-              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/5 shadow-inner">
-                <Image src="/web-architecture.svg" alt="Передача прав на код" width={32} height={32} className="h-8 w-8 text-cyan-400" />
+              <div className="flex h-16 w-16 items-center justify-center rounded-none bg-white/5 shadow-inner">
+                <Image src="/web-architecture.svg" alt="Передача прав на код" width={32} height={32} className="h-8 w-8 text-[#66FCF1]" />
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-white">100% права на код</h3>
@@ -217,8 +219,8 @@ export default function Home() {
               </div>
             </div>
             <div className="flex flex-col items-center gap-4">
-              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/5 shadow-inner">
-                <Image src="/ui-ux.svg" alt="Строгое NDA" width={32} height={32} className="h-8 w-8 text-cyan-400" />
+              <div className="flex h-16 w-16 items-center justify-center rounded-none bg-white/5 shadow-inner">
+                <Image src="/ui-ux.svg" alt="Строгое NDA" width={32} height={32} className="h-8 w-8 text-[#66FCF1]" />
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-white">Строгое NDA</h3>
@@ -232,18 +234,18 @@ export default function Home() {
         {/* Секция Услуги (Bento Box) */}
         <section
           id="services"
-          className="container relative overflow-hidden rounded-3xl border border-white/10 bg-[#0F1220]/60 px-6 py-12 shadow-[inset_0_2px_40px_rgba(255,255,255,0.02)] backdrop-blur-3xl animate-fade-in-up md:px-12"
+          className="container relative overflow-hidden rounded-none border border-white/10 bg-[#0F1220]/60 px-6 py-12 shadow-[inset_0_2px_40px_rgba(255,255,255,0.02)] backdrop-blur-3xl animate-fade-in-up md:px-12"
         >
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(31,140,255,0.15),_transparent_60%)]" />
           <div className="relative space-y-10">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/5 pb-8">
               <div className="space-y-4">
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 font-mono text-xs uppercase tracking-[0.28em] text-cyan-400">
-                  <span className="flex h-2 w-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 font-mono text-xs uppercase tracking-[0.28em] text-[#66FCF1]">
+                  <span className="flex h-2 w-2 rounded-full bg-[#66FCF1] animate-pulse"></span>
                   ВАШ АРСЕНАЛ.EXE
                 </span>
                 <h2 className="text-3xl font-semibold tracking-tight text-white md:text-5xl font-mono">
-                  Что вы <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">получаете</span>
+                  Что вы <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#66FCF1] to-blue-500">получаете</span>
                 </h2>
               </div>
               <p className="max-w-md text-base text-slate-400 md:text-right">
@@ -252,8 +254,8 @@ export default function Home() {
             </div>
 
             <div className="grid gap-6 md:grid-cols-12 md:grid-rows-2">
-              <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-white/5 bg-gradient-to-b from-white/[0.03] to-white/[0.01] p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] transition-all hover:bg-white/[0.05] hover:shadow-[0_0_40px_rgba(31,140,255,0.1)] md:col-span-8 md:row-span-1">
-                 <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500/10 text-blue-400">
+              <article className="group relative flex h-full flex-col overflow-hidden rounded-none border border-white/5 bg-gradient-to-b from-white/[0.03] to-white/[0.01] p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] transition-all hover:bg-white/[0.05] hover:shadow-[0_0_40px_rgba(31,140,255,0.1)] md:col-span-8 md:row-span-1">
+                 <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-none bg-blue-500/10 text-blue-400">
                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
                  </div>
                  <h3 className="mb-3 text-2xl font-semibold text-white font-mono">МАШИНА ПРОДАЖ В ТЕЛЕГРАМ</h3>
@@ -267,8 +269,8 @@ export default function Home() {
                  </div>
               </article>
 
-              <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-white/5 bg-gradient-to-b from-white/[0.03] to-white/[0.01] p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] transition-all hover:bg-white/[0.05] hover:shadow-[0_0_40px_rgba(236,72,153,0.1)] md:col-span-4 md:row-span-1">
-                 <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-pink-500/10 text-pink-400">
+              <article className="group relative flex h-full flex-col overflow-hidden rounded-none border border-white/5 bg-gradient-to-b from-white/[0.03] to-white/[0.01] p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] transition-all hover:bg-white/[0.05] hover:shadow-[0_0_40px_rgba(236,72,153,0.1)] md:col-span-4 md:row-span-1">
+                 <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-none bg-pink-500/10 text-pink-400">
                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                  </div>
                  <h3 className="mb-3 text-xl font-semibold text-white font-mono">HIGH-END ИНТЕРФЕЙСЫ</h3>
@@ -277,8 +279,8 @@ export default function Home() {
                  </p>
               </article>
 
-              <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-white/5 bg-gradient-to-b from-white/[0.03] to-white/[0.01] p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] transition-all hover:bg-white/[0.05] hover:shadow-[0_0_40px_rgba(168,85,247,0.1)] md:col-span-5 md:row-span-1">
-                 <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-purple-500/10 text-purple-400">
+              <article className="group relative flex h-full flex-col overflow-hidden rounded-none border border-white/5 bg-gradient-to-b from-white/[0.03] to-white/[0.01] p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] transition-all hover:bg-white/[0.05] hover:shadow-[0_0_40px_rgba(168,85,247,0.1)] md:col-span-5 md:row-span-1">
+                 <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-none bg-purple-500/10 text-purple-400">
                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
                  </div>
                  <h3 className="mb-3 text-xl font-semibold text-white font-mono">ПРЕМИАЛЬНЫЙ MOTION</h3>
@@ -287,10 +289,10 @@ export default function Home() {
                  </p>
               </article>
 
-              <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-white/5 bg-gradient-to-b from-white/[0.03] to-white/[0.01] p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] transition-all hover:bg-white/[0.05] hover:shadow-[0_0_40px_rgba(20,184,166,0.1)] md:col-span-7 md:row-span-1">
+              <article className="group relative flex h-full flex-col overflow-hidden rounded-none border border-white/5 bg-gradient-to-b from-white/[0.03] to-white/[0.01] p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] transition-all hover:bg-white/[0.05] hover:shadow-[0_0_40px_rgba(20,184,166,0.1)] md:col-span-7 md:row-span-1">
                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_rgba(20,184,166,0.15),_transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                  <div className="relative z-10 flex flex-col h-full">
-                   <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-teal-500/10 text-teal-400">
+                   <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-none bg-teal-500/10 text-teal-400">
                      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" /></svg>
                    </div>
                    <h3 className="mb-3 text-2xl font-semibold text-white font-mono">ИСКУССТВЕННЫЙ ИНТЕЛЛЕКТ. ДОМИНАЦИЯ.</h3>
@@ -311,7 +313,7 @@ export default function Home() {
 {/* Секция о Telegram-ботах и автоматизации: подчёркиваем, что делаем больше, чем лендинги */}
         <section
           id="automation"
-          className="container relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] px-6 py-12 shadow-[0_45px_140px_rgba(14,165,233,0.28)] backdrop-blur-2xl animate-fade-in-up md:px-12"
+          className="container relative overflow-hidden rounded-none border border-white/10 bg-white/[0.03] px-6 py-12 shadow-[0_45px_140px_rgba(14,165,233,0.28)] backdrop-blur-2xl animate-fade-in-up md:px-12" style={{ clipPath: "polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px)" }}
         >
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(59,130,246,0.24),_transparent_68%)]" />
           <div className="relative space-y-10">
@@ -330,11 +332,11 @@ export default function Home() {
               {automationServices.map((service) => (
                 <article
                   key={service.title}
-                  className="group relative h-full overflow-hidden rounded-3xl border border-white/10 bg-white/[0.05] p-6 shadow-[0_30px_100px_rgba(59,130,246,0.25)] transition-transform duration-500 hover:-translate-y-2 transition-colors group-hover:bg-white/[0.08]"
+                  className="group relative h-full overflow-hidden rounded-none border border-white/10 bg-white/[0.05] p-6 shadow-[0_30px_100px_rgba(59,130,246,0.25)] transition-transform duration-500 hover:-translate-y-2 transition-colors group-hover:bg-white/[0.08]"
                 >
                   <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.35),_transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="relative z-10 space-y-3">
-                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500/10">
+                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-none bg-blue-500/10">
                       <Image src={service.icon} alt={service.title} width={48} height={48} className="h-full w-full object-contain" unoptimized />
                     </div>
                     <h3 className="text-xl font-semibold text-white">{service.title}</h3>
@@ -355,7 +357,7 @@ export default function Home() {
 
         {/* Секция Процесс */}
         <section
-          className="container relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] px-6 py-12 shadow-[0_40px_120px_rgba(76,29,149,0.25)] backdrop-blur-2xl animate-fade-in-up md:px-12"
+          className="container relative overflow-hidden rounded-none border border-white/10 bg-white/[0.03] px-6 py-12 shadow-[0_40px_120px_rgba(76,29,149,0.25)] backdrop-blur-2xl animate-fade-in-up md:px-12" style={{ clipPath: "polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px)" }}
         >
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.28),_transparent_70%)]" />
           <div className="relative space-y-10">
@@ -372,7 +374,7 @@ export default function Home() {
               {processSteps.map((step, index) => (
                 <li
                   key={step.title}
-                  className="group relative h-full overflow-hidden rounded-3xl border border-white/10 bg-white/[0.05] p-6 shadow-[0_25px_80px_rgba(168,85,247,0.2)] transition-transform duration-500 hover:-translate-y-2 transition-colors group-hover:bg-white/[0.07]"
+                  className="group relative h-full overflow-hidden rounded-none border border-white/10 bg-white/[0.05] p-6 shadow-[0_25px_80px_rgba(168,85,247,0.2)] transition-transform duration-500 hover:-translate-y-2 transition-colors group-hover:bg-white/[0.07]"
                 >
                   <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(236,72,153,0.3),_transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="relative z-10 space-y-3">
@@ -386,78 +388,23 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Секция Стоимость */}
-        <section
-          className="container relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] px-6 py-12 shadow-[0_45px_140px_rgba(14,165,233,0.28)] backdrop-blur-2xl animate-fade-in-up md:px-12"
-        >
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(14,165,233,0.28),_transparent_70%)]" />
-          <div className="relative space-y-10">
-            <div className="space-y-4">
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs uppercase tracking-[0.28em] text-white/60">
-                ИНВЕСТИЦИИ В РОСТ
-              </span>
-              <h2 className="text-3xl font-semibold text-white md:text-4xl">
-                Тарифы и Инвестиции
-              </h2>
-              <p className="max-w-2xl text-base text-slate-300 md:text-lg">
-                Вы не тратите деньги, вы инвестируете в систему, которая будет приносить вам прибыль годами. Выбирайте уровень масштабирования.
-              </p>
-            </div>
-            <div className="grid gap-6 md:grid-cols-3">
-              {pricingPlans.map((plan) => (
-                <article
-                  key={plan.name}
-                  className={clsx(
-                    "group relative flex h-full flex-col gap-6 overflow-hidden rounded-3xl border border-white/10 p-6 shadow-[0_30px_100px_rgba(6,182,212,0.25)] transition-transform duration-500 hover:-translate-y-2 transition-colors",
-                    plan.popular
-                      ? "bg-gradient-to-b from-cyan-400/20 via-transparent to-transparent"
-                      : "bg-white/[0.05]"
-                  )}
-                >
-                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(6,182,212,0.3),_transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                  <div className="relative z-10 flex flex-1 flex-col gap-6">
-                    <div>
-                      <span className="text-sm font-semibold uppercase tracking-[0.28em] text-white/50">
-                        {plan.name}
-                      </span>
-                      <p className="mt-3 text-3xl font-semibold text-white">{plan.price}</p>
-                    </div>
-                    <ul className="space-y-3 text-sm text-slate-300">
-                      {plan.perks.map((perk) => (
-                        <li key={perk} className="flex items-start gap-2">
-                          <span className="mt-1 h-1.5 w-1.5 rounded-full bg-cyan-300" />
-                          <span>{perk}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <Button
-                      asChild
-                      className="mt-auto inline-flex w-full justify-center rounded-xl2 bg-cyan-500 py-3 text-base font-semibold text-white shadow-[0_18px_45px_rgba(6,182,212,0.38)] transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:bg-cyan-400 hover:shadow-[0_20px_55px_rgba(6,182,212,0.45)]"
-                    >
-                      <Link href="#contact">НАЧАТЬ РАБОТУ</Link>
-                    </Button>
-                  </div>
-                </article>
-              ))}
-            </div>
 
-            <div className="mt-12 rounded-2xl border border-white/10 bg-white/[0.02] p-6 shadow-inner md:p-8">
-              <h3 className="mb-6 text-xl font-semibold text-white md:text-2xl">Дополнительные модули</h3>
-              <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {additionalModules.map((module) => (
-                  <li key={module.name} className="flex items-center justify-between rounded-xl bg-white/5 p-4 transition-colors hover:bg-white/10">
-                    <span className="text-sm font-medium text-slate-300">{module.name}</span>
-                    <span className="whitespace-nowrap rounded-md bg-white/10 px-2.5 py-1 text-xs font-semibold text-cyan-300">{module.price}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+        {/* Секция Стоимость */}
+        <section className="container relative py-20 z-10">
+          <div className="space-y-4 mb-12">
+            <span className="inline-flex items-center gap-2 rounded-none border border-[#66FCF1]/30 bg-[#66FCF1]/5 px-4 py-1 text-xs uppercase tracking-[0.2em] text-[#66FCF1] font-mono">
+              ВЫЧИСЛЕНИЕ СТОИМОСТИ
+            </span>
+            <h2 className="text-3xl font-mono text-white md:text-5xl uppercase tracking-wider">
+              Динамический Прайсинг
+            </h2>
           </div>
+          <DynamicPricing />
         </section>
 
         {/* Секция Отзывы */}
         <section
-          className="container relative overflow-visible rounded-3xl border border-white/10 bg-white/[0.03] px-6 py-12 shadow-[0_40px_120px_rgba(76,29,149,0.25)] backdrop-blur-2xl animate-fade-in-up md:px-12"
+          className="container relative overflow-visible rounded-none border border-white/10 bg-white/[0.03] px-6 py-12 shadow-[0_40px_120px_rgba(76,29,149,0.25)] backdrop-blur-2xl animate-fade-in-up md:px-12" style={{ clipPath: "polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px)" }}
         >
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom,_rgba(168,85,247,0.3),_transparent_70%)]" />
 
@@ -479,7 +426,7 @@ export default function Home() {
               {testimonials.map((testimonial) => (
                 <figure
                   key={testimonial.name}
-                  className="group relative h-full overflow-hidden rounded-3xl border border-white/10 bg-white/[0.05] p-6 shadow-[0_25px_80px_rgba(168,85,247,0.2)] transition-transform duration-500 hover:-translate-y-2 transition-colors group-hover:bg-white/[0.07]"
+                  className="group relative h-full overflow-hidden rounded-none border border-white/10 bg-white/[0.05] p-6 shadow-[0_25px_80px_rgba(168,85,247,0.2)] transition-transform duration-500 hover:-translate-y-2 transition-colors group-hover:bg-white/[0.07]"
                 >
                   <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(236,72,153,0.32),_transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <blockquote className="relative z-10 text-base text-slate-200">
@@ -521,7 +468,7 @@ export default function Home() {
         {/* Секция Контакты */}
         <section
           id="contact"
-          className="container relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.04] via-white/[0.02] to-transparent px-6 py-16 shadow-[0_50px_160px_rgba(14,165,233,0.35)] backdrop-blur-2xl animate-fade-in-up md:grid md:grid-cols-[minmax(0,1fr)_380px] md:gap-12 md:px-12"
+          className="container relative overflow-hidden rounded-none border border-white/10 bg-gradient-to-br from-white/[0.04] via-white/[0.02] to-transparent px-6 py-16 shadow-[0_50px_160px_rgba(14,165,233,0.35)] backdrop-blur-2xl animate-fade-in-up md:grid md:grid-cols-[minmax(0,1fr)_380px] md:gap-12 md:px-12"
         >
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(6,182,212,0.28),_transparent_65%)]" />
           <div className="relative space-y-6">
@@ -538,7 +485,7 @@ export default function Home() {
               <li>
                 • Telegram:
                 <a
-                  className="ml-1 inline-flex items-center gap-1 text-cyan-300 underline decoration-dotted underline-offset-4 transition hover:text-cyan-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050816]"
+                  className="ml-1 inline-flex items-center gap-1 text-[#66FCF1] underline decoration-dotted underline-offset-4 transition hover:text-cyan-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#66FCF1]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050816]"
                   href="https://t.me/peexthree"
                   target="_blank"
                   rel="noreferrer"
