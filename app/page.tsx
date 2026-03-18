@@ -115,13 +115,13 @@ const processSteps = [
 const pricingPlans = [
   {
     name: "Старт",
-    price: "от 21 000 ₽",
+    price: "от 12 000 ₽",
     popular: false,
     perks: ["Многоуровневое меню навигации", "Умная форма заявки", "Система мгновенных алертов", "Базовый пульт управления"],
   },
   {
     name: "Бизнес",
-    price: "от 45 000 ₽",
+    price: "от 25 000 ₽",
     popular: true,
     perks: [
       "Всё из тарифа «Старт»",
@@ -134,23 +134,23 @@ const pricingPlans = [
   },
   {
     name: "Масштаб",
-    price: "от 120 000 ₽",
+    price: "от 60 000 ₽",
     popular: false,
     perks: ["Всё из тарифа «Бизнес»", "Полноценный Web-интерфейс (TWA)", "Продвинутый Личный Кабинет", "Сложные фильтры (как на маркетплейсах)", "Бесшовная интеграция с CRM (amoCRM/Битрикс24)"],
   },
 ] as const;
 
 const additionalModules = [
-  { name: "Интеграция с amoCRM / Битрикс24", price: "от 15 000 ₽" },
-  { name: "Интеграция ИИ (ChatGPT-ассистент)", price: "от 20 000 ₽" },
-  { name: "Подключение онлайн-кассы / Крипты", price: "от 10 000 ₽" },
-  { name: "Продвинутая Админ-панель", price: "от 25 000 ₽" },
-  { name: "Видео-аватар на входе", price: "от 12 000 ₽" },
-  { name: "Реферальная система", price: "от 18 000 ₽" },
-  { name: "Сквозная аналитика", price: "от 22 000 ₽" },
-  { name: "Push-уведомления (Массовые рассылки)", price: "от 8 000 ₽" },
-  { name: "Мультиязычность (i18n)", price: "от 15 000 ₽" },
-  { name: "Развертывание на сервере клиента", price: "от 8 000 ₽" },
+  { name: "Интеграция с amoCRM / Битрикс24", price: "от 8 000 ₽" },
+  { name: "Интеграция ИИ (ChatGPT-ассистент)", price: "от 12 000 ₽" },
+  { name: "Подключение онлайн-кассы / Крипты", price: "от 5 000 ₽" },
+  { name: "Продвинутая Админ-панель", price: "от 15 000 ₽" },
+  { name: "Видео-аватар на входе", price: "от 7 000 ₽" },
+  { name: "Реферальная система", price: "от 9 000 ₽" },
+  { name: "Сквозная аналитика", price: "от 12 000 ₽" },
+  { name: "Push-уведомления (Массовые рассылки)", price: "от 4 000 ₽" },
+  { name: "Мультиязычность (i18n)", price: "от 8 000 ₽" },
+  { name: "Развертывание на сервере клиента", price: "от 5 000 ₽" },
 ] as const;
 
 const testimonials = [
@@ -197,7 +197,7 @@ export default function Home() {
       <div className="relative z-10 space-y-24 py-16 md:py-24">
 
         {/* Секция Юридический щит / Trust Signals */}
-        <section className="container relative overflow-hidden rounded-none border border-white/10 bg-white/[0.02] px-6 py-10 shadow-[0_20px_50px_rgba(0,0,0,0.3)] backdrop-blur-xl animate-fade-in-up md:px-12">
+        <section id="about" className="scroll-mt-24 container relative overflow-hidden rounded-none border border-white/10 bg-white/[0.02] px-6 py-10 shadow-[0_20px_50px_rgba(0,0,0,0.3)] backdrop-blur-xl animate-fade-in-up md:px-12">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(255,255,255,0.05),_transparent_70%)]" />
           <div className="relative z-10 grid gap-8 text-center md:grid-cols-3 md:gap-12">
             <div className="flex flex-col items-center gap-4">
@@ -431,7 +431,10 @@ export default function Home() {
 
 
         {/* Секция Стоимость */}
-        <section className="container relative py-20 z-10">
+        <section id="pricing" className="scroll-mt-24 container relative py-20 z-10">
+          {/* Добавлен блюр фон для лучшей читаемости текста */}
+          <div className="absolute inset-0 z-[-1] bg-slate-950/60 backdrop-blur-xl rounded-[40px] shadow-[0_0_100px_rgba(0,0,0,0.8)] border border-white/5 m-4"></div>
+
           <div className="space-y-4 mb-12">
             <span className="inline-flex items-center gap-2 rounded-none border border-[#66FCF1]/30 bg-[#66FCF1]/5 px-4 py-1 text-xs uppercase tracking-[0.2em] text-[#66FCF1] font-mono">
               ВЫЧИСЛЕНИЕ СТОИМОСТИ
@@ -443,7 +446,7 @@ export default function Home() {
 
           {/* Базовые тарифы */}
           <div className="grid gap-8 md:grid-cols-3 mb-16 relative z-10">
-            {pricingPlans.map((plan, idx) => (
+            {pricingPlans.map((plan) => (
               <div
                 key={plan.name}
                 className={`group relative flex flex-col justify-between overflow-hidden rounded-none border p-8 transition-all duration-300 ${

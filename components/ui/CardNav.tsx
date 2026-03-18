@@ -239,10 +239,18 @@ const CardNav: React.FC<CardNavProps> = ({
                     className="nav-card-link inline-flex items-center gap-[6px] no-underline cursor-pointer transition-opacity duration-300 hover:opacity-75 text-[15px] md:text-[16px]"
                     href={lnk.href as Route}
                     aria-label={lnk.ariaLabel}
-                    onClick={() => {
-                        if (isExpanded) {
-                            toggleMenu();
+                                        onClick={(e) => {
+                      if (lnk.href.startsWith('#')) {
+                        e.preventDefault();
+                        const targetId = lnk.href.substring(1);
+                        const elem = document.getElementById(targetId);
+                        if (elem) {
+                          elem.scrollIntoView({ behavior: 'smooth' });
                         }
+                      }
+                      if (isExpanded) {
+                          toggleMenu();
+                      }
                     }}
                   >
                     <GoArrowUpRight className="nav-card-link-icon shrink-0" aria-hidden="true" />

@@ -50,7 +50,7 @@ export function PortfolioShowcase({ projects }: PortfolioShowcaseProps) {
   };
 
   return (
-    <section className="container relative overflow-hidden rounded-[38px] border border-white/10 bg-gradient-to-br from-[#050b1f] via-[#040616] to-[#02030a] px-6 py-16 shadow-[0_60px_160px_rgba(30,64,175,0.45)] backdrop-blur-3xl md:px-16">
+    <section id="portfolio" className="scroll-mt-24 container relative overflow-hidden rounded-[38px] border border-white/10 bg-gradient-to-br from-[#050b1f] via-[#040616] to-[#02030a] px-6 py-16 shadow-[0_60px_160px_rgba(30,64,175,0.45)] backdrop-blur-3xl md:px-16">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -left-16 top-1/4 h-72 w-72 rounded-full bg-cyan-500/25 blur-3xl" />
         <div className="absolute bottom-0 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-blue-600/20 blur-[140px]" />
