@@ -11,7 +11,6 @@ interface TiltedCardProps {
   imageWidth?: string;
   scaleOnHover?: number;
   rotateAmplitude?: number;
-  showMobileWarning?: boolean;
   showTooltip?: boolean;
   displayOverlayContent?: boolean;
   overlayContent?: React.ReactNode;
@@ -27,7 +26,6 @@ export const TiltedCard: React.FC<TiltedCardProps> = ({
   imageWidth = '300px',
   scaleOnHover = 1.1,
   rotateAmplitude = 14,
-  showMobileWarning = false,
   showTooltip = false,
   displayOverlayContent = false,
   overlayContent,
@@ -84,6 +82,8 @@ export const TiltedCard: React.FC<TiltedCardProps> = ({
         }}
       >
         <div
+          role="img"
+          aria-label={altText}
           className="absolute top-0 left-0 w-full h-full bg-contain bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${imageSrc})`, transform: 'translateZ(30px)' }}
         ></div>

@@ -440,6 +440,63 @@ export default function Home() {
               Динамический Прайсинг
             </h2>
           </div>
+
+          {/* Базовые тарифы */}
+          <div className="grid gap-8 md:grid-cols-3 mb-16 relative z-10">
+            {pricingPlans.map((plan, idx) => (
+              <div
+                key={plan.name}
+                className={`group relative flex flex-col justify-between overflow-hidden rounded-none border p-8 transition-all duration-300 ${
+                  plan.popular
+                    ? "border-[#66FCF1] bg-[#66FCF1]/5 shadow-[0_0_30px_rgba(102,252,241,0.15)] hover:bg-[#66FCF1]/10"
+                    : "border-white/10 bg-white/[0.02] hover:bg-white/[0.05]"
+                }`}
+                style={{ clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%)" }}
+              >
+                {plan.popular && (
+                  <div className="absolute top-0 right-0 bg-[#66FCF1] px-3 py-1 text-[10px] font-bold text-black uppercase tracking-widest">
+                    Популярный
+                  </div>
+                )}
+                <div>
+                  <h3 className="font-mono text-2xl text-white mb-2 uppercase">{plan.name}</h3>
+                  <div className="text-3xl font-bold text-[#66FCF1] mb-6">{plan.price}</div>
+                  <ul className="space-y-3 mb-8">
+                    {plan.perks.map((perk, i) => (
+                      <li key={i} className="flex items-start text-sm text-slate-300">
+                        <svg className="w-5 h-5 mr-3 text-[#66FCF1] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span className="leading-tight">{perk}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                {/* Visual anchor point */}
+                <div className={`absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 ${plan.popular ? "border-[#66FCF1]" : "border-white/20"} opacity-50`} />
+              </div>
+            ))}
+          </div>
+
+          {/* Дополнительные модули */}
+          <div className="mb-16 relative z-10">
+            <h3 className="text-xl font-mono text-white uppercase mb-6 flex items-center gap-3">
+              <span className="w-8 h-[1px] bg-[#66FCF1]"></span>
+              Дополнительные модули
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {additionalModules.map((module, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-center justify-between border border-white/5 bg-white/[0.01] p-4 hover:border-white/20 transition-colors"
+                >
+                  <span className="text-sm text-slate-300 font-medium">{module.name}</span>
+                  <span className="text-xs font-mono text-[#66FCF1] whitespace-nowrap ml-4 bg-[#66FCF1]/10 px-2 py-1">{module.price}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
           <DynamicPricing />
         </section>
 
