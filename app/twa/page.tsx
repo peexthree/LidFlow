@@ -267,7 +267,7 @@ export default function TWAPage() {
       {/* 2. Интерактивный калькулятор «Инвестиции в рост» */}
       <section ref={calculatorRef} className="container mx-auto px-4 py-16 max-w-3xl">
         <div className="space-y-4 mb-10 text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-[10px] uppercase tracking-[0.28em] text-white/60">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 backdrop-blur-md text-[10px] uppercase tracking-[0.28em] text-white/60">
               КАЛЬКУЛЯТОР
             </span>
             <h2 className="text-2xl md:text-4xl font-semibold text-white font-mono">Инвестиции в рост</h2>
@@ -390,7 +390,7 @@ export default function TWAPage() {
       {/* 3. Модуль «Безопасность и Владение» */}
       <section className="container mx-auto px-4 py-16 max-w-4xl border-t border-white/5">
         <div className="space-y-4 mb-10 text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-[10px] uppercase tracking-[0.28em] text-white/60">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 backdrop-blur-md text-[10px] uppercase tracking-[0.28em] text-white/60">
               ГАРАНТИИ
             </span>
             <h2 className="text-2xl md:text-4xl font-semibold text-white font-mono">Безопасность и Владение</h2>
@@ -401,7 +401,7 @@ export default function TWAPage() {
 
           {securityFeatures.map((feature, idx) => (
              <article key={idx} className="group relative overflow-hidden rounded-none border border-white/10 bg-gradient-to-b from-white/[0.05] to-white/[0.01] p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] transition-all duration-300 hover:bg-white/[0.08] hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(236,72,153,0.15)] backdrop-blur-xl z-10">
-                 <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-none bg-white/5 border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] transition-transform group-hover:scale-110 duration-300">
+                 <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-none bg-white/5 backdrop-blur-md border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] transition-transform group-hover:scale-110 duration-300 backdrop-blur-md">
                    <Image src={feature.icon} alt={feature.title} width={32} height={32} className="opacity-90 group-hover:opacity-100 drop-shadow-md" />
                  </div>
                  <h3 className="mb-3 text-xl font-semibold text-white font-mono">{feature.title}</h3>
@@ -416,7 +416,7 @@ export default function TWAPage() {
       {/* 4. Шоурум кейсов (Портфолио) */}
       <section className="container mx-auto px-4 py-16 max-w-5xl border-t border-white/5">
          <div className="space-y-4 mb-10 text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-[10px] uppercase tracking-[0.28em] text-white/60">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 backdrop-blur-md text-[10px] uppercase tracking-[0.28em] text-white/60">
               РЕЗУЛЬТАТЫ
             </span>
             <h2 className="text-2xl md:text-4xl font-semibold text-white font-mono">Шоурум кейсов</h2>
