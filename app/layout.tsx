@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
 
 import "./globals.css";
+import { SiteHeader } from "@/components/layout/SiteHeader";
 import { FloatingOrbs } from "@/components/ui/VisualEffects";
 import LetterGlitch from "@/components/ui/LetterGlitch";
-import { SiteHeader } from "@/components/layout/SiteHeader";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://lidflow.vercel.app";
 
@@ -65,6 +65,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="ru" className="h-full">
       <body className="flex min-h-screen flex-col bg-slate-950 text-slate-100 selection:bg-white/20">
         <SiteHeader />
+
+
         <FloatingOrbs />
 
         <div className="fixed inset-0 z-[0]">

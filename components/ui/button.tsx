@@ -1,4 +1,5 @@
 import React from "react";
+import { useAudio } from "@/utils/useAudio";
 import { cva, type VariantProps } from "class-variance-authority";
 import { clsx } from "clsx";
 
@@ -25,7 +26,19 @@ export interface ButtonProps
   children?: React.ReactNode;
 }
 
-export function Button({ className, variant, asChild, children, ...buttonProps }: ButtonProps) {
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({ className, variant, asChild, children, onMouseEnter, onClick, ...buttonProps }, ref) => {
+  const { playHoverSound, playClickSound } = useAudio();
+
+  const handleMouseEnter = (e: React.MouseEvent<HTMLButtonElement>) => {
+    playHoverSound();
+    if (onMouseEnter) onMouseEnter(e);
+  };
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    playClickSound();
+    if (onClick) onClick(e);
+  };
+
   if (asChild) {
     if (!children || !React.isValidElement(children)) {
       return null;
@@ -38,14 +51,29 @@ export function Button({ className, variant, asChild, children, ...buttonProps }
 
     const merged = clsx(button({ variant }), childClassName, className);
 
-    return React.cloneElement(children, {
+    return React.cloneElement(children as React.ReactElement<React.ButtonHTMLAttributes<HTMLButtonElement>>, {
       className: merged,
-    } as Record<string, unknown>);
+      onMouseEnter: (e: React.MouseEvent<HTMLButtonElement>) => {
+        handleMouseEnter(e);
+        if ((children as React.ReactElement<React.ButtonHTMLAttributes<HTMLButtonElement>>).props.onMouseEnter) (children as React.ReactElement<React.ButtonHTMLAttributes<HTMLButtonElement>>).props.onMouseEnter?.(e);
+      },
+      onClick: (e: React.MouseEvent<HTMLButtonElement>) => {
+        handleClick(e);
+        if ((children as React.ReactElement<React.ButtonHTMLAttributes<HTMLButtonElement>>).props.onClick) (children as React.ReactElement<React.ButtonHTMLAttributes<HTMLButtonElement>>).props.onClick?.(e);
+      }
+    });
   }
 
   return (
-    <button className={clsx(button({ variant }), className)} {...buttonProps}>
+    <button
+      className={clsx(button({ variant }), className)}
+      onMouseEnter={handleMouseEnter}
+      onClick={handleClick}
+      ref={ref}
+      {...buttonProps}
+    >
       {children}
     </button>
   );
-}
+});
+Button.displayName = "Button";
