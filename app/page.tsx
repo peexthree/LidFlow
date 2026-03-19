@@ -199,7 +199,7 @@ export default function Home() {
       <div className="relative z-10 space-y-24 py-16 md:py-24">
 
         {/* Секция Юридический щит / Trust Signals */}
-        <section id="about" className="scroll-mt-24 container relative overflow-hidden rounded-none border border-white/10 bg-white/[0.02] px-6 py-10 shadow-[0_20px_50px_rgba(0,0,0,0.3)] backdrop-blur-xl animate-fade-in-up md:px-12">
+        <section id="about" className="scroll-mt-24 container relative overflow-hidden rounded-none border border-white/10 bg-white/[0.02]  backdrop-blur-md px-6 py-10 shadow-[0_20px_50px_rgba(0,0,0,0.3)] backdrop-blur-xl animate-fade-in-up md:px-12">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(255,255,255,0.05),_transparent_70%)]" />
           <div className="relative z-10 grid gap-8 text-center md:grid-cols-3 md:gap-12">
             <div className="flex flex-col items-center gap-4">
@@ -256,7 +256,7 @@ export default function Home() {
             </div>
 
             <div className="grid gap-6 md:grid-cols-12 md:grid-rows-2">
-              <article className="group relative flex h-full flex-col overflow-hidden rounded-none border border-white/5 bg-gradient-to-b from-white/[0.03] to-white/[0.01] p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] transition-all hover:bg-white/[0.05] hover:shadow-[0_0_40px_rgba(31,140,255,0.1)] md:col-span-8 md:row-span-1">
+              <article className="group relative flex h-full flex-col overflow-hidden rounded-none border border-white/5 bg-gradient-to-b from-white/[0.03] to-white/[0.01]  backdrop-blur-md p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] transition-all hover:bg-white/[0.05] hover:shadow-[0_0_40px_rgba(31,140,255,0.1)] md:col-span-8 md:row-span-1">
                  <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-none bg-blue-500/10 text-blue-400">
                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
                  </div>
@@ -271,7 +271,7 @@ export default function Home() {
                  </div>
               </article>
 
-              <article className="group relative flex h-full flex-col overflow-hidden rounded-none border border-white/5 bg-gradient-to-b from-white/[0.03] to-white/[0.01] p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] transition-all hover:bg-white/[0.05] hover:shadow-[0_0_40px_rgba(236,72,153,0.1)] md:col-span-4 md:row-span-1">
+              <article className="group relative flex h-full flex-col overflow-hidden rounded-none border border-white/5 bg-gradient-to-b from-white/[0.03] to-white/[0.01]  backdrop-blur-md p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] transition-all hover:bg-white/[0.05] hover:shadow-[0_0_40px_rgba(236,72,153,0.1)] md:col-span-4 md:row-span-1">
                  <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-none bg-pink-500/10 text-pink-400">
                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                  </div>
@@ -281,7 +281,7 @@ export default function Home() {
                  </p>
               </article>
 
-              <article className="group relative flex h-full flex-col overflow-hidden rounded-none border border-white/5 bg-gradient-to-b from-white/[0.03] to-white/[0.01] p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] transition-all hover:bg-white/[0.05] hover:shadow-[0_0_40px_rgba(168,85,247,0.1)] md:col-span-5 md:row-span-1">
+              <article className="group relative flex h-full flex-col overflow-hidden rounded-none border border-white/5 bg-gradient-to-b from-white/[0.03] to-white/[0.01]  backdrop-blur-md p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] transition-all hover:bg-white/[0.05] hover:shadow-[0_0_40px_rgba(168,85,247,0.1)] md:col-span-5 md:row-span-1">
                  <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-none bg-purple-500/10 text-purple-400">
                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
                  </div>
@@ -291,7 +291,7 @@ export default function Home() {
                  </p>
               </article>
 
-              <article className="group relative flex h-full flex-col overflow-hidden rounded-none border border-white/5 bg-gradient-to-b from-white/[0.03] to-white/[0.01] p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] transition-all hover:bg-white/[0.05] hover:shadow-[0_0_40px_rgba(20,184,166,0.1)] md:col-span-7 md:row-span-1">
+              <article className="group relative flex h-full flex-col overflow-hidden rounded-none border border-white/5 bg-gradient-to-b from-white/[0.03] to-white/[0.01]  backdrop-blur-md p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] transition-all hover:bg-white/[0.05] hover:shadow-[0_0_40px_rgba(20,184,166,0.1)] md:col-span-7 md:row-span-1">
                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_rgba(20,184,166,0.15),_transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                  <div className="relative z-10 flex flex-col h-full">
                    <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-none bg-teal-500/10 text-teal-400">
@@ -334,7 +334,7 @@ export default function Home() {
               {automationServices.map((service) => (
                 <article
                   key={service.title}
-                  className="group relative h-full overflow-hidden rounded-none border border-white/10 bg-white/[0.05] p-6 shadow-[0_30px_100px_rgba(59,130,246,0.25)] transition-transform duration-500 hover:-translate-y-2 transition-colors group-hover:bg-white/[0.08]"
+                  className="group relative h-full overflow-hidden rounded-none border border-white/10 bg-white/[0.05] p-6 shadow-[0_30px_100px_rgba(59,130,246,0.25)] transition-transform duration-500 hover:-translate-y-2 transition-colors group-hover:bg-white/[0.08] backdrop-blur-md"
                 >
                   <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.35),_transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="relative z-10 space-y-3">
@@ -376,7 +376,7 @@ export default function Home() {
               {processSteps.map((step, index) => (
                 <li
                   key={step.title}
-                  className="group relative h-full overflow-hidden rounded-none border border-white/10 bg-white/[0.05] p-6 shadow-[0_25px_80px_rgba(168,85,247,0.2)] transition-transform duration-500 hover:-translate-y-2 transition-colors group-hover:bg-white/[0.07]"
+                  className="group relative h-full overflow-hidden rounded-none border border-white/10 bg-white/[0.05] p-6 shadow-[0_25px_80px_rgba(168,85,247,0.2)] transition-transform duration-500 hover:-translate-y-2 transition-colors group-hover:bg-white/[0.07] backdrop-blur-md"
                 >
                   <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(236,72,153,0.3),_transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="relative z-10 space-y-3">
@@ -453,8 +453,8 @@ export default function Home() {
                 key={plan.name}
                 className={`group relative flex flex-col justify-between overflow-hidden rounded-none border p-8 transition-all duration-300 ${
                   plan.popular
-                    ? "border-[#66FCF1] bg-[#66FCF1]/5 shadow-[0_0_30px_rgba(102,252,241,0.15)] hover:bg-[#66FCF1]/10"
-                    : "border-white/10 bg-white/[0.02] hover:bg-white/[0.05]"
+                    ? "border-[#66FCF1] bg-[#66FCF1]/5 shadow-[0_0_30px_rgba(102,252,241,0.15)] hover:bg-[#66FCF1]/10 backdrop-blur-xl"
+                    : "border-white/10 bg-white/[0.02]  backdrop-blur-md hover:bg-white/[0.05]"
                 }`}
                 style={{ clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%)" }}
               >
@@ -493,7 +493,7 @@ export default function Home() {
               {additionalModules.map((module, idx) => (
                 <div
                   key={idx}
-                  className="flex items-center justify-between border border-white/5 bg-white/[0.01] p-4 hover:border-white/20 transition-colors"
+                  className="flex items-center justify-between border border-white/5 bg-white/[0.01]  backdrop-blur-md p-4 hover:border-white/20 transition-colors"
                 >
                   <span className="text-sm text-slate-300 font-medium">{module.name}</span>
                   <span className="text-xs font-mono text-[#66FCF1] whitespace-nowrap ml-4 bg-[#66FCF1]/10 px-2 py-1">{module.price}</span>
@@ -506,12 +506,15 @@ export default function Home() {
         </section>
 
         {/* Секция Отзывы */}
-        <section
-          className="container relative overflow-visible rounded-none border border-white/10 bg-white/[0.03] px-6 py-12 shadow-[0_40px_120px_rgba(76,29,149,0.25)] backdrop-blur-2xl animate-fade-in-up md:px-12" style={{ clipPath: "polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px)" }}
-        >
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom,_rgba(168,85,247,0.3),_transparent_70%)]" />
+        <section className="container relative my-20 z-10">
+          <div
+            className="absolute inset-0 overflow-hidden rounded-none border border-white/10 bg-white/[0.03] shadow-[0_40px_120px_rgba(76,29,149,0.25)] backdrop-blur-2xl animate-fade-in-up"
+            style={{ clipPath: "polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px)" }}
+          >
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom,_rgba(168,85,247,0.3),_transparent_70%)]" />
+          </div>
 
-          <div className="relative z-20 space-y-10"> {/* Добавляем z-20, чтобы контент был над изображением */}
+          <div className="relative z-20 px-6 py-12 md:px-12 space-y-10">
             <div className="space-y-4">
               <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs uppercase tracking-[0.28em] text-white/60">
                 ДОКАЗАТЕЛЬСТВА
@@ -524,12 +527,12 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Контейнер для отзывов, чтобы оставить место для талисмана */}
+            {/* Контейнер для отзывов */}
             <div className="grid gap-6 md:grid-cols-3">
               {testimonials.map((testimonial) => (
                 <figure
                   key={testimonial.name}
-                  className="group relative h-full overflow-hidden rounded-none border border-white/10 bg-white/[0.05] p-6 shadow-[0_25px_80px_rgba(168,85,247,0.2)] transition-transform duration-500 hover:-translate-y-2 transition-colors group-hover:bg-white/[0.07]"
+                  className="group relative h-full overflow-hidden rounded-none border border-white/10 bg-white/[0.05] p-6 shadow-[0_25px_80px_rgba(168,85,247,0.2)] backdrop-blur-md transition-transform duration-500 hover:-translate-y-2 transition-colors group-hover:bg-white/[0.07]"
                 >
                   <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(236,72,153,0.32),_transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <blockquote className="relative z-10 text-base text-slate-200">
@@ -549,10 +552,10 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Блок с изображением tal2.webp - Позиционирование в правом верхнем углу, поднято выше */}
+          {/* Блок с изображением tal2.webp - Позиционирование вне слоя clipPath */}
           <div
             aria-hidden="true"
-            className="absolute top-[-240px] right-[-180px] hidden lg:block z-10 mix-blend-screen"
+            className="absolute top-[-240px] right-[-180px] hidden lg:block z-30 mix-blend-screen"
           >
             <div className="relative h-[300px] w-[300px]">
               <TiltedCard
