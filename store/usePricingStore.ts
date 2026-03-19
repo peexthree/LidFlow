@@ -12,9 +12,9 @@ export const PRICING_STEPS: PricingStep[] = [
     id: "project_type",
     question: "Какова ваша конечная бизнес-цель?",
     options: [
-      { id: "landing", label: "Только Landing (Свирепая конверсия)", price: 90000, type: "landing" },
-      { id: "twa", label: "Telegram Web App (Внутри экосистемы)", price: 150000, type: "bot" },
-      { id: "full", label: "Full-Stack доминация (Landing + TWA + Bot)", price: 290000, type: "complex" }
+      { id: "landing", label: "Только Landing (Свирепая конверсия)", price: 12000, type: "landing" },
+      { id: "twa", label: "Telegram Web App (Внутри экосистемы)", price: 25000, type: "bot" },
+      { id: "full", label: "Full-Stack доминация (Landing + TWA + Bot)", price: 60000, type: "complex" }
     ],
     multiple: false
   },
@@ -22,7 +22,7 @@ export const PRICING_STEPS: PricingStep[] = [
     id: "ai_integration",
     question: "Интегрируем ИИ для автономных продаж (LLM)?",
     options: [
-      { id: "ai_yes", label: "Да, хочу автономного продавца (24/7)", price: 80000, type: "feature" },
+      { id: "ai_yes", label: "Да, хочу автономного продавца (24/7)", price: 15000, type: "feature" },
       { id: "ai_no", label: "Нет, обойдемся стандартами", price: 0, type: "none" }
     ],
     multiple: false
@@ -31,7 +31,7 @@ export const PRICING_STEPS: PricingStep[] = [
     id: "market_domination",
     question: "Уровень доминации на рынке (Визуал):",
     options: [
-      { id: "3d_motion", label: "Premium (3D, GSAP, Cyberpunk эффекты)", price: 50000, type: "feature" },
+      { id: "3d_motion", label: "Premium (3D, GSAP, Cyberpunk эффекты)", price: 10000, type: "feature" },
       { id: "lid", label: "LID (Строгий минимализм, конверсионный)", price: 0, type: "none" }
     ],
     multiple: false
@@ -40,8 +40,8 @@ export const PRICING_STEPS: PricingStep[] = [
     id: "automation",
     question: "Нужна ли CRM и сквозная аналитика?",
     options: [
-      { id: "crm_analytics", label: "Да, полная связка (amoCRM/Bitrix + Аналитика)", price: 85000, type: "feature" },
-      { id: "crm_only", label: "Только базовая CRM-интеграция", price: 40000, type: "feature" },
+      { id: "crm_analytics", label: "Да, полная связка (amoCRM/Bitrix + Аналитика)", price: 15000, type: "feature" },
+      { id: "crm_only", label: "Только базовая CRM-интеграция", price: 8000, type: "feature" },
       { id: "none", label: "Нет, данные собираются вручную", price: 0, type: "none" }
     ],
     multiple: false
@@ -50,8 +50,8 @@ export const PRICING_STEPS: PricingStep[] = [
     id: "payments",
     question: "Модуль прямого биллинга (Оплата онлайн):",
     options: [
-      { id: "crypto_fiat", label: "Фиат (Эквайринг) + Криптопроцессинг", price: 50000, type: "feature" },
-      { id: "fiat", label: "Только фиат (СБП / Карты)", price: 30000, type: "feature" },
+      { id: "crypto_fiat", label: "Фиат (Эквайринг) + Криптопроцессинг", price: 10000, type: "feature" },
+      { id: "fiat", label: "Только фиат (СБП / Карты)", price: 5000, type: "feature" },
       { id: "no_payment", label: "Без оплат внутри системы", price: 0, type: "none" }
     ],
     multiple: false
