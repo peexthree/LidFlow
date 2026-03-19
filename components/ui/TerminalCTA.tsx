@@ -22,9 +22,6 @@ export function TerminalCTA() {
       const timer = setTimeout(() => {
         setMessages(prev => [...prev, MOCK_MESSAGES[currentIndex] as {text: string; input?: boolean}]);
         setCurrentIndex(prev => prev + 1);
-        if (MOCK_MESSAGES[currentIndex]?.input && inputRef.current) {
-            inputRef.current.focus();
-        }
       }, (MOCK_MESSAGES[currentIndex]?.delay || 0) - (currentIndex > 0 ? (MOCK_MESSAGES[currentIndex-1]?.delay || 0) : 0));
       return () => clearTimeout(timer);
     }
@@ -78,7 +75,6 @@ export function TerminalCTA() {
                       onChange={(e) => setInputValue(e.target.value)}
                       className="bg-transparent border-b border-[#66FCF1] outline-none text-white w-full max-w-xs focus:border-[#66FCF1]/80"
                       placeholder="@username или номер"
-                      autoFocus
                     />
                   </div>
                   <button type="submit" className="hidden">Submit</button>
