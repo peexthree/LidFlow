@@ -7,6 +7,8 @@ import Image from "next/image";
 
 
 import { ContactForm } from "@/components/ContactForm";
+import { TerminalCTA } from "@/components/ui/TerminalCTA";
+import { SmartScarcity } from "@/components/ui/SmartScarcity";
 import { Hero } from "@/components/sections/Hero";
 import { MasterpieceServices } from "@/components/sections/MasterpieceServices";
 import { TrueFocus } from "@/components/ReactBits/TrueFocus";
@@ -587,7 +589,7 @@ export default function Home() {
                 • Telegram:
                 <a
                   className="ml-1 inline-flex items-center gap-1 text-[#66FCF1] underline decoration-dotted underline-offset-4 transition hover:text-cyan-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#66FCF1]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050816]"
-                  href="https://t.me/peexthree"
+                  href="https://t.me/peexthree?start=demo"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -600,6 +602,8 @@ export default function Home() {
           </div>
           <div className="relative mt-10 md:mt-0">
             <ContactForm />
+          <div className="mt-8"><TerminalCTA /></div>
+          <SmartScarcity />
           </div>
         </section>
       </div>
