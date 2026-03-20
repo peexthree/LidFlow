@@ -27,7 +27,7 @@ export async function POST(req: Request) {
     const parsed = payloadSchema.parse(json);
 
     const token = process.env.TG_BOT_TOKEN;
-    const chatId = process.env.TG_CHAT_ID || "5178416366";
+    const chatId = process.env.TG_CHAT_ID;
 
     if (!token) {
       console.error("Telegram bot token is missing");
