@@ -58,6 +58,14 @@ export const PRICING_STEPS: PricingStep[] = [
   }
 ];
 
+// Optimized lookup map for option prices
+const PRICING_MAP = PRICING_STEPS.reduce((acc, step) => {
+  step.options.forEach(opt => {
+    acc[opt.id] = opt.price;
+  });
+  return acc;
+}, {} as Record<string, number>);
+
 interface PricingState {
   currentStepIndex: number;
   selectedOptions: Record<string, string[]>;
@@ -92,15 +100,14 @@ export const usePricingStore = create<PricingState>((set, get) => ({
   }),
 
   nextStep: () => set((state) => {
-    // Calculate total price based on current selections
+    // Calculate total price based on current selections using optimized lookup map
     let newTotal = 0;
-    PRICING_STEPS.forEach(step => {
-      const selected = state.selectedOptions[step.id] || [];
-      selected.forEach(optId => {
-        const opt = step.options.find(o => o.id === optId);
-        if (opt) newTotal += opt.price;
-      });
-    });
+    for (const stepId in state.selectedOptions) {
+      const selected = state.selectedOptions[stepId];
+      for (let i = 0; i < selected.length; i++) {
+        newTotal += PRICING_MAP[selected[i]] || 0;
+      }
+    }
 
     if (state.currentStepIndex < PRICING_STEPS.length - 1) {
       return {
