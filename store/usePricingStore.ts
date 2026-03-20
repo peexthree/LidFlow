@@ -104,8 +104,10 @@ export const usePricingStore = create<PricingState>((set, get) => ({
     let newTotal = 0;
     for (const stepId in state.selectedOptions) {
       const selected = state.selectedOptions[stepId];
+      if (!selected) continue;
       for (let i = 0; i < selected.length; i++) {
-        newTotal += PRICING_MAP[selected[i]] || 0;
+        const optId = selected[i];
+        if (optId) newTotal += PRICING_MAP[optId] || 0;
       }
     }
 
