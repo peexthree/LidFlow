@@ -232,13 +232,13 @@ export default function TWAPage() {
         >
           <div className="space-y-4">
             {/* Значок статуса в современном чистом стиле */}
-            <span className="inline-flex items-center gap-2 rounded-full border border-[#66FCF1]/20 bg-[#66FCF1]/5 px-4 py-1 text-[10px] md:text-xs uppercase tracking-[0.28em] text-[#66FCF1] shadow-[0_0_15px_rgba(34,211,238,0.1)]">
+            <span className="inline-flex items-center gap-2 rounded-full border border-[#66FCF1]/20 bg-[#66FCF1]/5 px-4 py-1 text-[10px] md:text-xs uppercase tracking-[0.15em] text-[#66FCF1] shadow-[0_0_15px_rgba(34,211,238,0.1)]">
               <span className="flex h-1.5 w-1.5 md:h-2 md:w-2 rounded-full bg-[#66FCF1] animate-pulse shadow-[0_0_10px_#22d3ee]"></span>
               ИНТЕЛЛЕКТ СИСТЕМЫ
             </span>
             
             {/* Крупный заголовок с усиленными тенями для читаемости */}
-            <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-white leading-tight drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">
+            <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-white leading-[1.2] drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">
               Архитектура <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#66FCF1] to-blue-500 drop-shadow-[0_0_20px_rgba(34,211,238,0.3)]">
                 автономного бизнеса
@@ -246,7 +246,7 @@ export default function TWAPage() {
             </h1>
             
             {/* Описание */}
-            <p className="text-sm md:text-lg text-slate-100 max-w-xl mx-auto leading-relaxed mt-4 font-medium drop-shadow-[0_2px_2px_rgba(0,0,0,0.9)]">
+            <p className="text-sm md:text-lg text-slate-100 max-w-xl mx-auto leading-[1.5] mt-4 font-medium drop-shadow-[0_2px_2px_rgba(0,0,0,0.9)]">
               Создание независимых IT-активов: Telegram-системы с ИИ под ключ. <br className="hidden md:block" />
               <span className="font-semibold text-white">Без абонентской платы разработчику.</span>
             </p>
@@ -267,7 +267,7 @@ export default function TWAPage() {
       {/* 2. Интерактивный калькулятор «Инвестиции в рост» */}
       <section ref={calculatorRef} className="container mx-auto px-4 py-16 max-w-3xl">
         <div className="space-y-4 mb-10 text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 backdrop-blur-md text-[10px] uppercase tracking-[0.28em] text-white/60">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 backdrop-blur-md text-[10px] uppercase tracking-[0.15em] text-white/60">
               КАЛЬКУЛЯТОР
             </span>
             <h2 className="text-2xl md:text-4xl font-semibold text-white font-mono">Инвестиции в рост</h2>
@@ -379,7 +379,7 @@ export default function TWAPage() {
 
           {/* Итог */}
           <div className="rounded-none border border-blue-500/30 bg-blue-500/10 p-6 backdrop-blur-2xl flex flex-col md:flex-row items-center justify-between gap-4 relative z-10 shadow-[0_0_30px_rgba(59,130,246,0.15)]">
-            <div className="text-slate-300 font-medium uppercase tracking-widest text-xs">Предварительная оценка инвестиций:</div>
+            <div className="text-slate-300 font-medium uppercase tracking-wider text-xs">Предварительная оценка инвестиций:</div>
             <div className="text-3xl md:text-4xl font-bold font-mono text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-[#66FCF1] drop-shadow-[0_0_15px_rgba(65,174,255,0.6)]">
               {totalPrice > 0 ? `${totalPrice.toLocaleString("ru-RU")} ₽` : "0 ₽"}
             </div>
@@ -390,7 +390,7 @@ export default function TWAPage() {
       {/* 3. Модуль «Безопасность и Владение» */}
       <section className="container mx-auto px-4 py-16 max-w-4xl border-t border-white/5">
         <div className="space-y-4 mb-10 text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 backdrop-blur-md text-[10px] uppercase tracking-[0.28em] text-white/60">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 backdrop-blur-md text-[10px] uppercase tracking-[0.15em] text-white/60">
               ГАРАНТИИ
             </span>
             <h2 className="text-2xl md:text-4xl font-semibold text-white font-mono">Безопасность и Владение</h2>
@@ -405,7 +405,7 @@ export default function TWAPage() {
                    <Image src={feature.icon} alt={feature.title} width={32} height={32} className="opacity-90 group-hover:opacity-100 drop-shadow-md" />
                  </div>
                  <h3 className="mb-3 text-xl font-semibold text-white font-mono">{feature.title}</h3>
-                 <p className="text-sm text-slate-400 leading-relaxed group-hover:text-slate-300 transition-colors">
+                 <p className="text-sm text-slate-400 leading-[1.5] group-hover:text-slate-300 transition-colors">
                    {feature.desc}
                  </p>
              </article>
@@ -416,7 +416,7 @@ export default function TWAPage() {
       {/* 4. Шоурум кейсов (Портфолио) */}
       <section className="container mx-auto px-4 py-16 max-w-5xl border-t border-white/5">
          <div className="space-y-4 mb-10 text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 backdrop-blur-md text-[10px] uppercase tracking-[0.28em] text-white/60">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 backdrop-blur-md text-[10px] uppercase tracking-[0.15em] text-white/60">
               РЕЗУЛЬТАТЫ
             </span>
             <h2 className="text-2xl md:text-4xl font-semibold text-white font-mono">Шоурум кейсов</h2>
@@ -447,7 +447,7 @@ export default function TWAPage() {
             >
               {/* Хедер модалки */}
               <div className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between p-4 sm:p-6 bg-gradient-to-b from-black/60 to-transparent pointer-events-none">
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-[#66FCF1] backdrop-blur-md shadow-sm">
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] uppercase tracking-[0.1em] text-[#66FCF1] backdrop-blur-md shadow-sm">
                   <span className="flex h-1.5 w-1.5 rounded-full bg-[#66FCF1] animate-pulse"></span>
                   LIVE DEMO
                 </span>

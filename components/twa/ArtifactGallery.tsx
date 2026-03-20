@@ -79,7 +79,7 @@ export function ArtifactGallery({ artifacts, onOpenVideo }: ArtifactGalleryProps
               displayOverlayContent={true}
               overlayContent={
                 <div className="flex flex-col items-center justify-end h-full pb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <span className="bg-[#020304]/80 text-[#66FCF1] px-4 py-2 border border-[#66FCF1]/30 font-mono text-sm tracking-widest backdrop-blur-md" style={{ clipPath: "polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px)" }}>
+                  <span className="bg-[#020304]/80 text-[#66FCF1] px-4 py-2 border border-[#66FCF1]/30 font-mono text-sm tracking-wider backdrop-blur-md" style={{ clipPath: "polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px)" }}>
                     ИНИЦИАЛИЗАЦИЯ
                   </span>
                 </div>

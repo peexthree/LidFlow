@@ -54,7 +54,7 @@ export function DynamicPricing() {
         <p className="text-slate-300 mb-8">Сформирован оптимальный вектор масштабирования вашей системы.</p>
 
         <div className="mb-8 p-6 bg-white/[0.02] border border-white/10" style={{ clipPath: "polygon(0 10px, 10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%)" }}>
-          <div className="text-xs uppercase tracking-[0.2em] text-white/50 mb-2">Объем инвестиций</div>
+          <div className="text-xs uppercase tracking-[0.1em] text-white/50 mb-2">Объем инвестиций</div>
           <div className="text-4xl md:text-5xl font-mono font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#66FCF1] to-blue-400">
             <RunningNumber value={totalPrice} />
           </div>
@@ -87,7 +87,7 @@ export function DynamicPricing() {
       </div>
 
       <div className="mb-8">
-        <span className="text-[10px] font-mono text-[#66FCF1]/70 uppercase tracking-[0.3em]">
+        <span className="text-[10px] font-mono text-[#66FCF1]/70 uppercase tracking-[0.15em]">
           ШАГ {currentStepIndex + 1} / {PRICING_STEPS.length}
         </span>
         <motion.h3
@@ -124,7 +124,7 @@ export function DynamicPricing() {
             <div className="flex justify-between items-center relative z-10">
               <span>{option.label}</span>
               {currentSelection.includes(option.id) && (
-                <span className="text-xs uppercase tracking-widest text-[#66FCF1] animate-pulse">[ВЫБРАНО]</span>
+                <span className="text-xs uppercase tracking-wider text-[#66FCF1] animate-pulse">[ВЫБРАНО]</span>
               )}
             </div>
             {/* Cyberpunk corner accent */}
@@ -137,14 +137,14 @@ export function DynamicPricing() {
 
       <div className="flex justify-between items-end border-t border-white/10 pt-6">
         <div className="font-mono">
-          <div className="text-[10px] text-white/40 uppercase tracking-[0.2em] mb-1">СИНХРОНИЗИРОВАННАЯ ОЦЕНКА</div>
+          <div className="text-[10px] text-white/40 uppercase tracking-[0.1em] mb-1">СИНХРОНИЗИРОВАННАЯ ОЦЕНКА</div>
           <div className="text-2xl text-[#66FCF1] font-bold">
             <RunningNumber value={totalPrice} />
           </div>
         </div>
 
         {step.multiple && (
-          <Button onClick={nextStep} className="bg-white/10 text-white hover:bg-white/20 rounded-none text-xs font-mono uppercase tracking-widest" style={{ clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%)" }}>
+          <Button onClick={nextStep} className="bg-white/10 text-white hover:bg-white/20 rounded-none text-xs font-mono uppercase tracking-wider" style={{ clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%)" }}>
             Подтвердить
           </Button>
         )}
