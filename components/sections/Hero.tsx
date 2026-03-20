@@ -121,18 +121,6 @@ export function Hero() {
         </AnimatedSection>
       </div>
 
-      {/* Scroll Indicator */}
-      <motion.div
-        className="absolute bottom-10 left-1/2 z-10 -translate-x-1/2"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1, duration: 1 }}
-      >
-        <div className="flex flex-col items-center gap-2">
-          <span className="text-[10px] uppercase tracking-widest text-white/50">Скролл вниз</span>
-          <div className="h-12 w-[1px] bg-gradient-to-b from-white/50 to-transparent" />
-        </div>
-      </motion.div>
     </section>
   );
 }
