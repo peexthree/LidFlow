@@ -104,11 +104,11 @@ export function PortfolioShowcase({ projects }: PortfolioShowcaseProps) {
 
                   {/* Описание и кнопки */}
                   <div className="flex flex-1 flex-col gap-4">
-                    <span className={clsx("inline-flex max-w-max items-center rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.3em]", badgeClass)}>
+                    <span className={clsx("inline-flex max-w-max items-center rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.15em]", badgeClass)}>
                       {project.tag}
                     </span>
                     <h3 className="text-xl font-semibold text-white">{project.title}</h3>
-                    <p className="flex-1 text-sm leading-relaxed text-white/70">{project.description}</p>
+                    <p className="flex-1 text-sm leading-[1.5] text-white/70">{project.description}</p>
 
                     <div className="flex flex-wrap items-center gap-4 mt-auto pt-4 border-t border-white/10">
                       {project.preview?.src && (
@@ -167,7 +167,7 @@ export function PortfolioShowcase({ projects }: PortfolioShowcaseProps) {
             >
               {/* Хедер модалки */}
               <div className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between p-4 sm:p-6 bg-gradient-to-b from-black/60 to-transparent pointer-events-none">
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-cyan-400 backdrop-blur-md">
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] uppercase tracking-[0.1em] text-cyan-400 backdrop-blur-md">
                   <span className="flex h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
                   LIVE PREVIEW
                 </span>

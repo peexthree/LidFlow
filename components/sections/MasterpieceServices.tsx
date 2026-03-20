@@ -16,7 +16,7 @@ export function MasterpieceServices() {
       <div className="relative space-y-10 px-6 md:px-12">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/5 pb-8">
           <div className="space-y-4">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 font-mono text-xs uppercase tracking-[0.28em] text-pink-400">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 font-mono text-xs uppercase tracking-[0.15em] text-pink-400">
               <span className="flex h-2 w-2 rounded-full bg-pink-400 animate-pulse"></span>
               MASTERPIECE.OS
             </span>
@@ -51,13 +51,13 @@ export function MasterpieceServices() {
                   <Image src={service.icon} alt={service.title} width={32} height={32} className="h-full w-full object-contain drop-shadow-md" />
                 </div>
 
-                <h3 className="mb-3 text-lg font-semibold text-white font-mono leading-tight">{service.title}</h3>
-                <p className="text-sm text-slate-400 flex-1 leading-relaxed line-clamp-4 group-hover:text-slate-300 transition-colors">
+                <h3 className="mb-3 text-lg font-semibold text-white font-mono leading-[1.2]">{service.title}</h3>
+                <p className="text-sm text-slate-400 flex-1 leading-[1.5] line-clamp-4 group-hover:text-slate-300 transition-colors">
                   {service.description}
                 </p>
 
                 <div className="mt-6 flex items-center text-xs font-mono font-bold text-pink-400 opacity-0 transform translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-                  <span className="mr-2 uppercase tracking-widest">Обсудить проект</span>
+                  <span className="mr-2 uppercase tracking-wider">Обсудить проект</span>
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                 </div>
               </div>

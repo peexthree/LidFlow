@@ -33,13 +33,13 @@ export function Hero() {
         <AnimatedSection
           motion="lift"
           once
-          className="rounded-full border border-white/10 bg-black/30 px-5 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-cyan-400 shadow-[0_0_20px_rgba(6,182,212,0.2)] backdrop-blur-md"
+          className="rounded-full border border-white/10 bg-black/30 px-5 py-2 text-xs font-semibold uppercase tracking-[0.15em] text-cyan-400 shadow-[0_0_20px_rgba(6,182,212,0.2)] backdrop-blur-md"
         >
           <span>Telegram Web Apps & Bots</span>
         </AnimatedSection>
 
         <AnimatedSection motion="fade-slide" direction="up" once>
-          <h1 className="font-display text-display-xl font-bold uppercase tracking-tighter text-white drop-shadow-2xl md:text-[5.5rem] lg:text-[7rem] leading-[0.9]">
+          <h1 className="font-display text-display-xl font-bold uppercase tracking-tight text-white drop-shadow-2xl md:text-[5.5rem] lg:text-[7rem] leading-[1.2]">
             <SplitText
               text="Автоматизация"
               stagger={ANIMATION_CONFIG.stagger.fast}

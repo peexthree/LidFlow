@@ -244,7 +244,7 @@ export default function Home() {
           <div className="relative space-y-10">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/5 pb-8">
               <div className="space-y-4">
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 font-mono text-xs uppercase tracking-[0.28em] text-[#66FCF1]">
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 font-mono text-xs uppercase tracking-[0.15em] text-[#66FCF1]">
                   <span className="flex h-2 w-2 rounded-full bg-[#66FCF1] animate-pulse"></span>
                   ВАШ АРСЕНАЛ.EXE
                 </span>
@@ -322,7 +322,7 @@ export default function Home() {
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(59,130,246,0.24),_transparent_68%)]" />
           <div className="relative space-y-10">
             <div className="space-y-4">
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs uppercase tracking-[0.28em] text-white/60">
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs uppercase tracking-[0.15em] text-white/60">
                 10X АВТОМАТИЗАЦИЯ
               </span>
               <h2 className="text-3xl font-semibold text-white md:text-4xl">
@@ -366,7 +366,7 @@ export default function Home() {
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.28),_transparent_70%)]" />
           <div className="relative space-y-10">
             <div className="space-y-4">
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs uppercase tracking-[0.28em] text-white/60">
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs uppercase tracking-[0.15em] text-white/60">
                 10X ПРОЦЕСС
               </span>
               <h2 className="text-3xl font-semibold text-white md:text-4xl">Как мы забираем рынок</h2>
@@ -403,7 +403,7 @@ export default function Home() {
 
           <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-10">
             <div className="space-y-6 max-w-2xl">
-              <span className="inline-flex items-center gap-2 rounded-none border border-[#66FCF1]/30 bg-[#66FCF1]/5 px-4 py-1 text-xs uppercase tracking-[0.2em] text-[#66FCF1] font-mono">
+              <span className="inline-flex items-center gap-2 rounded-none border border-[#66FCF1]/30 bg-[#66FCF1]/5 px-4 py-1 text-xs uppercase tracking-[0.1em] text-[#66FCF1] font-mono">
                 TELEGRAM WEB APPS
               </span>
               <h2 className="text-3xl font-mono font-bold text-white md:text-5xl uppercase tracking-wider">
@@ -421,7 +421,7 @@ export default function Home() {
             </div>
 
             <div className="w-full md:w-auto flex-shrink-0">
-              <a href="/twa" className="group relative inline-flex w-full md:w-auto items-center justify-center gap-3 bg-[#66FCF1] px-8 py-5 font-mono text-lg font-bold text-black uppercase tracking-widest shadow-[0_0_30px_rgba(102,252,241,0.4)] transition-all hover:bg-[#45ece0] hover:shadow-[0_0_50px_rgba(102,252,241,0.6)]" style={{ clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%)" }}>
+              <a href="/twa" className="group relative inline-flex w-full md:w-auto items-center justify-center gap-3 bg-[#66FCF1] px-8 py-5 font-mono text-lg font-bold text-black uppercase tracking-wider shadow-[0_0_30px_rgba(102,252,241,0.4)] transition-all hover:bg-[#45ece0] hover:shadow-[0_0_50px_rgba(102,252,241,0.6)]" style={{ clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%)" }}>
                 <span>Войти в TWA-Матрицу</span>
                 <svg className="w-5 h-5 transition-transform group-hover:translate-x-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -440,7 +440,7 @@ export default function Home() {
           <div className="absolute inset-0 z-[-1] bg-slate-950/60 backdrop-blur-xl rounded-[40px] shadow-[0_0_100px_rgba(0,0,0,0.8)] border border-white/5 m-4"></div>
 
           <div className="space-y-4 mb-12">
-            <span className="inline-flex items-center gap-2 rounded-none border border-[#66FCF1]/30 bg-[#66FCF1]/5 px-4 py-1 text-xs uppercase tracking-[0.2em] text-[#66FCF1] font-mono">
+            <span className="inline-flex items-center gap-2 rounded-none border border-[#66FCF1]/30 bg-[#66FCF1]/5 px-4 py-1 text-xs uppercase tracking-[0.1em] text-[#66FCF1] font-mono">
               ВЫЧИСЛЕНИЕ СТОИМОСТИ
             </span>
             <h2 className="text-3xl font-mono text-white md:text-5xl uppercase tracking-wider">
@@ -461,7 +461,7 @@ export default function Home() {
                 style={{ clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%)" }}
               >
                 {plan.popular && (
-                  <div className="absolute top-0 right-0 bg-[#66FCF1] px-3 py-1 text-[10px] font-bold text-black uppercase tracking-widest">
+                  <div className="absolute top-0 right-0 bg-[#66FCF1] px-3 py-1 text-[10px] font-bold text-black uppercase tracking-wider">
                     Популярный
                   </div>
                 )}
@@ -474,7 +474,7 @@ export default function Home() {
                         <svg className="w-5 h-5 mr-3 text-[#66FCF1] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
-                        <span className="leading-tight">{perk}</span>
+                        <span className="leading-[1.2]">{perk}</span>
                       </li>
                     ))}
                   </ul>
@@ -518,7 +518,7 @@ export default function Home() {
 
           <div className="relative z-20 px-6 py-12 md:px-12 space-y-10">
             <div className="space-y-4">
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs uppercase tracking-[0.28em] text-white/60">
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs uppercase tracking-[0.15em] text-white/60">
                 ДОКАЗАТЕЛЬСТВА
               </span>
               <h2 className="text-3xl font-semibold text-white md:text-4xl">
@@ -580,7 +580,7 @@ export default function Home() {
         >
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(6,182,212,0.28),_transparent_65%)]" />
           <div className="relative space-y-6">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs uppercase tracking-[0.28em] text-white/60">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs uppercase tracking-[0.15em] text-white/60">
               СВЯЗЬ. ДЕЙСТВИЕ.
             </span>
             <h2 className="text-3xl font-semibold text-white md:text-4xl">

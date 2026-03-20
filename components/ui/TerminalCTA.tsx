@@ -51,7 +51,7 @@ export function TerminalCTA() {
         <div className="w-3 h-3 bg-red-500 rounded-full opacity-50"></div>
         <div className="w-3 h-3 bg-yellow-500 rounded-full opacity-50"></div>
         <div className="w-3 h-3 bg-green-500 rounded-full opacity-50"></div>
-        <span className="ml-2 text-[#66FCF1]/50 text-xs tracking-widest uppercase">system_assimilation.exe</span>
+        <span className="ml-2 text-[#66FCF1]/50 text-xs tracking-wider uppercase">system_assimilation.exe</span>
       </div>
 
       <div className="space-y-2 min-h-[150px]">

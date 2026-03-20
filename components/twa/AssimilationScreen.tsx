@@ -73,7 +73,7 @@ export function AssimilationScreen({ onComplete }: { onComplete: () => void }) {
               style={{ clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" }}
             />
 
-            <h1 className="text-xl md:text-3xl font-bold tracking-[0.2em] uppercase leading-relaxed h-[3rem] text-center w-full">
+            <h1 className="text-xl md:text-3xl font-bold tracking-[0.1em] uppercase leading-[1.5] h-[3rem] text-center w-full">
               {text}
               <motion.span
                 animate={{ opacity: [1, 0] }}
