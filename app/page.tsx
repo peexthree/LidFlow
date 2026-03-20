@@ -209,7 +209,7 @@ export default function Home() {
                 <Image src="/data-armor.svg" alt="Договор ИП" width={32} height={32} className="h-8 w-8 text-[#66FCF1]" />
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-white">Работа по договору ИП</h3>
+                <h2 className="text-lg font-semibold text-white">Работа по договору ИП</h2>
                 <p className="mt-2 text-sm text-slate-400">Официально, прозрачно, с закрывающими документами.</p>
               </div>
             </div>
@@ -218,7 +218,7 @@ export default function Home() {
                 <Image src="/web-architecture.svg" alt="Передача прав на код" width={32} height={32} className="h-8 w-8 text-[#66FCF1]" />
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-white">100% права на код</h3>
+                <h2 className="text-lg font-semibold text-white">100% права на код</h2>
                 <p className="mt-2 text-sm text-slate-400">Полная передача исходников и доступов к серверам.</p>
               </div>
             </div>
@@ -227,7 +227,7 @@ export default function Home() {
                 <Image src="/ui-ux.svg" alt="Строгое NDA" width={32} height={32} className="h-8 w-8 text-[#66FCF1]" />
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-white">Строгое NDA</h3>
+                <h2 className="text-lg font-semibold text-white">Строгое NDA</h2>
                 <p className="mt-2 text-sm text-slate-400">Защита вашей идеи, клиентской базы и данных.</p>
               </div>
             </div>
