@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, type FormEvent } from "react";
+import React, { useMemo, useState } from "react";
 import { z } from "zod";
 import { clsx } from "clsx";
 
@@ -34,7 +34,7 @@ export function ContactForm() {
     return null;
   }, [error, status]);
 
-  async function onSubmit(event: FormEvent<HTMLFormElement>) {
+  async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
     const formData = new FormData(form);
