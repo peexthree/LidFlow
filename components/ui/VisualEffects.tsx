@@ -15,7 +15,7 @@ export function FloatingOrbs() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute -left-[10%] -top-[10%] h-[40%] w-[40%] rounded-full bg-cyan-500/10 blur-[120px]"
+        className="absolute -left-[10%] -top-[10%] h-[40%] w-[40%] rounded-full bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.1)_0%,transparent_70%)]"
       />
       <motion.div
         animate={{
@@ -28,7 +28,7 @@ export function FloatingOrbs() {
           ease: "easeInOut",
           delay: 2,
         }}
-        className="absolute -right-[10%] top-[40%] h-[30%] w-[30%] rounded-full bg-indigo-500/10 blur-[100px]"
+        className="absolute -right-[10%] top-[40%] h-[30%] w-[30%] rounded-full bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.1)_0%,transparent_70%)]"
       />
     </div>
   );
