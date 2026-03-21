@@ -26,7 +26,7 @@ export function Hero() {
           <source src="/Man.mp4" type="video/mp4" />
         </video>
         {/* Overlay to ensure text readability */}
-        <div className="absolute inset-0 bg-black/40 bg-gradient-to-t from-slate-950 via-black/20 to-transparent" />
+        <div className="absolute inset-0 bg-black/60" />
       </div>
 
       <div className="container relative z-10 mx-auto flex max-w-6xl flex-col items-center justify-center gap-8 px-6 text-center">

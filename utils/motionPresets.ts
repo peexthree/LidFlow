@@ -85,8 +85,8 @@ const rotate = ({ direction, rotation }: MotionPresetOptions): Variants => {
 const blur = ({ direction, distance }: MotionPresetOptions): Variants => {
   const offset = resolveOffset(direction, distance);
   return {
-    hidden: { opacity: 0, filter: "blur(8px)", x: offset.x, y: offset.y },
-    visible: { opacity: 1, filter: "blur(0px)", x: 0, y: 0 },
+    hidden: { opacity: 0, x: offset.x, y: offset.y },
+    visible: { opacity: 1, x: 0, y: 0 },
   };
 };
 
@@ -94,12 +94,10 @@ const maskReveal = (): Variants => ({
   hidden: {
     opacity: 0,
     clipPath: "inset(0% 0% 100% 0%)",
-    filter: "blur(6px)",
   },
   visible: {
     opacity: 1,
     clipPath: "inset(0% 0% 0% 0%)",
-    filter: "blur(0px)",
   },
 });
 

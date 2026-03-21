@@ -22,7 +22,7 @@ export function HomePage() {
         content: (
           <div
             aria-hidden
-            className="pointer-events-none h-full w-full bg-[radial-gradient(circle_at_18%_20%,rgba(37,99,235,0.6),transparent_70%)] blur-3xl opacity-90"
+            className="pointer-events-none h-full w-full bg-[radial-gradient(circle_at_18%_20%,rgba(37,99,235,0.6),transparent_70%)]  opacity-90"
           />
         ),
       },
@@ -31,7 +31,7 @@ export function HomePage() {
         content: (
           <div
             aria-hidden
-            className="pointer-events-none h-full w-full bg-[radial-gradient(circle_at_82%_65%,rgba(192,38,211,0.5),transparent_65%)] blur-3xl opacity-85"
+            className="pointer-events-none h-full w-full bg-[radial-gradient(circle_at_82%_65%,rgba(192,38,211,0.5),transparent_65%)]  opacity-85"
           />
         ),
       },
@@ -40,7 +40,7 @@ export function HomePage() {
         content: (
           <div
             aria-hidden
-            className="pointer-events-none h-full w-full bg-[radial-gradient(circle_at_50%_110%,rgba(14,165,233,0.35),transparent_70%)] blur-[100px] opacity-75"
+            className="pointer-events-none h-full w-full bg-[radial-gradient(circle_at_50%_110%,rgba(14,165,233,0.35),transparent_70%)]  opacity-75"
           />
         ),
       },
@@ -49,7 +49,7 @@ export function HomePage() {
         content: (
           <div
             aria-hidden
-            className="pointer-events-none mx-auto h-full w-[120%] max-w-5xl bg-gradient-to-b from-white/70 via-white/20 to-transparent blur-[72px]"
+            className="pointer-events-none mx-auto h-full w-[120%] max-w-5xl bg-gradient-to-b from-white/70 via-white/20 to-transparent "
           />
         ),
       },
