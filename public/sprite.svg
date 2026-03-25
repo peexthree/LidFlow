@@ -1,0 +1,1491 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="ai-generation" viewBox="0 0 24 24">
+
+            <style>
+
+  @keyframes catEyeScan { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-1.5px); } 75% { transform: translateX(1.5px); } }
+  @keyframes catEarTwitchL { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(-8deg); } }
+  @keyframes catEarTwitchR { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(8deg); } }
+  @keyframes catWhisker { 0%, 100% { transform: scaleX(1); } 50% { transform: scaleX(1.1); } }
+  @keyframes aiLaserScan { 0% { transform: translateY(-10px); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(10px); opacity: 0; } }
+  @keyframes botGearSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes webBuild { 0% { stroke-dashoffset: 40; } 100% { stroke-dashoffset: 0; } }
+  @keyframes funnelDrop { 0% { transform: translateY(-8px) scale(0.5); opacity: 0; } 50% { opacity: 1; transform: translateY(0px) scale(1); } 100% { transform: translateY(8px) scale(0.5); opacity: 0; } }
+  @keyframes diamondGlint { 0%, 100% { opacity: 0.3; filter: drop-shadow(0 0 2px #00FFC8); } 50% { opacity: 1; filter: drop-shadow(0 0 12px #00FFC8); } }
+  @keyframes typeCursor { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+  @keyframes hypnoSpin { from { transform: rotate(0deg) scale(1); } to { transform: rotate(360deg) scale(1.1); } }
+  @keyframes eqBounce1 { 0%, 100% { transform: scaleY(0.3); } 50% { transform: scaleY(1); } }
+  @keyframes eqBounce2 { 0%, 100% { transform: scaleY(0.6); } 50% { transform: scaleY(0.2); } }
+  @keyframes eqBounce3 { 0%, 100% { transform: scaleY(0.4); } 50% { transform: scaleY(0.9); } }
+  @keyframes apiPing { 0% { stroke-dashoffset: 15; } 100% { stroke-dashoffset: 0; } }
+  @keyframes seoUp { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+  @keyframes rippleWave { 0% { transform: scale(0.5); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
+  @keyframes uiClick { 0%, 100% { transform: scale(1); } 50% { transform: scale(0.9); } }
+  @keyframes cloudFloat { 0%, 100% { transform: translateY(-2px); } 50% { transform: translateY(2px); } }
+  @keyframes coinFlip { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
+  @keyframes orbitSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes shieldDeflect { 0%, 100% { opacity: 0; transform: translateX(-5px); } 50% { opacity: 1; transform: translateX(5px); } }
+  @keyframes mlThink { 0%, 100% { fill: #8A2BE2; r: 1; } 50% { fill: #00FFC8; r: 2; } }
+  @keyframes logicPath { 0%, 100% { stroke: #8A2BE2; stroke-width: 1.2; } 50% { stroke: #00FFC8; stroke-width: 2; } }
+  @keyframes dialMax { 0%, 100% { transform: rotate(-45deg); stroke: #8A2BE2; } 50% { transform: rotate(45deg); stroke: #00FFC8; } }
+  @keyframes pulseCyan { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+  @keyframes pulseCyanLine { 0% { stroke-dashoffset: 100; opacity: 0.5; } 50% { opacity: 1; stroke-width: 1.5; } 100% { stroke-dashoffset: -100; opacity: 0.5; } }
+  @keyframes coreSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes familiarBreathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+
+  .anim-cat-eyes { animation: catEyeScan 4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-cat-ear-l { animation: catEarTwitchL 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom right; will-change: transform; }
+  .anim-cat-ear-r { animation: catEarTwitchR 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom left; will-change: transform; }
+  .anim-cat-whisker { animation: catWhisker 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-crystal { animation: pulseCyan 3s infinite alternate; }
+  .anim-ai-laser { animation: aiLaserScan 2.5s linear infinite; transform-box: fill-box; }
+  .anim-bot-gear { animation: botGearSpin 6s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-web-build { stroke-dasharray: 40; animation: webBuild 2s ease-out infinite alternate; }
+  .anim-funnel-drop { animation: funnelDrop 2s ease-in infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-diamond-glint { animation: diamondGlint 3s ease-in-out infinite; }
+  .anim-cursor { animation: typeCursor 0.8s steps(2) infinite; }
+  .anim-hypno { animation: hypnoSpin 10s linear infinite alternate; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-eq-1 { animation: eqBounce1 0.7s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-eq-2 { animation: eqBounce2 0.5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-eq-3 { animation: eqBounce3 0.9s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-api-ping { stroke-dasharray: 5 10; animation: apiPing 1s linear infinite; }
+  .anim-seo-up { animation: seoUp 2s ease-in-out infinite; }
+  .anim-ripple { animation: rippleWave 2s cubic-bezier(0.1, 0.5, 0.9, 1) infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-ui-click { animation: uiClick 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-cloud { animation: cloudFloat 4s ease-in-out infinite; }
+  .anim-coin-flip { animation: coinFlip 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-orbit { animation: orbitSpin 8s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-deflect { animation: shieldDeflect 2s ease-in-out infinite; }
+  .anim-ml-node { animation: mlThink 1.5s ease-in-out infinite; }
+  .anim-logic-path { animation: logicPath 2s ease-in-out infinite; }
+  .anim-dial { animation: dialMax 3s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite; transform-box: fill-box; transform-origin: bottom center; will-change: transform; }
+  .anim-glow-cyan { animation: pulseCyan 2s infinite; }
+  .anim-pulse-cyan { stroke-dasharray: 20 80; animation: pulseCyanLine 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+  .anim-spin-core { animation: coreSpin 10s linear infinite; transform-origin: center; transform-box: fill-box; will-change: transform; }
+  .anim-breathe { animation: familiarBreathe 4s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+
+            </style>
+
+      <rect x="3" y="3" width="18" height="18" rx="2" stroke="#8A2BE2"/>
+      <path d="M7 21V3 M17 21V3" stroke="#8A2BE2" stroke-dasharray="2 2" opacity="0.4"/>
+      <line x1="3" y1="12" x2="21" y2="12" stroke="#00FFC8" stroke-width="2" class="anim-ai-laser svg-glow-cyan"/>
+      <circle cx="12" cy="12" r="3" stroke="#00FFC8" class="anim-glow-cyan"/>
+      <circle cx="12" cy="12" r="1" fill="#00FFC8" stroke="none" class="svg-glow-cyan"/>
+
+  </symbol>
+  <symbol id="api-gateway" viewBox="0 0 24 24">
+
+            <style>
+
+  @keyframes catEyeScan { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-1.5px); } 75% { transform: translateX(1.5px); } }
+  @keyframes catEarTwitchL { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(-8deg); } }
+  @keyframes catEarTwitchR { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(8deg); } }
+  @keyframes catWhisker { 0%, 100% { transform: scaleX(1); } 50% { transform: scaleX(1.1); } }
+  @keyframes aiLaserScan { 0% { transform: translateY(-10px); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(10px); opacity: 0; } }
+  @keyframes botGearSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes webBuild { 0% { stroke-dashoffset: 40; } 100% { stroke-dashoffset: 0; } }
+  @keyframes funnelDrop { 0% { transform: translateY(-8px) scale(0.5); opacity: 0; } 50% { opacity: 1; transform: translateY(0px) scale(1); } 100% { transform: translateY(8px) scale(0.5); opacity: 0; } }
+  @keyframes diamondGlint { 0%, 100% { opacity: 0.3; filter: drop-shadow(0 0 2px #00FFC8); } 50% { opacity: 1; filter: drop-shadow(0 0 12px #00FFC8); } }
+  @keyframes typeCursor { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+  @keyframes hypnoSpin { from { transform: rotate(0deg) scale(1); } to { transform: rotate(360deg) scale(1.1); } }
+  @keyframes eqBounce1 { 0%, 100% { transform: scaleY(0.3); } 50% { transform: scaleY(1); } }
+  @keyframes eqBounce2 { 0%, 100% { transform: scaleY(0.6); } 50% { transform: scaleY(0.2); } }
+  @keyframes eqBounce3 { 0%, 100% { transform: scaleY(0.4); } 50% { transform: scaleY(0.9); } }
+  @keyframes apiPing { 0% { stroke-dashoffset: 15; } 100% { stroke-dashoffset: 0; } }
+  @keyframes seoUp { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+  @keyframes rippleWave { 0% { transform: scale(0.5); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
+  @keyframes uiClick { 0%, 100% { transform: scale(1); } 50% { transform: scale(0.9); } }
+  @keyframes cloudFloat { 0%, 100% { transform: translateY(-2px); } 50% { transform: translateY(2px); } }
+  @keyframes coinFlip { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
+  @keyframes orbitSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes shieldDeflect { 0%, 100% { opacity: 0; transform: translateX(-5px); } 50% { opacity: 1; transform: translateX(5px); } }
+  @keyframes mlThink { 0%, 100% { fill: #8A2BE2; r: 1; } 50% { fill: #00FFC8; r: 2; } }
+  @keyframes logicPath { 0%, 100% { stroke: #8A2BE2; stroke-width: 1.2; } 50% { stroke: #00FFC8; stroke-width: 2; } }
+  @keyframes dialMax { 0%, 100% { transform: rotate(-45deg); stroke: #8A2BE2; } 50% { transform: rotate(45deg); stroke: #00FFC8; } }
+  @keyframes pulseCyan { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+  @keyframes pulseCyanLine { 0% { stroke-dashoffset: 100; opacity: 0.5; } 50% { opacity: 1; stroke-width: 1.5; } 100% { stroke-dashoffset: -100; opacity: 0.5; } }
+  @keyframes coreSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes familiarBreathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+
+  .anim-cat-eyes { animation: catEyeScan 4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-cat-ear-l { animation: catEarTwitchL 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom right; will-change: transform; }
+  .anim-cat-ear-r { animation: catEarTwitchR 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom left; will-change: transform; }
+  .anim-cat-whisker { animation: catWhisker 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-crystal { animation: pulseCyan 3s infinite alternate; }
+  .anim-ai-laser { animation: aiLaserScan 2.5s linear infinite; transform-box: fill-box; }
+  .anim-bot-gear { animation: botGearSpin 6s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-web-build { stroke-dasharray: 40; animation: webBuild 2s ease-out infinite alternate; }
+  .anim-funnel-drop { animation: funnelDrop 2s ease-in infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-diamond-glint { animation: diamondGlint 3s ease-in-out infinite; }
+  .anim-cursor { animation: typeCursor 0.8s steps(2) infinite; }
+  .anim-hypno { animation: hypnoSpin 10s linear infinite alternate; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-eq-1 { animation: eqBounce1 0.7s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-eq-2 { animation: eqBounce2 0.5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-eq-3 { animation: eqBounce3 0.9s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-api-ping { stroke-dasharray: 5 10; animation: apiPing 1s linear infinite; }
+  .anim-seo-up { animation: seoUp 2s ease-in-out infinite; }
+  .anim-ripple { animation: rippleWave 2s cubic-bezier(0.1, 0.5, 0.9, 1) infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-ui-click { animation: uiClick 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-cloud { animation: cloudFloat 4s ease-in-out infinite; }
+  .anim-coin-flip { animation: coinFlip 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-orbit { animation: orbitSpin 8s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-deflect { animation: shieldDeflect 2s ease-in-out infinite; }
+  .anim-ml-node { animation: mlThink 1.5s ease-in-out infinite; }
+  .anim-logic-path { animation: logicPath 2s ease-in-out infinite; }
+  .anim-dial { animation: dialMax 3s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite; transform-box: fill-box; transform-origin: bottom center; will-change: transform; }
+  .anim-glow-cyan { animation: pulseCyan 2s infinite; }
+  .anim-pulse-cyan { stroke-dasharray: 20 80; animation: pulseCyanLine 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+  .anim-spin-core { animation: coreSpin 10s linear infinite; transform-origin: center; transform-box: fill-box; will-change: transform; }
+  .anim-breathe { animation: familiarBreathe 4s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+
+            </style>
+
+      <rect x="2" y="8" width="6" height="8" rx="1" stroke="#8A2BE2"/>
+      <rect x="16" y="8" width="6" height="8" rx="1" stroke="#8A2BE2"/>
+      <path d="M8 10h8 M8 14h8" stroke="#00FFC8" class="anim-api-ping svg-glow-cyan"/>
+      <circle cx="12" cy="12" r="2" stroke="#00FFC8" fill="#05020A" class="svg-glow-cyan"/>
+      <circle cx="12" cy="12" r="0.5" fill="#00FFC8" stroke="none" class="anim-glow-cyan svg-glow-cyan"/>
+
+  </symbol>
+  <symbol id="cloud-server" viewBox="0 0 24 24">
+
+            <style>
+
+  @keyframes catEyeScan { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-1.5px); } 75% { transform: translateX(1.5px); } }
+  @keyframes catEarTwitchL { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(-8deg); } }
+  @keyframes catEarTwitchR { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(8deg); } }
+  @keyframes catWhisker { 0%, 100% { transform: scaleX(1); } 50% { transform: scaleX(1.1); } }
+  @keyframes aiLaserScan { 0% { transform: translateY(-10px); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(10px); opacity: 0; } }
+  @keyframes botGearSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes webBuild { 0% { stroke-dashoffset: 40; } 100% { stroke-dashoffset: 0; } }
+  @keyframes funnelDrop { 0% { transform: translateY(-8px) scale(0.5); opacity: 0; } 50% { opacity: 1; transform: translateY(0px) scale(1); } 100% { transform: translateY(8px) scale(0.5); opacity: 0; } }
+  @keyframes diamondGlint { 0%, 100% { opacity: 0.3; filter: drop-shadow(0 0 2px #00FFC8); } 50% { opacity: 1; filter: drop-shadow(0 0 12px #00FFC8); } }
+  @keyframes typeCursor { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+  @keyframes hypnoSpin { from { transform: rotate(0deg) scale(1); } to { transform: rotate(360deg) scale(1.1); } }
+  @keyframes eqBounce1 { 0%, 100% { transform: scaleY(0.3); } 50% { transform: scaleY(1); } }
+  @keyframes eqBounce2 { 0%, 100% { transform: scaleY(0.6); } 50% { transform: scaleY(0.2); } }
+  @keyframes eqBounce3 { 0%, 100% { transform: scaleY(0.4); } 50% { transform: scaleY(0.9); } }
+  @keyframes apiPing { 0% { stroke-dashoffset: 15; } 100% { stroke-dashoffset: 0; } }
+  @keyframes seoUp { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+  @keyframes rippleWave { 0% { transform: scale(0.5); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
+  @keyframes uiClick { 0%, 100% { transform: scale(1); } 50% { transform: scale(0.9); } }
+  @keyframes cloudFloat { 0%, 100% { transform: translateY(-2px); } 50% { transform: translateY(2px); } }
+  @keyframes coinFlip { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
+  @keyframes orbitSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes shieldDeflect { 0%, 100% { opacity: 0; transform: translateX(-5px); } 50% { opacity: 1; transform: translateX(5px); } }
+  @keyframes mlThink { 0%, 100% { fill: #8A2BE2; r: 1; } 50% { fill: #00FFC8; r: 2; } }
+  @keyframes logicPath { 0%, 100% { stroke: #8A2BE2; stroke-width: 1.2; } 50% { stroke: #00FFC8; stroke-width: 2; } }
+  @keyframes dialMax { 0%, 100% { transform: rotate(-45deg); stroke: #8A2BE2; } 50% { transform: rotate(45deg); stroke: #00FFC8; } }
+  @keyframes pulseCyan { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+  @keyframes pulseCyanLine { 0% { stroke-dashoffset: 100; opacity: 0.5; } 50% { opacity: 1; stroke-width: 1.5; } 100% { stroke-dashoffset: -100; opacity: 0.5; } }
+  @keyframes coreSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes familiarBreathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+
+  .anim-cat-eyes { animation: catEyeScan 4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-cat-ear-l { animation: catEarTwitchL 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom right; will-change: transform; }
+  .anim-cat-ear-r { animation: catEarTwitchR 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom left; will-change: transform; }
+  .anim-cat-whisker { animation: catWhisker 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-crystal { animation: pulseCyan 3s infinite alternate; }
+  .anim-ai-laser { animation: aiLaserScan 2.5s linear infinite; transform-box: fill-box; }
+  .anim-bot-gear { animation: botGearSpin 6s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-web-build { stroke-dasharray: 40; animation: webBuild 2s ease-out infinite alternate; }
+  .anim-funnel-drop { animation: funnelDrop 2s ease-in infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-diamond-glint { animation: diamondGlint 3s ease-in-out infinite; }
+  .anim-cursor { animation: typeCursor 0.8s steps(2) infinite; }
+  .anim-hypno { animation: hypnoSpin 10s linear infinite alternate; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-eq-1 { animation: eqBounce1 0.7s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-eq-2 { animation: eqBounce2 0.5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-eq-3 { animation: eqBounce3 0.9s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-api-ping { stroke-dasharray: 5 10; animation: apiPing 1s linear infinite; }
+  .anim-seo-up { animation: seoUp 2s ease-in-out infinite; }
+  .anim-ripple { animation: rippleWave 2s cubic-bezier(0.1, 0.5, 0.9, 1) infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-ui-click { animation: uiClick 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-cloud { animation: cloudFloat 4s ease-in-out infinite; }
+  .anim-coin-flip { animation: coinFlip 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-orbit { animation: orbitSpin 8s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-deflect { animation: shieldDeflect 2s ease-in-out infinite; }
+  .anim-ml-node { animation: mlThink 1.5s ease-in-out infinite; }
+  .anim-logic-path { animation: logicPath 2s ease-in-out infinite; }
+  .anim-dial { animation: dialMax 3s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite; transform-box: fill-box; transform-origin: bottom center; will-change: transform; }
+  .anim-glow-cyan { animation: pulseCyan 2s infinite; }
+  .anim-pulse-cyan { stroke-dasharray: 20 80; animation: pulseCyanLine 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+  .anim-spin-core { animation: coreSpin 10s linear infinite; transform-origin: center; transform-box: fill-box; will-change: transform; }
+  .anim-breathe { animation: familiarBreathe 4s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+
+            </style>
+
+      <g class="anim-cloud">
+        <path d="M7 16a4 4 0 0 1 0-8 5 5 0 0 1 10 0 4 4 0 0 1 0 8H7z" stroke="#8A2BE2"/>
+        <path d="M12 11v5" stroke="#00FFC8" stroke-width="2" class="svg-glow-cyan"/>
+        <path d="M9 14l3 3 3-3" stroke="#00FFC8" class="svg-glow-cyan"/>
+      </g>
+      <path d="M6 20h12" stroke="#8A2BE2" opacity="0.5"/>
+
+  </symbol>
+  <symbol id="cro-dial" viewBox="0 0 24 24">
+
+            <style>
+
+  @keyframes catEyeScan { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-1.5px); } 75% { transform: translateX(1.5px); } }
+  @keyframes catEarTwitchL { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(-8deg); } }
+  @keyframes catEarTwitchR { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(8deg); } }
+  @keyframes catWhisker { 0%, 100% { transform: scaleX(1); } 50% { transform: scaleX(1.1); } }
+  @keyframes aiLaserScan { 0% { transform: translateY(-10px); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(10px); opacity: 0; } }
+  @keyframes botGearSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes webBuild { 0% { stroke-dashoffset: 40; } 100% { stroke-dashoffset: 0; } }
+  @keyframes funnelDrop { 0% { transform: translateY(-8px) scale(0.5); opacity: 0; } 50% { opacity: 1; transform: translateY(0px) scale(1); } 100% { transform: translateY(8px) scale(0.5); opacity: 0; } }
+  @keyframes diamondGlint { 0%, 100% { opacity: 0.3; filter: drop-shadow(0 0 2px #00FFC8); } 50% { opacity: 1; filter: drop-shadow(0 0 12px #00FFC8); } }
+  @keyframes typeCursor { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+  @keyframes hypnoSpin { from { transform: rotate(0deg) scale(1); } to { transform: rotate(360deg) scale(1.1); } }
+  @keyframes eqBounce1 { 0%, 100% { transform: scaleY(0.3); } 50% { transform: scaleY(1); } }
+  @keyframes eqBounce2 { 0%, 100% { transform: scaleY(0.6); } 50% { transform: scaleY(0.2); } }
+  @keyframes eqBounce3 { 0%, 100% { transform: scaleY(0.4); } 50% { transform: scaleY(0.9); } }
+  @keyframes apiPing { 0% { stroke-dashoffset: 15; } 100% { stroke-dashoffset: 0; } }
+  @keyframes seoUp { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+  @keyframes rippleWave { 0% { transform: scale(0.5); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
+  @keyframes uiClick { 0%, 100% { transform: scale(1); } 50% { transform: scale(0.9); } }
+  @keyframes cloudFloat { 0%, 100% { transform: translateY(-2px); } 50% { transform: translateY(2px); } }
+  @keyframes coinFlip { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
+  @keyframes orbitSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes shieldDeflect { 0%, 100% { opacity: 0; transform: translateX(-5px); } 50% { opacity: 1; transform: translateX(5px); } }
+  @keyframes mlThink { 0%, 100% { fill: #8A2BE2; r: 1; } 50% { fill: #00FFC8; r: 2; } }
+  @keyframes logicPath { 0%, 100% { stroke: #8A2BE2; stroke-width: 1.2; } 50% { stroke: #00FFC8; stroke-width: 2; } }
+  @keyframes dialMax { 0%, 100% { transform: rotate(-45deg); stroke: #8A2BE2; } 50% { transform: rotate(45deg); stroke: #00FFC8; } }
+  @keyframes pulseCyan { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+  @keyframes pulseCyanLine { 0% { stroke-dashoffset: 100; opacity: 0.5; } 50% { opacity: 1; stroke-width: 1.5; } 100% { stroke-dashoffset: -100; opacity: 0.5; } }
+  @keyframes coreSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes familiarBreathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+
+  .anim-cat-eyes { animation: catEyeScan 4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-cat-ear-l { animation: catEarTwitchL 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom right; will-change: transform; }
+  .anim-cat-ear-r { animation: catEarTwitchR 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom left; will-change: transform; }
+  .anim-cat-whisker { animation: catWhisker 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-crystal { animation: pulseCyan 3s infinite alternate; }
+  .anim-ai-laser { animation: aiLaserScan 2.5s linear infinite; transform-box: fill-box; }
+  .anim-bot-gear { animation: botGearSpin 6s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-web-build { stroke-dasharray: 40; animation: webBuild 2s ease-out infinite alternate; }
+  .anim-funnel-drop { animation: funnelDrop 2s ease-in infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-diamond-glint { animation: diamondGlint 3s ease-in-out infinite; }
+  .anim-cursor { animation: typeCursor 0.8s steps(2) infinite; }
+  .anim-hypno { animation: hypnoSpin 10s linear infinite alternate; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-eq-1 { animation: eqBounce1 0.7s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-eq-2 { animation: eqBounce2 0.5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-eq-3 { animation: eqBounce3 0.9s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-api-ping { stroke-dasharray: 5 10; animation: apiPing 1s linear infinite; }
+  .anim-seo-up { animation: seoUp 2s ease-in-out infinite; }
+  .anim-ripple { animation: rippleWave 2s cubic-bezier(0.1, 0.5, 0.9, 1) infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-ui-click { animation: uiClick 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-cloud { animation: cloudFloat 4s ease-in-out infinite; }
+  .anim-coin-flip { animation: coinFlip 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-orbit { animation: orbitSpin 8s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-deflect { animation: shieldDeflect 2s ease-in-out infinite; }
+  .anim-ml-node { animation: mlThink 1.5s ease-in-out infinite; }
+  .anim-logic-path { animation: logicPath 2s ease-in-out infinite; }
+  .anim-dial { animation: dialMax 3s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite; transform-box: fill-box; transform-origin: bottom center; will-change: transform; }
+  .anim-glow-cyan { animation: pulseCyan 2s infinite; }
+  .anim-pulse-cyan { stroke-dasharray: 20 80; animation: pulseCyanLine 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+  .anim-spin-core { animation: coreSpin 10s linear infinite; transform-origin: center; transform-box: fill-box; will-change: transform; }
+  .anim-breathe { animation: familiarBreathe 4s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+
+            </style>
+
+      <path d="M3 16a9 9 0 1 1 18 0" stroke="#8A2BE2"/>
+      <path d="M6 14a7 7 0 0 1 12 0" stroke="#8A2BE2" opacity="0.4"/>
+      <line x1="12" y1="16" x2="8" y2="10" stroke-width="2" stroke-linecap="round" class="anim-dial svg-glow-cyan"/>
+      <circle cx="12" cy="16" r="2" fill="#00FFC8" stroke="none" class="svg-glow-cyan"/>
+
+  </symbol>
+  <symbol id="crypto-pay" viewBox="0 0 24 24">
+
+            <style>
+
+  @keyframes catEyeScan { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-1.5px); } 75% { transform: translateX(1.5px); } }
+  @keyframes catEarTwitchL { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(-8deg); } }
+  @keyframes catEarTwitchR { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(8deg); } }
+  @keyframes catWhisker { 0%, 100% { transform: scaleX(1); } 50% { transform: scaleX(1.1); } }
+  @keyframes aiLaserScan { 0% { transform: translateY(-10px); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(10px); opacity: 0; } }
+  @keyframes botGearSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes webBuild { 0% { stroke-dashoffset: 40; } 100% { stroke-dashoffset: 0; } }
+  @keyframes funnelDrop { 0% { transform: translateY(-8px) scale(0.5); opacity: 0; } 50% { opacity: 1; transform: translateY(0px) scale(1); } 100% { transform: translateY(8px) scale(0.5); opacity: 0; } }
+  @keyframes diamondGlint { 0%, 100% { opacity: 0.3; filter: drop-shadow(0 0 2px #00FFC8); } 50% { opacity: 1; filter: drop-shadow(0 0 12px #00FFC8); } }
+  @keyframes typeCursor { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+  @keyframes hypnoSpin { from { transform: rotate(0deg) scale(1); } to { transform: rotate(360deg) scale(1.1); } }
+  @keyframes eqBounce1 { 0%, 100% { transform: scaleY(0.3); } 50% { transform: scaleY(1); } }
+  @keyframes eqBounce2 { 0%, 100% { transform: scaleY(0.6); } 50% { transform: scaleY(0.2); } }
+  @keyframes eqBounce3 { 0%, 100% { transform: scaleY(0.4); } 50% { transform: scaleY(0.9); } }
+  @keyframes apiPing { 0% { stroke-dashoffset: 15; } 100% { stroke-dashoffset: 0; } }
+  @keyframes seoUp { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+  @keyframes rippleWave { 0% { transform: scale(0.5); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
+  @keyframes uiClick { 0%, 100% { transform: scale(1); } 50% { transform: scale(0.9); } }
+  @keyframes cloudFloat { 0%, 100% { transform: translateY(-2px); } 50% { transform: translateY(2px); } }
+  @keyframes coinFlip { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
+  @keyframes orbitSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes shieldDeflect { 0%, 100% { opacity: 0; transform: translateX(-5px); } 50% { opacity: 1; transform: translateX(5px); } }
+  @keyframes mlThink { 0%, 100% { fill: #8A2BE2; r: 1; } 50% { fill: #00FFC8; r: 2; } }
+  @keyframes logicPath { 0%, 100% { stroke: #8A2BE2; stroke-width: 1.2; } 50% { stroke: #00FFC8; stroke-width: 2; } }
+  @keyframes dialMax { 0%, 100% { transform: rotate(-45deg); stroke: #8A2BE2; } 50% { transform: rotate(45deg); stroke: #00FFC8; } }
+  @keyframes pulseCyan { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+  @keyframes pulseCyanLine { 0% { stroke-dashoffset: 100; opacity: 0.5; } 50% { opacity: 1; stroke-width: 1.5; } 100% { stroke-dashoffset: -100; opacity: 0.5; } }
+  @keyframes coreSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes familiarBreathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+
+  .anim-cat-eyes { animation: catEyeScan 4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-cat-ear-l { animation: catEarTwitchL 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom right; will-change: transform; }
+  .anim-cat-ear-r { animation: catEarTwitchR 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom left; will-change: transform; }
+  .anim-cat-whisker { animation: catWhisker 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-crystal { animation: pulseCyan 3s infinite alternate; }
+  .anim-ai-laser { animation: aiLaserScan 2.5s linear infinite; transform-box: fill-box; }
+  .anim-bot-gear { animation: botGearSpin 6s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-web-build { stroke-dasharray: 40; animation: webBuild 2s ease-out infinite alternate; }
+  .anim-funnel-drop { animation: funnelDrop 2s ease-in infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-diamond-glint { animation: diamondGlint 3s ease-in-out infinite; }
+  .anim-cursor { animation: typeCursor 0.8s steps(2) infinite; }
+  .anim-hypno { animation: hypnoSpin 10s linear infinite alternate; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-eq-1 { animation: eqBounce1 0.7s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-eq-2 { animation: eqBounce2 0.5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-eq-3 { animation: eqBounce3 0.9s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-api-ping { stroke-dasharray: 5 10; animation: apiPing 1s linear infinite; }
+  .anim-seo-up { animation: seoUp 2s ease-in-out infinite; }
+  .anim-ripple { animation: rippleWave 2s cubic-bezier(0.1, 0.5, 0.9, 1) infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-ui-click { animation: uiClick 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-cloud { animation: cloudFloat 4s ease-in-out infinite; }
+  .anim-coin-flip { animation: coinFlip 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-orbit { animation: orbitSpin 8s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-deflect { animation: shieldDeflect 2s ease-in-out infinite; }
+  .anim-ml-node { animation: mlThink 1.5s ease-in-out infinite; }
+  .anim-logic-path { animation: logicPath 2s ease-in-out infinite; }
+  .anim-dial { animation: dialMax 3s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite; transform-box: fill-box; transform-origin: bottom center; will-change: transform; }
+  .anim-glow-cyan { animation: pulseCyan 2s infinite; }
+  .anim-pulse-cyan { stroke-dasharray: 20 80; animation: pulseCyanLine 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+  .anim-spin-core { animation: coreSpin 10s linear infinite; transform-origin: center; transform-box: fill-box; will-change: transform; }
+  .anim-breathe { animation: familiarBreathe 4s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+
+            </style>
+
+      <g class="anim-coin-flip svg-glow-cyan">
+        <circle cx="12" cy="12" r="8" stroke="#00FFC8"/>
+        <path d="M12 8v8 M10 10h4 M10 14h4" stroke="#00FFC8"/>
+      </g>
+      <path d="M4 12h2 M18 12h2 M12 4v2 M12 18v2" stroke="#8A2BE2"/>
+
+  </symbol>
+  <symbol id="cyber-mascot" viewBox="0 0 24 24">
+
+            <style>
+
+  @keyframes catEyeScan { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-1.5px); } 75% { transform: translateX(1.5px); } }
+  @keyframes catEarTwitchL { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(-8deg); } }
+  @keyframes catEarTwitchR { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(8deg); } }
+  @keyframes catWhisker { 0%, 100% { transform: scaleX(1); } 50% { transform: scaleX(1.1); } }
+  @keyframes aiLaserScan { 0% { transform: translateY(-10px); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(10px); opacity: 0; } }
+  @keyframes botGearSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes webBuild { 0% { stroke-dashoffset: 40; } 100% { stroke-dashoffset: 0; } }
+  @keyframes funnelDrop { 0% { transform: translateY(-8px) scale(0.5); opacity: 0; } 50% { opacity: 1; transform: translateY(0px) scale(1); } 100% { transform: translateY(8px) scale(0.5); opacity: 0; } }
+  @keyframes diamondGlint { 0%, 100% { opacity: 0.3; filter: drop-shadow(0 0 2px #00FFC8); } 50% { opacity: 1; filter: drop-shadow(0 0 12px #00FFC8); } }
+  @keyframes typeCursor { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+  @keyframes hypnoSpin { from { transform: rotate(0deg) scale(1); } to { transform: rotate(360deg) scale(1.1); } }
+  @keyframes eqBounce1 { 0%, 100% { transform: scaleY(0.3); } 50% { transform: scaleY(1); } }
+  @keyframes eqBounce2 { 0%, 100% { transform: scaleY(0.6); } 50% { transform: scaleY(0.2); } }
+  @keyframes eqBounce3 { 0%, 100% { transform: scaleY(0.4); } 50% { transform: scaleY(0.9); } }
+  @keyframes apiPing { 0% { stroke-dashoffset: 15; } 100% { stroke-dashoffset: 0; } }
+  @keyframes seoUp { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+  @keyframes rippleWave { 0% { transform: scale(0.5); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
+  @keyframes uiClick { 0%, 100% { transform: scale(1); } 50% { transform: scale(0.9); } }
+  @keyframes cloudFloat { 0%, 100% { transform: translateY(-2px); } 50% { transform: translateY(2px); } }
+  @keyframes coinFlip { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
+  @keyframes orbitSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes shieldDeflect { 0%, 100% { opacity: 0; transform: translateX(-5px); } 50% { opacity: 1; transform: translateX(5px); } }
+  @keyframes mlThink { 0%, 100% { fill: #8A2BE2; r: 1; } 50% { fill: #00FFC8; r: 2; } }
+  @keyframes logicPath { 0%, 100% { stroke: #8A2BE2; stroke-width: 1.2; } 50% { stroke: #00FFC8; stroke-width: 2; } }
+  @keyframes dialMax { 0%, 100% { transform: rotate(-45deg); stroke: #8A2BE2; } 50% { transform: rotate(45deg); stroke: #00FFC8; } }
+  @keyframes pulseCyan { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+  @keyframes pulseCyanLine { 0% { stroke-dashoffset: 100; opacity: 0.5; } 50% { opacity: 1; stroke-width: 1.5; } 100% { stroke-dashoffset: -100; opacity: 0.5; } }
+  @keyframes coreSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes familiarBreathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+
+  .anim-cat-eyes { animation: catEyeScan 4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-cat-ear-l { animation: catEarTwitchL 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom right; will-change: transform; }
+  .anim-cat-ear-r { animation: catEarTwitchR 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom left; will-change: transform; }
+  .anim-cat-whisker { animation: catWhisker 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-crystal { animation: pulseCyan 3s infinite alternate; }
+  .anim-ai-laser { animation: aiLaserScan 2.5s linear infinite; transform-box: fill-box; }
+  .anim-bot-gear { animation: botGearSpin 6s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-web-build { stroke-dasharray: 40; animation: webBuild 2s ease-out infinite alternate; }
+  .anim-funnel-drop { animation: funnelDrop 2s ease-in infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-diamond-glint { animation: diamondGlint 3s ease-in-out infinite; }
+  .anim-cursor { animation: typeCursor 0.8s steps(2) infinite; }
+  .anim-hypno { animation: hypnoSpin 10s linear infinite alternate; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-eq-1 { animation: eqBounce1 0.7s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-eq-2 { animation: eqBounce2 0.5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-eq-3 { animation: eqBounce3 0.9s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-api-ping { stroke-dasharray: 5 10; animation: apiPing 1s linear infinite; }
+  .anim-seo-up { animation: seoUp 2s ease-in-out infinite; }
+  .anim-ripple { animation: rippleWave 2s cubic-bezier(0.1, 0.5, 0.9, 1) infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-ui-click { animation: uiClick 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-cloud { animation: cloudFloat 4s ease-in-out infinite; }
+  .anim-coin-flip { animation: coinFlip 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-orbit { animation: orbitSpin 8s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-deflect { animation: shieldDeflect 2s ease-in-out infinite; }
+  .anim-ml-node { animation: mlThink 1.5s ease-in-out infinite; }
+  .anim-logic-path { animation: logicPath 2s ease-in-out infinite; }
+  .anim-dial { animation: dialMax 3s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite; transform-box: fill-box; transform-origin: bottom center; will-change: transform; }
+  .anim-glow-cyan { animation: pulseCyan 2s infinite; }
+  .anim-pulse-cyan { stroke-dasharray: 20 80; animation: pulseCyanLine 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+  .anim-spin-core { animation: coreSpin 10s linear infinite; transform-origin: center; transform-box: fill-box; will-change: transform; }
+  .anim-breathe { animation: familiarBreathe 4s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+
+            </style>
+
+      <path d="M5 11l2-5 3 2 4 0 3-2 2 5v4c0 3-3 5-7 5s-7-2-7-5v-4z" stroke="#8A2BE2"/>
+      <path d="M5 11L3 4l4 4" stroke="#8A2BE2" class="anim-cat-ear-l"/>
+      <path d="M19 11l2-7-4 4" stroke="#8A2BE2" class="anim-cat-ear-r"/>
+      <polygon points="12,5 14,8 12,10 10,8" stroke="#00FFC8" fill="#00FFC8" fill-opacity="0.2" class="anim-crystal svg-glow-cyan"/>
+      <g class="anim-cat-eyes svg-glow-cyan">
+        <ellipse cx="9" cy="14" rx="1.5" ry="2.5" fill="#00FFC8"/>
+        <ellipse cx="15" cy="14" rx="1.5" ry="2.5" fill="#00FFC8"/>
+      </g>
+      <g class="anim-cat-whisker">
+        <path d="M3 15l-2-1 M3 17l-2 1 M21 15l2-1 M21 17l2 1" stroke="#00FFC8" class="svg-glow-cyan"/>
+      </g>
+
+  </symbol>
+  <symbol id="data-armor" viewBox="0 0 24 24">
+
+            <style>
+
+  @keyframes catEyeScan { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-1.5px); } 75% { transform: translateX(1.5px); } }
+  @keyframes catEarTwitchL { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(-8deg); } }
+  @keyframes catEarTwitchR { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(8deg); } }
+  @keyframes catWhisker { 0%, 100% { transform: scaleX(1); } 50% { transform: scaleX(1.1); } }
+  @keyframes aiLaserScan { 0% { transform: translateY(-10px); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(10px); opacity: 0; } }
+  @keyframes botGearSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes webBuild { 0% { stroke-dashoffset: 40; } 100% { stroke-dashoffset: 0; } }
+  @keyframes funnelDrop { 0% { transform: translateY(-8px) scale(0.5); opacity: 0; } 50% { opacity: 1; transform: translateY(0px) scale(1); } 100% { transform: translateY(8px) scale(0.5); opacity: 0; } }
+  @keyframes diamondGlint { 0%, 100% { opacity: 0.3; filter: drop-shadow(0 0 2px #00FFC8); } 50% { opacity: 1; filter: drop-shadow(0 0 12px #00FFC8); } }
+  @keyframes typeCursor { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+  @keyframes hypnoSpin { from { transform: rotate(0deg) scale(1); } to { transform: rotate(360deg) scale(1.1); } }
+  @keyframes eqBounce1 { 0%, 100% { transform: scaleY(0.3); } 50% { transform: scaleY(1); } }
+  @keyframes eqBounce2 { 0%, 100% { transform: scaleY(0.6); } 50% { transform: scaleY(0.2); } }
+  @keyframes eqBounce3 { 0%, 100% { transform: scaleY(0.4); } 50% { transform: scaleY(0.9); } }
+  @keyframes apiPing { 0% { stroke-dashoffset: 15; } 100% { stroke-dashoffset: 0; } }
+  @keyframes seoUp { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+  @keyframes rippleWave { 0% { transform: scale(0.5); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
+  @keyframes uiClick { 0%, 100% { transform: scale(1); } 50% { transform: scale(0.9); } }
+  @keyframes cloudFloat { 0%, 100% { transform: translateY(-2px); } 50% { transform: translateY(2px); } }
+  @keyframes coinFlip { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
+  @keyframes orbitSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes shieldDeflect { 0%, 100% { opacity: 0; transform: translateX(-5px); } 50% { opacity: 1; transform: translateX(5px); } }
+  @keyframes mlThink { 0%, 100% { fill: #8A2BE2; r: 1; } 50% { fill: #00FFC8; r: 2; } }
+  @keyframes logicPath { 0%, 100% { stroke: #8A2BE2; stroke-width: 1.2; } 50% { stroke: #00FFC8; stroke-width: 2; } }
+  @keyframes dialMax { 0%, 100% { transform: rotate(-45deg); stroke: #8A2BE2; } 50% { transform: rotate(45deg); stroke: #00FFC8; } }
+  @keyframes pulseCyan { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+  @keyframes pulseCyanLine { 0% { stroke-dashoffset: 100; opacity: 0.5; } 50% { opacity: 1; stroke-width: 1.5; } 100% { stroke-dashoffset: -100; opacity: 0.5; } }
+  @keyframes coreSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes familiarBreathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+
+  .anim-cat-eyes { animation: catEyeScan 4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-cat-ear-l { animation: catEarTwitchL 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom right; will-change: transform; }
+  .anim-cat-ear-r { animation: catEarTwitchR 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom left; will-change: transform; }
+  .anim-cat-whisker { animation: catWhisker 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-crystal { animation: pulseCyan 3s infinite alternate; }
+  .anim-ai-laser { animation: aiLaserScan 2.5s linear infinite; transform-box: fill-box; }
+  .anim-bot-gear { animation: botGearSpin 6s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-web-build { stroke-dasharray: 40; animation: webBuild 2s ease-out infinite alternate; }
+  .anim-funnel-drop { animation: funnelDrop 2s ease-in infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-diamond-glint { animation: diamondGlint 3s ease-in-out infinite; }
+  .anim-cursor { animation: typeCursor 0.8s steps(2) infinite; }
+  .anim-hypno { animation: hypnoSpin 10s linear infinite alternate; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-eq-1 { animation: eqBounce1 0.7s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-eq-2 { animation: eqBounce2 0.5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-eq-3 { animation: eqBounce3 0.9s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-api-ping { stroke-dasharray: 5 10; animation: apiPing 1s linear infinite; }
+  .anim-seo-up { animation: seoUp 2s ease-in-out infinite; }
+  .anim-ripple { animation: rippleWave 2s cubic-bezier(0.1, 0.5, 0.9, 1) infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-ui-click { animation: uiClick 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-cloud { animation: cloudFloat 4s ease-in-out infinite; }
+  .anim-coin-flip { animation: coinFlip 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-orbit { animation: orbitSpin 8s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-deflect { animation: shieldDeflect 2s ease-in-out infinite; }
+  .anim-ml-node { animation: mlThink 1.5s ease-in-out infinite; }
+  .anim-logic-path { animation: logicPath 2s ease-in-out infinite; }
+  .anim-dial { animation: dialMax 3s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite; transform-box: fill-box; transform-origin: bottom center; will-change: transform; }
+  .anim-glow-cyan { animation: pulseCyan 2s infinite; }
+  .anim-pulse-cyan { stroke-dasharray: 20 80; animation: pulseCyanLine 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+  .anim-spin-core { animation: coreSpin 10s linear infinite; transform-origin: center; transform-box: fill-box; will-change: transform; }
+  .anim-breathe { animation: familiarBreathe 4s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+
+            </style>
+
+      <path d="M12 2L4 6v6c0 5 3 9 8 10 5-1 8-5 8-10V6l-8-4z" stroke="#8A2BE2"/>
+      <path d="M12 6v14" stroke="#8A2BE2" opacity="0.4"/>
+      <path d="M22 12l-4-4" stroke="#00FFC8" stroke-width="2" class="anim-deflect svg-glow-cyan"/>
+      <path d="M18 12h-6" stroke="#00FFC8" stroke-dasharray="2 2" class="svg-glow-cyan"/>
+      <circle cx="12" cy="12" r="2" fill="#00FFC8" stroke="none" class="anim-glow-cyan svg-glow-cyan"/>
+
+  </symbol>
+  <symbol id="high-ticket" viewBox="0 0 24 24">
+
+            <style>
+
+  @keyframes catEyeScan { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-1.5px); } 75% { transform: translateX(1.5px); } }
+  @keyframes catEarTwitchL { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(-8deg); } }
+  @keyframes catEarTwitchR { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(8deg); } }
+  @keyframes catWhisker { 0%, 100% { transform: scaleX(1); } 50% { transform: scaleX(1.1); } }
+  @keyframes aiLaserScan { 0% { transform: translateY(-10px); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(10px); opacity: 0; } }
+  @keyframes botGearSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes webBuild { 0% { stroke-dashoffset: 40; } 100% { stroke-dashoffset: 0; } }
+  @keyframes funnelDrop { 0% { transform: translateY(-8px) scale(0.5); opacity: 0; } 50% { opacity: 1; transform: translateY(0px) scale(1); } 100% { transform: translateY(8px) scale(0.5); opacity: 0; } }
+  @keyframes diamondGlint { 0%, 100% { opacity: 0.3; filter: drop-shadow(0 0 2px #00FFC8); } 50% { opacity: 1; filter: drop-shadow(0 0 12px #00FFC8); } }
+  @keyframes typeCursor { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+  @keyframes hypnoSpin { from { transform: rotate(0deg) scale(1); } to { transform: rotate(360deg) scale(1.1); } }
+  @keyframes eqBounce1 { 0%, 100% { transform: scaleY(0.3); } 50% { transform: scaleY(1); } }
+  @keyframes eqBounce2 { 0%, 100% { transform: scaleY(0.6); } 50% { transform: scaleY(0.2); } }
+  @keyframes eqBounce3 { 0%, 100% { transform: scaleY(0.4); } 50% { transform: scaleY(0.9); } }
+  @keyframes apiPing { 0% { stroke-dashoffset: 15; } 100% { stroke-dashoffset: 0; } }
+  @keyframes seoUp { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+  @keyframes rippleWave { 0% { transform: scale(0.5); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
+  @keyframes uiClick { 0%, 100% { transform: scale(1); } 50% { transform: scale(0.9); } }
+  @keyframes cloudFloat { 0%, 100% { transform: translateY(-2px); } 50% { transform: translateY(2px); } }
+  @keyframes coinFlip { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
+  @keyframes orbitSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes shieldDeflect { 0%, 100% { opacity: 0; transform: translateX(-5px); } 50% { opacity: 1; transform: translateX(5px); } }
+  @keyframes mlThink { 0%, 100% { fill: #8A2BE2; r: 1; } 50% { fill: #00FFC8; r: 2; } }
+  @keyframes logicPath { 0%, 100% { stroke: #8A2BE2; stroke-width: 1.2; } 50% { stroke: #00FFC8; stroke-width: 2; } }
+  @keyframes dialMax { 0%, 100% { transform: rotate(-45deg); stroke: #8A2BE2; } 50% { transform: rotate(45deg); stroke: #00FFC8; } }
+  @keyframes pulseCyan { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+  @keyframes pulseCyanLine { 0% { stroke-dashoffset: 100; opacity: 0.5; } 50% { opacity: 1; stroke-width: 1.5; } 100% { stroke-dashoffset: -100; opacity: 0.5; } }
+  @keyframes coreSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes familiarBreathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+
+  .anim-cat-eyes { animation: catEyeScan 4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-cat-ear-l { animation: catEarTwitchL 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom right; will-change: transform; }
+  .anim-cat-ear-r { animation: catEarTwitchR 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom left; will-change: transform; }
+  .anim-cat-whisker { animation: catWhisker 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-crystal { animation: pulseCyan 3s infinite alternate; }
+  .anim-ai-laser { animation: aiLaserScan 2.5s linear infinite; transform-box: fill-box; }
+  .anim-bot-gear { animation: botGearSpin 6s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-web-build { stroke-dasharray: 40; animation: webBuild 2s ease-out infinite alternate; }
+  .anim-funnel-drop { animation: funnelDrop 2s ease-in infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-diamond-glint { animation: diamondGlint 3s ease-in-out infinite; }
+  .anim-cursor { animation: typeCursor 0.8s steps(2) infinite; }
+  .anim-hypno { animation: hypnoSpin 10s linear infinite alternate; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-eq-1 { animation: eqBounce1 0.7s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-eq-2 { animation: eqBounce2 0.5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-eq-3 { animation: eqBounce3 0.9s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-api-ping { stroke-dasharray: 5 10; animation: apiPing 1s linear infinite; }
+  .anim-seo-up { animation: seoUp 2s ease-in-out infinite; }
+  .anim-ripple { animation: rippleWave 2s cubic-bezier(0.1, 0.5, 0.9, 1) infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-ui-click { animation: uiClick 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-cloud { animation: cloudFloat 4s ease-in-out infinite; }
+  .anim-coin-flip { animation: coinFlip 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-orbit { animation: orbitSpin 8s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-deflect { animation: shieldDeflect 2s ease-in-out infinite; }
+  .anim-ml-node { animation: mlThink 1.5s ease-in-out infinite; }
+  .anim-logic-path { animation: logicPath 2s ease-in-out infinite; }
+  .anim-dial { animation: dialMax 3s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite; transform-box: fill-box; transform-origin: bottom center; will-change: transform; }
+  .anim-glow-cyan { animation: pulseCyan 2s infinite; }
+  .anim-pulse-cyan { stroke-dasharray: 20 80; animation: pulseCyanLine 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+  .anim-spin-core { animation: coreSpin 10s linear infinite; transform-origin: center; transform-box: fill-box; will-change: transform; }
+  .anim-breathe { animation: familiarBreathe 4s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+
+            </style>
+
+      <path d="M12 2l8 6-8 14-8-14z" stroke="#8A2BE2"/>
+      <path d="M4 8h16 M12 2v20" stroke="#8A2BE2" opacity="0.4"/>
+      <path d="M12 2l4 6-4 14" fill="#00FFC8" fill-opacity="0.2" stroke="#00FFC8" class="anim-diamond-glint svg-glow-cyan"/>
+      <circle cx="12" cy="8" r="1" fill="#00FFC8" stroke="none" class="svg-glow-cyan"/>
+
+  </symbol>
+  <symbol id="logic-tree" viewBox="0 0 24 24">
+
+            <style>
+
+  @keyframes catEyeScan { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-1.5px); } 75% { transform: translateX(1.5px); } }
+  @keyframes catEarTwitchL { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(-8deg); } }
+  @keyframes catEarTwitchR { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(8deg); } }
+  @keyframes catWhisker { 0%, 100% { transform: scaleX(1); } 50% { transform: scaleX(1.1); } }
+  @keyframes aiLaserScan { 0% { transform: translateY(-10px); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(10px); opacity: 0; } }
+  @keyframes botGearSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes webBuild { 0% { stroke-dashoffset: 40; } 100% { stroke-dashoffset: 0; } }
+  @keyframes funnelDrop { 0% { transform: translateY(-8px) scale(0.5); opacity: 0; } 50% { opacity: 1; transform: translateY(0px) scale(1); } 100% { transform: translateY(8px) scale(0.5); opacity: 0; } }
+  @keyframes diamondGlint { 0%, 100% { opacity: 0.3; filter: drop-shadow(0 0 2px #00FFC8); } 50% { opacity: 1; filter: drop-shadow(0 0 12px #00FFC8); } }
+  @keyframes typeCursor { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+  @keyframes hypnoSpin { from { transform: rotate(0deg) scale(1); } to { transform: rotate(360deg) scale(1.1); } }
+  @keyframes eqBounce1 { 0%, 100% { transform: scaleY(0.3); } 50% { transform: scaleY(1); } }
+  @keyframes eqBounce2 { 0%, 100% { transform: scaleY(0.6); } 50% { transform: scaleY(0.2); } }
+  @keyframes eqBounce3 { 0%, 100% { transform: scaleY(0.4); } 50% { transform: scaleY(0.9); } }
+  @keyframes apiPing { 0% { stroke-dashoffset: 15; } 100% { stroke-dashoffset: 0; } }
+  @keyframes seoUp { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+  @keyframes rippleWave { 0% { transform: scale(0.5); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
+  @keyframes uiClick { 0%, 100% { transform: scale(1); } 50% { transform: scale(0.9); } }
+  @keyframes cloudFloat { 0%, 100% { transform: translateY(-2px); } 50% { transform: translateY(2px); } }
+  @keyframes coinFlip { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
+  @keyframes orbitSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes shieldDeflect { 0%, 100% { opacity: 0; transform: translateX(-5px); } 50% { opacity: 1; transform: translateX(5px); } }
+  @keyframes mlThink { 0%, 100% { fill: #8A2BE2; r: 1; } 50% { fill: #00FFC8; r: 2; } }
+  @keyframes logicPath { 0%, 100% { stroke: #8A2BE2; stroke-width: 1.2; } 50% { stroke: #00FFC8; stroke-width: 2; } }
+  @keyframes dialMax { 0%, 100% { transform: rotate(-45deg); stroke: #8A2BE2; } 50% { transform: rotate(45deg); stroke: #00FFC8; } }
+  @keyframes pulseCyan { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+  @keyframes pulseCyanLine { 0% { stroke-dashoffset: 100; opacity: 0.5; } 50% { opacity: 1; stroke-width: 1.5; } 100% { stroke-dashoffset: -100; opacity: 0.5; } }
+  @keyframes coreSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes familiarBreathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+
+  .anim-cat-eyes { animation: catEyeScan 4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-cat-ear-l { animation: catEarTwitchL 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom right; will-change: transform; }
+  .anim-cat-ear-r { animation: catEarTwitchR 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom left; will-change: transform; }
+  .anim-cat-whisker { animation: catWhisker 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-crystal { animation: pulseCyan 3s infinite alternate; }
+  .anim-ai-laser { animation: aiLaserScan 2.5s linear infinite; transform-box: fill-box; }
+  .anim-bot-gear { animation: botGearSpin 6s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-web-build { stroke-dasharray: 40; animation: webBuild 2s ease-out infinite alternate; }
+  .anim-funnel-drop { animation: funnelDrop 2s ease-in infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-diamond-glint { animation: diamondGlint 3s ease-in-out infinite; }
+  .anim-cursor { animation: typeCursor 0.8s steps(2) infinite; }
+  .anim-hypno { animation: hypnoSpin 10s linear infinite alternate; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-eq-1 { animation: eqBounce1 0.7s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-eq-2 { animation: eqBounce2 0.5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-eq-3 { animation: eqBounce3 0.9s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-api-ping { stroke-dasharray: 5 10; animation: apiPing 1s linear infinite; }
+  .anim-seo-up { animation: seoUp 2s ease-in-out infinite; }
+  .anim-ripple { animation: rippleWave 2s cubic-bezier(0.1, 0.5, 0.9, 1) infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-ui-click { animation: uiClick 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-cloud { animation: cloudFloat 4s ease-in-out infinite; }
+  .anim-coin-flip { animation: coinFlip 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-orbit { animation: orbitSpin 8s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-deflect { animation: shieldDeflect 2s ease-in-out infinite; }
+  .anim-ml-node { animation: mlThink 1.5s ease-in-out infinite; }
+  .anim-logic-path { animation: logicPath 2s ease-in-out infinite; }
+  .anim-dial { animation: dialMax 3s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite; transform-box: fill-box; transform-origin: bottom center; will-change: transform; }
+  .anim-glow-cyan { animation: pulseCyan 2s infinite; }
+  .anim-pulse-cyan { stroke-dasharray: 20 80; animation: pulseCyanLine 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+  .anim-spin-core { animation: coreSpin 10s linear infinite; transform-origin: center; transform-box: fill-box; will-change: transform; }
+  .anim-breathe { animation: familiarBreathe 4s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+
+            </style>
+
+      <rect x="10" y="2" width="4" height="4" rx="1" stroke="#8A2BE2"/>
+      <rect x="4" y="10" width="4" height="4" rx="1" stroke="#8A2BE2"/>
+      <rect x="16" y="10" width="4" height="4" rx="1" stroke="#8A2BE2"/>
+      <rect x="10" y="18" width="4" height="4" rx="1" stroke="#8A2BE2"/>
+      <path d="M12 6v2 M12 8H6v2" stroke="#8A2BE2"/>
+      <path d="M12 8h6v2 M18 14v2 M18 16h-6v2" class="anim-logic-path svg-glow-cyan"/>
+
+  </symbol>
+  <symbol id="ml-core" viewBox="0 0 24 24">
+
+            <style>
+
+  @keyframes catEyeScan { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-1.5px); } 75% { transform: translateX(1.5px); } }
+  @keyframes catEarTwitchL { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(-8deg); } }
+  @keyframes catEarTwitchR { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(8deg); } }
+  @keyframes catWhisker { 0%, 100% { transform: scaleX(1); } 50% { transform: scaleX(1.1); } }
+  @keyframes aiLaserScan { 0% { transform: translateY(-10px); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(10px); opacity: 0; } }
+  @keyframes botGearSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes webBuild { 0% { stroke-dashoffset: 40; } 100% { stroke-dashoffset: 0; } }
+  @keyframes funnelDrop { 0% { transform: translateY(-8px) scale(0.5); opacity: 0; } 50% { opacity: 1; transform: translateY(0px) scale(1); } 100% { transform: translateY(8px) scale(0.5); opacity: 0; } }
+  @keyframes diamondGlint { 0%, 100% { opacity: 0.3; filter: drop-shadow(0 0 2px #00FFC8); } 50% { opacity: 1; filter: drop-shadow(0 0 12px #00FFC8); } }
+  @keyframes typeCursor { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+  @keyframes hypnoSpin { from { transform: rotate(0deg) scale(1); } to { transform: rotate(360deg) scale(1.1); } }
+  @keyframes eqBounce1 { 0%, 100% { transform: scaleY(0.3); } 50% { transform: scaleY(1); } }
+  @keyframes eqBounce2 { 0%, 100% { transform: scaleY(0.6); } 50% { transform: scaleY(0.2); } }
+  @keyframes eqBounce3 { 0%, 100% { transform: scaleY(0.4); } 50% { transform: scaleY(0.9); } }
+  @keyframes apiPing { 0% { stroke-dashoffset: 15; } 100% { stroke-dashoffset: 0; } }
+  @keyframes seoUp { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+  @keyframes rippleWave { 0% { transform: scale(0.5); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
+  @keyframes uiClick { 0%, 100% { transform: scale(1); } 50% { transform: scale(0.9); } }
+  @keyframes cloudFloat { 0%, 100% { transform: translateY(-2px); } 50% { transform: translateY(2px); } }
+  @keyframes coinFlip { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
+  @keyframes orbitSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes shieldDeflect { 0%, 100% { opacity: 0; transform: translateX(-5px); } 50% { opacity: 1; transform: translateX(5px); } }
+  @keyframes mlThink { 0%, 100% { fill: #8A2BE2; r: 1; } 50% { fill: #00FFC8; r: 2; } }
+  @keyframes logicPath { 0%, 100% { stroke: #8A2BE2; stroke-width: 1.2; } 50% { stroke: #00FFC8; stroke-width: 2; } }
+  @keyframes dialMax { 0%, 100% { transform: rotate(-45deg); stroke: #8A2BE2; } 50% { transform: rotate(45deg); stroke: #00FFC8; } }
+  @keyframes pulseCyan { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+  @keyframes pulseCyanLine { 0% { stroke-dashoffset: 100; opacity: 0.5; } 50% { opacity: 1; stroke-width: 1.5; } 100% { stroke-dashoffset: -100; opacity: 0.5; } }
+  @keyframes coreSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes familiarBreathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+
+  .anim-cat-eyes { animation: catEyeScan 4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-cat-ear-l { animation: catEarTwitchL 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom right; will-change: transform; }
+  .anim-cat-ear-r { animation: catEarTwitchR 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom left; will-change: transform; }
+  .anim-cat-whisker { animation: catWhisker 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-crystal { animation: pulseCyan 3s infinite alternate; }
+  .anim-ai-laser { animation: aiLaserScan 2.5s linear infinite; transform-box: fill-box; }
+  .anim-bot-gear { animation: botGearSpin 6s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-web-build { stroke-dasharray: 40; animation: webBuild 2s ease-out infinite alternate; }
+  .anim-funnel-drop { animation: funnelDrop 2s ease-in infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-diamond-glint { animation: diamondGlint 3s ease-in-out infinite; }
+  .anim-cursor { animation: typeCursor 0.8s steps(2) infinite; }
+  .anim-hypno { animation: hypnoSpin 10s linear infinite alternate; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-eq-1 { animation: eqBounce1 0.7s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-eq-2 { animation: eqBounce2 0.5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-eq-3 { animation: eqBounce3 0.9s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-api-ping { stroke-dasharray: 5 10; animation: apiPing 1s linear infinite; }
+  .anim-seo-up { animation: seoUp 2s ease-in-out infinite; }
+  .anim-ripple { animation: rippleWave 2s cubic-bezier(0.1, 0.5, 0.9, 1) infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-ui-click { animation: uiClick 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-cloud { animation: cloudFloat 4s ease-in-out infinite; }
+  .anim-coin-flip { animation: coinFlip 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-orbit { animation: orbitSpin 8s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-deflect { animation: shieldDeflect 2s ease-in-out infinite; }
+  .anim-ml-node { animation: mlThink 1.5s ease-in-out infinite; }
+  .anim-logic-path { animation: logicPath 2s ease-in-out infinite; }
+  .anim-dial { animation: dialMax 3s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite; transform-box: fill-box; transform-origin: bottom center; will-change: transform; }
+  .anim-glow-cyan { animation: pulseCyan 2s infinite; }
+  .anim-pulse-cyan { stroke-dasharray: 20 80; animation: pulseCyanLine 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+  .anim-spin-core { animation: coreSpin 10s linear infinite; transform-origin: center; transform-box: fill-box; will-change: transform; }
+  .anim-breathe { animation: familiarBreathe 4s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+
+            </style>
+
+      <path d="M12 3a7 7 0 00-7 7c0 2 1 4 2 5s2 5 2 6h6c0-1 1-5 2-6s2-3 2-5a7 7 0 00-7-7z" stroke="#8A2BE2"/>
+      <path d="M9 10l3-3 3 3 M9 14l3-3 3 3" stroke="#8A2BE2" opacity="0.5"/>
+      <circle cx="12" cy="7" r="1" class="anim-ml-node svg-glow-cyan" stroke="none"/>
+      <circle cx="9" cy="10" r="1" class="anim-ml-node svg-glow-cyan" style="animation-delay: 0.5s;" stroke="none"/>
+      <circle cx="15" cy="10" r="1" class="anim-ml-node svg-glow-cyan" style="animation-delay: 1s;" stroke="none"/>
+      <circle cx="12" cy="14" r="1" class="anim-ml-node svg-glow-cyan" style="animation-delay: 1.5s;" stroke="none"/>
+
+  </symbol>
+  <symbol id="prompt-eng" viewBox="0 0 24 24">
+
+            <style>
+
+  @keyframes catEyeScan { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-1.5px); } 75% { transform: translateX(1.5px); } }
+  @keyframes catEarTwitchL { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(-8deg); } }
+  @keyframes catEarTwitchR { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(8deg); } }
+  @keyframes catWhisker { 0%, 100% { transform: scaleX(1); } 50% { transform: scaleX(1.1); } }
+  @keyframes aiLaserScan { 0% { transform: translateY(-10px); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(10px); opacity: 0; } }
+  @keyframes botGearSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes webBuild { 0% { stroke-dashoffset: 40; } 100% { stroke-dashoffset: 0; } }
+  @keyframes funnelDrop { 0% { transform: translateY(-8px) scale(0.5); opacity: 0; } 50% { opacity: 1; transform: translateY(0px) scale(1); } 100% { transform: translateY(8px) scale(0.5); opacity: 0; } }
+  @keyframes diamondGlint { 0%, 100% { opacity: 0.3; filter: drop-shadow(0 0 2px #00FFC8); } 50% { opacity: 1; filter: drop-shadow(0 0 12px #00FFC8); } }
+  @keyframes typeCursor { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+  @keyframes hypnoSpin { from { transform: rotate(0deg) scale(1); } to { transform: rotate(360deg) scale(1.1); } }
+  @keyframes eqBounce1 { 0%, 100% { transform: scaleY(0.3); } 50% { transform: scaleY(1); } }
+  @keyframes eqBounce2 { 0%, 100% { transform: scaleY(0.6); } 50% { transform: scaleY(0.2); } }
+  @keyframes eqBounce3 { 0%, 100% { transform: scaleY(0.4); } 50% { transform: scaleY(0.9); } }
+  @keyframes apiPing { 0% { stroke-dashoffset: 15; } 100% { stroke-dashoffset: 0; } }
+  @keyframes seoUp { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+  @keyframes rippleWave { 0% { transform: scale(0.5); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
+  @keyframes uiClick { 0%, 100% { transform: scale(1); } 50% { transform: scale(0.9); } }
+  @keyframes cloudFloat { 0%, 100% { transform: translateY(-2px); } 50% { transform: translateY(2px); } }
+  @keyframes coinFlip { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
+  @keyframes orbitSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes shieldDeflect { 0%, 100% { opacity: 0; transform: translateX(-5px); } 50% { opacity: 1; transform: translateX(5px); } }
+  @keyframes mlThink { 0%, 100% { fill: #8A2BE2; r: 1; } 50% { fill: #00FFC8; r: 2; } }
+  @keyframes logicPath { 0%, 100% { stroke: #8A2BE2; stroke-width: 1.2; } 50% { stroke: #00FFC8; stroke-width: 2; } }
+  @keyframes dialMax { 0%, 100% { transform: rotate(-45deg); stroke: #8A2BE2; } 50% { transform: rotate(45deg); stroke: #00FFC8; } }
+  @keyframes pulseCyan { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+  @keyframes pulseCyanLine { 0% { stroke-dashoffset: 100; opacity: 0.5; } 50% { opacity: 1; stroke-width: 1.5; } 100% { stroke-dashoffset: -100; opacity: 0.5; } }
+  @keyframes coreSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes familiarBreathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+
+  .anim-cat-eyes { animation: catEyeScan 4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-cat-ear-l { animation: catEarTwitchL 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom right; will-change: transform; }
+  .anim-cat-ear-r { animation: catEarTwitchR 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom left; will-change: transform; }
+  .anim-cat-whisker { animation: catWhisker 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-crystal { animation: pulseCyan 3s infinite alternate; }
+  .anim-ai-laser { animation: aiLaserScan 2.5s linear infinite; transform-box: fill-box; }
+  .anim-bot-gear { animation: botGearSpin 6s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-web-build { stroke-dasharray: 40; animation: webBuild 2s ease-out infinite alternate; }
+  .anim-funnel-drop { animation: funnelDrop 2s ease-in infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-diamond-glint { animation: diamondGlint 3s ease-in-out infinite; }
+  .anim-cursor { animation: typeCursor 0.8s steps(2) infinite; }
+  .anim-hypno { animation: hypnoSpin 10s linear infinite alternate; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-eq-1 { animation: eqBounce1 0.7s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-eq-2 { animation: eqBounce2 0.5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-eq-3 { animation: eqBounce3 0.9s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-api-ping { stroke-dasharray: 5 10; animation: apiPing 1s linear infinite; }
+  .anim-seo-up { animation: seoUp 2s ease-in-out infinite; }
+  .anim-ripple { animation: rippleWave 2s cubic-bezier(0.1, 0.5, 0.9, 1) infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-ui-click { animation: uiClick 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-cloud { animation: cloudFloat 4s ease-in-out infinite; }
+  .anim-coin-flip { animation: coinFlip 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-orbit { animation: orbitSpin 8s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-deflect { animation: shieldDeflect 2s ease-in-out infinite; }
+  .anim-ml-node { animation: mlThink 1.5s ease-in-out infinite; }
+  .anim-logic-path { animation: logicPath 2s ease-in-out infinite; }
+  .anim-dial { animation: dialMax 3s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite; transform-box: fill-box; transform-origin: bottom center; will-change: transform; }
+  .anim-glow-cyan { animation: pulseCyan 2s infinite; }
+  .anim-pulse-cyan { stroke-dasharray: 20 80; animation: pulseCyanLine 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+  .anim-spin-core { animation: coreSpin 10s linear infinite; transform-origin: center; transform-box: fill-box; will-change: transform; }
+  .anim-breathe { animation: familiarBreathe 4s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+
+            </style>
+
+      <path d="M4 8l4 4-4 4" stroke="#8A2BE2"/>
+      <line x1="10" y1="16" x2="14" y2="16" stroke="#00FFC8" stroke-width="2" class="anim-cursor svg-glow-cyan"/>
+      <path d="M16 8c2 0 4 2 4 4s-2 4-4 4" stroke="#8A2BE2" stroke-dasharray="2 2"/>
+      <circle cx="16" cy="12" r="2" fill="#00FFC8" stroke="none" class="anim-glow-cyan svg-glow-cyan"/>
+
+  </symbol>
+  <symbol id="psy-influence" viewBox="0 0 24 24">
+
+            <style>
+
+  @keyframes catEyeScan { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-1.5px); } 75% { transform: translateX(1.5px); } }
+  @keyframes catEarTwitchL { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(-8deg); } }
+  @keyframes catEarTwitchR { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(8deg); } }
+  @keyframes catWhisker { 0%, 100% { transform: scaleX(1); } 50% { transform: scaleX(1.1); } }
+  @keyframes aiLaserScan { 0% { transform: translateY(-10px); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(10px); opacity: 0; } }
+  @keyframes botGearSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes webBuild { 0% { stroke-dashoffset: 40; } 100% { stroke-dashoffset: 0; } }
+  @keyframes funnelDrop { 0% { transform: translateY(-8px) scale(0.5); opacity: 0; } 50% { opacity: 1; transform: translateY(0px) scale(1); } 100% { transform: translateY(8px) scale(0.5); opacity: 0; } }
+  @keyframes diamondGlint { 0%, 100% { opacity: 0.3; filter: drop-shadow(0 0 2px #00FFC8); } 50% { opacity: 1; filter: drop-shadow(0 0 12px #00FFC8); } }
+  @keyframes typeCursor { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+  @keyframes hypnoSpin { from { transform: rotate(0deg) scale(1); } to { transform: rotate(360deg) scale(1.1); } }
+  @keyframes eqBounce1 { 0%, 100% { transform: scaleY(0.3); } 50% { transform: scaleY(1); } }
+  @keyframes eqBounce2 { 0%, 100% { transform: scaleY(0.6); } 50% { transform: scaleY(0.2); } }
+  @keyframes eqBounce3 { 0%, 100% { transform: scaleY(0.4); } 50% { transform: scaleY(0.9); } }
+  @keyframes apiPing { 0% { stroke-dashoffset: 15; } 100% { stroke-dashoffset: 0; } }
+  @keyframes seoUp { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+  @keyframes rippleWave { 0% { transform: scale(0.5); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
+  @keyframes uiClick { 0%, 100% { transform: scale(1); } 50% { transform: scale(0.9); } }
+  @keyframes cloudFloat { 0%, 100% { transform: translateY(-2px); } 50% { transform: translateY(2px); } }
+  @keyframes coinFlip { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
+  @keyframes orbitSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes shieldDeflect { 0%, 100% { opacity: 0; transform: translateX(-5px); } 50% { opacity: 1; transform: translateX(5px); } }
+  @keyframes mlThink { 0%, 100% { fill: #8A2BE2; r: 1; } 50% { fill: #00FFC8; r: 2; } }
+  @keyframes logicPath { 0%, 100% { stroke: #8A2BE2; stroke-width: 1.2; } 50% { stroke: #00FFC8; stroke-width: 2; } }
+  @keyframes dialMax { 0%, 100% { transform: rotate(-45deg); stroke: #8A2BE2; } 50% { transform: rotate(45deg); stroke: #00FFC8; } }
+  @keyframes pulseCyan { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+  @keyframes pulseCyanLine { 0% { stroke-dashoffset: 100; opacity: 0.5; } 50% { opacity: 1; stroke-width: 1.5; } 100% { stroke-dashoffset: -100; opacity: 0.5; } }
+  @keyframes coreSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes familiarBreathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+
+  .anim-cat-eyes { animation: catEyeScan 4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-cat-ear-l { animation: catEarTwitchL 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom right; will-change: transform; }
+  .anim-cat-ear-r { animation: catEarTwitchR 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom left; will-change: transform; }
+  .anim-cat-whisker { animation: catWhisker 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-crystal { animation: pulseCyan 3s infinite alternate; }
+  .anim-ai-laser { animation: aiLaserScan 2.5s linear infinite; transform-box: fill-box; }
+  .anim-bot-gear { animation: botGearSpin 6s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-web-build { stroke-dasharray: 40; animation: webBuild 2s ease-out infinite alternate; }
+  .anim-funnel-drop { animation: funnelDrop 2s ease-in infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-diamond-glint { animation: diamondGlint 3s ease-in-out infinite; }
+  .anim-cursor { animation: typeCursor 0.8s steps(2) infinite; }
+  .anim-hypno { animation: hypnoSpin 10s linear infinite alternate; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-eq-1 { animation: eqBounce1 0.7s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-eq-2 { animation: eqBounce2 0.5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-eq-3 { animation: eqBounce3 0.9s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-api-ping { stroke-dasharray: 5 10; animation: apiPing 1s linear infinite; }
+  .anim-seo-up { animation: seoUp 2s ease-in-out infinite; }
+  .anim-ripple { animation: rippleWave 2s cubic-bezier(0.1, 0.5, 0.9, 1) infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-ui-click { animation: uiClick 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-cloud { animation: cloudFloat 4s ease-in-out infinite; }
+  .anim-coin-flip { animation: coinFlip 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-orbit { animation: orbitSpin 8s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-deflect { animation: shieldDeflect 2s ease-in-out infinite; }
+  .anim-ml-node { animation: mlThink 1.5s ease-in-out infinite; }
+  .anim-logic-path { animation: logicPath 2s ease-in-out infinite; }
+  .anim-dial { animation: dialMax 3s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite; transform-box: fill-box; transform-origin: bottom center; will-change: transform; }
+  .anim-glow-cyan { animation: pulseCyan 2s infinite; }
+  .anim-pulse-cyan { stroke-dasharray: 20 80; animation: pulseCyanLine 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+  .anim-spin-core { animation: coreSpin 10s linear infinite; transform-origin: center; transform-box: fill-box; will-change: transform; }
+  .anim-breathe { animation: familiarBreathe 4s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+
+            </style>
+
+      <circle cx="12" cy="12" r="10" stroke="#8A2BE2" opacity="0.3"/>
+      <g class="anim-hypno">
+        <circle cx="12" cy="12" r="7" stroke="#8A2BE2"/>
+        <path d="M12 5a7 7 0 0 1 7 7" stroke="#00FFC8" stroke-width="2" class="svg-glow-cyan"/>
+        <circle cx="12" cy="12" r="4" stroke="#8A2BE2"/>
+        <path d="M12 16a4 4 0 0 1-4-4" stroke="#00FFC8" stroke-width="2" class="svg-glow-cyan"/>
+      </g>
+      <circle cx="12" cy="12" r="1" fill="#00FFC8" stroke="none" class="svg-glow-cyan"/>
+
+  </symbol>
+  <symbol id="saas-eco" viewBox="0 0 24 24">
+
+            <style>
+
+  @keyframes catEyeScan { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-1.5px); } 75% { transform: translateX(1.5px); } }
+  @keyframes catEarTwitchL { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(-8deg); } }
+  @keyframes catEarTwitchR { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(8deg); } }
+  @keyframes catWhisker { 0%, 100% { transform: scaleX(1); } 50% { transform: scaleX(1.1); } }
+  @keyframes aiLaserScan { 0% { transform: translateY(-10px); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(10px); opacity: 0; } }
+  @keyframes botGearSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes webBuild { 0% { stroke-dashoffset: 40; } 100% { stroke-dashoffset: 0; } }
+  @keyframes funnelDrop { 0% { transform: translateY(-8px) scale(0.5); opacity: 0; } 50% { opacity: 1; transform: translateY(0px) scale(1); } 100% { transform: translateY(8px) scale(0.5); opacity: 0; } }
+  @keyframes diamondGlint { 0%, 100% { opacity: 0.3; filter: drop-shadow(0 0 2px #00FFC8); } 50% { opacity: 1; filter: drop-shadow(0 0 12px #00FFC8); } }
+  @keyframes typeCursor { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+  @keyframes hypnoSpin { from { transform: rotate(0deg) scale(1); } to { transform: rotate(360deg) scale(1.1); } }
+  @keyframes eqBounce1 { 0%, 100% { transform: scaleY(0.3); } 50% { transform: scaleY(1); } }
+  @keyframes eqBounce2 { 0%, 100% { transform: scaleY(0.6); } 50% { transform: scaleY(0.2); } }
+  @keyframes eqBounce3 { 0%, 100% { transform: scaleY(0.4); } 50% { transform: scaleY(0.9); } }
+  @keyframes apiPing { 0% { stroke-dashoffset: 15; } 100% { stroke-dashoffset: 0; } }
+  @keyframes seoUp { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+  @keyframes rippleWave { 0% { transform: scale(0.5); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
+  @keyframes uiClick { 0%, 100% { transform: scale(1); } 50% { transform: scale(0.9); } }
+  @keyframes cloudFloat { 0%, 100% { transform: translateY(-2px); } 50% { transform: translateY(2px); } }
+  @keyframes coinFlip { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
+  @keyframes orbitSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes shieldDeflect { 0%, 100% { opacity: 0; transform: translateX(-5px); } 50% { opacity: 1; transform: translateX(5px); } }
+  @keyframes mlThink { 0%, 100% { fill: #8A2BE2; r: 1; } 50% { fill: #00FFC8; r: 2; } }
+  @keyframes logicPath { 0%, 100% { stroke: #8A2BE2; stroke-width: 1.2; } 50% { stroke: #00FFC8; stroke-width: 2; } }
+  @keyframes dialMax { 0%, 100% { transform: rotate(-45deg); stroke: #8A2BE2; } 50% { transform: rotate(45deg); stroke: #00FFC8; } }
+  @keyframes pulseCyan { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+  @keyframes pulseCyanLine { 0% { stroke-dashoffset: 100; opacity: 0.5; } 50% { opacity: 1; stroke-width: 1.5; } 100% { stroke-dashoffset: -100; opacity: 0.5; } }
+  @keyframes coreSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes familiarBreathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+
+  .anim-cat-eyes { animation: catEyeScan 4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-cat-ear-l { animation: catEarTwitchL 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom right; will-change: transform; }
+  .anim-cat-ear-r { animation: catEarTwitchR 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom left; will-change: transform; }
+  .anim-cat-whisker { animation: catWhisker 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-crystal { animation: pulseCyan 3s infinite alternate; }
+  .anim-ai-laser { animation: aiLaserScan 2.5s linear infinite; transform-box: fill-box; }
+  .anim-bot-gear { animation: botGearSpin 6s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-web-build { stroke-dasharray: 40; animation: webBuild 2s ease-out infinite alternate; }
+  .anim-funnel-drop { animation: funnelDrop 2s ease-in infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-diamond-glint { animation: diamondGlint 3s ease-in-out infinite; }
+  .anim-cursor { animation: typeCursor 0.8s steps(2) infinite; }
+  .anim-hypno { animation: hypnoSpin 10s linear infinite alternate; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-eq-1 { animation: eqBounce1 0.7s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-eq-2 { animation: eqBounce2 0.5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-eq-3 { animation: eqBounce3 0.9s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-api-ping { stroke-dasharray: 5 10; animation: apiPing 1s linear infinite; }
+  .anim-seo-up { animation: seoUp 2s ease-in-out infinite; }
+  .anim-ripple { animation: rippleWave 2s cubic-bezier(0.1, 0.5, 0.9, 1) infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-ui-click { animation: uiClick 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-cloud { animation: cloudFloat 4s ease-in-out infinite; }
+  .anim-coin-flip { animation: coinFlip 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-orbit { animation: orbitSpin 8s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-deflect { animation: shieldDeflect 2s ease-in-out infinite; }
+  .anim-ml-node { animation: mlThink 1.5s ease-in-out infinite; }
+  .anim-logic-path { animation: logicPath 2s ease-in-out infinite; }
+  .anim-dial { animation: dialMax 3s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite; transform-box: fill-box; transform-origin: bottom center; will-change: transform; }
+  .anim-glow-cyan { animation: pulseCyan 2s infinite; }
+  .anim-pulse-cyan { stroke-dasharray: 20 80; animation: pulseCyanLine 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+  .anim-spin-core { animation: coreSpin 10s linear infinite; transform-origin: center; transform-box: fill-box; will-change: transform; }
+  .anim-breathe { animation: familiarBreathe 4s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+
+            </style>
+
+      <circle cx="12" cy="12" r="4" fill="#8A2BE2" stroke="none"/>
+      <g class="anim-orbit">
+        <circle cx="12" cy="12" r="8" stroke="#8A2BE2" stroke-dasharray="4 4"/>
+        <circle cx="12" cy="4" r="2" fill="#00FFC8" stroke="none" class="anim-glow-cyan svg-glow-cyan"/>
+        <circle cx="20" cy="12" r="1.5" fill="#00FFC8" stroke="none" class="svg-glow-cyan"/>
+        <circle cx="4" cy="12" r="1" fill="#F0F0F5" stroke="none"/>
+      </g>
+      <circle cx="12" cy="12" r="1.5" fill="#00FFC8" stroke="none" class="svg-glow-cyan"/>
+
+  </symbol>
+  <symbol id="sales-funnel" viewBox="0 0 24 24">
+
+            <style>
+
+  @keyframes catEyeScan { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-1.5px); } 75% { transform: translateX(1.5px); } }
+  @keyframes catEarTwitchL { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(-8deg); } }
+  @keyframes catEarTwitchR { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(8deg); } }
+  @keyframes catWhisker { 0%, 100% { transform: scaleX(1); } 50% { transform: scaleX(1.1); } }
+  @keyframes aiLaserScan { 0% { transform: translateY(-10px); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(10px); opacity: 0; } }
+  @keyframes botGearSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes webBuild { 0% { stroke-dashoffset: 40; } 100% { stroke-dashoffset: 0; } }
+  @keyframes funnelDrop { 0% { transform: translateY(-8px) scale(0.5); opacity: 0; } 50% { opacity: 1; transform: translateY(0px) scale(1); } 100% { transform: translateY(8px) scale(0.5); opacity: 0; } }
+  @keyframes diamondGlint { 0%, 100% { opacity: 0.3; filter: drop-shadow(0 0 2px #00FFC8); } 50% { opacity: 1; filter: drop-shadow(0 0 12px #00FFC8); } }
+  @keyframes typeCursor { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+  @keyframes hypnoSpin { from { transform: rotate(0deg) scale(1); } to { transform: rotate(360deg) scale(1.1); } }
+  @keyframes eqBounce1 { 0%, 100% { transform: scaleY(0.3); } 50% { transform: scaleY(1); } }
+  @keyframes eqBounce2 { 0%, 100% { transform: scaleY(0.6); } 50% { transform: scaleY(0.2); } }
+  @keyframes eqBounce3 { 0%, 100% { transform: scaleY(0.4); } 50% { transform: scaleY(0.9); } }
+  @keyframes apiPing { 0% { stroke-dashoffset: 15; } 100% { stroke-dashoffset: 0; } }
+  @keyframes seoUp { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+  @keyframes rippleWave { 0% { transform: scale(0.5); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
+  @keyframes uiClick { 0%, 100% { transform: scale(1); } 50% { transform: scale(0.9); } }
+  @keyframes cloudFloat { 0%, 100% { transform: translateY(-2px); } 50% { transform: translateY(2px); } }
+  @keyframes coinFlip { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
+  @keyframes orbitSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes shieldDeflect { 0%, 100% { opacity: 0; transform: translateX(-5px); } 50% { opacity: 1; transform: translateX(5px); } }
+  @keyframes mlThink { 0%, 100% { fill: #8A2BE2; r: 1; } 50% { fill: #00FFC8; r: 2; } }
+  @keyframes logicPath { 0%, 100% { stroke: #8A2BE2; stroke-width: 1.2; } 50% { stroke: #00FFC8; stroke-width: 2; } }
+  @keyframes dialMax { 0%, 100% { transform: rotate(-45deg); stroke: #8A2BE2; } 50% { transform: rotate(45deg); stroke: #00FFC8; } }
+  @keyframes pulseCyan { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+  @keyframes pulseCyanLine { 0% { stroke-dashoffset: 100; opacity: 0.5; } 50% { opacity: 1; stroke-width: 1.5; } 100% { stroke-dashoffset: -100; opacity: 0.5; } }
+  @keyframes coreSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes familiarBreathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+
+  .anim-cat-eyes { animation: catEyeScan 4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-cat-ear-l { animation: catEarTwitchL 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom right; will-change: transform; }
+  .anim-cat-ear-r { animation: catEarTwitchR 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom left; will-change: transform; }
+  .anim-cat-whisker { animation: catWhisker 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-crystal { animation: pulseCyan 3s infinite alternate; }
+  .anim-ai-laser { animation: aiLaserScan 2.5s linear infinite; transform-box: fill-box; }
+  .anim-bot-gear { animation: botGearSpin 6s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-web-build { stroke-dasharray: 40; animation: webBuild 2s ease-out infinite alternate; }
+  .anim-funnel-drop { animation: funnelDrop 2s ease-in infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-diamond-glint { animation: diamondGlint 3s ease-in-out infinite; }
+  .anim-cursor { animation: typeCursor 0.8s steps(2) infinite; }
+  .anim-hypno { animation: hypnoSpin 10s linear infinite alternate; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-eq-1 { animation: eqBounce1 0.7s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-eq-2 { animation: eqBounce2 0.5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-eq-3 { animation: eqBounce3 0.9s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-api-ping { stroke-dasharray: 5 10; animation: apiPing 1s linear infinite; }
+  .anim-seo-up { animation: seoUp 2s ease-in-out infinite; }
+  .anim-ripple { animation: rippleWave 2s cubic-bezier(0.1, 0.5, 0.9, 1) infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-ui-click { animation: uiClick 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-cloud { animation: cloudFloat 4s ease-in-out infinite; }
+  .anim-coin-flip { animation: coinFlip 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-orbit { animation: orbitSpin 8s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-deflect { animation: shieldDeflect 2s ease-in-out infinite; }
+  .anim-ml-node { animation: mlThink 1.5s ease-in-out infinite; }
+  .anim-logic-path { animation: logicPath 2s ease-in-out infinite; }
+  .anim-dial { animation: dialMax 3s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite; transform-box: fill-box; transform-origin: bottom center; will-change: transform; }
+  .anim-glow-cyan { animation: pulseCyan 2s infinite; }
+  .anim-pulse-cyan { stroke-dasharray: 20 80; animation: pulseCyanLine 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+  .anim-spin-core { animation: coreSpin 10s linear infinite; transform-origin: center; transform-box: fill-box; will-change: transform; }
+  .anim-breathe { animation: familiarBreathe 4s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+
+            </style>
+
+      <path d="M3 4l8 10v6l2 2v-8l8-10H3z" stroke="#8A2BE2"/>
+      <path d="M7 8h10 M10 12h4" stroke="#8A2BE2" opacity="0.5"/>
+      <circle cx="12" cy="6" r="1.5" fill="#00FFC8" stroke="none" class="anim-funnel-drop svg-glow-cyan"/>
+      <circle cx="12" cy="18" r="2" fill="#00FFC8" stroke="none" class="anim-glow-cyan"/>
+
+  </symbol>
+  <symbol id="seo-dominance" viewBox="0 0 24 24">
+
+            <style>
+
+  @keyframes catEyeScan { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-1.5px); } 75% { transform: translateX(1.5px); } }
+  @keyframes catEarTwitchL { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(-8deg); } }
+  @keyframes catEarTwitchR { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(8deg); } }
+  @keyframes catWhisker { 0%, 100% { transform: scaleX(1); } 50% { transform: scaleX(1.1); } }
+  @keyframes aiLaserScan { 0% { transform: translateY(-10px); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(10px); opacity: 0; } }
+  @keyframes botGearSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes webBuild { 0% { stroke-dashoffset: 40; } 100% { stroke-dashoffset: 0; } }
+  @keyframes funnelDrop { 0% { transform: translateY(-8px) scale(0.5); opacity: 0; } 50% { opacity: 1; transform: translateY(0px) scale(1); } 100% { transform: translateY(8px) scale(0.5); opacity: 0; } }
+  @keyframes diamondGlint { 0%, 100% { opacity: 0.3; filter: drop-shadow(0 0 2px #00FFC8); } 50% { opacity: 1; filter: drop-shadow(0 0 12px #00FFC8); } }
+  @keyframes typeCursor { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+  @keyframes hypnoSpin { from { transform: rotate(0deg) scale(1); } to { transform: rotate(360deg) scale(1.1); } }
+  @keyframes eqBounce1 { 0%, 100% { transform: scaleY(0.3); } 50% { transform: scaleY(1); } }
+  @keyframes eqBounce2 { 0%, 100% { transform: scaleY(0.6); } 50% { transform: scaleY(0.2); } }
+  @keyframes eqBounce3 { 0%, 100% { transform: scaleY(0.4); } 50% { transform: scaleY(0.9); } }
+  @keyframes apiPing { 0% { stroke-dashoffset: 15; } 100% { stroke-dashoffset: 0; } }
+  @keyframes seoUp { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+  @keyframes rippleWave { 0% { transform: scale(0.5); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
+  @keyframes uiClick { 0%, 100% { transform: scale(1); } 50% { transform: scale(0.9); } }
+  @keyframes cloudFloat { 0%, 100% { transform: translateY(-2px); } 50% { transform: translateY(2px); } }
+  @keyframes coinFlip { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
+  @keyframes orbitSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes shieldDeflect { 0%, 100% { opacity: 0; transform: translateX(-5px); } 50% { opacity: 1; transform: translateX(5px); } }
+  @keyframes mlThink { 0%, 100% { fill: #8A2BE2; r: 1; } 50% { fill: #00FFC8; r: 2; } }
+  @keyframes logicPath { 0%, 100% { stroke: #8A2BE2; stroke-width: 1.2; } 50% { stroke: #00FFC8; stroke-width: 2; } }
+  @keyframes dialMax { 0%, 100% { transform: rotate(-45deg); stroke: #8A2BE2; } 50% { transform: rotate(45deg); stroke: #00FFC8; } }
+  @keyframes pulseCyan { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+  @keyframes pulseCyanLine { 0% { stroke-dashoffset: 100; opacity: 0.5; } 50% { opacity: 1; stroke-width: 1.5; } 100% { stroke-dashoffset: -100; opacity: 0.5; } }
+  @keyframes coreSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes familiarBreathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+
+  .anim-cat-eyes { animation: catEyeScan 4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-cat-ear-l { animation: catEarTwitchL 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom right; will-change: transform; }
+  .anim-cat-ear-r { animation: catEarTwitchR 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom left; will-change: transform; }
+  .anim-cat-whisker { animation: catWhisker 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-crystal { animation: pulseCyan 3s infinite alternate; }
+  .anim-ai-laser { animation: aiLaserScan 2.5s linear infinite; transform-box: fill-box; }
+  .anim-bot-gear { animation: botGearSpin 6s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-web-build { stroke-dasharray: 40; animation: webBuild 2s ease-out infinite alternate; }
+  .anim-funnel-drop { animation: funnelDrop 2s ease-in infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-diamond-glint { animation: diamondGlint 3s ease-in-out infinite; }
+  .anim-cursor { animation: typeCursor 0.8s steps(2) infinite; }
+  .anim-hypno { animation: hypnoSpin 10s linear infinite alternate; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-eq-1 { animation: eqBounce1 0.7s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-eq-2 { animation: eqBounce2 0.5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-eq-3 { animation: eqBounce3 0.9s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-api-ping { stroke-dasharray: 5 10; animation: apiPing 1s linear infinite; }
+  .anim-seo-up { animation: seoUp 2s ease-in-out infinite; }
+  .anim-ripple { animation: rippleWave 2s cubic-bezier(0.1, 0.5, 0.9, 1) infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-ui-click { animation: uiClick 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-cloud { animation: cloudFloat 4s ease-in-out infinite; }
+  .anim-coin-flip { animation: coinFlip 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-orbit { animation: orbitSpin 8s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-deflect { animation: shieldDeflect 2s ease-in-out infinite; }
+  .anim-ml-node { animation: mlThink 1.5s ease-in-out infinite; }
+  .anim-logic-path { animation: logicPath 2s ease-in-out infinite; }
+  .anim-dial { animation: dialMax 3s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite; transform-box: fill-box; transform-origin: bottom center; will-change: transform; }
+  .anim-glow-cyan { animation: pulseCyan 2s infinite; }
+  .anim-pulse-cyan { stroke-dasharray: 20 80; animation: pulseCyanLine 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+  .anim-spin-core { animation: coreSpin 10s linear infinite; transform-origin: center; transform-box: fill-box; will-change: transform; }
+  .anim-breathe { animation: familiarBreathe 4s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+
+            </style>
+
+      <path d="M3 20h18 M3 4v16" stroke="#8A2BE2"/>
+      <path d="M3 16l6-6 4 4" stroke="#8A2BE2"/>
+      <path d="M13 14l8-10" stroke="#00FFC8" stroke-width="1.5" class="svg-glow-cyan"/>
+      <polygon points="21,4 17,4 21,8" fill="#00FFC8" stroke="#00FFC8" class="anim-seo-up svg-glow-cyan"/>
+
+  </symbol>
+  <symbol id="tg-bot-core" viewBox="0 0 24 24">
+
+            <style>
+
+  @keyframes catEyeScan { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-1.5px); } 75% { transform: translateX(1.5px); } }
+  @keyframes catEarTwitchL { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(-8deg); } }
+  @keyframes catEarTwitchR { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(8deg); } }
+  @keyframes catWhisker { 0%, 100% { transform: scaleX(1); } 50% { transform: scaleX(1.1); } }
+  @keyframes aiLaserScan { 0% { transform: translateY(-10px); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(10px); opacity: 0; } }
+  @keyframes botGearSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes webBuild { 0% { stroke-dashoffset: 40; } 100% { stroke-dashoffset: 0; } }
+  @keyframes funnelDrop { 0% { transform: translateY(-8px) scale(0.5); opacity: 0; } 50% { opacity: 1; transform: translateY(0px) scale(1); } 100% { transform: translateY(8px) scale(0.5); opacity: 0; } }
+  @keyframes diamondGlint { 0%, 100% { opacity: 0.3; filter: drop-shadow(0 0 2px #00FFC8); } 50% { opacity: 1; filter: drop-shadow(0 0 12px #00FFC8); } }
+  @keyframes typeCursor { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+  @keyframes hypnoSpin { from { transform: rotate(0deg) scale(1); } to { transform: rotate(360deg) scale(1.1); } }
+  @keyframes eqBounce1 { 0%, 100% { transform: scaleY(0.3); } 50% { transform: scaleY(1); } }
+  @keyframes eqBounce2 { 0%, 100% { transform: scaleY(0.6); } 50% { transform: scaleY(0.2); } }
+  @keyframes eqBounce3 { 0%, 100% { transform: scaleY(0.4); } 50% { transform: scaleY(0.9); } }
+  @keyframes apiPing { 0% { stroke-dashoffset: 15; } 100% { stroke-dashoffset: 0; } }
+  @keyframes seoUp { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+  @keyframes rippleWave { 0% { transform: scale(0.5); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
+  @keyframes uiClick { 0%, 100% { transform: scale(1); } 50% { transform: scale(0.9); } }
+  @keyframes cloudFloat { 0%, 100% { transform: translateY(-2px); } 50% { transform: translateY(2px); } }
+  @keyframes coinFlip { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
+  @keyframes orbitSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes shieldDeflect { 0%, 100% { opacity: 0; transform: translateX(-5px); } 50% { opacity: 1; transform: translateX(5px); } }
+  @keyframes mlThink { 0%, 100% { fill: #8A2BE2; r: 1; } 50% { fill: #00FFC8; r: 2; } }
+  @keyframes logicPath { 0%, 100% { stroke: #8A2BE2; stroke-width: 1.2; } 50% { stroke: #00FFC8; stroke-width: 2; } }
+  @keyframes dialMax { 0%, 100% { transform: rotate(-45deg); stroke: #8A2BE2; } 50% { transform: rotate(45deg); stroke: #00FFC8; } }
+  @keyframes pulseCyan { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+  @keyframes pulseCyanLine { 0% { stroke-dashoffset: 100; opacity: 0.5; } 50% { opacity: 1; stroke-width: 1.5; } 100% { stroke-dashoffset: -100; opacity: 0.5; } }
+  @keyframes coreSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes familiarBreathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+
+  .anim-cat-eyes { animation: catEyeScan 4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-cat-ear-l { animation: catEarTwitchL 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom right; will-change: transform; }
+  .anim-cat-ear-r { animation: catEarTwitchR 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom left; will-change: transform; }
+  .anim-cat-whisker { animation: catWhisker 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-crystal { animation: pulseCyan 3s infinite alternate; }
+  .anim-ai-laser { animation: aiLaserScan 2.5s linear infinite; transform-box: fill-box; }
+  .anim-bot-gear { animation: botGearSpin 6s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-web-build { stroke-dasharray: 40; animation: webBuild 2s ease-out infinite alternate; }
+  .anim-funnel-drop { animation: funnelDrop 2s ease-in infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-diamond-glint { animation: diamondGlint 3s ease-in-out infinite; }
+  .anim-cursor { animation: typeCursor 0.8s steps(2) infinite; }
+  .anim-hypno { animation: hypnoSpin 10s linear infinite alternate; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-eq-1 { animation: eqBounce1 0.7s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-eq-2 { animation: eqBounce2 0.5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-eq-3 { animation: eqBounce3 0.9s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-api-ping { stroke-dasharray: 5 10; animation: apiPing 1s linear infinite; }
+  .anim-seo-up { animation: seoUp 2s ease-in-out infinite; }
+  .anim-ripple { animation: rippleWave 2s cubic-bezier(0.1, 0.5, 0.9, 1) infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-ui-click { animation: uiClick 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-cloud { animation: cloudFloat 4s ease-in-out infinite; }
+  .anim-coin-flip { animation: coinFlip 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-orbit { animation: orbitSpin 8s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-deflect { animation: shieldDeflect 2s ease-in-out infinite; }
+  .anim-ml-node { animation: mlThink 1.5s ease-in-out infinite; }
+  .anim-logic-path { animation: logicPath 2s ease-in-out infinite; }
+  .anim-dial { animation: dialMax 3s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite; transform-box: fill-box; transform-origin: bottom center; will-change: transform; }
+  .anim-glow-cyan { animation: pulseCyan 2s infinite; }
+  .anim-pulse-cyan { stroke-dasharray: 20 80; animation: pulseCyanLine 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+  .anim-spin-core { animation: coreSpin 10s linear infinite; transform-origin: center; transform-box: fill-box; will-change: transform; }
+  .anim-breathe { animation: familiarBreathe 4s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+
+            </style>
+
+      <path d="M12 2l10 5v10l-10 5-10-5V7z" stroke="#8A2BE2"/>
+      <g class="anim-bot-gear svg-glow-cyan">
+        <circle cx="12" cy="12" r="4" stroke="#00FFC8"/>
+        <path d="M12 6v2 M12 16v2 M6 12h2 M16 12h2 M7.5 7.5l1.5 1.5 M15 15l1.5 1.5 M7.5 16.5l1.5-1.5 M15 9l1.5-1.5" stroke="#00FFC8"/>
+      </g>
+      <circle cx="12" cy="12" r="1.5" fill="#00FFC8" stroke="none" class="anim-glow-cyan"/>
+
+  </symbol>
+  <symbol id="ui-ux" viewBox="0 0 24 24">
+
+            <style>
+
+  @keyframes catEyeScan { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-1.5px); } 75% { transform: translateX(1.5px); } }
+  @keyframes catEarTwitchL { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(-8deg); } }
+  @keyframes catEarTwitchR { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(8deg); } }
+  @keyframes catWhisker { 0%, 100% { transform: scaleX(1); } 50% { transform: scaleX(1.1); } }
+  @keyframes aiLaserScan { 0% { transform: translateY(-10px); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(10px); opacity: 0; } }
+  @keyframes botGearSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes webBuild { 0% { stroke-dashoffset: 40; } 100% { stroke-dashoffset: 0; } }
+  @keyframes funnelDrop { 0% { transform: translateY(-8px) scale(0.5); opacity: 0; } 50% { opacity: 1; transform: translateY(0px) scale(1); } 100% { transform: translateY(8px) scale(0.5); opacity: 0; } }
+  @keyframes diamondGlint { 0%, 100% { opacity: 0.3; filter: drop-shadow(0 0 2px #00FFC8); } 50% { opacity: 1; filter: drop-shadow(0 0 12px #00FFC8); } }
+  @keyframes typeCursor { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+  @keyframes hypnoSpin { from { transform: rotate(0deg) scale(1); } to { transform: rotate(360deg) scale(1.1); } }
+  @keyframes eqBounce1 { 0%, 100% { transform: scaleY(0.3); } 50% { transform: scaleY(1); } }
+  @keyframes eqBounce2 { 0%, 100% { transform: scaleY(0.6); } 50% { transform: scaleY(0.2); } }
+  @keyframes eqBounce3 { 0%, 100% { transform: scaleY(0.4); } 50% { transform: scaleY(0.9); } }
+  @keyframes apiPing { 0% { stroke-dashoffset: 15; } 100% { stroke-dashoffset: 0; } }
+  @keyframes seoUp { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+  @keyframes rippleWave { 0% { transform: scale(0.5); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
+  @keyframes uiClick { 0%, 100% { transform: scale(1); } 50% { transform: scale(0.9); } }
+  @keyframes cloudFloat { 0%, 100% { transform: translateY(-2px); } 50% { transform: translateY(2px); } }
+  @keyframes coinFlip { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
+  @keyframes orbitSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes shieldDeflect { 0%, 100% { opacity: 0; transform: translateX(-5px); } 50% { opacity: 1; transform: translateX(5px); } }
+  @keyframes mlThink { 0%, 100% { fill: #8A2BE2; r: 1; } 50% { fill: #00FFC8; r: 2; } }
+  @keyframes logicPath { 0%, 100% { stroke: #8A2BE2; stroke-width: 1.2; } 50% { stroke: #00FFC8; stroke-width: 2; } }
+  @keyframes dialMax { 0%, 100% { transform: rotate(-45deg); stroke: #8A2BE2; } 50% { transform: rotate(45deg); stroke: #00FFC8; } }
+  @keyframes pulseCyan { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+  @keyframes pulseCyanLine { 0% { stroke-dashoffset: 100; opacity: 0.5; } 50% { opacity: 1; stroke-width: 1.5; } 100% { stroke-dashoffset: -100; opacity: 0.5; } }
+  @keyframes coreSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes familiarBreathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+
+  .anim-cat-eyes { animation: catEyeScan 4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-cat-ear-l { animation: catEarTwitchL 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom right; will-change: transform; }
+  .anim-cat-ear-r { animation: catEarTwitchR 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom left; will-change: transform; }
+  .anim-cat-whisker { animation: catWhisker 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-crystal { animation: pulseCyan 3s infinite alternate; }
+  .anim-ai-laser { animation: aiLaserScan 2.5s linear infinite; transform-box: fill-box; }
+  .anim-bot-gear { animation: botGearSpin 6s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-web-build { stroke-dasharray: 40; animation: webBuild 2s ease-out infinite alternate; }
+  .anim-funnel-drop { animation: funnelDrop 2s ease-in infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-diamond-glint { animation: diamondGlint 3s ease-in-out infinite; }
+  .anim-cursor { animation: typeCursor 0.8s steps(2) infinite; }
+  .anim-hypno { animation: hypnoSpin 10s linear infinite alternate; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-eq-1 { animation: eqBounce1 0.7s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-eq-2 { animation: eqBounce2 0.5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-eq-3 { animation: eqBounce3 0.9s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-api-ping { stroke-dasharray: 5 10; animation: apiPing 1s linear infinite; }
+  .anim-seo-up { animation: seoUp 2s ease-in-out infinite; }
+  .anim-ripple { animation: rippleWave 2s cubic-bezier(0.1, 0.5, 0.9, 1) infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-ui-click { animation: uiClick 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-cloud { animation: cloudFloat 4s ease-in-out infinite; }
+  .anim-coin-flip { animation: coinFlip 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-orbit { animation: orbitSpin 8s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-deflect { animation: shieldDeflect 2s ease-in-out infinite; }
+  .anim-ml-node { animation: mlThink 1.5s ease-in-out infinite; }
+  .anim-logic-path { animation: logicPath 2s ease-in-out infinite; }
+  .anim-dial { animation: dialMax 3s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite; transform-box: fill-box; transform-origin: bottom center; will-change: transform; }
+  .anim-glow-cyan { animation: pulseCyan 2s infinite; }
+  .anim-pulse-cyan { stroke-dasharray: 20 80; animation: pulseCyanLine 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+  .anim-spin-core { animation: coreSpin 10s linear infinite; transform-origin: center; transform-box: fill-box; will-change: transform; }
+  .anim-breathe { animation: familiarBreathe 4s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+
+            </style>
+
+      <rect x="4" y="4" width="16" height="16" rx="3" stroke="#8A2BE2"/>
+      <path d="M4 9h16 M8 4v16" stroke="#8A2BE2" opacity="0.3"/>
+      <circle cx="14" cy="14" r="3" fill="#00FFC8" fill-opacity="0.2" stroke="#00FFC8" class="anim-ui-click svg-glow-cyan"/>
+      <path d="M14 14l3 3" stroke="#F0F0F5" stroke-width="1.5" class="anim-ui-click"/>
+
+  </symbol>
+  <symbol id="viral-reach" viewBox="0 0 24 24">
+
+            <style>
+
+  @keyframes catEyeScan { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-1.5px); } 75% { transform: translateX(1.5px); } }
+  @keyframes catEarTwitchL { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(-8deg); } }
+  @keyframes catEarTwitchR { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(8deg); } }
+  @keyframes catWhisker { 0%, 100% { transform: scaleX(1); } 50% { transform: scaleX(1.1); } }
+  @keyframes aiLaserScan { 0% { transform: translateY(-10px); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(10px); opacity: 0; } }
+  @keyframes botGearSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes webBuild { 0% { stroke-dashoffset: 40; } 100% { stroke-dashoffset: 0; } }
+  @keyframes funnelDrop { 0% { transform: translateY(-8px) scale(0.5); opacity: 0; } 50% { opacity: 1; transform: translateY(0px) scale(1); } 100% { transform: translateY(8px) scale(0.5); opacity: 0; } }
+  @keyframes diamondGlint { 0%, 100% { opacity: 0.3; filter: drop-shadow(0 0 2px #00FFC8); } 50% { opacity: 1; filter: drop-shadow(0 0 12px #00FFC8); } }
+  @keyframes typeCursor { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+  @keyframes hypnoSpin { from { transform: rotate(0deg) scale(1); } to { transform: rotate(360deg) scale(1.1); } }
+  @keyframes eqBounce1 { 0%, 100% { transform: scaleY(0.3); } 50% { transform: scaleY(1); } }
+  @keyframes eqBounce2 { 0%, 100% { transform: scaleY(0.6); } 50% { transform: scaleY(0.2); } }
+  @keyframes eqBounce3 { 0%, 100% { transform: scaleY(0.4); } 50% { transform: scaleY(0.9); } }
+  @keyframes apiPing { 0% { stroke-dashoffset: 15; } 100% { stroke-dashoffset: 0; } }
+  @keyframes seoUp { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+  @keyframes rippleWave { 0% { transform: scale(0.5); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
+  @keyframes uiClick { 0%, 100% { transform: scale(1); } 50% { transform: scale(0.9); } }
+  @keyframes cloudFloat { 0%, 100% { transform: translateY(-2px); } 50% { transform: translateY(2px); } }
+  @keyframes coinFlip { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
+  @keyframes orbitSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes shieldDeflect { 0%, 100% { opacity: 0; transform: translateX(-5px); } 50% { opacity: 1; transform: translateX(5px); } }
+  @keyframes mlThink { 0%, 100% { fill: #8A2BE2; r: 1; } 50% { fill: #00FFC8; r: 2; } }
+  @keyframes logicPath { 0%, 100% { stroke: #8A2BE2; stroke-width: 1.2; } 50% { stroke: #00FFC8; stroke-width: 2; } }
+  @keyframes dialMax { 0%, 100% { transform: rotate(-45deg); stroke: #8A2BE2; } 50% { transform: rotate(45deg); stroke: #00FFC8; } }
+  @keyframes pulseCyan { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+  @keyframes pulseCyanLine { 0% { stroke-dashoffset: 100; opacity: 0.5; } 50% { opacity: 1; stroke-width: 1.5; } 100% { stroke-dashoffset: -100; opacity: 0.5; } }
+  @keyframes coreSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes familiarBreathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+
+  .anim-cat-eyes { animation: catEyeScan 4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-cat-ear-l { animation: catEarTwitchL 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom right; will-change: transform; }
+  .anim-cat-ear-r { animation: catEarTwitchR 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom left; will-change: transform; }
+  .anim-cat-whisker { animation: catWhisker 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-crystal { animation: pulseCyan 3s infinite alternate; }
+  .anim-ai-laser { animation: aiLaserScan 2.5s linear infinite; transform-box: fill-box; }
+  .anim-bot-gear { animation: botGearSpin 6s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-web-build { stroke-dasharray: 40; animation: webBuild 2s ease-out infinite alternate; }
+  .anim-funnel-drop { animation: funnelDrop 2s ease-in infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-diamond-glint { animation: diamondGlint 3s ease-in-out infinite; }
+  .anim-cursor { animation: typeCursor 0.8s steps(2) infinite; }
+  .anim-hypno { animation: hypnoSpin 10s linear infinite alternate; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-eq-1 { animation: eqBounce1 0.7s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-eq-2 { animation: eqBounce2 0.5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-eq-3 { animation: eqBounce3 0.9s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-api-ping { stroke-dasharray: 5 10; animation: apiPing 1s linear infinite; }
+  .anim-seo-up { animation: seoUp 2s ease-in-out infinite; }
+  .anim-ripple { animation: rippleWave 2s cubic-bezier(0.1, 0.5, 0.9, 1) infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-ui-click { animation: uiClick 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-cloud { animation: cloudFloat 4s ease-in-out infinite; }
+  .anim-coin-flip { animation: coinFlip 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-orbit { animation: orbitSpin 8s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-deflect { animation: shieldDeflect 2s ease-in-out infinite; }
+  .anim-ml-node { animation: mlThink 1.5s ease-in-out infinite; }
+  .anim-logic-path { animation: logicPath 2s ease-in-out infinite; }
+  .anim-dial { animation: dialMax 3s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite; transform-box: fill-box; transform-origin: bottom center; will-change: transform; }
+  .anim-glow-cyan { animation: pulseCyan 2s infinite; }
+  .anim-pulse-cyan { stroke-dasharray: 20 80; animation: pulseCyanLine 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+  .anim-spin-core { animation: coreSpin 10s linear infinite; transform-origin: center; transform-box: fill-box; will-change: transform; }
+  .anim-breathe { animation: familiarBreathe 4s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+
+            </style>
+
+      <circle cx="12" cy="12" r="3" fill="#8A2BE2" stroke="none"/>
+      <circle cx="12" cy="12" r="8" stroke="#00FFC8" stroke-width="1.5" class="anim-ripple svg-glow-cyan"/>
+      <path d="M12 2v6 M12 16v6 M2 12h6 M16 12h6 M5 5l4 4 M15 15l4 4 M19 5l-4 4 M9 15l-4 4" stroke="#8A2BE2" opacity="0.5"/>
+      <circle cx="12" cy="12" r="1.5" fill="#00FFC8" stroke="none" class="anim-glow-cyan svg-glow-cyan"/>
+
+  </symbol>
+  <symbol id="voice-ai" viewBox="0 0 24 24">
+
+            <style>
+
+  @keyframes catEyeScan { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-1.5px); } 75% { transform: translateX(1.5px); } }
+  @keyframes catEarTwitchL { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(-8deg); } }
+  @keyframes catEarTwitchR { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(8deg); } }
+  @keyframes catWhisker { 0%, 100% { transform: scaleX(1); } 50% { transform: scaleX(1.1); } }
+  @keyframes aiLaserScan { 0% { transform: translateY(-10px); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(10px); opacity: 0; } }
+  @keyframes botGearSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes webBuild { 0% { stroke-dashoffset: 40; } 100% { stroke-dashoffset: 0; } }
+  @keyframes funnelDrop { 0% { transform: translateY(-8px) scale(0.5); opacity: 0; } 50% { opacity: 1; transform: translateY(0px) scale(1); } 100% { transform: translateY(8px) scale(0.5); opacity: 0; } }
+  @keyframes diamondGlint { 0%, 100% { opacity: 0.3; filter: drop-shadow(0 0 2px #00FFC8); } 50% { opacity: 1; filter: drop-shadow(0 0 12px #00FFC8); } }
+  @keyframes typeCursor { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+  @keyframes hypnoSpin { from { transform: rotate(0deg) scale(1); } to { transform: rotate(360deg) scale(1.1); } }
+  @keyframes eqBounce1 { 0%, 100% { transform: scaleY(0.3); } 50% { transform: scaleY(1); } }
+  @keyframes eqBounce2 { 0%, 100% { transform: scaleY(0.6); } 50% { transform: scaleY(0.2); } }
+  @keyframes eqBounce3 { 0%, 100% { transform: scaleY(0.4); } 50% { transform: scaleY(0.9); } }
+  @keyframes apiPing { 0% { stroke-dashoffset: 15; } 100% { stroke-dashoffset: 0; } }
+  @keyframes seoUp { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+  @keyframes rippleWave { 0% { transform: scale(0.5); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
+  @keyframes uiClick { 0%, 100% { transform: scale(1); } 50% { transform: scale(0.9); } }
+  @keyframes cloudFloat { 0%, 100% { transform: translateY(-2px); } 50% { transform: translateY(2px); } }
+  @keyframes coinFlip { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
+  @keyframes orbitSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes shieldDeflect { 0%, 100% { opacity: 0; transform: translateX(-5px); } 50% { opacity: 1; transform: translateX(5px); } }
+  @keyframes mlThink { 0%, 100% { fill: #8A2BE2; r: 1; } 50% { fill: #00FFC8; r: 2; } }
+  @keyframes logicPath { 0%, 100% { stroke: #8A2BE2; stroke-width: 1.2; } 50% { stroke: #00FFC8; stroke-width: 2; } }
+  @keyframes dialMax { 0%, 100% { transform: rotate(-45deg); stroke: #8A2BE2; } 50% { transform: rotate(45deg); stroke: #00FFC8; } }
+  @keyframes pulseCyan { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+  @keyframes pulseCyanLine { 0% { stroke-dashoffset: 100; opacity: 0.5; } 50% { opacity: 1; stroke-width: 1.5; } 100% { stroke-dashoffset: -100; opacity: 0.5; } }
+  @keyframes coreSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes familiarBreathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+
+  .anim-cat-eyes { animation: catEyeScan 4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-cat-ear-l { animation: catEarTwitchL 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom right; will-change: transform; }
+  .anim-cat-ear-r { animation: catEarTwitchR 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom left; will-change: transform; }
+  .anim-cat-whisker { animation: catWhisker 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-crystal { animation: pulseCyan 3s infinite alternate; }
+  .anim-ai-laser { animation: aiLaserScan 2.5s linear infinite; transform-box: fill-box; }
+  .anim-bot-gear { animation: botGearSpin 6s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-web-build { stroke-dasharray: 40; animation: webBuild 2s ease-out infinite alternate; }
+  .anim-funnel-drop { animation: funnelDrop 2s ease-in infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-diamond-glint { animation: diamondGlint 3s ease-in-out infinite; }
+  .anim-cursor { animation: typeCursor 0.8s steps(2) infinite; }
+  .anim-hypno { animation: hypnoSpin 10s linear infinite alternate; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-eq-1 { animation: eqBounce1 0.7s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-eq-2 { animation: eqBounce2 0.5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-eq-3 { animation: eqBounce3 0.9s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-api-ping { stroke-dasharray: 5 10; animation: apiPing 1s linear infinite; }
+  .anim-seo-up { animation: seoUp 2s ease-in-out infinite; }
+  .anim-ripple { animation: rippleWave 2s cubic-bezier(0.1, 0.5, 0.9, 1) infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-ui-click { animation: uiClick 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-cloud { animation: cloudFloat 4s ease-in-out infinite; }
+  .anim-coin-flip { animation: coinFlip 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-orbit { animation: orbitSpin 8s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-deflect { animation: shieldDeflect 2s ease-in-out infinite; }
+  .anim-ml-node { animation: mlThink 1.5s ease-in-out infinite; }
+  .anim-logic-path { animation: logicPath 2s ease-in-out infinite; }
+  .anim-dial { animation: dialMax 3s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite; transform-box: fill-box; transform-origin: bottom center; will-change: transform; }
+  .anim-glow-cyan { animation: pulseCyan 2s infinite; }
+  .anim-pulse-cyan { stroke-dasharray: 20 80; animation: pulseCyanLine 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+  .anim-spin-core { animation: coreSpin 10s linear infinite; transform-origin: center; transform-box: fill-box; will-change: transform; }
+  .anim-breathe { animation: familiarBreathe 4s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+
+            </style>
+
+      <rect x="10" y="4" width="4" height="10" rx="2" stroke="#8A2BE2"/>
+      <path d="M6 10v4c0 3 3 6 6 6s6-3 6-6v-4 M12 20v3 M9 23h6" stroke="#8A2BE2"/>
+      <line x1="8" y1="12" x2="8" y2="6" stroke="#00FFC8" stroke-width="2" class="anim-eq-1 svg-glow-cyan"/>
+      <line x1="12" y1="12" x2="12" y2="4" stroke="#00FFC8" stroke-width="2" class="anim-eq-2 svg-glow-cyan"/>
+      <line x1="16" y1="12" x2="16" y2="8" stroke="#00FFC8" stroke-width="2" class="anim-eq-3 svg-glow-cyan"/>
+
+  </symbol>
+  <symbol id="web-architecture" viewBox="0 0 24 24">
+
+            <style>
+
+  @keyframes catEyeScan { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-1.5px); } 75% { transform: translateX(1.5px); } }
+  @keyframes catEarTwitchL { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(-8deg); } }
+  @keyframes catEarTwitchR { 0%, 90%, 100% { transform: rotate(0deg); } 95% { transform: rotate(8deg); } }
+  @keyframes catWhisker { 0%, 100% { transform: scaleX(1); } 50% { transform: scaleX(1.1); } }
+  @keyframes aiLaserScan { 0% { transform: translateY(-10px); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(10px); opacity: 0; } }
+  @keyframes botGearSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes webBuild { 0% { stroke-dashoffset: 40; } 100% { stroke-dashoffset: 0; } }
+  @keyframes funnelDrop { 0% { transform: translateY(-8px) scale(0.5); opacity: 0; } 50% { opacity: 1; transform: translateY(0px) scale(1); } 100% { transform: translateY(8px) scale(0.5); opacity: 0; } }
+  @keyframes diamondGlint { 0%, 100% { opacity: 0.3; filter: drop-shadow(0 0 2px #00FFC8); } 50% { opacity: 1; filter: drop-shadow(0 0 12px #00FFC8); } }
+  @keyframes typeCursor { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+  @keyframes hypnoSpin { from { transform: rotate(0deg) scale(1); } to { transform: rotate(360deg) scale(1.1); } }
+  @keyframes eqBounce1 { 0%, 100% { transform: scaleY(0.3); } 50% { transform: scaleY(1); } }
+  @keyframes eqBounce2 { 0%, 100% { transform: scaleY(0.6); } 50% { transform: scaleY(0.2); } }
+  @keyframes eqBounce3 { 0%, 100% { transform: scaleY(0.4); } 50% { transform: scaleY(0.9); } }
+  @keyframes apiPing { 0% { stroke-dashoffset: 15; } 100% { stroke-dashoffset: 0; } }
+  @keyframes seoUp { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+  @keyframes rippleWave { 0% { transform: scale(0.5); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
+  @keyframes uiClick { 0%, 100% { transform: scale(1); } 50% { transform: scale(0.9); } }
+  @keyframes cloudFloat { 0%, 100% { transform: translateY(-2px); } 50% { transform: translateY(2px); } }
+  @keyframes coinFlip { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
+  @keyframes orbitSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes shieldDeflect { 0%, 100% { opacity: 0; transform: translateX(-5px); } 50% { opacity: 1; transform: translateX(5px); } }
+  @keyframes mlThink { 0%, 100% { fill: #8A2BE2; r: 1; } 50% { fill: #00FFC8; r: 2; } }
+  @keyframes logicPath { 0%, 100% { stroke: #8A2BE2; stroke-width: 1.2; } 50% { stroke: #00FFC8; stroke-width: 2; } }
+  @keyframes dialMax { 0%, 100% { transform: rotate(-45deg); stroke: #8A2BE2; } 50% { transform: rotate(45deg); stroke: #00FFC8; } }
+  @keyframes pulseCyan { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+  @keyframes pulseCyanLine { 0% { stroke-dashoffset: 100; opacity: 0.5; } 50% { opacity: 1; stroke-width: 1.5; } 100% { stroke-dashoffset: -100; opacity: 0.5; } }
+  @keyframes coreSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes familiarBreathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+
+  .anim-cat-eyes { animation: catEyeScan 4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-cat-ear-l { animation: catEarTwitchL 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom right; will-change: transform; }
+  .anim-cat-ear-r { animation: catEarTwitchR 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom left; will-change: transform; }
+  .anim-cat-whisker { animation: catWhisker 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-crystal { animation: pulseCyan 3s infinite alternate; }
+  .anim-ai-laser { animation: aiLaserScan 2.5s linear infinite; transform-box: fill-box; }
+  .anim-bot-gear { animation: botGearSpin 6s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-web-build { stroke-dasharray: 40; animation: webBuild 2s ease-out infinite alternate; }
+  .anim-funnel-drop { animation: funnelDrop 2s ease-in infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-diamond-glint { animation: diamondGlint 3s ease-in-out infinite; }
+  .anim-cursor { animation: typeCursor 0.8s steps(2) infinite; }
+  .anim-hypno { animation: hypnoSpin 10s linear infinite alternate; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-eq-1 { animation: eqBounce1 0.7s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-eq-2 { animation: eqBounce2 0.5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-eq-3 { animation: eqBounce3 0.9s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom; }
+  .anim-api-ping { stroke-dasharray: 5 10; animation: apiPing 1s linear infinite; }
+  .anim-seo-up { animation: seoUp 2s ease-in-out infinite; }
+  .anim-ripple { animation: rippleWave 2s cubic-bezier(0.1, 0.5, 0.9, 1) infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-ui-click { animation: uiClick 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .anim-cloud { animation: cloudFloat 4s ease-in-out infinite; }
+  .anim-coin-flip { animation: coinFlip 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-orbit { animation: orbitSpin 8s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
+  .anim-deflect { animation: shieldDeflect 2s ease-in-out infinite; }
+  .anim-ml-node { animation: mlThink 1.5s ease-in-out infinite; }
+  .anim-logic-path { animation: logicPath 2s ease-in-out infinite; }
+  .anim-dial { animation: dialMax 3s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite; transform-box: fill-box; transform-origin: bottom center; will-change: transform; }
+  .anim-glow-cyan { animation: pulseCyan 2s infinite; }
+  .anim-pulse-cyan { stroke-dasharray: 20 80; animation: pulseCyanLine 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+  .anim-spin-core { animation: coreSpin 10s linear infinite; transform-origin: center; transform-box: fill-box; will-change: transform; }
+  .anim-breathe { animation: familiarBreathe 4s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+
+            </style>
+
+      <path d="M4 6h16v12H4z" stroke="#8A2BE2" opacity="0.5"/>
+      <path d="M4 10h16 M8 22v-4 M16 22v-4 M6 22h12" stroke="#8A2BE2"/>
+      <path d="M6 14h6 M6 18h4 M14 14h4v4h-4z" stroke="#00FFC8" class="anim-web-build svg-glow-cyan"/>
+      <circle cx="6" cy="8" r="0.5" fill="#00FFC8" stroke="none" class="svg-glow-cyan"/>
+      <circle cx="8" cy="8" r="0.5" fill="#00FFC8" stroke="none" class="svg-glow-cyan"/>
+
+  </symbol>
+</svg>
