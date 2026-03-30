@@ -1,4 +1,4 @@
-import { useSpring, animated } from '@react-spring/web';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { useRef, useState } from 'react';
 
 interface TiltedCardProps {
@@ -33,34 +33,44 @@ export const TiltedCard: React.FC<TiltedCardProps> = ({
   const ref = useRef<HTMLDivElement>(null);
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
-  const [{ rotateX, rotateY, scale }, api] = useSpring(() => ({
-    rotateX: 0,
-    rotateY: 0,
-    scale: 1,
-    config: { mass: 5, tension: 350, friction: 40 },
-  }));
+  // Framer Motion values для физики
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
-  const [{ opacity }, opacityApi] = useSpring(() => ({ opacity: 0 }));
+  // Настройка пружины: жесткость, затухание, масса (похоже на mass: 5, tension: 350, friction: 40)
+  const springConfig = { stiffness: 120, damping: 20, mass: 1 };
+
+  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [rotateAmplitude, -rotateAmplitude]), springConfig);
+  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-rotateAmplitude, rotateAmplitude]), springConfig);
+  const scale = useSpring(isHovered ? scaleOnHover : 1, springConfig);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (!ref.current) return;
     const rect = ref.current.getBoundingClientRect();
     const width = rect.width;
     const height = rect.height;
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
-    const xPct = mouseX / width - 0.5;
-    const yPct = mouseY / height - 0.5;
-    setX(mouseX);
-    setY(mouseY);
-    api.start({ rotateX: yPct * rotateAmplitude * -1, rotateY: xPct * rotateAmplitude, scale: scaleOnHover });
-    opacityApi.start({ opacity: 1 });
+    const currentMouseX = e.clientX - rect.left;
+    const currentMouseY = e.clientY - rect.top;
+
+    // Позиция для тултипа
+    setX(currentMouseX);
+    setY(currentMouseY);
+
+    // Нормализованные значения от -0.5 до 0.5
+    mouseX.set(currentMouseX / width - 0.5);
+    mouseY.set(currentMouseY / height - 0.5);
+  };
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
   };
 
   const handleMouseLeave = () => {
-    api.start({ rotateX: 0, rotateY: 0, scale: 1 });
-    opacityApi.start({ opacity: 0 });
+    setIsHovered(false);
+    mouseX.set(0);
+    mouseY.set(0);
   };
 
   return (
@@ -68,38 +78,60 @@ export const TiltedCard: React.FC<TiltedCardProps> = ({
       className="relative flex items-center justify-center"
       style={{ width: containerWidth, height: containerHeight, perspective: '1000px' }}
     >
-      <animated.div
+      <motion.div
         ref={ref}
         onMouseMove={handleMouseMove}
+        onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className="relative flex items-center justify-center rounded-[15px] cursor-pointer"
+        className="relative flex items-center justify-center cursor-pointer border border-[#66FCF1]/20 shadow-[0_0_15px_rgba(102,252,241,0.1)] backdrop-blur-sm"
         style={{
           width: imageWidth,
           height: imageHeight,
-          transform: rotateX.to((rx) => rotateY.to((ry) => scale.to((s) => `rotateX(${rx}deg) rotateY(${ry}deg) scale(${s})`))) as unknown as string,
+          rotateX,
+          rotateY,
+          scale,
           transformStyle: 'preserve-3d',
           willChange: 'transform',
+          // Cyberpunk hard angles: custom clip-path instead of standard border-radius
+          clipPath: 'polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px)',
+          backgroundColor: '#020304'
         }}
       >
         <div
           role="img"
           aria-label={altText}
-          className="absolute top-0 left-0 w-full h-full bg-contain bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${imageSrc})`, transform: 'translateZ(30px)' }}
+          className="absolute top-0 left-0 w-full h-full bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url(${imageSrc})`,
+            transform: 'translateZ(30px)',
+            opacity: 0.8
+          }}
         ></div>
         {displayOverlayContent && overlayContent && (
-          <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center rounded-[15px] p-6 text-center transform translateZ(50px)">
+          <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center p-6 text-center transform translateZ(50px)">
             {overlayContent}
           </div>
         )}
-      </animated.div>
+      </motion.div>
       {showTooltip && (
-        <animated.div
-          className="pointer-events-none absolute top-0 left-0 text-white bg-black/50 px-3 py-1 rounded-md whitespace-nowrap opacity-0"
-          style={{ opacity, transform: `translate3d(${x}px, ${y}px, 0)` }}
+        <motion.div
+          className="pointer-events-none absolute top-0 left-0 text-[#66FCF1] bg-[#020304]/80 border border-[#66FCF1]/40 px-3 py-1 whitespace-nowrap backdrop-blur-md font-mono text-xs uppercase tracking-wider"
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: isHovered ? 1 : 0,
+            x,
+            y,
+          }}
+          transition={{ type: "tween", ease: "linear", duration: 0.1 }}
+          style={{
+             clipPath: 'polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)',
+             // Сдвиг тултипа, чтобы он не перекрывал курсор
+             translateX: 15,
+             translateY: 15
+          }}
         >
           {captionText}
-        </animated.div>
+        </motion.div>
       )}
     </div>
   );

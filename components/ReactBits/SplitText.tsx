@@ -1,5 +1,9 @@
-import { useSprings, animated } from '@react-spring/web';
-import { useEffect, useRef, useState } from 'react';
+import { motion, useAnimation, useInView, Variants } from 'framer-motion';
+import { useEffect, useRef } from 'react';
+
+// framer-motion useInView MarginType
+type MarginValue = `${number}px` | `${number}%`;
+type MarginType = MarginValue | `${MarginValue} ${MarginValue}` | `${MarginValue} ${MarginValue} ${MarginValue}` | `${MarginValue} ${MarginValue} ${MarginValue} ${MarginValue}`;
 
 interface SplitTextProps {
   text: string;
@@ -8,7 +12,7 @@ interface SplitTextProps {
   animationFrom?: { opacity: number; transform: string };
   animationTo?: { opacity: number; transform: string };
   threshold?: number;
-  rootMargin?: string;
+  rootMargin?: MarginType;
   textAlign?: 'left' | 'right' | 'center' | 'justify';
   onLetterAnimationComplete?: () => void;
 }
@@ -16,7 +20,7 @@ interface SplitTextProps {
 export const SplitText: React.FC<SplitTextProps> = ({
   text = '',
   className = '',
-  delay = 100,
+  delay = 100, // В framer-motion stagger будет в секундах
   animationFrom = { opacity: 0, transform: 'translate3d(0,40px,0)' },
   animationTo = { opacity: 1, transform: 'translate3d(0,0,0)' },
   threshold = 0.1,
@@ -25,61 +29,73 @@ export const SplitText: React.FC<SplitTextProps> = ({
   onLetterAnimationComplete,
 }) => {
   const letters = text.split('');
-  const [inView, setInView] = useState(false);
   const ref = useRef<HTMLSpanElement>(null);
-  const animatedCount = useRef(0);
+  const isInView = useInView(ref, { once: true, amount: threshold, margin: rootMargin });
+  const controls = useAnimation();
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry) return;
-        if (entry.isIntersecting) {
-          setInView(true);
-          observer.unobserve(ref.current!);
+    if (isInView) {
+      controls.start('visible').then(() => {
+        if (onLetterAnimationComplete) {
+          onLetterAnimationComplete();
         }
-      },
-      { threshold, rootMargin }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
+      });
     }
+  }, [isInView, controls, onLetterAnimationComplete]);
 
-    return () => observer.disconnect();
-  }, [threshold, rootMargin]);
+  // Конвертируем transform строки в объекты для framer-motion,
+  // но чтобы сохранить оригинальный API компонента, мы используем initial/animate
+  const extractY = (transformStr: string) => {
+    const match = transformStr.match(/translate3d\([^,]+,([^,]+),/);
+    return match && match[1] ? match[1].trim() : '0px';
+  };
 
-  const springs = useSprings(
-    letters.length,
-    letters.map((_, i) => ({
-      from: animationFrom,
-      to: inView
-        ? async (next: (arg0: { opacity: number; transform: string; }) => Promise<void>) => {
-          await next(animationTo);
-          animatedCount.current += 1;
-          if (animatedCount.current === letters.length && onLetterAnimationComplete) {
-            onLetterAnimationComplete();
-          }
-        }
-        : animationFrom,
-      delay: i * delay,
-      config: { easing: (t: number) => t },
-    }))
-  );
+  const yFrom = extractY(animationFrom.transform);
+  const yTo = extractY(animationTo.transform);
+
+  const containerVariants: Variants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: delay / 1000, // delay приходит в ms, framer-motion использует секунды
+      },
+    },
+  };
+
+  const letterVariants: Variants = {
+    hidden: {
+      opacity: animationFrom.opacity,
+      y: yFrom
+    },
+    visible: {
+      opacity: animationTo.opacity,
+      y: yTo,
+      transition: {
+        type: 'spring',
+        damping: 20,
+        stiffness: 100
+      }
+    },
+  };
 
   return (
-    <span
+    <motion.span
       ref={ref}
       className={`split-parent overflow-hidden inline ${className}`}
       style={{ textAlign, whiteSpace: 'normal', wordWrap: 'break-word' }}
+      variants={containerVariants}
+      initial="hidden"
+      animate={controls}
     >
-      {springs.map((props, index) => (
-        <animated.span
+      {letters.map((letter, index) => (
+        <motion.span
           key={index}
-          style={{ ...props, display: 'inline-block', willChange: 'transform, opacity' }}
+          variants={letterVariants}
+          style={{ display: 'inline-block', willChange: 'transform, opacity' }}
         >
-          {letters[index] === ' ' ? '\u00A0' : letters[index]}
-        </animated.span>
+          {letter === ' ' ? '\u00A0' : letter}
+        </motion.span>
       ))}
-    </span>
+    </motion.span>
   );
 };

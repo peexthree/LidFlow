@@ -201,34 +201,34 @@ export default function Home() {
       <div className="relative z-10 space-y-24 py-16 md:py-24">
 
         {/* Секция Юридический щит / Trust Signals */}
-        <section id="about" className="scroll-mt-24 container relative overflow-hidden rounded-none border border-white/10 bg-white/[0.02]  backdrop-blur-md px-6 py-10 shadow-[0_20px_50px_rgba(0,0,0,0.3)] backdrop-blur-xl animate-fade-in-up md:px-12">
+        <section id="about" className="scroll-mt-24 container relative overflow-hidden rounded-none border border-[#66FCF1]/30 bg-white/[0.02]  backdrop-blur-md px-6 py-10 shadow-[0_20px_50px_rgba(0,0,0,0.3)] backdrop-blur-xl animate-fade-in-up md:px-12">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(255,255,255,0.05),_transparent_70%)]" />
           <div className="relative z-10 grid gap-8 text-center md:grid-cols-3 md:gap-12">
             <div className="flex flex-col items-center gap-4">
-              <div className="flex h-16 w-16 items-center justify-center rounded-none bg-white/5 shadow-inner">
+              <div className="flex h-16 w-16 items-center justify-center rounded-none bg-[#020304]/80 backdrop-blur-md border border-[#66FCF1]/30 shadow-inner">
                 <Image src="/data-armor.svg" alt="Договор ИП" width={32} height={32} className="h-8 w-8 text-[#66FCF1]" />
               </div>
               <div>
                 <h2 className="text-lg font-semibold text-white">Работа по договору ИП</h2>
-                <p className="mt-2 text-sm text-slate-400">Официально, прозрачно, с закрывающими документами.</p>
+                <p className="mt-2 text-sm text-slate-300 font-mono">Официально, прозрачно, с закрывающими документами.</p>
               </div>
             </div>
             <div className="flex flex-col items-center gap-4">
-              <div className="flex h-16 w-16 items-center justify-center rounded-none bg-white/5 shadow-inner">
+              <div className="flex h-16 w-16 items-center justify-center rounded-none bg-[#020304]/80 backdrop-blur-md border border-[#66FCF1]/30 shadow-inner">
                 <Image src="/web-architecture.svg" alt="Передача прав на код" width={32} height={32} className="h-8 w-8 text-[#66FCF1]" />
               </div>
               <div>
                 <h2 className="text-lg font-semibold text-white">100% права на код</h2>
-                <p className="mt-2 text-sm text-slate-400">Полная передача исходников и доступов к серверам.</p>
+                <p className="mt-2 text-sm text-slate-300 font-mono">Полная передача исходников и доступов к серверам.</p>
               </div>
             </div>
             <div className="flex flex-col items-center gap-4">
-              <div className="flex h-16 w-16 items-center justify-center rounded-none bg-white/5 shadow-inner">
+              <div className="flex h-16 w-16 items-center justify-center rounded-none bg-[#020304]/80 backdrop-blur-md border border-[#66FCF1]/30 shadow-inner">
                 <Image src="/ui-ux.svg" alt="Строгое NDA" width={32} height={32} className="h-8 w-8 text-[#66FCF1]" />
               </div>
               <div>
                 <h2 className="text-lg font-semibold text-white">Строгое NDA</h2>
-                <p className="mt-2 text-sm text-slate-400">Защита вашей идеи, клиентской базы и данных.</p>
+                <p className="mt-2 text-sm text-slate-300 font-mono">Защита вашей идеи, клиентской базы и данных.</p>
               </div>
             </div>
           </div>
@@ -238,74 +238,74 @@ export default function Home() {
         {/* Секция Услуги (Bento Box) */}
         <section
           id="services"
-          className="container relative overflow-hidden rounded-none border border-white/10 bg-[#0F1220]/60 px-6 py-12 shadow-[inset_0_2px_40px_rgba(255,255,255,0.02)] backdrop-blur-3xl animate-fade-in-up md:px-12"
+          className="container relative overflow-hidden rounded-none border border-[#66FCF1]/30 bg-[#0F1220]/60 px-6 py-12 shadow-[inset_0_2px_40px_rgba(255,255,255,0.02)] backdrop-blur-3xl animate-fade-in-up md:px-12"
         >
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(31,140,255,0.15),_transparent_60%)]" />
           <div className="relative space-y-10">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/5 pb-8">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#66FCF1]/20 pb-8">
               <div className="space-y-4">
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 font-mono text-xs uppercase tracking-[0.15em] text-[#66FCF1]">
-                  <span className="flex h-2 w-2 rounded-full bg-[#66FCF1] animate-pulse"></span>
+                <span className="inline-flex items-center gap-2 rounded-none border border-[#66FCF1]/30 bg-[#020304]/80 backdrop-blur-md border border-[#66FCF1]/30 px-4 py-1 font-mono text-xs uppercase tracking-[0.15em] text-[#66FCF1]">
+                  <span className="flex h-2 w-2 rounded-none bg-[#66FCF1] animate-pulse"></span>
                   ВАШ АРСЕНАЛ.EXE
                 </span>
                 <h2 className="text-3xl font-semibold tracking-tight text-white md:text-5xl font-mono">
                   Что вы <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#66FCF1] to-blue-500">получаете</span>
                 </h2>
               </div>
-              <p className="max-w-md text-base text-slate-400 md:text-right">
+              <p className="max-w-md text-base text-slate-300 font-mono md:text-right">
                 Я не пишу код ради кода. Я строю цифровые активы, которые приносят прибыль. Вам нужен результат? Пишите. Мы разберем вашу бизнес-модель и сделаем ее в 10 раз эффективнее.
               </p>
             </div>
 
             <div className="grid gap-6 md:grid-cols-12 md:grid-rows-2">
-              <article className="group relative flex h-full flex-col overflow-hidden rounded-none border border-white/5 bg-gradient-to-b from-white/[0.03] to-white/[0.01]  backdrop-blur-md p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] transition-all hover:bg-white/[0.05] hover:shadow-[0_0_40px_rgba(31,140,255,0.1)] md:col-span-8 md:row-span-1">
+              <article className="group relative flex h-full flex-col overflow-hidden rounded-none border border-[#66FCF1]/20 bg-gradient-to-b from-white/[0.03] to-white/[0.01]  backdrop-blur-md p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] transition-all hover:bg-white/[0.05] hover:shadow-[0_0_40px_rgba(31,140,255,0.1)] md:col-span-8 md:row-span-1">
                  <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-none bg-blue-500/10 text-blue-400">
                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
                  </div>
                  <h3 className="mb-3 text-2xl font-semibold text-white font-mono">МАШИНА ПРОДАЖ В ТЕЛЕГРАМ</h3>
-                 <p className="mb-6 max-w-lg text-slate-400 flex-1">
+                 <p className="mb-6 max-w-lg text-slate-300 font-mono flex-1">
                    TWA и боты, которые работают как лучшие менеджеры по продажам. Идеальные воронки, автоматизация и CRM-интеграции.
                  </p>
                  <div className="flex gap-2">
                    {['React', 'Vite', 'Zustand'].map(tech => (
-                     <span key={tech} className="rounded bg-white/5 px-2 py-1 font-mono text-xs text-slate-300 border border-white/10">{tech}</span>
+                     <span key={tech} className="rounded bg-[#020304]/80 backdrop-blur-md border border-[#66FCF1]/30 px-2 py-1 font-mono text-xs text-slate-300 border border-[#66FCF1]/30">{tech}</span>
                    ))}
                  </div>
               </article>
 
-              <article className="group relative flex h-full flex-col overflow-hidden rounded-none border border-white/5 bg-gradient-to-b from-white/[0.03] to-white/[0.01]  backdrop-blur-md p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] transition-all hover:bg-white/[0.05] hover:shadow-[0_0_40px_rgba(236,72,153,0.1)] md:col-span-4 md:row-span-1">
+              <article className="group relative flex h-full flex-col overflow-hidden rounded-none border border-[#66FCF1]/20 bg-gradient-to-b from-white/[0.03] to-white/[0.01]  backdrop-blur-md p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] transition-all hover:bg-white/[0.05] hover:shadow-[0_0_40px_rgba(236,72,153,0.1)] md:col-span-4 md:row-span-1">
                  <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-none bg-pink-500/10 text-pink-400">
                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                  </div>
                  <h3 className="mb-3 text-xl font-semibold text-white font-mono">HIGH-END ИНТЕРФЕЙСЫ</h3>
-                 <p className="text-slate-400">
+                 <p className="text-slate-300 font-mono">
                    Безупречный UI/UX, который заставляет покупать. Никаких дешевых шаблонов. Чистый код, эффект стекла и максимальная конверсия.
                  </p>
               </article>
 
-              <article className="group relative flex h-full flex-col overflow-hidden rounded-none border border-white/5 bg-gradient-to-b from-white/[0.03] to-white/[0.01]  backdrop-blur-md p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] transition-all hover:bg-white/[0.05] hover:shadow-[0_0_40px_rgba(168,85,247,0.1)] md:col-span-5 md:row-span-1">
+              <article className="group relative flex h-full flex-col overflow-hidden rounded-none border border-[#66FCF1]/20 bg-gradient-to-b from-white/[0.03] to-white/[0.01]  backdrop-blur-md p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] transition-all hover:bg-white/[0.05] hover:shadow-[0_0_40px_rgba(168,85,247,0.1)] md:col-span-5 md:row-span-1">
                  <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-none bg-purple-500/10 text-purple-400">
                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
                  </div>
                  <h3 className="mb-3 text-xl font-semibold text-white font-mono">ПРЕМИАЛЬНЫЙ MOTION</h3>
-                 <p className="text-slate-400">
+                 <p className="text-slate-300 font-mono">
                    Ваши клиенты должны испытывать ВАУ-эффект. Плавные GSAP анимации, 3D элементы и видеоаватары, которые продают эмоцию.
                  </p>
               </article>
 
-              <article className="group relative flex h-full flex-col overflow-hidden rounded-none border border-white/5 bg-gradient-to-b from-white/[0.03] to-white/[0.01]  backdrop-blur-md p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] transition-all hover:bg-white/[0.05] hover:shadow-[0_0_40px_rgba(20,184,166,0.1)] md:col-span-7 md:row-span-1">
+              <article className="group relative flex h-full flex-col overflow-hidden rounded-none border border-[#66FCF1]/20 bg-gradient-to-b from-white/[0.03] to-white/[0.01]  backdrop-blur-md p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] transition-all hover:bg-white/[0.05] hover:shadow-[0_0_40px_rgba(20,184,166,0.1)] md:col-span-7 md:row-span-1">
                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_rgba(20,184,166,0.15),_transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                  <div className="relative z-10 flex flex-col h-full">
                    <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-none bg-teal-500/10 text-teal-400">
                      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" /></svg>
                    </div>
                    <h3 className="mb-3 text-2xl font-semibold text-white font-mono">ИСКУССТВЕННЫЙ ИНТЕЛЛЕКТ. ДОМИНАЦИЯ.</h3>
-                   <p className="mb-6 text-slate-400 flex-1">
+                   <p className="mb-6 text-slate-300 font-mono flex-1">
                      Не отставайте от технологий. Внедряем LLM, генерируем премиальный контент (Midjourney + Photoshop) и AI-аватары (Veo3). Оставьте конкурентов в прошлом веке.
                    </p>
                    <div className="flex gap-2 mt-auto">
                      {['ChatGPT', 'Midjourney', 'AI Voice'].map(tech => (
-                       <span key={tech} className="rounded bg-white/5 px-2 py-1 font-mono text-xs text-slate-300 border border-white/10">{tech}</span>
+                       <span key={tech} className="rounded bg-[#020304]/80 backdrop-blur-md border border-[#66FCF1]/30 px-2 py-1 font-mono text-xs text-slate-300 border border-[#66FCF1]/30">{tech}</span>
                      ))}
                    </div>
                  </div>
@@ -317,12 +317,12 @@ export default function Home() {
 {/* Секция о Telegram-ботах и автоматизации: подчёркиваем, что делаем больше, чем лендинги */}
         <section
           id="automation"
-          className="container relative overflow-hidden rounded-none border border-white/10 bg-white/[0.03] px-6 py-12 shadow-[0_45px_140px_rgba(14,165,233,0.28)] backdrop-blur-2xl animate-fade-in-up md:px-12" style={{ clipPath: "polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px)" }}
+          className="container relative overflow-hidden rounded-none border border-[#66FCF1]/30 bg-white/[0.03] px-6 py-12 shadow-[0_45px_140px_rgba(14,165,233,0.28)] backdrop-blur-2xl animate-fade-in-up md:px-12" style={{ clipPath: "polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px)" }}
         >
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(59,130,246,0.24),_transparent_68%)]" />
           <div className="relative space-y-10">
             <div className="space-y-4">
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs uppercase tracking-[0.15em] text-white/60">
+              <span className="inline-flex items-center gap-2 rounded-none border border-[#66FCF1]/30 bg-[#020304]/80 backdrop-blur-md border border-[#66FCF1]/30 px-4 py-1 text-xs uppercase tracking-[0.15em] text-white/60">
                 10X АВТОМАТИЗАЦИЯ
               </span>
               <h2 className="text-3xl font-semibold text-white md:text-4xl">
@@ -336,7 +336,7 @@ export default function Home() {
               {automationServices.map((service) => (
                 <article
                   key={service.title}
-                  className="group relative h-full overflow-hidden rounded-none border border-white/10 bg-white/[0.05] p-6 shadow-[0_30px_100px_rgba(59,130,246,0.25)] transition-transform duration-500 hover:-translate-y-2 transition-colors group-hover:bg-white/[0.08] backdrop-blur-md"
+                  className="group relative h-full overflow-hidden rounded-none border border-[#66FCF1]/30 bg-white/[0.05] p-6 shadow-[0_30px_100px_rgba(59,130,246,0.25)] transition-transform duration-500 hover:-translate-y-2 transition-colors group-hover:bg-white/[0.08] backdrop-blur-md"
                 >
                   <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.35),_transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="relative z-10 space-y-3">
@@ -361,12 +361,12 @@ export default function Home() {
 
         {/* Секция Процесс */}
         <section
-          className="container relative overflow-hidden rounded-none border border-white/10 bg-white/[0.03] px-6 py-12 shadow-[0_40px_120px_rgba(76,29,149,0.25)] backdrop-blur-2xl animate-fade-in-up md:px-12" style={{ clipPath: "polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px)" }}
+          className="container relative overflow-hidden rounded-none border border-[#66FCF1]/30 bg-white/[0.03] px-6 py-12 shadow-[0_40px_120px_rgba(76,29,149,0.25)] backdrop-blur-2xl animate-fade-in-up md:px-12" style={{ clipPath: "polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px)" }}
         >
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.28),_transparent_70%)]" />
           <div className="relative space-y-10">
             <div className="space-y-4">
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs uppercase tracking-[0.15em] text-white/60">
+              <span className="inline-flex items-center gap-2 rounded-none border border-[#66FCF1]/30 bg-[#020304]/80 backdrop-blur-md border border-[#66FCF1]/30 px-4 py-1 text-xs uppercase tracking-[0.15em] text-white/60">
                 10X ПРОЦЕСС
               </span>
               <h2 className="text-3xl font-semibold text-white md:text-4xl">Как мы забираем рынок</h2>
@@ -378,7 +378,7 @@ export default function Home() {
               {processSteps.map((step, index) => (
                 <li
                   key={step.title}
-                  className="group relative h-full overflow-hidden rounded-none border border-white/10 bg-white/[0.05] p-6 shadow-[0_25px_80px_rgba(168,85,247,0.2)] transition-transform duration-500 hover:-translate-y-2 transition-colors group-hover:bg-white/[0.07] backdrop-blur-md"
+                  className="group relative h-full overflow-hidden rounded-none border border-[#66FCF1]/30 bg-white/[0.05] p-6 shadow-[0_25px_80px_rgba(168,85,247,0.2)] transition-transform duration-500 hover:-translate-y-2 transition-colors group-hover:bg-white/[0.07] backdrop-blur-md"
                 >
                   <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(236,72,153,0.3),_transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="relative z-10 space-y-3">
@@ -413,7 +413,7 @@ export default function Home() {
               <p className="text-lg text-slate-300">
                 Загоните клиентов в экосистему, из которой они не захотят выходить. Откажитесь от слива трафика на внешние сайты. Создайте автономный отдел продаж прямо в мессенджере.
               </p>
-              <ul className="space-y-2 text-sm font-mono text-slate-400">
+              <ul className="space-y-2 text-sm font-mono text-slate-300 font-mono">
                 <li className="flex items-center gap-2"><span className="text-[#66FCF1]">✓</span> Конверсия x3 выше стандартных Landing Pages</li>
                 <li className="flex items-center gap-2"><span className="text-[#66FCF1]">✓</span> Мгновенный биллинг и push-уведомления (без спам-фильтров)</li>
                 <li className="flex items-center gap-2"><span className="text-[#66FCF1]">✓</span> Бесшовная интеграция с ИИ-ассистентами</li>
@@ -437,7 +437,7 @@ export default function Home() {
         {/* Секция Стоимость */}
         <section id="pricing" className="scroll-mt-24 container relative py-20 z-10">
           {/* Добавлен блюр фон для лучшей читаемости текста */}
-          <div className="absolute inset-0 z-[-1] bg-slate-950/60 backdrop-blur-xl rounded-[40px] shadow-[0_0_100px_rgba(0,0,0,0.8)] border border-white/5 m-4"></div>
+          <div className="absolute inset-0 z-[-1] bg-slate-950/60 backdrop-blur-xl rounded-[40px] shadow-[0_0_100px_rgba(0,0,0,0.8)] border border-[#66FCF1]/20 m-4"></div>
 
           <div className="space-y-4 mb-12">
             <span className="inline-flex items-center gap-2 rounded-none border border-[#66FCF1]/30 bg-[#66FCF1]/5 px-4 py-1 text-xs uppercase tracking-[0.1em] text-[#66FCF1] font-mono">
@@ -456,7 +456,7 @@ export default function Home() {
                 className={`group relative flex flex-col justify-between overflow-hidden rounded-none border p-8 transition-all duration-300 ${
                   plan.popular
                     ? "border-[#66FCF1] bg-[#66FCF1]/5 shadow-[0_0_30px_rgba(102,252,241,0.15)] hover:bg-[#66FCF1]/10 backdrop-blur-xl"
-                    : "border-white/10 bg-white/[0.02]  backdrop-blur-md hover:bg-white/[0.05]"
+                    : "border-[#66FCF1]/30 bg-white/[0.02]  backdrop-blur-md hover:bg-white/[0.05]"
                 }`}
                 style={{ clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%)" }}
               >
@@ -495,7 +495,7 @@ export default function Home() {
               {additionalModules.map((module, idx) => (
                 <div
                   key={idx}
-                  className="flex items-center justify-between border border-white/5 bg-white/[0.01]  backdrop-blur-md p-4 hover:border-white/20 transition-colors"
+                  className="flex items-center justify-between border border-[#66FCF1]/20 bg-white/[0.01]  backdrop-blur-md p-4 hover:border-white/20 transition-colors"
                 >
                   <span className="text-sm text-slate-300 font-medium">{module.name}</span>
                   <span className="text-xs font-mono text-[#66FCF1] whitespace-nowrap ml-4 bg-[#66FCF1]/10 px-2 py-1">{module.price}</span>
@@ -510,7 +510,7 @@ export default function Home() {
         {/* Секция Отзывы */}
         <section className="container relative my-20 z-10">
           <div
-            className="absolute inset-0 overflow-hidden rounded-none border border-white/10 bg-white/[0.03] shadow-[0_40px_120px_rgba(76,29,149,0.25)] backdrop-blur-2xl animate-fade-in-up"
+            className="absolute inset-0 overflow-hidden rounded-none border border-[#66FCF1]/30 bg-white/[0.03] shadow-[0_40px_120px_rgba(76,29,149,0.25)] backdrop-blur-2xl animate-fade-in-up"
             style={{ clipPath: "polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px)" }}
           >
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom,_rgba(168,85,247,0.3),_transparent_70%)]" />
@@ -518,7 +518,7 @@ export default function Home() {
 
           <div className="relative z-20 px-6 py-12 md:px-12 space-y-10">
             <div className="space-y-4">
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs uppercase tracking-[0.15em] text-white/60">
+              <span className="inline-flex items-center gap-2 rounded-none border border-[#66FCF1]/30 bg-[#020304]/80 backdrop-blur-md border border-[#66FCF1]/30 px-4 py-1 text-xs uppercase tracking-[0.15em] text-white/60">
                 ДОКАЗАТЕЛЬСТВА
               </span>
               <h2 className="text-3xl font-semibold text-white md:text-4xl">
@@ -534,14 +534,14 @@ export default function Home() {
               {testimonials.map((testimonial) => (
                 <figure
                   key={testimonial.name}
-                  className="group relative h-full overflow-hidden rounded-none border border-white/10 bg-white/[0.05] p-6 shadow-[0_25px_80px_rgba(168,85,247,0.2)] backdrop-blur-md transition-transform duration-500 hover:-translate-y-2 transition-colors group-hover:bg-white/[0.07]"
+                  className="group relative h-full overflow-hidden rounded-none border border-[#66FCF1]/30 bg-white/[0.05] p-6 shadow-[0_25px_80px_rgba(168,85,247,0.2)] backdrop-blur-md transition-transform duration-500 hover:-translate-y-2 transition-colors group-hover:bg-white/[0.07]"
                 >
                   <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(236,72,153,0.32),_transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <blockquote className="relative z-10 text-base text-slate-200">
                     “{testimonial.quote}”
                   </blockquote>
                   <figcaption className="relative z-10 mt-6 flex items-center gap-4">
-                    <Image src={testimonial.avatar} alt={testimonial.name} width={48} height={48} className="h-12 w-12 rounded-full border-2 border-white/10 object-cover shadow-sm" unoptimized />
+                    <Image src={testimonial.avatar} alt={testimonial.name} width={48} height={48} className="h-12 w-12 rounded-none border-2 border-[#66FCF1]/30 object-cover shadow-sm" unoptimized />
                     <div className="space-y-1">
                       <div className="text-sm font-semibold text-white">{testimonial.name}</div>
                       <div className="text-xs text-white/60">
@@ -576,11 +576,11 @@ export default function Home() {
         {/* Секция Контакты */}
         <section
           id="contact"
-          className="container relative overflow-hidden rounded-none border border-white/10 bg-gradient-to-br from-white/[0.04] via-white/[0.02] to-transparent px-6 py-16 shadow-[0_50px_160px_rgba(14,165,233,0.35)] backdrop-blur-2xl animate-fade-in-up md:grid md:grid-cols-[minmax(0,1fr)_380px] md:gap-12 md:px-12"
+          className="container relative overflow-hidden rounded-none border border-[#66FCF1]/30 bg-gradient-to-br from-white/[0.04] via-white/[0.02] to-transparent px-6 py-16 shadow-[0_50px_160px_rgba(14,165,233,0.35)] backdrop-blur-2xl animate-fade-in-up md:grid md:grid-cols-[minmax(0,1fr)_380px] md:gap-12 md:px-12"
         >
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(6,182,212,0.28),_transparent_65%)]" />
           <div className="relative space-y-6">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs uppercase tracking-[0.15em] text-white/60">
+            <span className="inline-flex items-center gap-2 rounded-none border border-[#66FCF1]/30 bg-[#020304]/80 backdrop-blur-md border border-[#66FCF1]/30 px-4 py-1 text-xs uppercase tracking-[0.15em] text-white/60">
               СВЯЗЬ. ДЕЙСТВИЕ.
             </span>
             <h2 className="text-3xl font-semibold text-white md:text-4xl">
