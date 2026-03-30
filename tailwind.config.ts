@@ -144,7 +144,7 @@ const config = {
         },
       },
       animation: {
-        'infinite-scroll': 'infinite-scroll 45s linear infinite',
+        'infinite-scroll': 'infinite-scroll 90s linear infinite',
 
         "fade-up": "fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards",
         "scale-in": "scale-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards",

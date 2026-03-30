@@ -7,12 +7,10 @@ import Image from "next/image";
 
 
 
-import { ContactForm } from "@/components/ContactForm";
 import { TerminalCTA } from "@/components/ui/TerminalCTA";
 import { SmartScarcity } from "@/components/ui/SmartScarcity";
 import { Hero } from "@/components/sections/Hero";
 import { MasterpieceServices } from "@/components/sections/MasterpieceServices";
-import { TrueFocus } from "@/components/ReactBits/TrueFocus";
 import { TiltedCard } from "@/components/ReactBits/TiltedCard";
 import { DynamicPricing } from "@/components/twa/DynamicPricing";
 
@@ -185,16 +183,17 @@ const testimonials = [
 export default function Home() {
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-transparent text-slate-200"><div className="pointer-events-none absolute inset-0">
+    <div className="relative min-h-screen overflow-x-hidden bg-[#020304] text-[#E0E0E0] pb-16 font-mono transition-opacity duration-1000"><div className="pointer-events-none fixed inset-0 z-[-1]">
 
-        <div className="floating-orb top-[-15%] left-[-5%] h-72 w-72 bg-fuchsia-500/30" />
-        <div className="floating-orb right-[-10%] top-[20%] h-[22rem] w-[22rem] bg-[#66FCF1]/20" />
-        <div className="floating-orb bottom-[-10%] left-1/2 h-80 w-80 -translate-x-1/2 bg-indigo-500/30" />
+        <div className="floating-orb top-[-15%] left-[-5%] h-72 w-72 bg-fuchsia-500/30 blur-3xl" />
+        <div className="floating-orb right-[-10%] top-[20%] h-[22rem] w-[22rem] bg-[#66FCF1]/20 blur-3xl" />
+        <div className="floating-orb bottom-[-10%] left-1/2 h-80 w-80 -translate-x-1/2 bg-indigo-500/30 blur-[140px]" />
       </div>
 
       {/* Hero section removed from padded container so it starts exactly at the top edge */}
 
-      <div className="relative z-10 w-full">
+      <div className="relative z-10 w-full border-b border-[#66FCF1]/20">
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#020304] to-transparent pointer-events-none z-[-1]"></div>
         <Hero />
       </div>
        
@@ -260,7 +259,7 @@ export default function Home() {
             <div className="grid gap-6 md:grid-cols-12 md:grid-rows-2">
               <article className="group relative flex h-full flex-col overflow-hidden rounded-none border border-[#66FCF1]/20 bg-gradient-to-b from-white/[0.03] to-white/[0.01]  backdrop-blur-md p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] transition-all hover:bg-white/[0.05] hover:shadow-[0_0_40px_rgba(31,140,255,0.1)] md:col-span-8 md:row-span-1">
                  <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-none bg-blue-500/10 text-blue-400">
-                   <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                   <Image src="/sales-funnel.svg" alt="Sales" width={48} height={48} className="h-full w-full object-contain drop-shadow-[0_0_15px_rgba(59,130,246,0.5)]" unoptimized />
                  </div>
                  <h3 className="mb-3 text-2xl font-semibold text-white font-mono">МАШИНА ПРОДАЖ В ТЕЛЕГРАМ</h3>
                  <p className="mb-6 max-w-lg text-slate-300 font-mono flex-1">
@@ -275,7 +274,7 @@ export default function Home() {
 
               <article className="group relative flex h-full flex-col overflow-hidden rounded-none border border-[#66FCF1]/20 bg-gradient-to-b from-white/[0.03] to-white/[0.01]  backdrop-blur-md p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] transition-all hover:bg-white/[0.05] hover:shadow-[0_0_40px_rgba(236,72,153,0.1)] md:col-span-4 md:row-span-1">
                  <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-none bg-pink-500/10 text-pink-400">
-                   <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                   <Image src="/ui-ux.svg" alt="UI UX" width={48} height={48} className="h-full w-full object-contain drop-shadow-[0_0_15px_rgba(236,72,153,0.5)]" unoptimized />
                  </div>
                  <h3 className="mb-3 text-xl font-semibold text-white font-mono">HIGH-END ИНТЕРФЕЙСЫ</h3>
                  <p className="text-slate-300 font-mono">
@@ -285,7 +284,7 @@ export default function Home() {
 
               <article className="group relative flex h-full flex-col overflow-hidden rounded-none border border-[#66FCF1]/20 bg-gradient-to-b from-white/[0.03] to-white/[0.01]  backdrop-blur-md p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] transition-all hover:bg-white/[0.05] hover:shadow-[0_0_40px_rgba(168,85,247,0.1)] md:col-span-5 md:row-span-1">
                  <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-none bg-purple-500/10 text-purple-400">
-                   <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+                   <Image src="/viral-reach.svg" alt="Motion" width={48} height={48} className="h-full w-full object-contain drop-shadow-[0_0_15px_rgba(168,85,247,0.5)]" unoptimized />
                  </div>
                  <h3 className="mb-3 text-xl font-semibold text-white font-mono">ПРЕМИАЛЬНЫЙ MOTION</h3>
                  <p className="text-slate-300 font-mono">
@@ -297,7 +296,7 @@ export default function Home() {
                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_rgba(20,184,166,0.15),_transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                  <div className="relative z-10 flex flex-col h-full">
                    <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-none bg-teal-500/10 text-teal-400">
-                     <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" /></svg>
+                     <Image src="/ai-generation.svg" alt="AI" width={48} height={48} className="h-full w-full object-contain drop-shadow-[0_0_15px_rgba(20,184,166,0.5)]" unoptimized />
                    </div>
                    <h3 className="mb-3 text-2xl font-semibold text-white font-mono">ИСКУССТВЕННЫЙ ИНТЕЛЛЕКТ. ДОМИНАЦИЯ.</h3>
                    <p className="mb-6 text-slate-300 font-mono flex-1">
@@ -326,7 +325,7 @@ export default function Home() {
                 10X АВТОМАТИЗАЦИЯ
               </span>
               <h2 className="text-3xl font-semibold text-white md:text-4xl">
-                <TrueFocus sentence="Автоматизируй или умри. Телеграм-боты для бизнеса." manualMode={false} />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#66FCF1] to-blue-500 animate-pulse drop-shadow-[0_0_8px_rgba(102,252,241,0.5)]">Автоматизируй или умри.</span> Телеграм-боты для бизнеса.
               </h2>
               <p className="max-w-2xl text-base text-slate-300 md:text-lg">
                 Хватит терять клиентов из-за человеческого фактора. Наши Telegram-боты и связки интегрируются в единый, безотказный механизм генерации прибыли.
@@ -557,7 +556,7 @@ export default function Home() {
           {/* Блок с изображением tal2.webp - Позиционирование вне слоя clipPath */}
           <div
             aria-hidden="true"
-            className="absolute top-[-240px] right-[-180px] hidden lg:block z-30 mix-blend-screen"
+            className="absolute top-[-240px] right-[-180px] hidden lg:block z-30"
           >
             <div className="relative h-[300px] w-[300px]">
               <TiltedCard
@@ -606,7 +605,15 @@ export default function Home() {
             </ul>
           </div>
           <div className="relative mt-10 md:mt-0">
-            <ContactForm />
+            <div className="flex flex-col gap-6 w-full max-w-md mx-auto">
+              <a href="https://t.me/peexthree" target="_blank" rel="noreferrer" className="group relative flex h-14 w-full items-center justify-center overflow-hidden rounded-none border border-[#66FCF1]/50 bg-[#66FCF1]/10 font-mono text-sm font-bold tracking-[0.1em] text-[#66FCF1] transition-all hover:bg-[#66FCF1]/20 hover:shadow-[0_0_30px_rgba(102,252,241,0.3)] backdrop-blur-md">
+                НАПИСАТЬ РАЗРАБОТЧИКУ
+                <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
+              </a>
+              <a href="https://t.me/peexthree?start=demo" target="_blank" rel="noreferrer" className="group relative flex h-14 w-full items-center justify-center overflow-hidden rounded-none border border-white/20 bg-white/5 font-mono text-sm font-bold tracking-[0.1em] text-white transition-all hover:bg-white/10 hover:shadow-[0_0_30px_rgba(255,255,255,0.1)] backdrop-blur-md">
+                ПОПРОБОВАТЬ ДЭМО БОТ
+              </a>
+            </div>
           <div className="mt-8"><TerminalCTA /></div>
           <SmartScarcity />
           </div>
