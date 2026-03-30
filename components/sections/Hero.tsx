@@ -15,7 +15,7 @@ export function Hero() {
       className="relative flex h-[100svh] min-h-[600px] w-full items-center justify-center overflow-hidden"
     >
       {/* Video Background */}
-      <div className="absolute inset-0 z-0 bg-slate-950">
+      <div className="absolute inset-0 z-0 bg-[#020304]">
         <video
           autoPlay
           loop

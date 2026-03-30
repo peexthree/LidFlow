@@ -3,7 +3,7 @@ import { Analytics } from "@vercel/analytics/react";
 
 import "./globals.css";
 import { SiteHeader } from "@/components/layout/SiteHeader";
-import { FloatingOrbs } from "@/components/ui/VisualEffects";
+import { TechBackground } from "@/components/ui/VisualEffects";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://lidflow.vercel.app";
 
@@ -62,11 +62,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang="ru" className="h-full">
-      <body className="flex min-h-screen flex-col bg-slate-950 text-slate-100 selection:bg-white/20">
+      <body className="flex min-h-screen flex-col bg-[#020304] text-slate-100 selection:bg-white/20">
         <SiteHeader />
 
 
-        <FloatingOrbs />
+        <TechBackground />
 
 
         <main className="flex-1 relative z-10">{children}</main>
