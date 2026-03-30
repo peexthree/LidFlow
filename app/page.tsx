@@ -593,7 +593,7 @@ export default function Home() {
                 • Telegram:
                 <a
                   className="ml-1 inline-flex items-center gap-1 text-[#66FCF1] underline decoration-dotted underline-offset-4 transition hover:text-cyan-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#66FCF1]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050816]"
-                  href="https://t.me/peexthree?start=demo"
+                  href="https://t.me/LIDflowDemoBOT"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -607,11 +607,11 @@ export default function Home() {
           <div className="relative mt-10 md:mt-0">
             <div className="flex flex-col gap-6 w-full max-w-md mx-auto">
               <a href="https://t.me/peexthree" target="_blank" rel="noreferrer" className="group relative flex h-14 w-full items-center justify-center overflow-hidden rounded-none border border-[#66FCF1]/50 bg-[#66FCF1]/10 font-mono text-sm font-bold tracking-[0.1em] text-[#66FCF1] transition-all hover:bg-[#66FCF1]/20 hover:shadow-[0_0_30px_rgba(102,252,241,0.3)] backdrop-blur-md">
-                НАПИСАТЬ РАЗРАБОТЧИКУ
+                ИНИЦИИРОВАТЬ ПРОЕКТ
                 <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
               </a>
-              <a href="https://t.me/peexthree?start=demo" target="_blank" rel="noreferrer" className="group relative flex h-14 w-full items-center justify-center overflow-hidden rounded-none border border-white/20 bg-white/5 font-mono text-sm font-bold tracking-[0.1em] text-white transition-all hover:bg-white/10 hover:shadow-[0_0_30px_rgba(255,255,255,0.1)] backdrop-blur-md">
-                ПОПРОБОВАТЬ ДЭМО БОТ
+              <a href="https://t.me/LIDflowDemoBOT" target="_blank" rel="noreferrer" className="group relative flex h-14 w-full items-center justify-center overflow-hidden rounded-none border border-white/20 bg-white/5 font-mono text-sm font-bold tracking-[0.1em] text-white transition-all hover:bg-white/10 hover:shadow-[0_0_30px_rgba(255,255,255,0.1)] backdrop-blur-md">
+                ЗАПУСТИТЬ СИСТЕМУ @LIDflowDemoBOT
               </a>
             </div>
           <div className="mt-8"><TerminalCTA /></div>

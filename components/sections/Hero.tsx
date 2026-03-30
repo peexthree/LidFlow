@@ -33,21 +33,21 @@ export function Hero() {
         <AnimatedSection
           motion="lift"
           once
-          className="rounded-full border border-white/10 bg-black/30 px-5 py-2 text-xs font-semibold uppercase tracking-[0.15em] text-cyan-400 shadow-[0_0_20px_rgba(6,182,212,0.2)] backdrop-blur-md"
+          className="rounded-none border border-[#66FCF1]/30 bg-[#020304]/80 px-5 py-2 text-xs font-semibold uppercase tracking-[0.15em] text-[#66FCF1] shadow-[0_0_20px_rgba(102,252,241,0.2)] backdrop-blur-md font-mono"
         >
-          <span>Telegram Web Apps & Bots</span>
+          <span>Технологическая Архитектура & Лор</span>
         </AnimatedSection>
 
         <AnimatedSection motion="fade-slide" direction="up" once>
-          <h1 className="font-display text-display-xl font-bold uppercase tracking-tight text-white drop-shadow-2xl md:text-[5.5rem] lg:text-[7rem] leading-[1.2]">
+          <h1 className="font-display text-display-xl font-bold uppercase tracking-tight text-white drop-shadow-2xl md:text-[4rem] lg:text-[5rem] leading-[1.2]">
             <SplitText
-              text="Автоматизация"
+              text="ЦИФРОВАЯ ЭВОЛЮЦИЯ"
               stagger={ANIMATION_CONFIG.stagger.fast}
             />
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 drop-shadow-none">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#66FCF1] to-blue-500 drop-shadow-none">
               <SplitText
-                text="Продаж"
+                text="ВАШЕГО БИЗНЕСА"
                 stagger={ANIMATION_CONFIG.stagger.fast}
               />
             </span>
@@ -58,18 +58,18 @@ export function Hero() {
           motion="blur"
           direction="up"
           once
-          className="max-w-3xl text-body-lg text-slate-300 md:text-xl font-light"
+          className="max-w-3xl text-body-lg text-slate-300 md:text-xl font-mono uppercase tracking-widest"
         >
           <p>
-            Увеличиваем конверсию, снижаем нагрузку на менеджеров.
-            Разрабатываем инструменты, которые продают 24/7.
+            От архитектуры систем продаж до создания глубокого лора.
+            Мы не просто пишем код, мы строим вселенные.
           </p>
         </AnimatedSection>
 
         <AnimatedSection
           motion="lift"
           once
-          className="mt-4 flex flex-wrap items-center justify-center gap-6"
+          className="mt-8 flex flex-wrap items-center justify-center gap-6 w-full max-w-lg"
         >
           <motion.div
             initial="hidden"
@@ -82,9 +82,10 @@ export function Hero() {
                 },
               },
             }}
-            className="flex flex-wrap justify-center gap-4"
+            className="flex flex-col sm:flex-row w-full justify-center gap-4"
           >
             <motion.div
+              className="w-full sm:w-1/2"
               variants={{
                 hidden: { opacity: 0, y: 24 },
                 visible: { opacity: 1, y: 0 },
@@ -94,11 +95,12 @@ export function Hero() {
                 ease: ANIMATION_CONFIG.ease,
               }}
             >
-              <Button asChild className="rounded-full bg-white px-8 py-6 text-lg font-bold text-black transition-transform hover:scale-105 hover:bg-slate-200">
-                <Link href="https://t.me/LIDflowDemoBOT" target="_blank" rel="noopener noreferrer">Запустить Демо-Бота</Link>
+              <Button asChild className="w-full rounded-none bg-[#66FCF1] px-8 py-6 font-mono text-sm font-bold text-black transition-transform hover:scale-105 hover:bg-[#66FCF1]/80 shadow-[0_0_20px_rgba(102,252,241,0.4)]">
+                <Link href="https://t.me/LIDflowDemoBOT" target="_blank" rel="noopener noreferrer">ИНИЦИИРОВАТЬ ПРОЕКТ</Link>
               </Button>
             </motion.div>
             <motion.div
+              className="w-full sm:w-1/2"
               variants={{
                 hidden: { opacity: 0, y: 24 },
                 visible: { opacity: 1, y: 0 },
@@ -112,13 +114,22 @@ export function Hero() {
               <Button
                 asChild
                 variant="outline"
-                className="rounded-full border-white/20 bg-white/5 px-8 py-6 text-lg font-bold text-white backdrop-blur-md transition-colors hover:bg-white/10 hover:text-white"
+                className="w-full rounded-none border-purple-500/50 bg-[#090209]/80 px-8 py-6 font-mono text-sm font-bold text-purple-400 backdrop-blur-md transition-all hover:bg-purple-600/20 hover:text-white shadow-[0_0_20px_rgba(168,85,247,0.2)]"
               >
-                <Link href="#pricing">Посмотреть тарифы</Link>
+                <Link href="https://t.me/Eidos_Interface_bot" target="_blank" rel="noopener noreferrer">ПОГРУЗИТЬСЯ В ЛОР</Link>
               </Button>
             </motion.div>
           </motion.div>
         </AnimatedSection>
+      </div>
+
+      {/* Декоративные элементы */}
+      <div className="absolute bottom-10 left-10 pointer-events-none hidden md:block">
+         <div className="text-[#66FCF1]/50 font-mono text-[10px] tracking-[0.2em] uppercase">
+            Система активна<br/>
+            Сборка v2.0.4<br/>
+            Шифрование [OK]
+         </div>
       </div>
 
     </section>
