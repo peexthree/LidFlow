@@ -14,8 +14,8 @@ export const TrueFocus: React.FC<TrueFocusProps> = ({
   sentence,
   manualMode = false,
   blurAmount = 4,
-  borderColor = '#00ffcc',
-  glowColor = 'rgba(0, 255, 204, 0.4)',
+  borderColor = '#66FCF1', // Cyberpunk Cyan по умолчанию
+  glowColor = 'rgba(102, 252, 241, 0.4)',
   animationDuration = 0.5,
   pauseBetweenAnimations = 1.5,
 }) => {
@@ -49,15 +49,22 @@ export const TrueFocus: React.FC<TrueFocusProps> = ({
               }
             }}
             onMouseEnter={() => manualMode && setCurrentIndex(index)}
-            className={`text-4xl font-bold cursor-pointer transition-all duration-${
-              animationDuration * 1000
-            } ${
+            // Заменяем динамические классы Tailwind на встроенные стили (style),
+            // чтобы избежать проблем с JIT-компиляцией, и добавляем киберпанк стилистику.
+            className={`text-4xl font-bold cursor-pointer font-mono tracking-wider ${
               isFocused
-                ? `text-white drop-shadow-[0_0_10px_${glowColor}] border-b-2 border-[${borderColor}] opacity-100 scale-110`
-                : `text-white/30 blur-[${blurAmount}px] opacity-50 scale-100`
+                ? `text-[#66FCF1] border-b-2 border-transparent`
+                : `text-white/30`
             }`}
             style={{
               transition: `all ${animationDuration}s cubic-bezier(0.4, 0, 0.2, 1)`,
+              filter: isFocused ? 'none' : `blur(${blurAmount}px)`,
+              opacity: isFocused ? 1 : 0.5,
+              transform: isFocused ? 'scale(1.1)' : 'scale(1)',
+              borderBottomColor: isFocused ? borderColor : 'transparent',
+              textShadow: isFocused ? `0 0 10px ${glowColor}` : 'none',
+              // Убираем любые скругления
+              borderRadius: '0',
             }}
           >
             {word}

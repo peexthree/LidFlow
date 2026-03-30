@@ -21,7 +21,8 @@ export const DecryptedText: React.FC<DecryptedTextProps> = ({
   characters = defaultChars,
   className = '',
   parentClassName = '',
-  encryptedClassName = '',
+  // Default to Cyberpunk Cyan with blur and drop shadow
+  encryptedClassName = 'text-[#66FCF1] drop-shadow-[0_0_8px_rgba(102,252,241,0.8)] backdrop-blur-sm opacity-80',
   onDecryptionComplete,
   animateOn = 'hover',
 }) => {
@@ -57,7 +58,7 @@ export const DecryptedText: React.FC<DecryptedTextProps> = ({
 
   return (
     <span
-      className={`inline-block ${parentClassName}`}
+      className={`inline-block font-mono tracking-wider ${parentClassName}`}
       onMouseEnter={() => animateOn === 'hover' && setIsHovering(true)}
       onMouseLeave={() => animateOn === 'hover' && setIsHovering(false)}
     >
