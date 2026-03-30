@@ -188,7 +188,7 @@ export default function TWAPage() {
       {!isAssimilated && (
         <AssimilationScreen onComplete={() => setIsAssimilated(true)} />
       )}
-    <div className={clsx("relative min-h-screen overflow-x-hidden bg-transparent text-slate-200 pb-16 font-sans transition-opacity duration-1000", !isAssimilated ? "opacity-0 pointer-events-none absolute inset-0" : "opacity-100")}>
+    <div className={clsx("relative min-h-screen overflow-x-hidden bg-[#020304] text-[#E0E0E0] pb-16 font-mono transition-opacity duration-1000", !isAssimilated ? "opacity-0 pointer-events-none absolute inset-0" : "opacity-100")}>
       <Script src="https://telegram.org/js/telegram-web-app.js" strategy="beforeInteractive" />
 
       {/* Одинаковый фон из реакта (floating orbs) */}
@@ -198,7 +198,7 @@ export default function TWAPage() {
         <div className="floating-orb bottom-[-10%] left-1/2 h-80 w-80 -translate-x-1/2 bg-indigo-500/30 blur-[140px]" />
       </div>
 {/* 1. Hero-блок «Интеллект Системы» (Финотоговая B2B версия) */}
-      <section className="relative w-full h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden bg-[#020304] border-b border-white/5">
+      <section className="relative w-full h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden bg-[#020304] border-b border-[#66FCF1]/20">
         
         {/* СЛОЙ 1: ВИДЕО (Полноэкранное холст от края до края) */}
         <div className="absolute inset-0 z-0">
@@ -232,8 +232,8 @@ export default function TWAPage() {
         >
           <div className="space-y-4">
             {/* Значок статуса в современном чистом стиле */}
-            <span className="inline-flex items-center gap-2 rounded-full border border-[#66FCF1]/20 bg-[#66FCF1]/5 px-4 py-1 text-[10px] md:text-xs uppercase tracking-[0.15em] text-[#66FCF1] shadow-[0_0_15px_rgba(34,211,238,0.1)]">
-              <span className="flex h-1.5 w-1.5 md:h-2 md:w-2 rounded-full bg-[#66FCF1] animate-pulse shadow-[0_0_10px_#22d3ee]"></span>
+            <span className="inline-flex items-center gap-2 rounded-none border border-[#66FCF1]/20 bg-[#66FCF1]/5 px-4 py-1 text-[10px] md:text-xs uppercase tracking-[0.15em] text-[#66FCF1] drop-shadow-[0_0_8px_#66FCF1] border-[#66FCF1]/50">
+              <span className="flex h-1.5 w-1.5 md:h-2 md:w-2 rounded-none bg-[#66FCF1] animate-pulse shadow-[0_0_10px_#22d3ee]"></span>
               ИНТЕЛЛЕКТ СИСТЕМЫ
             </span>
             
@@ -256,7 +256,7 @@ export default function TWAPage() {
           <Button
             onClick={scrollToCalculator}
             // Премиальный B2B стиль: скругление rounded-none, современный градиент, глубокая тень
-            className="mt-8 px-10 py-5 text-base md:text-lg font-bold text-white bg-gradient-to-r from-blue-600 to-[#66FCF1] rounded-none shadow-[0_8px_25px_rgba(59,130,246,0.3)] transition-all duration-300 hover:scale-105 hover:from-blue-500 hover:to-[#66FCF1] hover:shadow-[0_12px_35px_rgba(59,130,246,0.5)] active:scale-95"
+            className="mt-8 px-10 py-5 text-base md:text-lg font-bold text-white bg-gradient-to-r from-blue-600 to-[#66FCF1] rounded-none drop-shadow-[0_0_12px_#66FCF1] border-b-2 border-r-2 border-[#66FCF1] transition-all duration-300 hover:scale-105 hover:from-blue-500 hover:to-[#66FCF1] hover:shadow-[0_12px_35px_rgba(59,130,246,0.5)] active:scale-95"
           >
             Настроить систему
           </Button>
@@ -267,7 +267,7 @@ export default function TWAPage() {
       {/* 2. Интерактивный калькулятор «Инвестиции в рост» */}
       <section ref={calculatorRef} className="container mx-auto px-4 py-16 max-w-3xl">
         <div className="space-y-4 mb-10 text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 backdrop-blur-md text-[10px] uppercase tracking-[0.15em] text-white/60">
+            <span className="inline-flex items-center gap-2 rounded-none border border-[#66FCF1]/30 bg-white/5 px-4 py-1 backdrop-blur-md text-[10px] uppercase tracking-[0.15em] text-white/60">
               КАЛЬКУЛЯТОР
             </span>
             <h2 className="text-2xl md:text-4xl font-semibold text-white font-mono">Инвестиции в рост</h2>
@@ -280,9 +280,9 @@ export default function TWAPage() {
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(31,140,255,0.15),_transparent_60%)] pointer-events-none rounded-none" />
 
           {/* База */}
-          <div className="rounded-none border border-white/10 bg-white/[0.03] p-6 shadow-[inset_0_2px_40px_rgba(255,255,255,0.02)] backdrop-blur-xl relative z-10" style={{ clipPath: "polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px)" }}>
+          <div className="rounded-none border border-[#66FCF1]/30 bg-white/[0.03] p-6 shadow-[inset_0_2px_40px_rgba(255,255,255,0.02)] backdrop-blur-xl relative z-10" style={{ clipPath: "polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px)" }}>
             <h3 className="text-xl font-semibold text-[#66FCF1] mb-6 flex items-center gap-2 font-mono">
-              <span className="bg-[#66FCF1]/10 text-[#66FCF1] p-1 rounded-md text-xs">1</span>
+              <span className="bg-[#66FCF1]/10 text-[#66FCF1] p-1 rounded-none text-xs">1</span>
               Выбор базы
             </h3>
             <div className="grid gap-4 md:grid-cols-3">
@@ -293,7 +293,7 @@ export default function TWAPage() {
                     "cursor-pointer relative overflow-hidden flex flex-col justify-between p-5 rounded-none transition-all duration-300",
                     selectedBase === plan.id
                       ? "border border-[#66FCF1]/50 bg-[#66FCF1]/10 shadow-[0_0_15px_rgba(65,174,255,0.4)] ring-1 ring-[#66FCF1]/50"
-                      : "border border-white/5 bg-white/[0.02] hover:bg-white/[0.1] backdrop-blur-md"
+                      : "border border-[#66FCF1]/20 bg-white/[0.02] hover:bg-white/[0.1] backdrop-blur-md"
                   )}
                 >
                   <input
@@ -310,19 +310,19 @@ export default function TWAPage() {
                     <ul className="space-y-2 mb-6">
                       {plan.features.map((feature, i) => (
                         <li key={i} className="flex items-start gap-2 text-xs text-slate-300">
-                          <span className="mt-0.5 flex-shrink-0 w-1.5 h-1.5 rounded-full bg-[#66FCF1]" />
+                          <span className="mt-0.5 flex-shrink-0 w-1.5 h-1.5 rounded-none bg-[#66FCF1]" />
                           <span>{feature}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
-                  <div className="mt-auto text-lg font-mono text-[#66FCF1] font-bold drop-shadow-sm border-t border-white/10 pt-4">
+                  <div className="mt-auto text-lg font-mono text-[#66FCF1] font-bold drop-shadow-sm border-t border-[#66FCF1]/30 pt-4">
                     от {plan.price.toLocaleString("ru-RU")} ₽
                   </div>
 
                   {/* Indicator */}
                   {selectedBase === plan.id && (
-                     <div className="absolute top-3 right-3 w-2 h-2 rounded-full bg-[#66FCF1] animate-pulse drop-shadow-[0_0_5px_rgba(65,174,255,1)]"></div>
+                     <div className="absolute top-3 right-3 w-2 h-2 rounded-none bg-[#66FCF1] animate-pulse drop-shadow-[0_0_5px_rgba(65,174,255,1)]"></div>
                   )}
                 </label>
               ))}
@@ -330,9 +330,9 @@ export default function TWAPage() {
           </div>
 
           {/* Доп. Модули */}
-          <div className="rounded-none border border-white/10 bg-white/[0.03] p-6 shadow-[inset_0_2px_40px_rgba(255,255,255,0.02)] backdrop-blur-xl relative z-10" style={{ clipPath: "polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px)" }}>
-            <h3 className="text-xl font-semibold text-pink-400 mb-6 flex items-center gap-2 font-mono">
-              <span className="bg-pink-400/10 text-pink-400 p-1 rounded-md text-xs">2</span>
+          <div className="rounded-none border border-[#66FCF1]/30 bg-white/[0.03] p-6 shadow-[inset_0_2px_40px_rgba(255,255,255,0.02)] backdrop-blur-xl relative z-10" style={{ clipPath: "polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px)" }}>
+            <h3 className="text-xl font-semibold text-[#FF00FF] mb-6 flex items-center gap-2 font-mono">
+              <span className="bg-[#FF00FF]/10 text-[#FF00FF] p-1 rounded-none text-xs">2</span>
               Дополнительные модули
             </h3>
             <div className="grid gap-3 md:grid-cols-2">
@@ -342,8 +342,8 @@ export default function TWAPage() {
                   className={clsx(
                     "cursor-pointer flex items-center justify-between p-4 rounded-none transition-all duration-300",
                     selectedModules.includes(mod.id)
-                      ? "border border-pink-400/50 bg-pink-400/10 ring-1 ring-pink-500/50 shadow-[0_0_15px_rgba(236,72,153,0.3)]"
-                      : "border border-white/5 bg-white/[0.02] hover:bg-white/[0.1] backdrop-blur-md"
+                      ? "border border-[#FF00FF]/50 bg-[#FF00FF]/10 ring-1 ring-pink-500/50 shadow-[0_0_15px_rgba(236,72,153,0.3)]"
+                      : "border border-[#66FCF1]/20 bg-white/[0.02] hover:bg-white/[0.1] backdrop-blur-md"
                   )}
                 >
                   <div className="flex items-center gap-4">
@@ -351,7 +351,7 @@ export default function TWAPage() {
                       className={clsx(
                         "w-5 h-5 rounded border flex items-center justify-center transition-colors shadow-sm",
                         selectedModules.includes(mod.id)
-                          ? "border-pink-400 bg-pink-400"
+                          ? "border-[#FF00FF] bg-[#FF00FF]"
                           : "border-slate-500 bg-white/5"
                       )}
                     >
@@ -363,7 +363,7 @@ export default function TWAPage() {
                     </div>
                     <span className="text-sm font-medium text-slate-200">{mod.title}</span>
                   </div>
-                  <span className="text-sm font-mono text-pink-300 font-medium">
+                  <span className="text-sm font-mono text-[#FF00FF] font-medium">
                     +{mod.price.toLocaleString("ru-RU")} ₽
                   </span>
                   <input
@@ -378,9 +378,9 @@ export default function TWAPage() {
           </div>
 
           {/* Итог */}
-          <div className="rounded-none border border-blue-500/30 bg-blue-500/10 p-6 backdrop-blur-2xl flex flex-col md:flex-row items-center justify-between gap-4 relative z-10 shadow-[0_0_30px_rgba(59,130,246,0.15)]">
+          <div className="rounded-none border border-[#66FCF1]/50 bg-[#66FCF1]/10 p-6 backdrop-blur-2xl flex flex-col md:flex-row items-center justify-between gap-4 relative z-10 drop-shadow-[0_0_15px_rgba(102,252,241,0.5)]">
             <div className="text-slate-300 font-medium uppercase tracking-wider text-xs">Предварительная оценка инвестиций:</div>
-            <div className="text-3xl md:text-4xl font-bold font-mono text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-[#66FCF1] drop-shadow-[0_0_15px_rgba(65,174,255,0.6)]">
+            <div className="text-3xl md:text-4xl font-bold font-mono text-transparent bg-clip-text bg-gradient-to-r from-[#FF00FF] to-[#66FCF1] drop-drop-shadow-[0_0_15px_rgba(102,252,241,0.5)]">
               {totalPrice > 0 ? `${totalPrice.toLocaleString("ru-RU")} ₽` : "0 ₽"}
             </div>
           </div>
@@ -388,9 +388,9 @@ export default function TWAPage() {
       </section>
 
       {/* 3. Модуль «Безопасность и Владение» */}
-      <section className="container mx-auto px-4 py-16 max-w-4xl border-t border-white/5">
+      <section className="container mx-auto px-4 py-16 max-w-4xl border-t border-[#66FCF1]/20">
         <div className="space-y-4 mb-10 text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 backdrop-blur-md text-[10px] uppercase tracking-[0.15em] text-white/60">
+            <span className="inline-flex items-center gap-2 rounded-none border border-[#66FCF1]/30 bg-white/5 px-4 py-1 backdrop-blur-md text-[10px] uppercase tracking-[0.15em] text-white/60">
               ГАРАНТИИ
             </span>
             <h2 className="text-2xl md:text-4xl font-semibold text-white font-mono">Безопасность и Владение</h2>
@@ -400,8 +400,8 @@ export default function TWAPage() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(236,72,153,0.1),_transparent_60%)] pointer-events-none" />
 
           {securityFeatures.map((feature, idx) => (
-             <article key={idx} className="group relative overflow-hidden rounded-none border border-white/10 bg-gradient-to-b from-white/[0.05] to-white/[0.01] p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] transition-all duration-300 hover:bg-white/[0.08] hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(236,72,153,0.15)] backdrop-blur-xl z-10">
-                 <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-none bg-white/5 backdrop-blur-md border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] transition-transform group-hover:scale-110 duration-300 backdrop-blur-md">
+             <article key={idx} className="group relative overflow-hidden rounded-none border border-[#66FCF1]/30 bg-gradient-to-b from-white/[0.05] to-white/[0.01] p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] transition-all duration-300 hover:bg-white/[0.08] hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(236,72,153,0.15)] backdrop-blur-xl z-10">
+                 <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-none bg-white/5 backdrop-blur-md border border-[#66FCF1]/30 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] transition-transform group-hover:scale-110 duration-300 backdrop-blur-md">
                    <Image src={feature.icon} alt={feature.title} width={32} height={32} className="opacity-90 group-hover:opacity-100 drop-shadow-md" />
                  </div>
                  <h3 className="mb-3 text-xl font-semibold text-white font-mono">{feature.title}</h3>
@@ -414,9 +414,9 @@ export default function TWAPage() {
       </section>
 
       {/* 4. Шоурум кейсов (Портфолио) */}
-      <section className="container mx-auto px-4 py-16 max-w-5xl border-t border-white/5">
+      <section className="container mx-auto px-4 py-16 max-w-5xl border-t border-[#66FCF1]/20">
          <div className="space-y-4 mb-10 text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 backdrop-blur-md text-[10px] uppercase tracking-[0.15em] text-white/60">
+            <span className="inline-flex items-center gap-2 rounded-none border border-[#66FCF1]/30 bg-white/5 px-4 py-1 backdrop-blur-md text-[10px] uppercase tracking-[0.15em] text-white/60">
               РЕЗУЛЬТАТЫ
             </span>
             <h2 className="text-2xl md:text-4xl font-semibold text-white font-mono">Шоурум кейсов</h2>
@@ -442,19 +442,19 @@ export default function TWAPage() {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.95, opacity: 0, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative w-full max-w-4xl rounded-none overflow-hidden border border-white/10 bg-gradient-to-b from-[#0a122c] to-[#040816] shadow-[0_0_60px_rgba(31,140,255,0.3)]"
+              className="relative w-full max-w-4xl rounded-none overflow-hidden border-2 border-[#66FCF1]/80 bg-[#020304] drop-shadow-[0_0_25px_#66FCF1]" style={{ clipPath: "polygon(30px 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%, 0 30px)" }}
               onClick={(e) => e.stopPropagation()}
             >
               {/* Хедер модалки */}
               <div className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between p-4 sm:p-6 bg-gradient-to-b from-black/60 to-transparent pointer-events-none">
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] uppercase tracking-[0.1em] text-[#66FCF1] backdrop-blur-md shadow-sm">
-                  <span className="flex h-1.5 w-1.5 rounded-full bg-[#66FCF1] animate-pulse"></span>
+                <span className="inline-flex items-center gap-2 rounded-none border border-[#66FCF1]/30 bg-white/5 px-3 py-1 text-[10px] uppercase tracking-[0.1em] text-[#66FCF1] backdrop-blur-md shadow-sm">
+                  <span className="flex h-1.5 w-1.5 rounded-none bg-[#66FCF1] animate-pulse"></span>
                   LIVE DEMO
                 </span>
 
                 <button
                   onClick={handleCloseVideo}
-                  className="pointer-events-auto flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition-all hover:bg-white/20 hover:scale-110 border border-white/10 shadow-lg"
+                  className="pointer-events-auto flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-none bg-white/10 text-white backdrop-blur-md transition-all hover:bg-white/20 hover:scale-110 border border-[#66FCF1]/30 shadow-lg"
                   aria-label="Закрыть"
                 >
                   <svg className="h-5 w-5 sm:h-6 sm:w-6 drop-shadow-md" fill="none" viewBox="0 0 24 24" stroke="currentColor">
