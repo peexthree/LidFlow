@@ -71,21 +71,32 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         <main className="flex-1 relative z-10">{children}</main>
 
-        <footer className="border-t border-white/5 bg-white/[0.02] backdrop-blur-md">
-          <div className="container flex flex-col gap-4 py-14 text-sm text-slate-400">
-            <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <p>© {currentYear} LidFlow. Создаём лендинги, которые продают.</p>
-            <p className="text-xs text-slate-500">
-              Telegram:{" "}
+        <footer className="relative z-20 border-t border-[#66FCF1]/30 bg-[#020304]/80 backdrop-blur-xl">
+          <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#66FCF1]/50 to-transparent" />
+          <div className="container flex flex-col sm:flex-row items-center justify-between gap-6 py-12 font-mono text-[10px] uppercase tracking-[0.2em] text-[#66FCF1]/60">
+            <div className="flex items-center gap-4">
+              <span className="flex h-2 w-2 rounded-none bg-[#66FCF1] animate-pulse drop-shadow-[0_0_8px_#66FCF1]" />
+              <p>© {currentYear} LIDFLOW.OS. ВЫСОКОКОНВЕРСИОННЫЕ АКТИВЫ.</p>
+            </div>
+
+            <div className="flex items-center gap-6">
               <a
                 href="https://t.me/peexthree"
                 target="_blank"
                 rel="noreferrer"
-                className="underline decoration-dotted underline-offset-4 transition-colors duration-300 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20"
+                className="group flex items-center gap-2 transition-all hover:text-[#66FCF1] hover:drop-shadow-[0_0_10px_rgba(102,252,241,0.5)]"
               >
-                @peexthree
+                <span className="opacity-50 group-hover:opacity-100">&gt;</span>
+                CONNECTION_TGM: @peexthree
               </a>
-            </p>
+              <a
+                href="mailto:linderop@yandex.ru"
+                className="group flex items-center gap-2 transition-all hover:text-[#66FCF1] hover:drop-shadow-[0_0_10px_rgba(102,252,241,0.5)] hidden sm:flex"
+              >
+                <span className="opacity-50 group-hover:opacity-100">&gt;</span>
+                SECURE_MAIL
+              </a>
+            </div>
           </div>
         </footer>
         <Analytics />
