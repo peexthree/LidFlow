@@ -21,30 +21,40 @@ export function SiteHeader() {
 
   const items = [
     {
-      label: "Компания",
-      bgColor: "rgba(15, 23, 42, 0.4)", // slate-900 / 40% (glassmorphism)
-      textColor: "#f8fafc", // slate-50
+      label: "Архитектура & AI",
+      bgColor: "rgba(2, 3, 4, 0.8)", // Эйдос-фон
+      textColor: "#66FCF1",
       links: [
-        { label: "О нас", href: "#about", ariaLabel: "О компании" },
-        { label: "Контакты", href: "#contact", ariaLabel: "Контакты" }
+        { label: "Автономные системы", href: "#services", ariaLabel: "Автономные системы продаж" },
+        { label: "Умные TWA", href: "#services", ariaLabel: "TWA приложения" },
+        { label: "Интеграция ИИ", href: "#services", ariaLabel: "Интеграция нейросетей" }
       ]
     },
     {
-      label: "Проекты",
-      bgColor: "rgba(30, 41, 59, 0.4)", // slate-800 / 40%
+      label: "Визуал & Motion",
+      bgColor: "rgba(15, 23, 42, 0.8)",
       textColor: "#f8fafc",
       links: [
-        { label: "Портфолио", href: "#portfolio", ariaLabel: "Избранные проекты" },
-        { label: "Услуги", href: "#services", ariaLabel: "Наши услуги" }
+        { label: "Генеративный арт", href: "#services", ariaLabel: "Генеративный арт" },
+        { label: "Motion & UI", href: "#services", ariaLabel: "Анимированные интерфейсы" },
       ]
     },
     {
-      label: "Цены",
-      bgColor: "rgba(51, 65, 85, 0.4)", // slate-700 / 40%
+      label: "GameDev & Лор",
+      bgColor: "rgba(88, 28, 135, 0.6)", // Пурпурный для лора
       textColor: "#f8fafc",
       links: [
-        { label: "Прайс", href: "#pricing", ariaLabel: "Прайс лист" },
-        { label: "Оставить заявку", href: "#contact", ariaLabel: "Связаться с нами" }
+        { label: "Хроники Эйдоса", href: "https://t.me/Eidos_Interface_bot", ariaLabel: "Лор" },
+        { label: "Геймдизайн", href: "#portfolio", ariaLabel: "Геймдизайн" },
+      ]
+    },
+    {
+      label: "Арсенал",
+      bgColor: "rgba(2, 6, 23, 0.8)",
+      textColor: "#f8fafc",
+      links: [
+        { label: "Кейсы", href: "#portfolio", ariaLabel: "Кейсы" },
+        { label: "Цены", href: "#pricing", ariaLabel: "Цены" },
       ]
     }
   ];
@@ -59,10 +69,10 @@ export function SiteHeader() {
         logo="/logo.webp"
         logoAlt="LidFlow Логотип"
         items={items}
-        baseColor="rgba(2, 6, 23, 0.6)" // slate-950 / 60%
+        baseColor="rgba(2, 3, 4, 0.85)" // slate-950 / 85%
         menuColor="#f8fafc" // slate-50
-        buttonBgColor="#1F8CFF" // brand-500
-        buttonTextColor="#f8fafc" // slate-50
+        buttonBgColor="#66FCF1" // Эйдос-циан
+        buttonTextColor="#020304" // Черный текст на кнопке
         ease="circ.out"
       />
     </header>
