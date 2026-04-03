@@ -9,7 +9,7 @@ export function MasterpieceServices() {
   return (
     <section
       id="masterpiece"
-      className="container relative overflow-hidden rounded-3xl border border-white/10 bg-[#0F1220]/60 px-0 py-12 shadow-[inset_0_2px_40px_rgba(255,255,255,0.02)] backdrop-blur-3xl animate-fade-in-up sm:px-0"
+      className="container relative overflow-hidden rounded-3xl border border-white/10 bg-[#e8eaf0]/60 px-0 py-12   animate-fade-in-up sm:px-0"
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(236,72,153,0.15),_transparent_60%)]" />
 
@@ -20,7 +20,7 @@ export function MasterpieceServices() {
               <span className="flex h-2 w-2 rounded-full bg-pink-400 animate-pulse"></span>
               MASTERPIECE.OS
             </span>
-            <h2 className="text-3xl font-semibold tracking-tight text-white md:text-5xl font-mono">
+            <h2 className="text-3xl font-semibold tracking-tight text-slate-900 md:text-5xl font-mono">
               Реестр <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-500">High-Ticket</span> услуг
             </h2>
           </div>
@@ -42,7 +42,7 @@ export function MasterpieceServices() {
               href="#contact"
               key={`${service.title}-${idx}`}
               // Фиксированная ширина карточек: по 3 на десктопе, 1-2 на мобильных
-              className="group relative flex h-[320px] w-[300px] shrink-0 md:w-[350px] lg:w-[400px] flex-col overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.05] to-white/[0.01] p-6 shadow-[0_15px_40px_rgba(236,72,153,0.1)] transition-all hover:-translate-y-2 hover:bg-white/[0.08] hover:shadow-[0_25px_50px_rgba(236,72,153,0.2)] backdrop-blur-xl"
+              className="group relative flex h-[320px] w-[300px] shrink-0 md:w-[350px] lg:w-[400px] flex-col overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.05] to-white/[0.01] p-6  transition-all hover:-translate-y-2 hover:bg-white/[0.08] hover: "
             >
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(236,72,153,0.2),_transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
@@ -51,8 +51,8 @@ export function MasterpieceServices() {
                   <Image src={service.icon} alt={service.title} width={32} height={32} className="h-full w-full object-contain drop-shadow-md" />
                 </div>
 
-                <h3 className="mb-3 text-lg font-semibold text-white font-mono leading-[1.2]">{service.title}</h3>
-                <p className="text-sm text-slate-400 flex-1 leading-[1.5] line-clamp-4 group-hover:text-slate-300 transition-colors">
+                <h3 className="mb-3 text-lg font-semibold text-slate-900 font-mono leading-[1.2]">{service.title}</h3>
+                <p className="text-sm text-slate-400 flex-1 leading-[1.5] line-clamp-4 group-hover:text-slate-600 transition-colors">
                   {service.description}
                 </p>
 

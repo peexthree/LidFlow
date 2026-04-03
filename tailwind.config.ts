@@ -14,22 +14,22 @@ const config = {
       // 🧩 Design Tokens: Developer Aesthetic (Anthracite/Slate)
       colors: {
         brand: {
-          50: "#ECF7FF",
-          100: "#D8EDFF",
-          200: "#AEDDFF",
-          300: "#78C8FF",
-          400: "#41AEFF",
-          500: "#1F8CFF",
-          600: "#136FE0",
-          700: "#1258B5",
-          800: "#10458C",
-          900: "#0A2D5B",
-          DEFAULT: "#1F8CFF",
+          50: "#e0e7ff",
+          100: "#c7d2fe",
+          200: "#a5b4fc",
+          300: "#818cf8",
+          400: "#6366f1", // Primary Indigo
+          500: "#4f46e5",
+          600: "#4338ca",
+          700: "#3730a3",
+          800: "#312e81",
+          900: "#312e81",
+          DEFAULT: "#6366f1",
         },
         slate: {
           50: "#f8fafc",
           100: "#f1f5f9",
-          200: "#e2e8f0",
+          200: "#e8eaf0", // Background Cool Gray
           300: "#cbd5e1",
           400: "#94a3b8",
           500: "#64748b",
@@ -38,6 +38,9 @@ const config = {
           800: "#1e293b",
           900: "#0f172a",
           950: "#020617",
+        },
+        tertiary: {
+          DEFAULT: "#7c3aed",
         },
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
@@ -82,8 +85,8 @@ const config = {
         },
       },
       fontFamily: {
-        sans: ["'Inter Variable'", "Inter", "system-ui", "sans-serif"],
-        display: ["'Inter Variable'", "Inter", "system-ui", "sans-serif"],
+        sans: ["'Plus Jakarta Sans'", "system-ui", "sans-serif"],
+        display: ["'Plus Jakarta Sans'", "system-ui", "sans-serif"],
         mono: ["'Geist Mono Variable'", "'JetBrains Mono'", "monospace"],
       },
       fontSize: {
@@ -113,6 +116,8 @@ const config = {
       boxShadow: {
         soft: "0 10px 26px rgba(0,0,0,0.4), 0 28px 60px rgba(0,0,0,0.6)",
         floating: "0 14px 35px rgba(0,0,0,0.5), 0 38px 90px rgba(0,0,0,0.7)",
+        "neo-raised": "6px 6px 12px rgba(0,0,0,0.08), -6px -6px 12px rgba(255,255,255,0.6)",
+        "neo-inset": "inset 4px 4px 8px rgba(0,0,0,0.06), inset -4px -4px 8px rgba(255,255,255,0.5)",
       },
       maxWidth: {
         measure: "60ch",

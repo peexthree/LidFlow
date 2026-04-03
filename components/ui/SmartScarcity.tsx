@@ -34,13 +34,13 @@ export function SmartScarcity() {
   if (slots === null) return null;
 
   return (
-    <div className="w-full max-w-sm mx-auto mt-8 p-4 border border-red-500/30 bg-red-950/20 backdrop-blur-sm rounded-sm relative overflow-hidden">
+    <div className="w-full max-w-sm mx-auto mt-8 p-4 border border-red-500/30 bg-red-950/20  rounded-sm relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-1 bg-red-500/10">
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: `${loadingPercent}%` }}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          className="h-full bg-red-500/80 shadow-[0_0_10px_rgba(239,68,68,0.8)]"
+          className="h-full bg-red-500/80 "
         />
       </div>
 
@@ -52,7 +52,7 @@ export function SmartScarcity() {
         <span>Осталось мест: {slots}</span>
       </div>
 
-      <p className="text-slate-300 text-xs">
+      <p className="text-slate-600 text-xs">
         {slots === 1
           ? "> ВНИМАНИЕ: Последний слот. Бронирование закроется в любой момент."
           : "> Ограниченная пропускная способность. Принимаем только 2 проекта в месяц."}

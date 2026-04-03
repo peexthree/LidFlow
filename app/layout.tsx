@@ -2,8 +2,11 @@ import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
 
 import "./globals.css";
+import { Plus_Jakarta_Sans } from "next/font/google";
+
+const plusJakartaSans = Plus_Jakarta_Sans({ subsets: ["latin", "cyrillic-ext"], variable: "--font-plus-jakarta-sans" });
 import { SiteHeader } from "@/components/layout/SiteHeader";
-import { TechBackground } from "@/components/ui/VisualEffects";
+
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://lidflow.vercel.app";
 
@@ -62,20 +65,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang="ru" className="h-full">
-      <body className="flex min-h-screen flex-col bg-[#020304] text-slate-100 selection:bg-white/20">
+      <body className={`flex min-h-screen flex-col bg-[#e8eaf0] text-slate-800 ${plusJakartaSans.variable} font-sans`}>
         <SiteHeader />
 
 
-        <TechBackground />
+
 
 
         <main className="flex-1 relative z-10">{children}</main>
 
-        <footer className="relative z-20 border-t border-[#66FCF1]/30 bg-[#020304]/80 backdrop-blur-xl">
-          <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#66FCF1]/50 to-transparent" />
-          <div className="container flex flex-col sm:flex-row items-center justify-between gap-6 py-12 font-mono text-[10px] uppercase tracking-[0.2em] text-[#66FCF1]/60">
+        <footer className="relative z-20 border-t border-slate-300 bg-[#e8eaf0]/80 backdrop-blur-xl">
+
+          <div className="container flex flex-col sm:flex-row items-center justify-between gap-6 py-12 font-mono text-[10px] uppercase tracking-[0.2em] text-slate-500">
             <div className="flex items-center gap-4">
-              <span className="flex h-2 w-2 rounded-none bg-[#66FCF1] animate-pulse drop-shadow-[0_0_8px_#66FCF1]" />
+              <span className="flex h-2 w-2 rounded-full bg-brand-400 animate-pulse" />
               <p>© {currentYear} LIDFLOW.OS. ВЫСОКОКОНВЕРСИОННЫЕ АКТИВЫ.</p>
             </div>
 
@@ -84,14 +87,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 href="https://t.me/peexthree"
                 target="_blank"
                 rel="noreferrer"
-                className="group flex items-center gap-2 transition-all hover:text-[#66FCF1] hover:drop-shadow-[0_0_10px_rgba(102,252,241,0.5)]"
+                className="group flex items-center gap-2 transition-all hover:text-brand-400"
               >
                 <span className="opacity-50 group-hover:opacity-100">&gt;</span>
                 CONNECTION_TGM: @peexthree
               </a>
               <a
                 href="mailto:linderop@yandex.ru"
-                className="group flex items-center gap-2 transition-all hover:text-[#66FCF1] hover:drop-shadow-[0_0_10px_rgba(102,252,241,0.5)] hidden sm:flex"
+                className="group flex items-center gap-2 transition-all hover:text-brand-400 hidden sm:flex"
               >
                 <span className="opacity-50 group-hover:opacity-100">&gt;</span>
                 SECURE_MAIL
