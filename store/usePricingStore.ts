@@ -58,13 +58,16 @@ export const PRICING_STEPS: PricingStep[] = [
   }
 ];
 
-// Optimized lookup map for option prices
-const PRICING_MAP = PRICING_STEPS.reduce((acc, step) => {
-  step.options.forEach(opt => {
-    acc[opt.id] = opt.price;
-  });
-  return acc;
-}, {} as Record<string, number>);
+// Optimized lookup map for option details
+export const PRICING_MAP: Record<string, { label: string; price: number }> = {};
+for (let i = 0; i < PRICING_STEPS.length; i++) {
+  const step = PRICING_STEPS[i];
+  const options = step.options;
+  for (let j = 0; j < options.length; j++) {
+    const opt = options[j];
+    PRICING_MAP[opt.id] = { label: opt.label, price: opt.price };
+  }
+}
 
 interface PricingState {
   currentStepIndex: number;
@@ -107,7 +110,10 @@ export const usePricingStore = create<PricingState>((set, get) => ({
       if (!selected) continue;
       for (let i = 0; i < selected.length; i++) {
         const optId = selected[i];
-        if (optId) newTotal += PRICING_MAP[optId] || 0;
+        if (optId) {
+          const opt = PRICING_MAP[optId];
+          if (opt) newTotal += opt.price;
+        }
       }
     }
 

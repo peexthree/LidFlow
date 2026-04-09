@@ -1,6 +1,6 @@
 "use client";
 
-import { usePricingStore, PRICING_STEPS } from "@/store/usePricingStore";
+import { usePricingStore, PRICING_STEPS, PRICING_MAP } from "@/store/usePricingStore";
 import { motion, animate, useMotionValue } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -30,18 +30,20 @@ export function DynamicPricing() {
   if (isComplete) {
     const generateTelegramLink = () => {
       let message = "🔥 Запрос на разработку (Архитектура LIDFLOW)\n\n";
-      PRICING_STEPS.forEach(step => {
+      for (let i = 0; i < PRICING_STEPS.length; i++) {
+        const step = PRICING_STEPS[i];
         const selectedIds = selectedOptions[step.id] || [];
         if (selectedIds.length > 0) {
           message += `\n💡 ${step.question}\n`;
-          selectedIds.forEach(id => {
-            const opt = step.options.find(o => o.id === id);
+          for (let j = 0; j < selectedIds.length; j++) {
+            const id = selectedIds[j];
+            const opt = PRICING_MAP[id];
             if (opt) {
               message += `  - ${opt.label} (${opt.price.toLocaleString("ru-RU")} ₽)\n`;
             }
-          });
+          }
         }
-      });
+      }
       message += `\n💰 Оценочный бюджет: ${totalPrice.toLocaleString("ru-RU")} ₽\n\nГотов обсудить детали интеграции.`;
 
       return `https://t.me/peexthree?text=${encodeURIComponent(message)}`;
