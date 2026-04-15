@@ -5,13 +5,13 @@
 @layer base {
     :root {
         /* 🧩 Design Tokens: Developer Aesthetic (Dark Theme default) */
-        --background: 223 47% 10%;
-        --foreground: 210 40% 96%;
-        --card: 223 47% 12%;
-        --card-foreground: 210 40% 96%;
-        --popover: 223 47% 12%;
-        --popover-foreground: 210 40% 96%;
-        --primary: 213 100% 68%;
+        --background: 226 21% 92%; /* #e8eaf0 */
+        --foreground: 222 47% 11%;
+        --card: 226 21% 92%;
+        --card-foreground: 222 47% 11%;
+        --popover: 226 21% 92%;
+        --popover-foreground: 222 47% 11%;
+        --primary: 239 84% 67%; /* #6366f1 */
         --primary-alpha-0: rgba(255, 255, 255, 0);
         --primary-alpha-5: rgba(255, 255, 255, 0.05);
         --primary-alpha-10: rgba(255, 255, 255, 0.1);
@@ -20,19 +20,19 @@
         --primary-alpha-55: rgba(255, 255, 255, 0.55);
         --primary-alpha-75: rgba(255, 255, 255, 0.75);
         --primary-alpha-80: rgba(255, 255, 255, 0.8);
-        --primary-foreground: 223 47% 12%;
-        --secondary: 267 84% 72%;
-        --secondary-foreground: 223 47% 12%;
-        --muted: 226 42% 18%;
-        --muted-foreground: 215 20% 72%;
-        --accent: 199 92% 64%;
-        --accent-foreground: 223 47% 12%;
+        --primary-foreground: 210 40% 98%;
+        --secondary: 214 32% 91%;
+        --secondary-foreground: 222 47% 11%;
+        --muted: 214 32% 91%;
+        --muted-foreground: 215 16% 47%;
+        --accent: 239 84% 67%;
+        --accent-foreground: 210 40% 98%;
         --destructive: 0 74% 38%;
         --destructive-foreground: 210 40% 96%;
-        --border: 223 34% 24%;
-        --border-subtle: 223 30% 30%;
-        --input: 223 34% 24%;
-        --ring: 213 100% 68%;
+        --border: 214 32% 91%;
+        --border-subtle: 214 32% 85%;
+        --input: 214 32% 91%;
+        --ring: 239 84% 67%;
         --radius: 1.25rem;
     }
 
@@ -46,10 +46,8 @@
 
     body {
         /* 🧩 Visual System: Тёмный фон с лёгким шумом и градиентами */
-        @apply min-h-screen font-sans antialiased text-slate-100 bg-[#020617];
-        background-image:
-            radial-gradient(circle at 15% 50%, rgba(255,255,255,0.03), transparent 25%),
-            radial-gradient(circle at 85% 30%, rgba(255,255,255,0.04), transparent 35%);
+        @apply min-h-screen font-sans antialiased text-slate-800 bg-[#e8eaf0];
+
     }
 
     ::selection {
@@ -150,45 +148,3 @@
     animation: pulse 2s ease-in-out infinite;
 }
 
-/* 🧩 Glass Morphism */
-.glass-effect {
-    background: rgba(15, 23, 42, 0.3);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05),
-                0 12px 24px rgba(0, 0, 0, 0.2),
-                0 35px 90px rgba(0, 0, 0, 0.4);
-}
-
-.shimmer-effect {
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
-    background-size: 200% 100%;
-    animation: shimmer 2s infinite;
-}
-
-/* Glow Effect */
-@keyframes glow {
-    0%, 100% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.05), 0 0 40px rgba(255, 255, 255, 0.02); }
-    50% { box-shadow: 0 0 30px rgba(255, 255, 255, 0.1), 0 0 60px rgba(255, 255, 255, 0.05); }
-}
-
-.floating-orb {
-    position: absolute;
-    border-radius: 9999px;
-    filter: blur(38px);
-    animation: float-orb 8s cubic-bezier(0.22, 1, 0.36, 1) infinite;
-    pointer-events: none;
-}
-
-@keyframes float-orb {
-    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.15; }
-    33% { transform: translate(30px, -30px) scale(1.08); opacity: 0.25; }
-    66% { transform: translate(-22px, 18px) scale(0.94); opacity: 0.2; }
-}
-
-@media (max-width: 768px) {
-    .container {
-        @apply px-4;
-    }
-}

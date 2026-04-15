@@ -15,7 +15,7 @@ export function Hero() {
       className="relative flex h-[100svh] min-h-[600px] w-full items-center justify-center overflow-hidden"
     >
       {/* Video Background */}
-      <div className="absolute inset-0 z-0 bg-[#020304]">
+      <div className="absolute inset-0 z-0 bg-[#e8eaf0]">
         <video
           autoPlay
           loop
@@ -33,13 +33,13 @@ export function Hero() {
         <AnimatedSection
           motion="lift"
           once
-          className="rounded-none border border-[#66FCF1]/30 bg-[#020304]/80 px-5 py-2 text-xs font-semibold uppercase tracking-[0.15em] text-[#66FCF1] shadow-[0_0_20px_rgba(102,252,241,0.2)] backdrop-blur-md font-mono"
+          className="rounded-none border border-[#66FCF1]/30 bg-[#e8eaf0]/80 px-5 py-2 text-xs font-semibold uppercase tracking-[0.15em] text-brand-600   font-mono"
         >
           <span>Технологическая Архитектура & Лор</span>
         </AnimatedSection>
 
         <AnimatedSection motion="fade-slide" direction="up" once>
-          <h1 className="font-display text-display-xl font-bold uppercase tracking-tight text-white drop-shadow-2xl md:text-[4rem] lg:text-[5rem] leading-[1.2]">
+          <h1 className="font-display text-display-xl font-bold uppercase tracking-tight text-slate-900 drop-shadow-2xl md:text-[4rem] lg:text-[5rem] leading-[1.2]">
             <SplitText
               text="ЦИФРОВАЯ ЭВОЛЮЦИЯ"
               stagger={ANIMATION_CONFIG.stagger.fast}
@@ -58,7 +58,7 @@ export function Hero() {
           motion="blur"
           direction="up"
           once
-          className="max-w-3xl text-body-lg text-slate-300 md:text-xl font-mono uppercase tracking-widest"
+          className="max-w-3xl text-body-lg text-slate-600 md:text-xl font-mono uppercase tracking-widest"
         >
           <p>
             От архитектуры систем продаж до создания глубокого лора.
@@ -95,7 +95,7 @@ export function Hero() {
                 ease: ANIMATION_CONFIG.ease,
               }}
             >
-              <Button asChild className="w-full rounded-none bg-[#66FCF1] px-8 py-6 font-mono text-sm font-bold text-black transition-transform hover:scale-105 hover:bg-[#66FCF1]/80 shadow-[0_0_20px_rgba(102,252,241,0.4)]">
+              <Button asChild className="w-full rounded-none bg-brand-400 px-8 py-6 font-mono text-sm font-bold text-black transition-transform hover:scale-105 hover:bg-brand-400/80 ">
                 <Link href="https://t.me/LIDflowDemoBOT" target="_blank" rel="noopener noreferrer">ИНИЦИИРОВАТЬ ПРОЕКТ</Link>
               </Button>
             </motion.div>
@@ -114,7 +114,7 @@ export function Hero() {
               <Button
                 asChild
                 variant="outline"
-                className="w-full rounded-none border-purple-500/50 bg-[#090209]/80 px-8 py-6 font-mono text-sm font-bold text-purple-400 backdrop-blur-md transition-all hover:bg-purple-600/20 hover:text-white shadow-[0_0_20px_rgba(168,85,247,0.2)]"
+                className="w-full rounded-none border-purple-500/50 bg-[#090209]/80 px-8 py-6 font-mono text-sm font-bold text-purple-400  transition-all hover:bg-purple-600/20 hover:text-slate-900 "
               >
                 <Link href="https://t.me/Eidos_Interface_bot" target="_blank" rel="noopener noreferrer">ПОГРУЗИТЬСЯ В ЛОР</Link>
               </Button>
@@ -125,7 +125,7 @@ export function Hero() {
 
       {/* Декоративные элементы */}
       <div className="absolute bottom-10 left-10 pointer-events-none hidden md:block">
-         <div className="text-[#66FCF1]/50 font-mono text-[10px] tracking-[0.2em] uppercase">
+         <div className="text-brand-600/50 font-mono text-[10px] tracking-[0.2em] uppercase">
             Система активна<br/>
             Сборка v2.0.4<br/>
             Шифрование [OK]
